@@ -26,18 +26,24 @@ const NormalVideo = ({ video, videos, setCurrent, hasLess, hasMore }) => {
             alignSelf: "flex-start",
           }}
         >
-          <FaChevronCircleLeft
-            title="Edellinen"
+          <div
             onClick={(e) => {
-              e.stopPropagation();
-              e.preventDefault();
-              setCurrent((current) => Math.max(current - 1, 0));
+              console.log("wut");
             }}
-            sx={{
-              cursor: hasLess ? "pointer" : "not-allowed",
-              opacity: hasLess ? 1 : 0.2,
-            }}
-          />
+          >
+            <FaChevronCircleLeft
+              title="Edellinen"
+              onClick={(e) => {
+                e.stopPropagation();
+                e.preventDefault();
+                setCurrent((current) => Math.max(current - 1, 0));
+              }}
+              sx={{
+                cursor: hasLess ? "pointer" : "not-allowed",
+                opacity: hasLess ? 1 : 0.2,
+              }}
+            />
+          </div>
         </Box>
         <Box
           sx={{
@@ -54,6 +60,7 @@ const NormalVideo = ({ video, videos, setCurrent, hasLess, hasMore }) => {
         >
           <FaChevronCircleRight
             onClick={(e) => {
+              console.log("hip hei?");
               e.stopPropagation();
               e.preventDefault();
               setCurrent((current) => Math.min(current + 1, videos.length - 1));
@@ -95,11 +102,12 @@ const SupportUkraine = ({ videos, setCurrent, hasLess, hasMore }) => {
           }}
         >
           <a
+            rel="noreferrer"
             title="Auta Ukrainaa!"
             target="_blank"
             href="https://yle.fi/uutiset/3-12336799"
           >
-            <img alt="Auta Ukrainaa!" src={ukraineFlag} width={150} />
+            <img alt="Auta Ukrainaa!" src={ukraineFlag.src} width={150} />
           </a>
         </Flex>
       </Box>

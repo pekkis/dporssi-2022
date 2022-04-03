@@ -33,6 +33,7 @@ const InternalLink: FC<Props> = ({
     <Link href={to}>
       <a
         {...rest}
+        href={to}
         sx={{
           variant,
           "&.active": {

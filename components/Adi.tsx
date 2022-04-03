@@ -2,6 +2,7 @@
 import { jsx } from "theme-ui";
 import { FC } from "react";
 import { v4 } from "uuid";
+import { useId } from "react";
 
 type Props = {
   width?: string;
@@ -15,13 +16,14 @@ const Adi: FC<Props> = ({
   onClick = () => {},
   ...rest
 }) => {
-  const uuid = v4();
+  const uuid = useId();
 
   const linearGradientId = `linearGradient5164-${uuid}`;
   const radialGradientId = `radialGradient6155-${uuid}`;
 
   return (
     <svg
+      id={uuid}
       {...rest}
       style={{
         display: "block",

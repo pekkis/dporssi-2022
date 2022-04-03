@@ -1,6 +1,5 @@
 /** @jsxImportSource theme-ui */
 
-import { navigate } from "../../services/backwards-compatibility";
 import React, { FC, useState } from "react";
 import { Box, Flex, Heading, MenuButton } from "theme-ui";
 import Adi from "../Adi";
@@ -10,6 +9,7 @@ import Menu from "./MobileMenu";
 import { Default, Mobile } from "./Responsive";
 import { useTranslation } from "react-i18next";
 import { memo } from "react";
+import { useRouter } from "next/router";
 
 type Props = {
   topMenu: string;
@@ -18,6 +18,8 @@ type Props = {
 const Header: FC<Props> = ({ topMenu }) => {
   const [isOpen, setOpen] = useState(false);
   const { t } = useTranslation();
+
+  const router = useRouter();
 
   return (
     <>
@@ -66,7 +68,7 @@ const Header: FC<Props> = ({ topMenu }) => {
                   cursor: "pointer",
                 }}
                 onClick={() => {
-                  navigate("/");
+                  router.push("/");
                 }}
               />
             </Box>

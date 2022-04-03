@@ -1,10 +1,10 @@
 /** @jsxImportSource theme-ui */
 import { jsx } from "theme-ui";
-import { navigate } from "gatsby";
+import { navigate } from "../../services/backwards-compatibility";
 import { FC } from "react";
 import { Box } from "theme-ui";
 import { Dictator } from "../../types";
-import { GatsbyImage } from "gatsby-plugin-image";
+// import { GatsbyImage } from "gatsby-plugin-image";
 import InternalLink from "../InternalLink";
 import { memo } from "react";
 import { ExtraInfoComponent, Highlighter } from "../dictator-search/service";

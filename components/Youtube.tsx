@@ -1,5 +1,5 @@
 import { FC } from "react";
-import ReactYouTube from "react-youtube";
+import ReactYouTube from "./YoutubePlayer";
 import { Box } from "theme-ui";
 
 type Props = {
@@ -16,8 +16,8 @@ const Youtube: FC<Props> = ({ videoId }) => {
     width: "100%",
     playerVars: {
       // https://developers.google.com/youtube/player_parameters
-      autoplay: 0
-    }
+      autoplay: 0,
+    },
   };
   return (
     <Box
@@ -31,8 +31,8 @@ const Youtube: FC<Props> = ({ videoId }) => {
           top: 0,
           left: 0,
           right: 0,
-          bottom: 0
-        }
+          bottom: 0,
+        },
       }}
     >
       <ReactYouTube videoId={videoId} opts={opts} />

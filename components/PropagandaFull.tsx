@@ -1,22 +1,21 @@
 import React from "react";
 import { DateTime } from "luxon";
 import { Box, Heading } from "theme-ui";
-import { GatsbyImage, IGatsbyImageData } from "gatsby-plugin-image";
+// import { GatsbyImage, IGatsbyImageData } from "gatsby-plugin-image";
 import Markdown from "./Markdown";
+import Image from "next/image";
 
 type Propaganda = {
   title: string;
   date: string;
   slug: string;
-  description: {
-    description: string;
-  };
-  article: {
-    article: string;
-  };
-  image?: {
+  description: string;
+  article: string;
+  image: {
     title: string;
-    gatsbyImageData: IGatsbyImageData;
+    url: string;
+    width: number;
+    height: number;
   };
 };
 
@@ -53,14 +52,14 @@ const PropagandaFull = (props: Props) => {
             `
           "header header"
           "main sidebar"
-        `
-          ]
+        `,
+          ],
         }}
       >
         <Box
           as="header"
           sx={{
-            gridArea: "header"
+            gridArea: "header",
           }}
         >
           <Heading mb={0} as="h2">
@@ -68,23 +67,26 @@ const PropagandaFull = (props: Props) => {
           </Heading>
           <Box mt={1}>
             Julkaistu{" "}
-            <time dateTime={date.toISODate()}>
-              {date.toLocaleString({ locale: "fi" })}
-            </time>
+            <time dateTime={date.toISODate()}>{date.toLocaleString()}</time>
           </Box>
 
           <Box mt={3} sx={{ fontStyle: "italic " }}>
-            <Markdown>{propaganda.description.description}</Markdown>
+            <Markdown>{propaganda.description}</Markdown>
           </Box>
         </Box>
 
         <Box
           sx={{
             gridArea: "sidebar",
-            alignSelf: "start"
+            alignSelf: "start",
           }}
         >
-          {
+          <Image
+            src={propaganda.image.url}
+            width={propaganda.image.width}
+            height={propaganda.image.height}
+          />
+          {/*
             <GatsbyImage
               alt={propaganda.image ? propaganda.image.title : "kuvituskuva"}
               image={
@@ -93,16 +95,16 @@ const PropagandaFull = (props: Props) => {
                   : defaultImage.childImageSharp.gatsbyImageData
               }
             />
-          }
+            */}
         </Box>
 
         <Box
           as="section"
           sx={{
-            gridArea: "main"
+            gridArea: "main",
           }}
         >
-          <Markdown>{propaganda.article.article}</Markdown>
+          <Markdown>{propaganda.article}</Markdown>
         </Box>
       </Box>
     </Box>

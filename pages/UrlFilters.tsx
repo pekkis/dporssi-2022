@@ -1,4 +1,4 @@
-import { navigate } from "../../services/backwards-compatibility";
+import { navigate } from "../services/backwards-compatibility";
 import { useCallback } from "react";
 import { FC } from "react";
 import { Box, Input, Label, Radio } from "theme-ui";
