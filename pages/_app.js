@@ -26,6 +26,7 @@ function MyApp({ Component, pageProps }) {
       <ResponsiveContext.Provider value={{ width: 1024 }}>
         <I18nextProvider i18n={i18n}>
           <App>
+            
             <Component {...pageProps} />
           </App>
         </I18nextProvider>
