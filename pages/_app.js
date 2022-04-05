@@ -22,6 +22,9 @@ export const wrapRootElement = ({ element }) => {
 
 function MyApp({ Component, pageProps }) {
   return (
+    <>
+    <link rel="stylesheet" href="https://use.typekit.net/iwl1gmh.css"></link>
+    
     <IconContext.Provider value={values}>
       <ResponsiveContext.Provider value={{ width: 1024 }}>
         <I18nextProvider i18n={i18n}>
@@ -33,6 +36,7 @@ function MyApp({ Component, pageProps }) {
         </I18nextProvider>
       </ResponsiveContext.Provider>
     </IconContext.Provider>
+    </>
   );
 }
 

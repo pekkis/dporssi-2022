@@ -5,6 +5,12 @@ export const breakpoints = [768, 992];
 
 const theme = {
   ...funk,
+
+  lineHeights: {
+    ...funk.lineHeights,
+    body: 1.4
+  },
+
   colors: {
     ...funk.colors,
     primary: "#de0000",
@@ -118,6 +124,13 @@ const theme = {
     },
   },
 
+  text: {
+    paragraph: {
+      marginTop: 3,
+      marginBottom: 3
+    }
+  },
+
   forms: {
     ...funk.forms,
     label: {
@@ -132,5 +145,7 @@ const theme = {
     },
   },
 };
+
+console.log('theme', theme)
 
 export default theme;
