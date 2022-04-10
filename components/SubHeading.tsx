@@ -1,5 +1,5 @@
 /** @jsxImportSource theme-ui */
-import { jsx } from "theme-ui";
+
 import { Heading } from "theme-ui";
 
 const SubHeading = ({ children }) => {

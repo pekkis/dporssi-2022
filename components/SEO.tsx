@@ -1,7 +1,7 @@
 import React, { FC } from "react";
-import { Helmet } from "react-helmet";
-import { useLocation } from "@reach/router";
-import { useStaticQuery, graphql } from "gatsby";
+import Head from "next/head";
+import config from "../services/config";
+import { useRouter } from "next/router";
 
 type SiteMetadata = {
   site: {
@@ -28,34 +28,31 @@ const cleanup = (str: string) => {
   return str.replace(/\*\*/g, "");
 };
 
+const fullTitle = (title: string) => {
+  return `${title} - Diktaattoripörssi`;
+};
+
 const SEO: FC<Props> = ({ title, description, image, article = false }) => {
-  const { pathname } = useLocation();
-  const { site } = useStaticQuery<SiteMetadata>(query);
+  const { pathname } = useRouter();
   const {
-    defaultTitle,
-    titleTemplate,
-    defaultDescription,
+    title: defaultTitle,
+    description: defaultDescription,
     siteUrl,
-    defaultImage,
+    image: defaultImage,
     twitterUsername,
-    lang
-  } = site.siteMetadata;
+    lang,
+  } = config;
 
   const seo = {
-    title: title || defaultTitle,
+    title: fullTitle(title || defaultTitle),
     description: description ? cleanup(description) : defaultDescription,
     image: image || `${siteUrl}${defaultImage}`,
-    url: `${siteUrl}${pathname}`
+    url: `${siteUrl}${pathname}`,
   };
 
   return (
-    <Helmet
-      title={seo.title}
-      titleTemplate={titleTemplate}
-      htmlAttributes={{
-        lang
-      }}
-    >
+    <Head>
+      {title && <title>{seo.title}</title>}
       <meta name="description" content={seo.description} />
       <meta name="image" content={seo.image} />
       {seo.url && <meta property="og:url" content={seo.url} />}
@@ -74,23 +71,7 @@ const SEO: FC<Props> = ({ title, description, image, article = false }) => {
         <meta name="twitter:description" content={seo.description} />
       )}
       {seo.image && <meta name="twitter:image" content={seo.image} />}
-    </Helmet>
+    </Head>
   );
 };
 export default SEO;
-
-const query = graphql`
-  query SEOQuery {
-    site {
-      siteMetadata {
-        defaultTitle: title
-        titleTemplate
-        defaultDescription: description
-        siteUrl: url
-        defaultImage: image
-        twitterUsername
-        lang
-      }
-    }
-  }
-`;

@@ -1,5 +1,4 @@
 /** @jsxImportSource theme-ui */
-import { jsx } from "theme-ui";
 
 const BlockQuote = (props) => {
   const { children } = props;

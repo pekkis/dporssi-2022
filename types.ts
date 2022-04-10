@@ -1,35 +1,50 @@
 // import { IGatsbyImageData } from "gatsby-plugin-image";
 
+export type StaticImageData = {
+  src: string;
+  bludDataUrl?: string;
+  width: number;
+  height: number;
+};
+
+export type ContentfulImageData = {
+  title: string;
+  url: string;
+  width: number;
+  height: number;
+};
+
 export type Dictator = {
-  id: string;
+  sys: {
+    id: string;
+  };
+
   name: string;
   aka?: string[];
   sortName: string;
   slug: string;
   canonicalRanking: number | null;
-  primaryImage: {
-    title: string;
-    gatsbyImageData: IGatsbyImageData;
-  };
+  primaryImage: ContentfulImageData;
 
   podcast?: string;
 
-  reigns: DateRange[];
+  reignsCollection: {
+    items: DateRange[];
+  };
 
   lifespan?: DateRange;
 
   listedAt?: string;
   majorStoryUpdateAt?: string;
 
-  synopsis?: {
-    synopsis: string;
+  synopsis?: string;
+
+  story?: string;
+
+  taxonomyCollection: {
+    items: Tag[];
   };
 
-  story?: {
-    story: string;
-  };
-
-  taxonomy: Tag[];
   country: Country;
 
   titles?: string[];
@@ -61,7 +76,16 @@ export type DateRange = {
   end?: string;
 };
 
-export type FakeNews = {
+export type FakeNewsItem = {
+  title: string;
   date: string;
   slug: string;
+  description: string;
+  article: string;
+  image?: {
+    title: string;
+    url: string;
+    width: number;
+    height: number;
+  };
 };

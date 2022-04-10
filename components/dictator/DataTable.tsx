@@ -1,5 +1,4 @@
 /** @jsxImportSource theme-ui */
-import { jsx } from "theme-ui";
 
 const DataTable = ({ children }) => {
   return (

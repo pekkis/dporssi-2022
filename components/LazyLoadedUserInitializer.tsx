@@ -1,5 +1,7 @@
-import loadable from "@loadable/component";
+import dynamic from "next/dynamic";
 
-const LazyLoadedUserInitializer = loadable(() => import("./UserInitializer"));
+const LazyLoadedUserInitializer = dynamic(() => import("./UserInitializer"), {
+  suspense: true,
+});
 
 export default LazyLoadedUserInitializer;

@@ -1,9 +1,9 @@
-import React, { useCallback } from "react";
+import { useCallback, Suspense } from "react";
 import { ErrorBoundary } from "react-error-boundary";
 import theme from "../services/theme";
 import { ThemeProvider } from "theme-ui";
 import { Global } from "@emotion/react";
-// import LazyLoadedUserInitializer from "./LazyLoadedUserInitializer";
+import LazyLoadedUserInitializer from "./LazyLoadedUserInitializer";
 import InfernalServerErrorPage from "../pages/500";
 import { useMemo } from "react";
 import { BrowserMicroSentryClient } from "@micro-sentry/browser";
@@ -43,7 +43,9 @@ const App = (props) => {
             },
           }}
         />
-        {/*<LazyLoadedUserInitializer />*/}
+        <Suspense fallback={null}>
+          <LazyLoadedUserInitializer />
+        </Suspense>
         {children}
       </ThemeProvider>
     </ErrorBoundary>

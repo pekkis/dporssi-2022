@@ -8,7 +8,7 @@ const theme = {
 
   lineHeights: {
     ...funk.lineHeights,
-    body: 1.4
+    body: 1.4,
   },
 
   colors: {
@@ -127,8 +127,8 @@ const theme = {
   text: {
     paragraph: {
       marginTop: 3,
-      marginBottom: 3
-    }
+      marginBottom: 3,
+    },
   },
 
   forms: {
@@ -145,7 +145,5 @@ const theme = {
     },
   },
 };
-
-console.log('theme', theme)
 
 export default theme;

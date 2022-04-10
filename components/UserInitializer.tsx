@@ -37,7 +37,7 @@ const UserInitializer: FC = () => {
           });
       });
     });
-  }, []);
+  }, [setData, setToken, setUser]);
 
   return null;
 };

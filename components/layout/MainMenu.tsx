@@ -1,5 +1,5 @@
 /** @jsxImportSource theme-ui */
-import { jsx } from "theme-ui";
+
 import InternalLink from "../InternalLink";
 import { Locale, url } from "../../services/url";
 import { memo } from "react";

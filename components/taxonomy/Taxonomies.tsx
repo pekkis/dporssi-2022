@@ -1,5 +1,5 @@
 /** @jsxImportSource theme-ui */
-import { jsx } from "theme-ui";
+
 import { FC, memo } from "react";
 import Tag, { TagInterface } from "./Tag";
 

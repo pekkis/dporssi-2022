@@ -1,31 +1,14 @@
 import React from "react";
 import { DateTime } from "luxon";
 import { Box, Heading } from "theme-ui";
-// import { GatsbyImage, IGatsbyImageData } from "gatsby-plugin-image";
 import Markdown from "./Markdown";
-import Image from "next/image";
-
-type Propaganda = {
-  title: string;
-  date: string;
-  slug: string;
-  description: string;
-  article: string;
-  image: {
-    title: string;
-    url: string;
-    width: number;
-    height: number;
-  };
-};
+import NextImage from "next/image";
+import ContentfulImage from "./contentful/ContentfulImage";
+import { ContentfulImageData, FakeNewsItem, StaticImageData } from "../types";
 
 type Props = {
-  propaganda: Propaganda;
-  defaultImage: {
-    childImageSharp: {
-      gatsbyImageData: IGatsbyImageData;
-    };
-  };
+  propaganda: FakeNewsItem;
+  defaultImage: StaticImageData;
 };
 
 const PropagandaFull = (props: Props) => {
@@ -81,11 +64,18 @@ const PropagandaFull = (props: Props) => {
             alignSelf: "start",
           }}
         >
-          <Image
-            src={propaganda.image.url}
-            width={propaganda.image.width}
-            height={propaganda.image.height}
-          />
+          {propaganda.image ? (
+            <ContentfulImage
+              data={propaganda.image}
+              alt={propaganda.image.title}
+            />
+          ) : (
+            <NextImage
+              src={defaultImage.src}
+              width={defaultImage.width}
+              height={defaultImage.height}
+            />
+          )}
           {/*
             <GatsbyImage
               alt={propaganda.image ? propaganda.image.title : "kuvituskuva"}

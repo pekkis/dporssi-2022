@@ -1,7 +1,6 @@
 /** @jsxImportSource theme-ui */
-import { jsx } from "theme-ui";
 import { Box } from "theme-ui";
-import { FC, memo, ReactElement } from "react";
+import { FC, memo } from "react";
 import { Dictator } from "../../types";
 import DictatorGridDictator from "./DictatorGridDictator";
 import { ExtraInfoComponent, Highlighter } from "../dictator-search/service";
@@ -29,7 +28,7 @@ const DictatorGrid: FC<Props> = ({
       {dictators.map((dictator) => {
         return (
           <DictatorGridDictator
-            key={dictator.id}
+            key={dictator.sys.id}
             dictator={dictator}
             fadeOutIf={fadeOutIf}
             extraInfo={extraInfo}

@@ -1,5 +1,5 @@
 /** @jsxImportSource theme-ui */
-import { jsx } from "theme-ui";
+
 import { FC } from "react";
 import { v4 } from "uuid";
 import { useId } from "react";

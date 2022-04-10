@@ -1,5 +1,5 @@
 /** @jsxImportSource theme-ui */
-import { jsx } from "theme-ui";
+
 import { useState } from "react";
 import { usePopper } from "react-popper";
 import { Box } from "theme-ui";

@@ -1,5 +1,5 @@
 /** @jsxImportSource theme-ui */
-import { jsx } from "theme-ui";
+
 import { FC, memo } from "react";
 import { Box } from "theme-ui";
 import { range } from "ramda";
@@ -56,14 +56,19 @@ const Paginator: FC<Props> = ({
         />
       )}
       {range(1, numPages + 1).map((r) => {
+        const to = url<Props["getLink"]>(
+          getLink,
+          process.env.NEXT_PUBLIC_LOCALE as Locale
+        )(r);
+
         return (
           <InternalLink
             key={r}
             variant="links.paginator"
-            to={url<Props["getLink"]>(
-              getLink,
-              process.env.NEXT_PUBLIC_LOCALE as Locale
-            )(r)}
+            to={to}
+            isActive={(router) => {
+              return router.asPath === to;
+            }}
           >
             {r}
           </InternalLink>

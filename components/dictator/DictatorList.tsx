@@ -6,9 +6,9 @@ import InternalLink from "../InternalLink";
 import Markdown from "../Markdown";
 import CountryLink from "./CountryLink";
 import Reign from "./Reign";
-import { GatsbyImage } from "gatsby-plugin-image";
 import { Dictator } from "../../types";
 import SubHeading from "../SubHeading";
+import ContentfulImage from "../contentful/ContentfulImage";
 
 type Props = {
   showRanking?: boolean;
@@ -31,7 +31,7 @@ const DictatorList: FC<Props> = ({ showRanking = false, dictators }) => {
               gap: 2,
             }}
             my={4}
-            key={dictator.id}
+            key={dictator.sys.id}
           >
             <Box
               sx={{
@@ -40,15 +40,22 @@ const DictatorList: FC<Props> = ({ showRanking = false, dictators }) => {
                 gridRowEnd: 2,
               }}
             >
-              <GatsbyImage
-                alt={dictator.name}
-                image={dictator.primaryImage.gatsbyImageData}
-                sx={{
-                  borderStyle: "solid",
-                  borderWidth: "1px",
-                  borderColor: "veryDark",
-                  borderRadius: 1,
+              <ContentfulImage
+                data={dictator.primaryImage}
+                config={{
+                  width: 150,
+                  aspectRatio: 0.75,
+                  fit: "fill",
+                  focus: "face",
                 }}
+                styles={{
+                  borderStyle: "solid",
+                  borderColor: "link",
+                  borderWidth: "1px",
+                  borderRadius: 1,
+                  display: "block",
+                }}
+                alt={dictator.name}
               />
             </Box>
             <Box
@@ -78,7 +85,7 @@ const DictatorList: FC<Props> = ({ showRanking = false, dictators }) => {
                   <tr>
                     <th>Vallassa</th>
                     <td>
-                      {dictator.reigns.map((reign, i) => {
+                      {dictator.reignsCollection.items.map((reign, i) => {
                         return (
                           <Box key={i}>
                             <Reign reign={reign} />
@@ -106,7 +113,7 @@ const DictatorList: FC<Props> = ({ showRanking = false, dictators }) => {
                   gridColumnEnd: 3,
                 }}
               >
-                <Markdown>{dictator.synopsis.synopsis}</Markdown>
+                <Markdown>{dictator.synopsis}</Markdown>
               </Box>
             )}
           </Box>

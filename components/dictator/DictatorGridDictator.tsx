@@ -1,5 +1,5 @@
 /** @jsxImportSource theme-ui */
-import { jsx } from "theme-ui";
+
 import { navigate } from "../../services/backwards-compatibility";
 import { FC } from "react";
 import { Box } from "theme-ui";
@@ -8,6 +8,8 @@ import { Dictator } from "../../types";
 import InternalLink from "../InternalLink";
 import { memo } from "react";
 import { ExtraInfoComponent, Highlighter } from "../dictator-search/service";
+import Image from "../contentful/ContentfulImage";
+import { useRouter } from "next/router";
 
 type Props = {
   extraInfo: ExtraInfoComponent;
@@ -22,6 +24,8 @@ const DictatorGridDictator: FC<Props> = ({
 }) => {
   const ExtraInfoComponent = extraInfo;
 
+  const router = useRouter();
+
   const isActive = fadeOutIf(dictator);
   const to = `/diktaattori/${dictator.slug}`;
 
@@ -32,9 +36,8 @@ const DictatorGridDictator: FC<Props> = ({
         opacity: isActive ? 1 : 0.66,
         filter: isActive ? undefined : "grayscale(100%) sepia(50%)",
       }}
-      key={dictator.id}
       onClick={() => {
-        navigate(to);
+        router.push(to);
       }}
     >
       <Box
@@ -67,13 +70,15 @@ const DictatorGridDictator: FC<Props> = ({
             {dictator.canonicalRanking}
           </div>
         )}
-        <GatsbyImage
-          image={dictator.primaryImage.gatsbyImageData}
-          sx={{
+        <Image
+          data={dictator.primaryImage}
+          config={{ width: 150, aspectRatio: 0.75, fit: "fill", focus: "face" }}
+          styles={{
             borderStyle: "solid",
             borderColor: "link",
             borderWidth: "1px",
             borderRadius: 1,
+            display: "block",
           }}
           alt={dictator.name}
         />
@@ -96,3 +101,14 @@ const DictatorGridDictator: FC<Props> = ({
 };
 
 export default memo(DictatorGridDictator);
+
+/*
+layout: CONSTRAINED
+            formats: [AUTO, WEBP]
+            cropFocus: FACE
+            aspectRatio: 0.75
+            placeholder: BLURRED
+            resizingBehavior: FILL
+            quality: 60
+            width: 150
+*/

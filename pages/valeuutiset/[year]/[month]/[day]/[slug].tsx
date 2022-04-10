@@ -5,10 +5,14 @@ import { gql } from "graphql-request";
 import { graphQLClient } from "../../../../../services/graphql";
 import { FC } from "react";
 import PropagandaFull from "../../../../../components/PropagandaFull";
+import { GetStaticPaths, GetStaticProps } from "next";
+import { FakeNewsItem } from "../../../../../types";
+import { Locale, url } from "../../../../../services/url";
+import SEO from "../../../../../components/SEO";
 
-export async function getServerSideProps(context) {
-  console.log("Context", context);
+import defaultImage from "../../../../../data/propaganda/mao-propaganda-2020.jpg";
 
+export const getStaticProps: GetStaticProps = async (context) => {
   const query = gql`
     query PropagandaItemPage($locale: String!, $slug: String!) {
       propagandaCollection(locale: $locale, where: { slug: $slug }) {
@@ -44,32 +48,54 @@ export async function getServerSideProps(context) {
     slug: context.params.slug,
   });
 
-  console.log("RES", res);
-
   return {
     props: {
       propaganda: res.propagandaCollection.items[0],
     },
   };
-}
+};
+
+export const getStaticPaths: GetStaticPaths = async (context) => {
+  const query = gql`
+    query PropagandaStaticPaths($locale: String!) {
+      propagandaCollection(locale: $locale) {
+        items {
+          slug
+          date
+        }
+      }
+    }
+  `;
+
+  const res = await graphQLClient.request(query, {
+    locale: process.env.NEXT_PUBLIC_LOCALE,
+  });
+
+  return {
+    paths: res.propagandaCollection.items.map((p: FakeNewsItem) => {
+      return url("newsItem", process.env.NEXT_PUBLIC_LOCALE as Locale)(p);
+    }),
+    fallback: false,
+  };
+};
 
 type Props = {
   videos: Array<{}>;
-  propaganda: {};
+  propaganda: FakeNewsItem;
   dictators: [];
 };
-
-/*
-      <SEO title="Tervetuloa" />
-      */
 
 const PropagandaItemPage: FC<Props> = (props) => {
   const { propaganda } = props;
 
   return (
-    <Layout>
-      <PropagandaFull propaganda={propaganda} />
-    </Layout>
+    <>
+      <SEO title={propaganda.title} description={propaganda.description} />
+
+      <Layout>
+        <PropagandaFull propaganda={propaganda} defaultImage={defaultImage} />
+      </Layout>
+    </>
   );
 };
 

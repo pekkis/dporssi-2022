@@ -1,5 +1,5 @@
 /** @jsxImportSource theme-ui */
-import { jsx } from "theme-ui";
+
 import { FC } from "react";
 import { Dictator } from "../../types";
 import { sortByCanonicalRanking } from "../../services/dictator";
@@ -37,16 +37,16 @@ const RankingRow: FC<Props> = ({ me, neighbours }) => {
       <td>
         <ol start={first.canonicalRanking}>
           {sorted.map((d) => {
-            if (d.id === me.id) {
+            if (d.sys.id === me.sys.id) {
               return (
-                <li key={d.id}>
+                <li key={d.sys.id}>
                   <strong>{d.name}</strong>
                 </li>
               );
             }
 
             return (
-              <li key={d.id}>
+              <li key={d.sys.id}>
                 <InternalLink
                   to={url(
                     "dictatorItem",

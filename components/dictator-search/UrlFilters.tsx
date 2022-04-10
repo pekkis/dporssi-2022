@@ -4,12 +4,15 @@ import { FC } from "react";
 import { Box, Input, Label, Radio } from "theme-ui";
 import { Locale, url } from "../../services/url";
 import { DictatorSearchParams } from "./DictatorSearch";
+import { useRouter } from "next/router";
 
 type Props = {
   params: DictatorSearchParams;
 };
 
 const Filters: FC<Props> = ({ params }) => {
+  const router = useRouter();
+
   const setFilter = useCallback(
     (key, value) => {
       const newParams = {
@@ -17,13 +20,11 @@ const Filters: FC<Props> = ({ params }) => {
         [key]: value,
       };
 
-      console.log(newParams);
-
-      navigate(
+      router.push(
         url("dictators", process.env.NEXT_PUBLIC_LOCALE as Locale)(newParams)
       );
     },
-    [params]
+    [params, router]
   );
 
   return (
