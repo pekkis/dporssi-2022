@@ -12,7 +12,7 @@ import ExternalLink from "../../components/ExternalLink";
 import {
   getReignDuration,
   sortByCanonicalRanking,
-  sortBySortName,
+  sortBySortName
 } from "../../services/dictator";
 import { Dictator } from "../../types";
 import NameHeading from "../../components/dictator/NameHeading";
@@ -95,10 +95,17 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
   const res = await graphQLClient.request(query, {
     locale: "fi",
-    slug: context.params.slug,
+    slug: context.params.slug
   });
 
   const dictator: Dictator = res.dictatorCollection.items[0];
+
+  if (!dictator) {
+    return {
+      notFound: true
+    };
+  }
+
   const contextDictators: Dictator[] = res.contextCollection.items;
 
   const alphabeticalDictators = sortBySortName(contextDictators);
@@ -127,15 +134,19 @@ export const getStaticProps: GetStaticProps = async (context) => {
     props: {
       dictator,
       alphabeticalNeighbours,
-      canonicalNeighbours,
-    }, // will be passed to the page component as props
+      canonicalNeighbours
+    }
   };
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const query = gql`
     query DictatorPaths($locale: String!) {
-      dictatorCollection(locale: $locale) {
+      dictatorCollection(
+        locale: $locale
+        limit: 10
+        order: [canonicalRanking_ASC]
+      ) {
         items {
           slug
         }
@@ -147,9 +158,9 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
   return {
     paths: res.dictatorCollection.items.map((d) => ({
-      params: { slug: d.slug },
+      params: { slug: d.slug }
     })),
-    fallback: false,
+    fallback: "blocking"
   };
 };
 
@@ -177,7 +188,7 @@ const DictatorItemPage: FC<Props> = (props) => {
         sx={{
           display: ["block", "grid"],
           gridTemplateColumns: "4fr 2fr",
-          columnGap: 4,
+          columnGap: 4
         }}
       >
         <Box
@@ -185,7 +196,7 @@ const DictatorItemPage: FC<Props> = (props) => {
           mb={4}
           sx={{
             gridColumnStart: 1,
-            gridColumnEnd: 3,
+            gridColumnEnd: 3
           }}
         >
           <NameHeading dictator={dictator} />
@@ -195,7 +206,7 @@ const DictatorItemPage: FC<Props> = (props) => {
             <Box
               sx={{
                 mt: 3,
-                fontSize: 3,
+                fontSize: 3
               }}
             >
               <Markdown>{dictator.synopsis}</Markdown>
@@ -208,7 +219,7 @@ const DictatorItemPage: FC<Props> = (props) => {
           sx={{
             gridRowStart: 2,
             gridColumnStart: 2,
-            gridColumnEnd: 3,
+            gridColumnEnd: 3
           }}
         >
           <Box
@@ -217,7 +228,7 @@ const DictatorItemPage: FC<Props> = (props) => {
               borderWidth: "1px",
               borderColor: "veryDark",
               borderRadius: 1,
-              position: "relative",
+              position: "relative"
             }}
           >
             <ContentfulImage
@@ -227,7 +238,7 @@ const DictatorItemPage: FC<Props> = (props) => {
                 quality: 80,
                 fit: "fill",
                 focus: "face",
-                aspectRatio: 0.75,
+                aspectRatio: 0.75
               }}
               alt={dictator.name}
               loading="lazy"
@@ -319,7 +330,7 @@ const DictatorItemPage: FC<Props> = (props) => {
           sx={{
             gridRowStart: 2,
             gridColumnStart: 1,
-            gridRowEnd: 4,
+            gridRowEnd: 4
           }}
         >
           <Markdown>{content}</Markdown>
@@ -328,97 +339,5 @@ const DictatorItemPage: FC<Props> = (props) => {
     </Layout>
   );
 };
-
-/*
-export const query = graphql`
-  query DictatorPageQuery(
-    $id: String!
-    $alphabeticNeighbours: [String]!
-    $canonicalNeighbours: [String]!
-  ) {
-    alphabeticalNeighbours: allContentfulDictator(
-      filter: { id: { in: $alphabeticNeighbours } }
-    ) {
-      nodes {
-        id
-        slug
-        name
-        sortName
-        primaryImage {
-          id
-          title
-          description
-        }
-      }
-    }
-
-    canonicalNeighbours: allContentfulDictator(
-      filter: { id: { in: $canonicalNeighbours } }
-    ) {
-      nodes {
-        id
-        slug
-        name
-        sortName
-        canonicalRanking
-        primaryImage {
-          id
-          title
-          description
-        }
-      }
-    }
-
-    contentfulDictator(id: { eq: $id }) {
-      id
-      name
-      aka
-      slug
-      taxonomy {
-        name
-        slug
-      }
-      country {
-        name
-        slug
-        continent {
-          slug
-        }
-      }
-      primaryImage {
-        id
-        gatsbyImageData(
-          layout: CONSTRAINED
-          formats: [AUTO, WEBP]
-          cropFocus: FACE
-          aspectRatio: 0.75
-          placeholder: BLURRED
-          resizingBehavior: FILL
-          quality: 80
-          width: 400
-        )
-      }
-      lifespan {
-        start
-        end
-      }
-      reigns {
-        start
-        end
-      }
-      titles
-      canonicalRanking
-      synopsis {
-        synopsis
-      }
-      story {
-        story
-      }
-      podcast
-      wikipedia
-    }
-  }
-`;
-*/
 
 export default memo(DictatorItemPage);

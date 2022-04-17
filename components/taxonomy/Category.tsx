@@ -4,16 +4,11 @@ import { FC } from "react";
 import InternalLink from "../InternalLink";
 import Markdown from "../Markdown";
 import SubHeading from "../SubHeading";
+import { TaxonomyTerm } from "../../types";
 
 type Props = {
   name: string;
-  taxonomy: {
-    name: string;
-    slug: string;
-    description: {
-      description: string;
-    };
-  }[];
+  taxonomy: TaxonomyTerm[];
 };
 
 const grids = {
@@ -21,8 +16,8 @@ const grids = {
     gridColumnStart: 1,
     gridColumnEnd: 2,
     gridRowStart: 1,
-    gridRowEnd: 10,
-  },
+    gridRowEnd: 10
+  }
 };
 
 const Category: FC<Props> = ({ name, taxonomy }) => {
@@ -30,7 +25,7 @@ const Category: FC<Props> = ({ name, taxonomy }) => {
     <Box
       mb={4}
       sx={{
-        ...grids[name],
+        ...grids[name]
       }}
     >
       <SubHeading>{name}</SubHeading>
@@ -48,7 +43,7 @@ const Category: FC<Props> = ({ name, taxonomy }) => {
                     margin: "0 0 auto 0",
                     p: 1,
                     borderRadius: 1,
-                    fontWeight: "light",
+                    fontWeight: "light"
                   }}
                 >
                   {tag.name}
@@ -56,7 +51,7 @@ const Category: FC<Props> = ({ name, taxonomy }) => {
               </InternalLink>
             </Heading>
 
-            <Markdown>{tag.description.description}</Markdown>
+            <Markdown>{tag.description}</Markdown>
           </Box>
         );
       })}

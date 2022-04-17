@@ -69,18 +69,26 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
   const res = await graphQLClient.request(query, {
     locale: "fi",
-    skip: (parseInt(context.params.page as string, 10) - 1) * 10,
+    skip: (parseInt(context.params.page as string, 10) - 1) * 10
   });
 
   const dictators: Dictator[] = res.dictatorCollection.items;
   const total: number = res.dictatorCollection.total;
+  const currentPage = parseInt(context.params.page as string, 10);
+  const numPages = Math.ceil(total / postsPerPage);
+
+  if (numPages < currentPage) {
+    return {
+      notFound: true
+    };
+  }
 
   return {
     props: {
-      dictators: res.dictatorCollection.items,
-      currentPage: parseInt(context.params.page as string, 10),
-      numPages: Math.ceil(total / postsPerPage),
-    }, // will be passed to the page component as props
+      dictators,
+      currentPage,
+      numPages
+    } // will be passed to the page component as props
   };
 };
 
@@ -108,7 +116,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
     paths: range(0, numPages).map((p) =>
       url("dictatorIndex", process.env.NEXT_PUBLIC_LOCALE as Locale)(p + 1)
     ),
-    fallback: false,
+    fallback: "blocking"
   };
 };
 

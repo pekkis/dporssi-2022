@@ -20,35 +20,42 @@ const MainMenu = (props) => {
           justifyContent: "flex-end",
 
           li: {
-            mr: 1,
-          },
+            mr: 1
+          }
         }}
       >
         <li>
           <InternalLink
             variant="links.menu"
             to={url("index", process.env.NEXT_PUBLIC_LOCALE as Locale)()}
+            isActive={(router) => {
+              return router.asPath === "/";
+            }}
           >
             Etusivu
           </InternalLink>
         </li>
         <li>
           <InternalLink
-            partiallyActive
             variant="links.menu"
             to={url(
               "dictatorIndex",
               process.env.NEXT_PUBLIC_LOCALE as Locale
             )()}
+            isActive={(router) => {
+              return router.asPath.startsWith("/diktaattorit/");
+            }}
           >
             Pörssi
           </InternalLink>
         </li>
         <li>
           <InternalLink
-            partiallyActive
             variant="links.menu"
             to={url("dictators", process.env.NEXT_PUBLIC_LOCALE as Locale)()}
+            isActive={(router) => {
+              return router.asPath === "/diktaattorihaku";
+            }}
           >
             Haku
           </InternalLink>
@@ -60,14 +67,15 @@ const MainMenu = (props) => {
               "classificationIndex",
               process.env.NEXT_PUBLIC_LOCALE as Locale
             )()}
-            partiallyActive
+            isActive={(router) => {
+              return router.asPath.startsWith("/luokittelu");
+            }}
           >
             Luokittelu
           </InternalLink>
         </li>
         <li>
           <InternalLink
-            partiallyActive
             variant="links.menu"
             to={url("newsIndex", process.env.NEXT_PUBLIC_LOCALE as Locale)()}
           >

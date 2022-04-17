@@ -41,7 +41,7 @@ export const getAgeInPower = (
 
   const start = DateTime.fromISO(dictator.lifespan.start);
 
-  const end = DateTime.fromISO(dictator.reignsCollection[0].start);
+  const end = DateTime.fromISO(dictator.reignsCollection.items[0].start);
   return end.diff(start, unit);
 };
 

@@ -8,28 +8,13 @@ type Props = {
   title?: string;
   variant?: string;
   to: string;
-  partiallyActive?: boolean;
   children: ReactNode;
   isActive?: (router: NextRouter) => boolean;
 };
 
-const isActive = ({ isCurrent }) => {
-  return isCurrent ? { className: "active" } : {};
-};
-
-const isPartiallyActive = ({ isPartiallyCurrent }) => {
-  return isPartiallyCurrent ? { className: "active" } : {};
-};
-
-/*
-      partiallyActive={partiallyActive}
-      activeClassName="active"
-*/
-
 const InternalLink: FC<Props> = ({
   to,
   variant = "links.default",
-  partiallyActive = false,
   isActive = () => false,
   ...rest
 }) => {
@@ -47,8 +32,8 @@ const InternalLink: FC<Props> = ({
           variant,
           "&.active": {
             fontWeight: "bold",
-            textDecoration: "underline",
-          },
+            textDecoration: "underline"
+          }
         }}
       />
     </Link>

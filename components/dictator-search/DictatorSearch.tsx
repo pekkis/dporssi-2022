@@ -13,7 +13,7 @@ import {
   PossibleHighlights,
   PossibleSortrados,
   Sortrado,
-  sortrados,
+  sortrados
 } from "./service";
 import SubHeading from "../SubHeading";
 import { useMemo } from "react";
@@ -50,7 +50,7 @@ const DictatorSearch: FC<Props> = ({ dictators }) => {
     });
     const sortedDictators = sortrado.sorter(filteredDictators);
     return [sortedDictators, sortrado, highlights[params.highlight]];
-  }, [params]);
+  }, [params, dictators]);
 
   const Icon = filtersOpen ? FaAngleUp : FaAngleDown;
   const text = filtersOpen ? "piilota" : "näytä";
@@ -62,7 +62,7 @@ const DictatorSearch: FC<Props> = ({ dictators }) => {
           sx={{
             mb: 3,
             placeItems: "center",
-            justifyContent: "start",
+            justifyContent: "start"
           }}
         >
           Hakuehdot

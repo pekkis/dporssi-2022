@@ -12,7 +12,7 @@ import {
   sortByListedAt,
   sortByUpdatedAt,
   getAgeInPower,
-  sortByAgeInPower,
+  sortByAgeInPower
 } from "../../services/dictator";
 import { Dictator } from "../../types";
 import ExtraInfoBox from "./ExtraInfoBox";
@@ -33,17 +33,17 @@ export const highlights: Record<PossibleHighlights, Highlighter> = {
     return true;
   },
   inPower: (dictator: Dictator) => {
-    if (!dictator.reigns) {
+    if (!dictator.reignsCollection.items) {
       return false;
     }
-    const lastReign = last(dictator.reigns);
+    const lastReign = last(dictator.reignsCollection.items);
 
     if (!lastReign?.end) {
       return true;
     }
 
     return false;
-  },
+  }
 };
 
 export type PossibleSortrados =
@@ -58,7 +58,7 @@ export type PossibleSortrados =
 export type PossibleHighlights = "solidary" | "inPower" | "alive";
 
 export type ExtraInfoComponent = ({
-  dictator,
+  dictator
 }: {
   dictator: Dictator;
 }) => ReactElement | null;
@@ -75,7 +75,7 @@ export const sortrados: Record<PossibleSortrados, Sortrado> = {
     filter: () => true,
     ExtraInfo: (): ReactElement | null => {
       return null;
-    },
+    }
   },
   listedAt: {
     sorter: sortByListedAt,
@@ -94,7 +94,7 @@ export const sortrados: Record<PossibleSortrados, Sortrado> = {
             .toLocaleString()}
         </ExtraInfoBox>
       );
-    },
+    }
   },
   updatedAt: {
     sorter: sortByUpdatedAt,
@@ -112,7 +112,7 @@ export const sortrados: Record<PossibleSortrados, Sortrado> = {
             .toLocaleString()}
         </ExtraInfoBox>
       );
-    },
+    }
   },
   reignDuration: {
     sorter: sortByReignDuration,
@@ -121,7 +121,7 @@ export const sortrados: Record<PossibleSortrados, Sortrado> = {
       const duration = getReignDuration(dictator);
 
       return <ExtraInfoBox>{Math.floor(duration)} päivää</ExtraInfoBox>;
-    },
+    }
   },
   ageInPower: {
     sorter: sortByAgeInPower,
@@ -133,14 +133,14 @@ export const sortrados: Record<PossibleSortrados, Sortrado> = {
       return (
         <ExtraInfoBox>{t("dictatorAge", { age: age.years })}</ExtraInfoBox>
       );
-    },
+    }
   },
   ranking: {
     sorter: sortByCanonicalRanking,
     filter: (d) => !!d.canonicalRanking,
     ExtraInfo: ({}) => {
       return null;
-    },
+    }
   },
   age: {
     sorter: sortByAge,
@@ -151,6 +151,6 @@ export const sortrados: Record<PossibleSortrados, Sortrado> = {
       return (
         <ExtraInfoBox>{t("dictatorAge", { age: age.years })}</ExtraInfoBox>
       );
-    },
-  },
+    }
+  }
 };

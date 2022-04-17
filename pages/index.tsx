@@ -16,17 +16,25 @@ import { DateTime } from "luxon";
 import { FaAngleDoubleRight } from "react-icons/fa";
 import DictatorGrid from "../components/dictator/DictatorGrid";
 import { sortrados } from "../components/dictator-search/service";
+import { GetStaticProps } from "next";
+import { hours } from "../services/cache";
+
+type Props = {
+  videos: Array<{}>;
+  propaganda: [];
+  dictators: [];
+};
 
 const videosPlusUkraine = (videos) => {
   return [
     {
-      ukraine: true,
+      ukraine: true
     },
-    ...videos,
+    ...videos
   ];
 };
 
-export async function getStaticProps() {
+export const getStaticProps: GetStaticProps<Props> = async () => {
   const query = gql`
     query FrontPage {
       dictatorCollection(
@@ -80,15 +88,10 @@ export async function getStaticProps() {
     props: {
       propaganda: res.propagandaCollection.items,
       dictators: res.dictatorCollection.items,
-      videos: videosPlusUkraine(res.tubeCollection.items),
-    }, // will be passed to the page component as props
+      videos: videosPlusUkraine(res.tubeCollection.items)
+    },
+    revalidate: hours(12)
   };
-}
-
-type Props = {
-  videos: Array<{}>;
-  propaganda: [];
-  dictators: [];
 };
 
 const IndexPage: FC<Props> = (props) => {
@@ -114,14 +117,14 @@ const IndexPage: FC<Props> = (props) => {
             "header header"
             "fakeNews propagandaTube"
             "dictators dictators"
-            `,
-              ],
+            `
+              ]
             }}
           >
             <Box
               as="section"
               sx={{
-                gridArea: "header",
+                gridArea: "header"
               }}
             >
               <SectionHeading>Puhemiehen tervehdys!</SectionHeading>
@@ -178,7 +181,7 @@ const IndexPage: FC<Props> = (props) => {
 
             <Box
               sx={{
-                gridArea: "fakeNews",
+                gridArea: "fakeNews"
               }}
             >
               <SectionHeading>Valeuutiset</SectionHeading>
@@ -222,7 +225,7 @@ const IndexPage: FC<Props> = (props) => {
 
             <Box
               sx={{
-                gridArea: "propagandaTube",
+                gridArea: "propagandaTube"
               }}
             >
               <Box>
@@ -243,7 +246,7 @@ const IndexPage: FC<Props> = (props) => {
               <Box
                 mt={2}
                 sx={{
-                  fontSize: 3,
+                  fontSize: 3
                 }}
               >
                 <InternalLink

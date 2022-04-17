@@ -11,11 +11,49 @@ import { Locale, url } from "../../../../../services/url";
 import SEO from "../../../../../components/SEO";
 
 import defaultImage from "../../../../../data/propaganda/mao-propaganda-2020.jpg";
+import { createDate } from "../../../../../services/date";
 
-export const getStaticProps: GetStaticProps = async (context) => {
+type Props = {
+  propaganda: FakeNewsItem;
+};
+
+type QueryParams = {
+  slug: string;
+  year: string;
+  month: string;
+  day: string;
+};
+
+const validate = (
+  item: FakeNewsItem | undefined,
+  params: QueryParams
+): FakeNewsItem | undefined => {
+  if (!item) {
+    return undefined;
+  }
+
+  const date = createDate(item.date);
+
+  if (
+    date.day !== parseInt(params.day, 10) ||
+    date.month !== parseInt(params.month, 10) ||
+    date.year !== parseInt(params.year, 10) ||
+    item.slug !== params.slug
+  ) {
+    return undefined;
+  }
+
+  return item;
+};
+
+export const getStaticProps: GetStaticProps<Props, QueryParams> = async (
+  context
+) => {
+  console.log("Hellurei", context);
+
   const query = gql`
     query PropagandaItemPage($locale: String!, $slug: String!) {
-      propagandaCollection(locale: $locale, where: { slug: $slug }) {
+      propagandaCollection(locale: $locale, where: { slug: $slug }, limit: 1) {
         items {
           title
           slug
@@ -45,20 +83,31 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
   const res = await graphQLClient.request(query, {
     locale: process.env.NEXT_PUBLIC_LOCALE,
-    slug: context.params.slug,
+    slug: context.params.slug
   });
+
+  const item: FakeNewsItem | undefined = validate(
+    res.propagandaCollection.items[0],
+    context.params
+  );
+
+  if (!item) {
+    return {
+      notFound: true
+    };
+  }
 
   return {
     props: {
-      propaganda: res.propagandaCollection.items[0],
-    },
+      propaganda: item
+    }
   };
 };
 
 export const getStaticPaths: GetStaticPaths = async (context) => {
   const query = gql`
     query PropagandaStaticPaths($locale: String!) {
-      propagandaCollection(locale: $locale) {
+      propagandaCollection(locale: $locale, order: [date_DESC], limit: 5) {
         items {
           slug
           date
@@ -68,21 +117,15 @@ export const getStaticPaths: GetStaticPaths = async (context) => {
   `;
 
   const res = await graphQLClient.request(query, {
-    locale: process.env.NEXT_PUBLIC_LOCALE,
+    locale: process.env.NEXT_PUBLIC_LOCALE
   });
 
   return {
     paths: res.propagandaCollection.items.map((p: FakeNewsItem) => {
       return url("newsItem", process.env.NEXT_PUBLIC_LOCALE as Locale)(p);
     }),
-    fallback: false,
+    fallback: "blocking"
   };
-};
-
-type Props = {
-  videos: Array<{}>;
-  propaganda: FakeNewsItem;
-  dictators: [];
 };
 
 const PropagandaItemPage: FC<Props> = (props) => {

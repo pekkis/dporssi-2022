@@ -1,10 +1,10 @@
 import React from "react";
-import { DateTime } from "luxon";
 import { Box, Heading } from "theme-ui";
 import Markdown from "./Markdown";
 import NextImage from "next/image";
 import ContentfulImage from "./contentful/ContentfulImage";
-import { ContentfulImageData, FakeNewsItem, StaticImageData } from "../types";
+import { FakeNewsItem, StaticImageData } from "../types";
+import { createDate } from "../services/date";
 
 type Props = {
   propaganda: FakeNewsItem;
@@ -14,9 +14,7 @@ type Props = {
 const PropagandaFull = (props: Props) => {
   const { propaganda, defaultImage } = props;
 
-  const date = DateTime.fromISO(propaganda.date)
-    .setLocale("fi")
-    .setZone("Europe/Helsinki");
+  const date = createDate(propaganda.date);
 
   return (
     <Box mx={2}>
@@ -35,14 +33,14 @@ const PropagandaFull = (props: Props) => {
             `
           "header header"
           "main sidebar"
-        `,
-          ],
+        `
+          ]
         }}
       >
         <Box
           as="header"
           sx={{
-            gridArea: "header",
+            gridArea: "header"
           }}
         >
           <Heading mb={0} as="h2">
@@ -61,7 +59,7 @@ const PropagandaFull = (props: Props) => {
         <Box
           sx={{
             gridArea: "sidebar",
-            alignSelf: "start",
+            alignSelf: "start"
           }}
         >
           {propaganda.image ? (
@@ -91,7 +89,7 @@ const PropagandaFull = (props: Props) => {
         <Box
           as="section"
           sx={{
-            gridArea: "main",
+            gridArea: "main"
           }}
         >
           <Markdown>{propaganda.article}</Markdown>

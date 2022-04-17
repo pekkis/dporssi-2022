@@ -89,3 +89,28 @@ export type FakeNewsItem = {
     height: number;
   };
 };
+
+export type TaxonomyCategory = {
+  sys: {
+    id: string;
+  };
+  slug: string;
+  name: string;
+  weight: number;
+};
+
+export type TaxonomyTerm = {
+  sys: {
+    id: string;
+  };
+  name: string;
+  slug: string;
+  description: string;
+  category: TaxonomyCategory;
+
+  linkedFrom: {
+    dictatorCollection: {
+      items: Dictator[];
+    };
+  };
+};
