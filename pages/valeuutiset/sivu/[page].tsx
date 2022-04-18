@@ -5,7 +5,7 @@ import Paginator from "../../../components/Paginator";
 import SEO from "../../../components/SEO";
 import DictatorList from "../../../components/dictator/DictatorList";
 import { FC } from "react";
-import { Dictator } from "../../../types";
+import { Dictator, FakeNewsItem } from "../../../types";
 import SectionHeading from "../../../components/SectionHeading";
 import InternalLink from "../../../components/InternalLink";
 import { Locale, url } from "../../../services/url";
@@ -13,55 +13,34 @@ import { GetStaticPaths, GetStaticProps } from "next";
 import { gql } from "graphql-request";
 import { graphQLClient } from "../../../services/graphql";
 import { range } from "ramda";
+import PropagandaLight from "../../../components/PropagandaLight";
 
 const postsPerPage = 10;
 
 type Props = {
   currentPage: number;
   numPages: number;
-  dictators: Dictator[];
+  fakeNews: FakeNewsItem[];
 };
 
 export const getStaticProps: GetStaticProps = async (context) => {
   const query = gql`
-    query DictatorIndexPage($locale: String!, $skip: Int!) {
-      dictatorCollection(
+    query NewsIndexPage($locale: String!, $skip: Int!) {
+      propagandaCollection(
         locale: $locale
         limit: 10
         skip: $skip
-        where: { canonicalRanking_exists: true }
-        order: [canonicalRanking_ASC]
+        order: [date_DESC]
       ) {
         total
         items {
           sys {
             id
           }
-          canonicalRanking
+          date
           slug
-          name
-          country {
-            name
-            slug
-            continent {
-              name
-              slug
-            }
-          }
-          synopsis
-          reignsCollection {
-            items {
-              start
-              end
-            }
-          }
-          primaryImage {
-            url
-            width
-            height
-            title
-            description
-          }
+          title
+          description
         }
       }
     }
@@ -72,8 +51,8 @@ export const getStaticProps: GetStaticProps = async (context) => {
     skip: (parseInt(context.params.page as string, 10) - 1) * 10
   });
 
-  const dictators: Dictator[] = res.dictatorCollection.items;
-  const total: number = res.dictatorCollection.total;
+  const fakeNews: FakeNewsItem[] = res.propagandaCollection.items;
+  const total: number = res.propagandaCollection.total;
   const currentPage = parseInt(context.params.page as string, 10);
   const numPages = Math.ceil(total / postsPerPage);
 
@@ -85,7 +64,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
   return {
     props: {
-      dictators,
+      fakeNews,
       currentPage,
       numPages
     } // will be passed to the page component as props
@@ -113,68 +92,82 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const numPages = Math.ceil(dictators.length / postsPerPage);
 
   return {
-    paths: range(0, numPages).map((p) =>
-      url("dictatorIndex", process.env.NEXT_PUBLIC_LOCALE as Locale)(p + 1)
+    paths: range(0, 1).map((p) =>
+      url("newsIndex", process.env.NEXT_PUBLIC_LOCALE as Locale)(p + 1)
     ),
     fallback: "blocking"
   };
 };
 
-const DictatorIndexPage: FC<Props> = (props) => {
-  const { currentPage, numPages, dictators } = props;
-
-  const title = "Pörssi";
+const NewsIndexPage: FC<Props> = (props) => {
+  const { fakeNews, currentPage, numPages } = props;
 
   return (
     <Layout>
-      <SEO title={title} />
-
+      <SEO title="Valeuutiset" />
       <Box mx={2}>
-        <SectionHeading>{title}</SectionHeading>
+        <Box mb={4}>
+          <SectionHeading>Valeuutiset</SectionHeading>
 
-        <p>
-          Diktaattorien sijoitus Diktaattoripörssissä lasketaan salaisella, vain
-          Puhemiehen ja hänen uskollisimpien kätyriensä tuntemalla kaavalla.
-          Äänet lasketaan Venezuelan hallituksen lahjoittamilla luotettavilla
-          Dominion&trade;-äänestyskoneilla.
-        </p>
-
-        <p>
-          <InternalLink
-            to={url("dictators", process.env.NEXT_PUBLIC_LOCALE as Locale)()}
-          >
-            Diktaattorihausta
-          </InternalLink>{" "}
-          löydät kaikki diktaattorit, myös ne onnettomat jotka eivät vielä ole
-          ehtineet saada rankingia.
-        </p>
+          <p>
+            Kaikki, mitä puhemies Pekkis sanoo, on automaattisesti totta. Niin
+            sanotaan Huotilistisessa manifestissa, pyhistä kirjoista pyhimmässä,
+            jonka puhemiehemme on meille jaloudessaan osoittanut!
+          </p>
+        </Box>
 
         <Box my={4}>
           <Paginator
-            label="diktaattorien sivutus, ylempi"
             id="paginator-top"
+            label="paginator-top"
             currentPage={currentPage}
             numPages={numPages}
-            getLink="dictatorIndex"
+            getLink="newsIndex"
           />
         </Box>
+      </Box>
+      {fakeNews.map((p) => (
+        <PropagandaLight key={p.sys.id} propaganda={p} />
+      ))}
 
-        <Box>
-          <DictatorList dictators={dictators} showRanking />
-        </Box>
-
-        <Box mt={4}>
-          <Paginator
-            label="diktaattorien sivutus, alempi"
-            id="paginator-top"
-            currentPage={currentPage}
-            numPages={numPages}
-            getLink="dictatorIndex"
-          />
-        </Box>
+      <Box mt={4}>
+        <Paginator
+          label="paginator-bottom"
+          id="paginator-bottom"
+          currentPage={currentPage}
+          numPages={numPages}
+          getLink="newsIndex"
+        />
       </Box>
     </Layout>
   );
 };
 
-export default DictatorIndexPage;
+/*
+export const query = graphql`
+  query PropagandaIndexQuery(
+    $locale: String = "fi"
+    $limit: Int = 10
+    $skip: Int = 0
+  ) {
+    allContentfulPropaganda(
+      sort: { fields: date, order: DESC }
+      limit: $limit
+      skip: $skip
+      filter: { node_locale: { eq: $locale } }
+    ) {
+      nodes {
+        id
+        title
+        date
+        slug
+        description {
+          description
+        }
+      }
+    }
+  }
+`;
+*/
+
+export default NewsIndexPage;

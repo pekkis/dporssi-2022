@@ -1,10 +1,14 @@
 /** @jsxImportSource theme-ui */
-import { Box, jsx } from "theme-ui";
-import React from "react";
+import { FC, ReactNode } from "react";
+import { Box, Paragraph } from "theme-ui";
 import { useUserStore } from "../../services/state";
 import SectionHeading from "../SectionHeading";
 
-const RequiresAuthentication = (props) => {
+type Props = {
+  children: ReactNode;
+};
+
+const RequiresAuthentication: FC<Props> = (props) => {
   const { children } = props;
 
   const user = useUserStore((state) => state.user);
@@ -14,7 +18,9 @@ const RequiresAuthentication = (props) => {
       <Box>
         <SectionHeading>Pääsy kielletty!</SectionHeading>
 
-        <p>Kaappausyritys havaittu. Salaiselle poliisille ilmoitettu.</p>
+        <Paragraph>
+          Kaappausyritys havaittu. Salaiselle poliisille ilmoitettu.
+        </Paragraph>
       </Box>
     );
   }

@@ -78,6 +78,9 @@ const MainMenu = (props) => {
           <InternalLink
             variant="links.menu"
             to={url("newsIndex", process.env.NEXT_PUBLIC_LOCALE as Locale)()}
+            isActive={(router) => {
+              return router.asPath.startsWith("/valeuutiset");
+            }}
           >
             Valeuutiset
           </InternalLink>

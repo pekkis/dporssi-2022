@@ -77,6 +77,9 @@ export type DateRange = {
 };
 
 export type FakeNewsItem = {
+  sys: {
+    id: string;
+  };
   title: string;
   date: string;
   slug: string;

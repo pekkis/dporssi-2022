@@ -53,7 +53,7 @@ export const useUserStore = create<UserState>((set, get) => ({
     set({ isSaving: true });
     const rankingToSave = get().ranking.map((r) => r.id);
 
-    await axios.post(`${process.env.GATSBY_API}/ranking`, {
+    await axios.post(`/api/ranking`, {
       token: get().user.token,
       ranking: rankingToSave
     });

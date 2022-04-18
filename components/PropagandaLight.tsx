@@ -5,24 +5,17 @@ import { Locale, url } from "../services/url";
 import InternalLink from "./InternalLink";
 import Markdown from "./Markdown";
 import { FaAngleDoubleRight } from "react-icons/fa";
-
-type Propaganda = {
-  title: string;
-  date: string;
-  slug: string;
-  description: {
-    description: string;
-  };
-};
+import { FakeNewsItem } from "../types";
+import { createDate } from "../services/date";
 
 type Props = {
-  propaganda: Propaganda;
+  propaganda: FakeNewsItem;
 };
 
 const PropagandaLight = (props: Props) => {
   const { propaganda } = props;
 
-  const date = DateTime.fromISO(propaganda.date).setLocale("fi");
+  const date = createDate(propaganda.date);
 
   const link = url<"newsItem">(
     "newsItem",
@@ -37,13 +30,11 @@ const PropagandaLight = (props: Props) => {
         </Heading>
         <Box mt={1}>
           Julkaistu{" "}
-          <time dateTime={date.toISODate()}>
-            {date.toLocaleString({ locale: "fi" })}
-          </time>
+          <time dateTime={date.toISODate()}>{date.toLocaleString()}</time>
         </Box>
       </Box>
       <Box as="main" my={2}>
-        <Markdown>{propaganda.description.description}</Markdown>
+        <Markdown>{propaganda.description}</Markdown>
         <Box my={2}>
           <FaAngleDoubleRight sx={{ mr: 1 }} />
           <InternalLink to={link}>Lue lisää</InternalLink>

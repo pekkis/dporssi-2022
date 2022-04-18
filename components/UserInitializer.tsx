@@ -16,25 +16,23 @@ const UserInitializer: FC = () => {
           isAuthenticated: false,
           email: null,
           isInitialized: true,
-          picture: null,
+          picture: null
         });
       } else {
         setUser({
           isAuthenticated: true,
           email: ret.email,
           isInitialized: true,
-          picture: ret.photoURL,
+          picture: ret.photoURL
         });
       }
 
       ret?.getIdToken().then((token) => {
         setToken(token);
 
-        axios
-          .post(`${process.env.NEXT_PUBLIC_API}/auth`, { token })
-          .then((ret) => {
-            setData(ret.data.user);
-          });
+        axios.post(`/api/auth`, { token }).then((ret) => {
+          setData(ret.data.user);
+        });
       });
     });
   }, [setData, setToken, setUser]);
