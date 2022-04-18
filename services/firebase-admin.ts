@@ -1,13 +1,11 @@
 import { apps } from "firebase-admin";
+import { auth, firestore } from "firebase-admin";
 import { cert, initializeApp, ServiceAccount } from "firebase-admin/app";
 
 export const getApp = () => {
   if (apps.length > 0) {
-    console.log("apps", apps);
     return apps[0];
   }
-
-  console.log("hihhei");
 
   const serviceAccount: ServiceAccount = {
     projectId: process.env.GOOGLE_PROJECT_ID,
@@ -20,4 +18,12 @@ export const getApp = () => {
   return initializeApp({
     credential
   });
+};
+
+export const getFirestore = () => {
+  return firestore(getApp());
+};
+
+export const getAuth = () => {
+  return auth(getApp());
 };
