@@ -13,13 +13,14 @@ export const Desktop = ({ children }) => {
 export const Tablet = ({ children }) => {
   const isTablet = useMediaQuery({
     minWidth: tabletBreakpoint,
-    maxWidth: desktopBreakpoint - 1,
+    maxWidth: desktopBreakpoint - 1
   });
   return isTablet ? children : null;
 };
 
 export const Mobile = ({ children }) => {
   const isMobile = useMediaQuery({ maxWidth: tabletBreakpoint - 1 });
+
   return isMobile ? children : null;
 };
 

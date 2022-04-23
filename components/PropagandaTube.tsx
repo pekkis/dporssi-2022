@@ -17,37 +17,31 @@ const NormalVideo = ({ video, videos, setCurrent, hasLess, hasMore }) => {
           my: 1,
           width: "100%",
           justifyContent: "space-between",
-          alignItems: "center",
+          alignItems: "center"
         }}
       >
         <Box
           sx={{
             fontSize: 4,
-            alignSelf: "flex-start",
+            alignSelf: "flex-start"
           }}
         >
-          <div
+          <FaChevronCircleLeft
+            title="Edellinen"
             onClick={(e) => {
-              console.log("wut");
+              e.stopPropagation();
+              e.preventDefault();
+              setCurrent((current) => Math.max(current - 1, 0));
             }}
-          >
-            <FaChevronCircleLeft
-              title="Edellinen"
-              onClick={(e) => {
-                e.stopPropagation();
-                e.preventDefault();
-                setCurrent((current) => Math.max(current - 1, 0));
-              }}
-              sx={{
-                cursor: hasLess ? "pointer" : "not-allowed",
-                opacity: hasLess ? 1 : 0.2,
-              }}
-            />
-          </div>
+            sx={{
+              cursor: hasLess ? "pointer" : "not-allowed",
+              opacity: hasLess ? 1 : 0.2
+            }}
+          />
         </Box>
         <Box
           sx={{
-            px: 2,
+            px: 2
           }}
         >
           {video.title}
@@ -55,7 +49,7 @@ const NormalVideo = ({ video, videos, setCurrent, hasLess, hasMore }) => {
         <Box
           sx={{
             fontSize: 4,
-            alignSelf: "flex-start",
+            alignSelf: "flex-start"
           }}
         >
           <FaChevronCircleRight
@@ -68,7 +62,7 @@ const NormalVideo = ({ video, videos, setCurrent, hasLess, hasMore }) => {
             title="Seuraava"
             sx={{
               cursor: hasMore ? "pointer" : "not-allowed",
-              opacity: hasMore ? 1 : 0.2,
+              opacity: hasMore ? 1 : 0.2
             }}
           />
         </Box>
@@ -91,14 +85,14 @@ const SupportUkraine = ({ videos, setCurrent, hasLess, hasMore }) => {
             top: 0,
             left: 0,
             right: 0,
-            bottom: 0,
-          },
+            bottom: 0
+          }
         }}
       >
         <Flex
           sx={{
             alignItems: "center",
-            justifyContent: "center",
+            justifyContent: "center"
           }}
         >
           <a
@@ -116,13 +110,13 @@ const SupportUkraine = ({ videos, setCurrent, hasLess, hasMore }) => {
           my: 1,
           width: "100%",
           justifyContent: "space-between",
-          alignItems: "center",
+          alignItems: "center"
         }}
       >
         <Box
           sx={{
             fontSize: 4,
-            alignSelf: "flex-start",
+            alignSelf: "flex-start"
           }}
         >
           <FaChevronCircleLeft
@@ -134,13 +128,13 @@ const SupportUkraine = ({ videos, setCurrent, hasLess, hasMore }) => {
             }}
             sx={{
               cursor: hasLess ? "pointer" : "not-allowed",
-              opacity: hasLess ? 1 : 0.2,
+              opacity: hasLess ? 1 : 0.2
             }}
           />
         </Box>
         <Box
           sx={{
-            px: 2,
+            px: 2
           }}
         >
           Ukrainan asia on meidän asiamme! Auta!
@@ -148,7 +142,7 @@ const SupportUkraine = ({ videos, setCurrent, hasLess, hasMore }) => {
         <Box
           sx={{
             fontSize: 4,
-            alignSelf: "flex-start",
+            alignSelf: "flex-start"
           }}
         >
           <FaChevronCircleRight
@@ -160,7 +154,7 @@ const SupportUkraine = ({ videos, setCurrent, hasLess, hasMore }) => {
             title="Seuraava"
             sx={{
               cursor: hasMore ? "pointer" : "not-allowed",
-              opacity: hasMore ? 1 : 0.2,
+              opacity: hasMore ? 1 : 0.2
             }}
           />
         </Box>

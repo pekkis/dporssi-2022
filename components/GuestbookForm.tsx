@@ -9,12 +9,13 @@ import { GoogleReCaptchaProvider } from "react-google-recaptcha-v3";
 import * as Yup from "yup";
 import Spinner from "./Spinner";
 import SubHeading from "./SubHeading";
+import { useUserStore } from "../services/state";
 
 const initialState = {
   isHuman: false,
   isPosting: false,
   isError: false,
-  isSuccess: false,
+  isSuccess: false
 };
 
 const reducer = (state, action) => {
@@ -44,7 +45,7 @@ const validationSchema = Yup.object().shape({
   scribbling: Yup.string()
     .min(2, "Ei riitä!")
     .max(2000, "Liikaa!")
-    .required("Vaadittu kenttä!"),
+    .required("Vaadittu kenttä!")
 });
 
 const ErrorBox = ({ children }) => {
@@ -53,7 +54,7 @@ const ErrorBox = ({ children }) => {
       sx={{
         mt: -3,
         color: "primary",
-        mb: 3,
+        mb: 3
       }}
     >
       {children}
@@ -65,6 +66,8 @@ const GuestbookForm = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
   const { isHuman, isPosting, isError, isSuccess } = state;
 
+  const user = useUserStore((state) => state.user);
+
   const { executeRecaptcha } = useGoogleReCaptcha();
   useEffect(() => {
     const checkToken = async () => {
@@ -73,9 +76,12 @@ const GuestbookForm = () => {
       }
 
       const token = await executeRecaptcha("login_page");
-      const ret = await axios.post(`${process.env.NEXT_PUBLIC_API}/captcha`, {
-        token,
-      });
+      const ret = await axios.post(
+        `${process.env.NEXT_PUBLIC_LOCAL_API}/captcha`,
+        {
+          token
+        }
+      );
 
       const score = ret.data.score;
 
@@ -94,7 +100,7 @@ const GuestbookForm = () => {
         borderWidth: 1,
         borderRadius: 1,
         borderStyle: "solid",
-        borderColor: "muted",
+        borderColor: "muted"
       }}
     >
       <SubHeading>Kirjoita vieraskirjaan</SubHeading>
@@ -115,15 +121,15 @@ const GuestbookForm = () => {
 
       <Formik
         initialValues={{
-          author: "",
-          scribbling: "",
+          author: user?.data?.secretName || "",
+          scribbling: ""
         }}
         validationSchema={validationSchema}
         onSubmit={async (values) => {
           dispatch("POST");
           try {
             await axios.post(
-              `${process.env.NEXT_PUBLIC_API}/guestbook`,
+              `${process.env.NEXT_PUBLIC_LOCAL_API}/guestbook`,
               values
             );
 
@@ -137,7 +143,7 @@ const GuestbookForm = () => {
           return (
             <Form
               sx={{
-                mt: 3,
+                mt: 3
               }}
             >
               <Label htmlFor="author">Salanimi</Label>
@@ -208,7 +214,7 @@ const GuestbookFormWrapper = () => {
         async: false, // optional, default to false,
         defer: true, // optional, default to false
         appendTo: "head", // optional, default to "head", can be "head" or "body",
-        nonce: undefined, // optional, default undefined
+        nonce: undefined // optional, default undefined
       }}
     >
       <GuestbookForm />

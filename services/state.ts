@@ -5,9 +5,10 @@ import { append } from "ramda";
 export type UserDataInterface = {
   ranking: string[];
   numberOfVotes: number;
+  secretName: string;
 };
 
-type UserInterface = {
+export type UserInterface = {
   isInitialized: boolean;
   isAuthenticated: boolean;
   email: string | null;

@@ -5,11 +5,12 @@ import Adi from "../Adi";
 import InternalLink from "../InternalLink";
 import { FaTwitter } from "react-icons/fa";
 import ExternalLink from "../ExternalLink";
+import { Locale, url } from "../../services/url";
 
 const links = [
   {
-    to: "/vieraskirja",
-    label: "Vieraskirja",
+    to: url("guestbookIndex", process.env.NEXT_PUBLIC_LOCALE as Locale)(1),
+    label: "Vieraskirja"
   },
   /*
   {
@@ -19,24 +20,24 @@ const links = [
   */
   {
     to: "/tietoa-porssista",
-    label: "Tietoa 'Pörssistä",
+    label: "Tietoa 'Pörssistä"
   },
   {
     to: "/ota-yhteytta",
-    label: "Ota yhteyttä",
+    label: "Ota yhteyttä"
   },
   {
     to: "/kayttoehdot",
-    label: "Käyttöehdot",
+    label: "Käyttöehdot"
   },
   {
     to: "/rekisteriseloste",
-    label: "Rekisteriseloste",
+    label: "Rekisteriseloste"
   },
   {
     to: "/keksipolitiikka",
-    label: "Keksipolitiikka",
-  },
+    label: "Keksipolitiikka"
+  }
 ];
 
 const Footer = () => {
@@ -49,13 +50,13 @@ const Footer = () => {
       sx={{
         gridArea: "footer",
         textAlign: "center",
-        fontSize: 1,
+        fontSize: 1
       }}
     >
       <Box
         sx={{
           width: "50px",
-          margin: "0 auto",
+          margin: "0 auto"
         }}
       >
         <Adi />
@@ -65,7 +66,7 @@ const Footer = () => {
         <Heading
           sx={{
             fontSize: 2,
-            textTransform: "uppercase",
+            textTransform: "uppercase"
           }}
           as="h2"
         >
@@ -76,7 +77,7 @@ const Footer = () => {
           my={1}
           sx={{
             fontSize: 4,
-            mx: 2,
+            mx: 2
           }}
         >
           <ExternalLink
@@ -95,7 +96,7 @@ const Footer = () => {
             sx={{
               margin: 0,
               padding: 0,
-              listStyleType: "none",
+              listStyleType: "none"
             }}
           >
             {links.map((link, i) => {
@@ -108,7 +109,7 @@ const Footer = () => {
                     margin: 0,
                     p: 0,
                     pr: 2,
-                    pb: 1,
+                    pb: 1
                   }}
                 >
                   <InternalLink variant="links.footer" to={link.to}>
@@ -132,7 +133,7 @@ const Footer = () => {
               alt="Creative Commons License"
               sx={{
                 verticalAlign: "middle",
-                marginRight: 1,
+                marginRight: 1
               }}
             />
           </a>

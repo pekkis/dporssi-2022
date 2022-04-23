@@ -1,23 +1,18 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import { DateTime } from "luxon";
-import { getApp } from "../../services/firebase-admin";
-import { auth, firestore } from "firebase-admin";
+import { getFirestore, getAuth } from "../../services/firebase-admin";
 
 import { Timestamp } from "firebase-admin/firestore";
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const { method } = req;
 
-  console.log("METHOD!");
-
   switch (method) {
     case "POST":
-      const app = getApp();
-
-      const store = firestore(app);
+      const store = getFirestore();
 
       try {
-        const user = await auth(app).verifyIdToken(req.body.token);
+        const user = await getAuth().verifyIdToken(req.body.token);
 
         if (!user.email) {
           return res.status(401).json({

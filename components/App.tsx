@@ -14,7 +14,7 @@ const App = (props) => {
   const client = useMemo<BrowserMicroSentryClient>(() => {
     const client = new BrowserMicroSentryClient({
       dsn: "https://fac204d2785f4df786731dea1335ba9b@o330495.ingest.sentry.io/5574416",
-      environment: process.env.NODE_ENV || "development",
+      environment: process.env.NODE_ENV || "development"
     });
     return client;
   }, []);
@@ -39,8 +39,8 @@ const App = (props) => {
             "html.wf-active": {},
 
             ".grecaptcha-badge": {
-              visibility: "hidden",
-            },
+              visibility: "hidden"
+            }
           }}
         />
         <Suspense fallback={null}>

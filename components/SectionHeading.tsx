@@ -3,7 +3,7 @@ import { Heading } from "theme-ui";
 
 const SectionHeading = ({ children }) => {
   return (
-    <Heading as="h2" mb={3}>
+    <Heading as="h2" mb={3} mt={0}>
       {children}
     </Heading>
   );

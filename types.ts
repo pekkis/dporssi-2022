@@ -117,3 +117,11 @@ export type TaxonomyTerm = {
     };
   };
 };
+
+export type GuestBookEntry = {
+  id: string;
+  date: string;
+  author: string;
+  scribbling: string;
+  reply: string;
+};

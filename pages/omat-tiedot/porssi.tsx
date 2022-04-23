@@ -103,8 +103,6 @@ const Handle = (props) => {
 */
 
 const DictatorImage = (props) => {
-  console.log("PROPPO", props);
-
   const { dictator } = props;
 
   return (

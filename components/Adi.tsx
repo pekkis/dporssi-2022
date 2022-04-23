@@ -1,7 +1,6 @@
 /** @jsxImportSource theme-ui */
 
 import { FC } from "react";
-import { v4 } from "uuid";
 import { useId } from "react";
 
 type Props = {
@@ -26,7 +25,7 @@ const Adi: FC<Props> = ({
       id={uuid}
       {...rest}
       style={{
-        display: "block",
+        display: "block"
       }}
       xmlns="http://www.w3.org/2000/svg"
       xmlnsXlink="http://www.w3.org/1999/xlink"

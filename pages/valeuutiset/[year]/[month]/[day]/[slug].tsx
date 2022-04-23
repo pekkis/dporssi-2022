@@ -49,8 +49,6 @@ const validate = (
 export const getStaticProps: GetStaticProps<Props, QueryParams> = async (
   context
 ) => {
-  console.log("Hellurei", context);
-
   const query = gql`
     query PropagandaItemPage($locale: String!, $slug: String!) {
       propagandaCollection(locale: $locale, where: { slug: $slug }, limit: 1) {

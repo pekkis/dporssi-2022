@@ -24,6 +24,11 @@ const nextConfig = {
         permanent: true
       },
       {
+        source: "/vieraskirja",
+        destination: "/vieraskirja/sivu/1",
+        permanent: true
+      },
+      {
         source: "/k%C3%A4ytt%C3%B6ehdot",
         destination: "/kayttoehdot",
         permanent: true

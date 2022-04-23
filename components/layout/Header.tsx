@@ -5,7 +5,7 @@ import { Box, Flex, Heading, MenuButton } from "theme-ui";
 import Adi from "../Adi";
 import Container from "./Container";
 import MainMenu from "./MainMenu";
-import Menu from "./MobileMenu";
+import MobileMenu from "./MobileMenu";
 import { Default, Mobile } from "./Responsive";
 import { useTranslation } from "react-i18next";
 import { memo } from "react";
@@ -32,7 +32,7 @@ const Header: FC<Props> = ({ topMenu }) => {
             left: 0,
             bottom: 0,
             right: 0,
-            zIndex: 3,
+            zIndex: 3
           }}
         />
       )}
@@ -49,7 +49,7 @@ const Header: FC<Props> = ({ topMenu }) => {
           right: 0,
           minHeight: topMenu,
           boxShadow: "1px 1px 5px rgba(0, 0, 0, .5)",
-          bg: "primary",
+          bg: "primary"
         }}
       >
         <Container>
@@ -59,13 +59,13 @@ const Header: FC<Props> = ({ topMenu }) => {
               height: topMenu,
               justifyContent: "center",
               alignItems: "stretch",
-              width: "100%",
+              width: "100%"
             }}
           >
             <Box m={1} sx={{ flex: "0 0 50px", alignSelf: "center" }}>
               <Adi
                 sx={{
-                  cursor: "pointer",
+                  cursor: "pointer"
                 }}
                 onClick={() => {
                   router.push("/");
@@ -78,14 +78,14 @@ const Header: FC<Props> = ({ topMenu }) => {
               sx={{
                 flex: "0 0 auto",
                 alignSelf: "center",
-                textAlign: "center",
+                textAlign: "center"
               }}
             >
               <Heading
                 as="h1"
                 color="white"
                 sx={(theme) => ({
-                  textShadow: `2px 2px 2px ${theme.colors?.black}`,
+                  textShadow: `2px 2px 2px ${theme.colors?.black}`
                 })}
               >
                 {t("Diktaattoripörssi")}
@@ -97,7 +97,7 @@ const Header: FC<Props> = ({ topMenu }) => {
                 flex: "1 1 auto",
                 alignSelf: "center",
                 color: "white",
-                textAlign: "right",
+                textAlign: "right"
               }}
             >
               <Mobile>
@@ -105,7 +105,7 @@ const Header: FC<Props> = ({ topMenu }) => {
                   onClick={() => setOpen(!isOpen)}
                   sx={{
                     filter: "drop-shadow(1px 1px 1px #000)",
-                    cursor: "pointer",
+                    cursor: "pointer"
                   }}
                 />
               </Mobile>
@@ -114,19 +114,19 @@ const Header: FC<Props> = ({ topMenu }) => {
                 <MainMenu
                   sx={{
                     ul: {
-                      display: ["block", "flex"],
+                      display: ["block", "flex"]
                     },
                     li: {
                       display: "inline-block",
-                      mx: 1,
-                    },
+                      mx: 1
+                    }
                   }}
                 />
               </Default>
             </Box>
           </Flex>
         </Container>
-        <Mobile>{isOpen && <Menu topMenu={topMenu} />}</Mobile>
+        <Mobile>{isOpen && <MobileMenu topMenu={topMenu} />}</Mobile>
       </Box>
     </>
   );

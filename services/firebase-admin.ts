@@ -21,9 +21,11 @@ export const getApp = () => {
 };
 
 export const getFirestore = () => {
-  return firestore(getApp());
+  getApp();
+  return firestore();
 };
 
 export const getAuth = () => {
-  return auth(getApp());
+  getApp();
+  return auth();
 };
