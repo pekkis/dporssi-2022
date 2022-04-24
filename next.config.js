@@ -117,6 +117,11 @@ const nextConfig = {
         source: "/diktaattori/macias-nguema",
         destination: "/diktaattori/francisco-macias-nguema",
         permanent: true
+      },
+      {
+        source: "/diktaattori/aljaksandr-lukashenka",
+        destination: "/diktaattori/aljaksandr-lukasenka",
+        permanent: true
       }
     ];
   }
