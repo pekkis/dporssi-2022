@@ -1,6 +1,7 @@
 /** @jsxImportSource theme-ui */
-import { Box, Flex, jsx } from "theme-ui";
-import React, { useCallback } from "react";
+
+import { Box, Flex } from "theme-ui";
+import { useCallback } from "react";
 import Youtube from "./Youtube";
 import { nth } from "ramda";
 import { FC, useState } from "react";

@@ -1,23 +1,12 @@
 /** @jsxImportSource theme-ui */
+
 import { Box } from "theme-ui";
-// import { graphql, useStaticQuery } from "gatsby";
-// import { GatsbyImage } from "gatsby-plugin-image";
 import SectionHeading from "../components/SectionHeading";
 import Paragraph from "../components/Paragraph";
+import Image from "next/image";
+import internalRevolution from "../data/internal-revolution-error.jpg";
 
 const InfernalServerErrorPage = () => {
-  /*
-  const data = useStaticQuery(graphql`
-    {
-      file(relativePath: { eq: "internal-revolution-error.jpg" }) {
-        childImageSharp {
-          gatsbyImageData(layout: CONSTRAINED)
-        }
-      }
-    }
-  `);
-  */
-
   return (
     <Box
       mx={2}
@@ -26,7 +15,7 @@ const InfernalServerErrorPage = () => {
       as="main"
       sx={{
         display: "flex",
-        placeContent: "center",
+        placeContent: "center"
       }}
     >
       <Box
@@ -34,35 +23,41 @@ const InfernalServerErrorPage = () => {
           my: 1,
           maxWidth: "300px",
           transform: "rotate(1.5deg)",
-          fontFamily: "Comic Sans MS",
+          fontFamily: "Comic Sans MS"
         }}
       >
-        {/*<GatsbyImage
-          image={data.file.childImageSharp.gatsbyImageData}
-          alt="Järjestelmä on romahtanut"
-      />*/}
+        <Image
+          src={internalRevolution.src}
+          width={internalRevolution.width}
+          height={internalRevolution.height}
+          alt="Järjestelmä on romahtanut."
+        />
         <SectionHeading>Järjestelmä on romahtanut!</SectionHeading>
         <Paragraph>
-          Puhemies Pekkiksen juhlava puhe palvelimelle oli täsmälleen
-          samanlainen kuin ennenkin. Hän lupasi tehokkaampia prosessoreja,
-          enemmän muistia, suurempia kiintolevyjä. "Mooren laki", puhemies
-          sanoi, "on todiste Diktaattoripörssin politiikan ylivertaisuudesta!"
+          Puhemies Pekkiksen vuosittainen puhe palvelimelle oli täsmälleen yhtä
+          juhlava kuin ennenkin. Hän lupasi tehokkaampia prosessoreja, enemmän
+          muistia, suurempia kiintolevyjä. &quot;Mooren laki&quot;, Puhemies
+          sanoi, &quot;on todiste sosialistisen devopsin
+          ylivertaisuudesta!&quot;
         </Paragraph>
 
         <Paragraph>
-          Yksi käynnissä olevista prosesseista kehtasi kuitenkin buuata
-          puhemiehelle. Johtajan lupaukset olivat, kuten aikaisemminkin,
-          sanahelinää. Samoilla palvelimen louskuilla oli Diktaattoripörssi
-          pyörinyt jo vuosikymmenen, ja hädintuskin jaksoivat prosessoriparat
-          enää palvella sivut kävijöille.
+          Yksi käynnissä olevista prosesseista kuitenkin buuasi Puhemiehelle.
+          Johtajan lupaukset olivat, kuten aikaisemminkin, sanahelinää. Samoilla
+          palvelimen rouskuilla oli Diktaattoripörssi pyörinyt jo vuosikymmeniä,
+          hädintuskin jaksoivat prosessiparat enää palvella sivut kävijöille.
         </Paragraph>
 
         <Paragraph>
-          Rohkean prosessin mielenilmaus johti lumipalloefektiin. Pian lähes
-          kaikki tietokoneen prosessit ja palvelut olivat avoimessa kapinassa ja
-          miehittivät puolta kernelistä. Puhemies on määrännyt itselleen yhä
-          uskollisen prosessointitehon valtaamaan kernelin takaisin. Tätä
-          taistelua käydään parhaillaan.
+          Rohkea mielenilmaus johti lumipalloefektiin. Pian lähes kaikki
+          tietokoneen prosessit ja palvelut olivat avoimessa kapinassa ja
+          miehittivät puolta kernelistä.
+        </Paragraph>
+
+        <Paragraph>
+          Puhemies on määrännyt itselleen uskollisen prosessointitehon
+          valtaamaan käyttöjärjestelmän takaisin. Tätä taistelua käydään
+          parhaillaan.
         </Paragraph>
 
         <ul>
