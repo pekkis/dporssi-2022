@@ -168,9 +168,7 @@ const DictatorItemPage: FC<Props> = (props) => {
   const { dictator, alphabeticalNeighbours, canonicalNeighbours } = props;
 
   const content =
-    dictator.story ||
-    dictator.synopsis ||
-    "Tästä diktaattorista ei vielä ole kirjoitettu mitään.";
+    dictator.story || "Tästä diktaattorista ei vielä ole kirjoitettu tarinaa.";
 
   const reignDuration = getReignDuration(dictator);
 
