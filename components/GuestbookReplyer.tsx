@@ -23,7 +23,7 @@ const GuestbookEntry: FC<Props> = ({ entry, user }) => {
       />
       <Button
         onClick={() => {
-          axios.put(`${process.env.VERCEL_URL}/guestbook`, {
+          axios.put(`${process.env.NEXT_PUBLIC_API}/api/guestbook`, {
             id: entry.id,
             reply,
             token: user?.token
