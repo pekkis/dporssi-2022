@@ -1,6 +1,6 @@
 import { FC } from "react";
-import ReactYouTube from "./YoutubePlayer";
 import { Box } from "theme-ui";
+import ReactPlayer from "react-player";
 
 type Props = {
   videoId: string;
@@ -16,26 +16,32 @@ const Youtube: FC<Props> = ({ videoId }) => {
     width: "100%",
     playerVars: {
       // https://developers.google.com/youtube/player_parameters
-      autoplay: 0,
-    },
+      autoplay: 0
+    }
   };
   return (
     <Box
       sx={{
         position: "relative",
         paddingBottom: "56.25%",
-        height: 0,
-
-        iframe: {
-          position: "absolute",
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-        },
+        height: 0
       }}
     >
-      <ReactYouTube videoId={videoId} opts={opts} />
+      <Box
+        sx={{
+          position: "absolute",
+          top: 0,
+          bottom: 0,
+          left: 0,
+          right: 0
+        }}
+      >
+        <ReactPlayer
+          width="100%"
+          height="100%"
+          url={`https://www.youtube.com/watch?v=${videoId}`}
+        />
+      </Box>
     </Box>
   );
 };

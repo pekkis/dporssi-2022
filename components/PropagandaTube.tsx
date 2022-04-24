@@ -46,6 +46,7 @@ const NormalVideo = ({ video, videos, setCurrent, hasLess, hasMore }) => {
           }}
         >
           {video.title}
+          {video.nsfw === false && <span>[NSFW]</span>}
         </Box>
         <Box
           sx={{
