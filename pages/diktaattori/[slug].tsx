@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import { FC } from "react";
 import Markdown from "../../components/Markdown";
 import Taxonomies from "../../components/taxonomy/Taxonomies";
 import Reign from "../../components/dictator/Reign";

@@ -1,6 +1,5 @@
 /** @jsxImportSource theme-ui */
 
-import React from "react";
 import { Box } from "theme-ui";
 import Footer from "./Footer";
 import CookieConsent from "./LazyLoadedCookieConsent";

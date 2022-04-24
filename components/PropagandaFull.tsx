@@ -1,4 +1,3 @@
-import React from "react";
 import { Box, Heading } from "theme-ui";
 import Markdown from "./Markdown";
 import NextImage from "next/image";

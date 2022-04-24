@@ -1,6 +1,5 @@
 /** @jsxImportSource theme-ui */
 
-import React from "react";
 import { DateTime, Duration } from "luxon";
 import { useEffect, useRef, useState } from "react";
 import { FC } from "react";

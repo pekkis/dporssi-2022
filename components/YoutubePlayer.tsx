@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import React from "react";
+import { Component } from "react";
 import isEqual from "fast-deep-equal";
 import youTubePlayer from "youtube-player";
 
@@ -78,7 +78,7 @@ function shouldUpdatePlayer(prevProps, props) {
   );
 }
 
-class YouTube extends React.Component {
+class YouTube extends Component {
   /**
    * Expose PlayerState constants for convenience. These constants can also be
    * accessed through the global YT object after the YouTube IFrame API is instantiated.

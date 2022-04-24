@@ -1,4 +1,3 @@
-import React from "react";
 import ExternalLink from "../components/ExternalLink";
 import InternalLink from "../components/InternalLink";
 import Paragraph from "../components/Paragraph";

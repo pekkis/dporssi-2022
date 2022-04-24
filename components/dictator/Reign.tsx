@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import { FC } from "react";
 import { formatDate } from "../../services/date";
 import { DateRange } from "../../types";
 

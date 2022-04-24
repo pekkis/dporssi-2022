@@ -1,6 +1,6 @@
 /** @jsxImportSource theme-ui */
 import { Box, Button, jsx } from "theme-ui";
-import React, { FC } from "react";
+import { FC } from "react";
 import { FaFacebook, FaGoogle } from "react-icons/fa";
 import { auth } from "../services/firebase";
 

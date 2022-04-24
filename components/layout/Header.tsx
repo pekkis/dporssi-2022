@@ -1,6 +1,6 @@
 /** @jsxImportSource theme-ui */
 
-import React, { FC, useState } from "react";
+import { FC, useState } from "react";
 import { Box, Flex, Heading, MenuButton } from "theme-ui";
 import Adi from "../Adi";
 import Container from "./Container";
