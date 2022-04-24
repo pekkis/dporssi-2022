@@ -7,6 +7,8 @@ import App from "../components/App";
 import type { AppProps } from "next/app";
 import { FC, memo, ReactNode, useEffect, useState } from "react";
 import { isServer } from "../services/env";
+import { useRouter } from "next/router";
+import { pageview } from "../services/ga";
 
 const values = { style: { verticalAlign: "middle" } };
 
@@ -47,6 +49,17 @@ const Responsivizer: FC<ResponsivizerProps> = ({ children }) => {
 };
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
+  const router = useRouter();
+  useEffect(() => {
+    const handleRouteChange = (url: string) => {
+      pageview(url);
+    };
+    router.events.on("routeChangeComplete", handleRouteChange);
+    return () => {
+      router.events.off("routeChangeComplete", handleRouteChange);
+    };
+  }, [router.events]);
+
   return (
     <>
       <link rel="stylesheet" href="https://use.typekit.net/iwl1gmh.css"></link>
