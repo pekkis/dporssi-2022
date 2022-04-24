@@ -1,8 +1,10 @@
-import loadable from "@loadable/component";
+import dynamic from "next/dynamic";
+
 import InternalLink from "../InternalLink";
 
-const LazyLoadedUserMenu = loadable(() => import("./UserMenu"), {
-  fallback: (
+const LazyLoadedUserMenu = dynamic(() => import("./UserMenu"), {
+  suspense: true,
+  loading: () => (
     <li>
       <InternalLink variant="links.menu" to="/kirjaudu">
         Kirjaudu

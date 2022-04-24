@@ -1,5 +1,7 @@
-import loadable from "@loadable/component";
+import dynamic from "next/dynamic";
 
-const LazyLoadedCookieConsent = loadable(() => import("./CookieConsent"));
+const LazyLoadedCookieConsent = dynamic(() => import("./CookieConsent"), {
+  ssr: false
+});
 
 export default LazyLoadedCookieConsent;

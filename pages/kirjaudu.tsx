@@ -2,7 +2,7 @@ import Layout from "../components/layout/Layout";
 import { Box } from "theme-ui";
 import SEO from "../components/SEO";
 import SectionHeading from "../components/SectionHeading";
-import LazyLoadedLoginMethods from "../components/LazyLoadedLoginMethods";
+import LoginMethods from "../components/LoginMethods";
 
 const LoginPage = () => {
   return (
@@ -35,7 +35,7 @@ const LoginPage = () => {
             </p>
           </Box>
 
-          <LazyLoadedLoginMethods />
+          <LoginMethods />
         </Box>
       </Layout>
     </>

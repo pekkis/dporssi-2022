@@ -5,7 +5,7 @@ import Image from "next/image";
 import Layout from "../components/layout/Layout";
 import { gql } from "graphql-request";
 import { graphQLClient } from "../services/graphql";
-import PropagandaTube from "../components/PropagandaTube";
+import PropagandaTube from "../components/LazyLoadedPropagandaTube";
 import { FC } from "react";
 import SEO from "../components/SEO";
 import { Box, Paragraph } from "theme-ui";

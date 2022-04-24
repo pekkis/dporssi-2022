@@ -1,8 +1,9 @@
-import loadable from "@loadable/component";
+import dynamic from "next/dynamic";
 import Spinner from "./Spinner";
 
-const LazyLoadedLoginMethods = loadable(() => import("./LoginMethods"), {
-  fallback: (
+const LazyLoadedLoginMethods = dynamic(() => import("./LoginMethods"), {
+  suspense: true,
+  loading: () => (
     <span>
       <Spinner /> hetkonen...
     </span>

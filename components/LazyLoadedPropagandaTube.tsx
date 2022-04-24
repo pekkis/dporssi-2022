@@ -1,8 +1,10 @@
-import loadable from "@loadable/component";
+import dynamic from "next/dynamic";
 import Spinner from "./Spinner";
 
-const LazyLoadedPropagandaTube = loadable(() => import("./PropagandaTube"), {
-  fallback: (
+const LazyLoadedPropagandaTube = dynamic(() => import("./PropagandaTube"), {
+  ssr: false,
+  suspense: false,
+  loading: () => (
     <span>
       <Spinner /> Aivopesua alustetaan...
     </span>

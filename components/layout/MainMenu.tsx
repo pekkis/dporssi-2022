@@ -3,7 +3,7 @@
 import InternalLink from "../InternalLink";
 import { Locale, url } from "../../services/url";
 import { memo } from "react";
-import UserMenu from "./LazyLoadedUserMenu";
+import UserMenu from "./UserMenu";
 
 const MainMenu = (props) => {
   return (
