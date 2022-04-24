@@ -37,7 +37,7 @@ export const getServerSideProps: GetServerSideProps<
 > = async (context) => {
   const offset = (parseInt(context.params.page, 10) - 1) * 10;
   const ret = await axios.get<Response>(
-    `${process.env.NEXT_PUBLIC_LOCAL_API}/guestbook?offset=${offset}&limit=10`
+    `${process.env.VERCEL_URL}/guestbook?offset=${offset}&limit=10`
   );
 
   if (ret.data.posts.length === 0) {

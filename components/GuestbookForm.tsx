@@ -76,12 +76,9 @@ const GuestbookForm = () => {
       }
 
       const token = await executeRecaptcha("login_page");
-      const ret = await axios.post(
-        `${process.env.NEXT_PUBLIC_LOCAL_API}/captcha`,
-        {
-          token
-        }
-      );
+      const ret = await axios.post(`${process.env.VERCEL_URL}/captcha`, {
+        token
+      });
 
       const score = ret.data.score;
 
@@ -128,10 +125,7 @@ const GuestbookForm = () => {
         onSubmit={async (values) => {
           dispatch("POST");
           try {
-            await axios.post(
-              `${process.env.NEXT_PUBLIC_LOCAL_API}/guestbook`,
-              values
-            );
+            await axios.post(`${process.env.VERCEL_URL}/guestbook`, values);
 
             dispatch("SUCCESS");
           } catch (e) {
