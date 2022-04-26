@@ -47,14 +47,14 @@ export const getAgeInPower = (
 
 export const sortByReignDuration = sortWith<Dictator>([
   descend(getReignDuration),
-  ascend(pipe(prop("sortName"), toLower)),
+  ascend(pipe(prop("sortName"), toLower))
 ]);
 
 export const sortBySortName = sortBy<Dictator>(pipe(prop("sortName"), toLower));
 
 export const sortByCanonicalRanking = sortWith<Dictator>([
   ascend((d: Dictator) => d.canonicalRanking || 999999),
-  ascend(pipe(prop("sortName"), toLower)),
+  ascend(pipe(prop("sortName"), toLower))
 ]);
 
 export const sortByAge = sortWith<Dictator>([
@@ -62,7 +62,7 @@ export const sortByAge = sortWith<Dictator>([
     const lifespan = getAge(d, ["years"]);
     return lifespan.years;
   }),
-  ascend(pipe(prop("sortName"), toLower)),
+  ascend(pipe(prop("sortName"), toLower))
 ]);
 
 export const sortByAgeInPower = sortWith<Dictator>([
@@ -70,14 +70,14 @@ export const sortByAgeInPower = sortWith<Dictator>([
     const age = getAgeInPower(d, ["years"]);
     return age.years;
   }),
-  ascend(pipe(prop("sortName"), toLower)),
+  ascend(pipe(prop("sortName"), toLower))
 ]);
 
 export const sortByReignStart = sortWith<Dictator>([
   ascend((d: Dictator) => {
-    return d.reigns[0].start;
+    return d.reignsCollection.items[0].start;
   }),
-  ascend(pipe(prop("sortName"), toLower)),
+  ascend(pipe(prop("sortName"), toLower))
 ]);
 
 export const sortByListedAt = sortWith<Dictator>([
@@ -87,7 +87,7 @@ export const sortByListedAt = sortWith<Dictator>([
       : DateTime.fromISO("1899-01-01");
     return date;
   }),
-  ascend(pipe(prop("sortName"), toLower)),
+  ascend(pipe(prop("sortName"), toLower))
 ]);
 
 export const sortByUpdatedAt = sortWith<Dictator>([
@@ -97,7 +97,7 @@ export const sortByUpdatedAt = sortWith<Dictator>([
       : DateTime.fromISO("1899-01-01");
     return date;
   }),
-  ascend(pipe(prop("sortName"), toLower)),
+  ascend(pipe(prop("sortName"), toLower))
 ]);
 
 export const earliestDictator = 1850;
