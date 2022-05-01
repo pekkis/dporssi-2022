@@ -3,7 +3,13 @@ import {
   PossibleHighlights,
   PossibleSortrados
 } from "../components/dictator-search/service";
-import { Country, Dictator, FakeNewsItem } from "../types";
+import {
+  Continent,
+  Country,
+  Dictator,
+  FakeNewsItem,
+  TaxonomyTerm
+} from "../types";
 
 const urls = {
   index: {
@@ -17,8 +23,8 @@ const urls = {
   },
 
   continent: {
-    fi: (item: Dictator) => `/diktaattorit/${item.slug}`,
-    en: (item: Dictator) => `/dictators/${item.slug}`
+    fi: (item: Continent) => `/diktaattorit/${item.slug}`,
+    en: (item: Continent) => `/dictators/${item.slug}`
   },
 
   country: {
@@ -27,8 +33,8 @@ const urls = {
   },
 
   classificationItem: {
-    fi: (item: Country) => `/luokittelu/${item.slug}`,
-    en: (item: Country) => `/classification/${item.slug}`
+    fi: (item: TaxonomyTerm) => `/luokittelu/${item.slug}`,
+    en: (item: TaxonomyTerm) => `/classification/${item.slug}`
   },
 
   dictatorIndex: {
