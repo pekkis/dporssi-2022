@@ -55,6 +55,8 @@ export const getStaticProps: GetStaticProps = async (context) => {
           slug
           name
           titles
+          wikipedia
+          podcast
           country {
             name
             slug
