@@ -123,6 +123,11 @@ const nextConfig = {
         source: "/diktaattori/aljaksandr-lukashenka",
         destination: "/diktaattori/aljaksandr-lukasenka",
         permanent: true
+      },
+      {
+        source: "/diktaattori/jiang-jieshi",
+        destination: "/diktaattori/tsiang-kai-sek",
+        permanent: true
       }
     ];
   }
