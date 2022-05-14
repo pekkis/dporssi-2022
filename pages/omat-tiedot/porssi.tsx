@@ -31,7 +31,7 @@ export const getServerSideProps: GetServerSideProps<Props> = async (
 ) => {
   const query = gql`
     query OwnRankingPage($locale: String!) {
-      dictatorCollection(locale: $locale) {
+      dictatorCollection(locale: $locale, limit: 200) {
         total
         items {
           sys {

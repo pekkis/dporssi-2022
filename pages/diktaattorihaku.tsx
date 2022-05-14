@@ -22,7 +22,7 @@ type Props = {
 export const getStaticProps: GetStaticProps<Props> = async (context) => {
   const query = gql`
     query DictatorSearch($locale: String!) {
-      dictatorCollection(locale: $locale) {
+      dictatorCollection(locale: $locale, limit: 150) {
         total
         items {
           sys {
@@ -38,7 +38,7 @@ export const getStaticProps: GetStaticProps<Props> = async (context) => {
             start
             end
           }
-          reignsCollection {
+          reignsCollection(limit: 5) {
             items {
               start
               end

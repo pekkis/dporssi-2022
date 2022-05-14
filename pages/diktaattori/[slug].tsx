@@ -35,7 +35,7 @@ type Props = {
 export const getStaticProps: GetStaticProps = async (context) => {
   const query = gql`
     query DictatorItemPage($locale: String!, $slug: String!) {
-      contextCollection: dictatorCollection(locale: $locale) {
+      contextCollection: dictatorCollection(locale: $locale, limit: 150) {
         items {
           canonicalRanking
           name

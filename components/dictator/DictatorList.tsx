@@ -28,7 +28,7 @@ const DictatorList: FC<Props> = ({ showRanking = false, dictators }) => {
             sx={{
               display: "grid",
               gridTemplateColumns: "100px auto",
-              gap: 2,
+              gap: 2
             }}
             my={4}
             key={dictator.sys.id}
@@ -37,7 +37,7 @@ const DictatorList: FC<Props> = ({ showRanking = false, dictators }) => {
               sx={{
                 gridRowStart: 1,
                 gridColumnStart: 1,
-                gridRowEnd: 2,
+                gridRowEnd: 2
               }}
             >
               <ContentfulImage
@@ -46,14 +46,14 @@ const DictatorList: FC<Props> = ({ showRanking = false, dictators }) => {
                   width: 150,
                   aspectRatio: 0.75,
                   fit: "fill",
-                  focus: "face",
+                  focus: "face"
                 }}
                 styles={{
                   borderStyle: "solid",
                   borderColor: "link",
                   borderWidth: "1px",
                   borderRadius: 1,
-                  display: "block",
+                  display: "block"
                 }}
                 alt={dictator.name}
               />
@@ -62,7 +62,7 @@ const DictatorList: FC<Props> = ({ showRanking = false, dictators }) => {
               sx={{
                 gridRowStart: 1,
                 gridRowEnd: 2,
-                gridColumnStart: 2,
+                gridColumnStart: 2
               }}
             >
               <SubHeading>
@@ -78,7 +78,8 @@ const DictatorList: FC<Props> = ({ showRanking = false, dictators }) => {
                 sx={{
                   th: {
                     textAlign: "left",
-                  },
+                    verticalAlign: "top"
+                  }
                 }}
               >
                 <tbody>
@@ -110,7 +111,7 @@ const DictatorList: FC<Props> = ({ showRanking = false, dictators }) => {
                 sx={{
                   gridRowStart: 2,
                   gridColumnStart: 1,
-                  gridColumnEnd: 3,
+                  gridColumnEnd: 3
                 }}
               >
                 <Markdown>{dictator.synopsis}</Markdown>

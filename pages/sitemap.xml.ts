@@ -57,13 +57,13 @@ function SiteMap() {
 export async function getServerSideProps({ res }) {
   const query = gql`
     query SitemapStuff($locale: String!) {
-      dictatorCollection(locale: $locale) {
+      dictatorCollection(locale: $locale, limit: 150) {
         items {
           slug
           canonicalRanking
         }
       }
-      countryCollection(locale: $locale) {
+      countryCollection(locale: $locale, limit: 150) {
         items {
           slug
           continent {

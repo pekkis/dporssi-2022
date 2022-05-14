@@ -73,25 +73,6 @@ export const getStaticProps: GetStaticProps = async (context) => {
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const query = gql`
-    query DictatorPaths($locale: String!) {
-      dictatorCollection(
-        locale: $locale
-        where: { canonicalRanking_exists: true }
-      ) {
-        items {
-          slug
-        }
-      }
-    }
-  `;
-
-  const res = await graphQLClient.request(query, { locale: "fi" });
-
-  const dictators: Dictator[] = res.dictatorCollection.items;
-
-  const numPages = Math.ceil(dictators.length / postsPerPage);
-
   return {
     paths: range(0, 1).map((p) =>
       url("newsIndex", process.env.NEXT_PUBLIC_LOCALE as Locale)(p + 1)
@@ -145,32 +126,5 @@ const NewsIndexPage: FC<Props> = (props) => {
     </Layout>
   );
 };
-
-/*
-export const query = graphql`
-  query PropagandaIndexQuery(
-    $locale: String = "fi"
-    $limit: Int = 10
-    $skip: Int = 0
-  ) {
-    allContentfulPropaganda(
-      sort: { fields: date, order: DESC }
-      limit: $limit
-      skip: $skip
-      filter: { node_locale: { eq: $locale } }
-    ) {
-      nodes {
-        id
-        title
-        date
-        slug
-        description {
-          description
-        }
-      }
-    }
-  }
-`;
-*/
 
 export default NewsIndexPage;
