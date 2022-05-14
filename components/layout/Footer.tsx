@@ -49,8 +49,7 @@ const Footer = () => {
       color="veryLight"
       sx={{
         gridArea: "footer",
-        textAlign: "center",
-        fontSize: 1
+        textAlign: "center"
       }}
     >
       <Box

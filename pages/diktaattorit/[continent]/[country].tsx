@@ -1,9 +1,12 @@
+/** @jsxImportSource theme-ui */
+
 import { gql } from "graphql-request";
 import { GetStaticPaths, GetStaticProps } from "next";
 import { FC } from "react";
 import { Box } from "theme-ui";
 
 import DictatorList from "../../../components/dictator/DictatorList";
+import ContentBox from "../../../components/layout/ContentBox";
 import Layout from "../../../components/layout/Layout";
 import SectionHeading from "../../../components/SectionHeading";
 import SEO from "../../../components/SEO";
@@ -149,13 +152,13 @@ const CountryPage: FC<Props> = (props) => {
   return (
     <Layout>
       <SEO title={title} />
-      <Box mx={2}>
+      <ContentBox>
         <SectionHeading>{title}</SectionHeading>
 
         <Box>
           <DictatorList dictators={sortedDictators} />
         </Box>
-      </Box>
+      </ContentBox>
     </Layout>
   );
 };
