@@ -1,10 +1,9 @@
 /** @jsxImportSource theme-ui */
-import { FC, memo } from "react";
+import { FC, memo, useDeferredValue } from "react";
 import { Box, Flex, Link, jsx } from "theme-ui";
 import { Dictator } from "../../types";
 import DictatorGrid from "../dictator/DictatorGrid";
 import { FaAngleUp, FaAngleDown } from "react-icons/fa";
-import { useDebounce } from "use-debounce";
 
 import Filters from "./Filters";
 import {
@@ -34,8 +33,7 @@ const DictatorSearch: FC<Props> = ({ dictators }) => {
   const [filtersOpen, setFiltersOpen] = useState<boolean>(true);
 
   const filters = useStore((store) => store.filters);
-
-  const [params] = useDebounce(filters, 1000);
+  const params = useDeferredValue(filters);
 
   const [filteredDictators, sortrado, highlighter] = useMemo<
     [Dictator[], Sortrado, Highlighter]
