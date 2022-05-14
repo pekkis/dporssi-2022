@@ -13,6 +13,7 @@ import SectionHeading from "../../components/SectionHeading";
 import SubHeading from "../../components/SubHeading";
 import { FC } from "react";
 import { hours } from "../../services/cache";
+import ContentBox from "../../components/layout/ContentBox";
 
 type Props = {
   taxonomy: TaxonomyTerm;
@@ -136,7 +137,7 @@ const ClassificationItemPage: FC<Props> = (props) => {
     <Layout>
       <SEO title={`Luokittelu: ${taxonomy.name}`} />
 
-      <Box px={2}>
+      <ContentBox>
         <Box mb={4}>
           <SectionHeading>Luokittelu: {taxonomy.name}</SectionHeading>
 
@@ -149,7 +150,7 @@ const ClassificationItemPage: FC<Props> = (props) => {
             <DictatorList dictators={sortedDictators} />
           </Box>
         </Box>
-      </Box>
+      </ContentBox>
     </Layout>
   );
 };

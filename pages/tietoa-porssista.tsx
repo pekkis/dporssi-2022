@@ -16,6 +16,7 @@ import dporssi1999 from "../data/diktaattoriporssi-1999.png";
 import dporssiLED from "../data/diktaattoriporssi-led.png";
 import dporssiAntiSocial from "../data/diktaattoriporssi-antisocial.png";
 import dporssiSalivation from "../data/diktaattoriporssi-salivaatio.png";
+import ContentBox from "../components/layout/ContentBox";
 
 const StorySection = (props) => {
   const { children, image } = props;
@@ -62,7 +63,7 @@ const AboutPage = () => {
     <Layout>
       <SEO title="Tietoa Diktaattoripörssistä" />
 
-      <Box mx={2} as="article">
+      <ContentBox>
         <Box as="header" mb={3}>
           <SectionHeading>Tietoa Diktaattoripörssistä</SectionHeading>
 
@@ -394,7 +395,7 @@ const AboutPage = () => {
             suhteen kuka on diktaattorologian ekspertti tässä maassa!
           </Paragraph>
         </StorySection>
-      </Box>
+      </ContentBox>
     </Layout>
   );
 };

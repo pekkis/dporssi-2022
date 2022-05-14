@@ -3,6 +3,7 @@
 import { Box } from "theme-ui";
 import ExternalLink from "../components/ExternalLink";
 import InternalLink from "../components/InternalLink";
+import ContentBox from "../components/layout/ContentBox";
 import Layout from "../components/layout/Layout";
 import SectionHeading from "../components/SectionHeading";
 import SEO from "../components/SEO";
@@ -13,7 +14,7 @@ const TermsOfUsePage = () => {
     <Layout>
       <SEO title="Käyttöehdot" />
 
-      <Box m={2}>
+      <ContentBox>
         <SectionHeading>Diktaattoripörssin käyttöehdot</SectionHeading>
 
         <SubHeading>1. Yleistä</SubHeading>
@@ -210,7 +211,7 @@ const TermsOfUsePage = () => {
           voimaan ilmoitettuna ajankohtana. Vanhoja käyttöehtoja ei ole koskaan
           ollutkaan.
         </p>
-      </Box>
+      </ContentBox>
     </Layout>
   );
 };

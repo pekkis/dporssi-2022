@@ -3,13 +3,14 @@ import { Box } from "theme-ui";
 import SEO from "../components/SEO";
 import SectionHeading from "../components/SectionHeading";
 import LoginMethods from "../components/LoginMethods";
+import ContentBox from "../components/layout/ContentBox";
 
 const LoginPage = () => {
   return (
     <>
       <SEO title="Kirjaudu sisään" />
       <Layout>
-        <Box mx={2}>
+        <ContentBox>
           <Box mb={3} as="section">
             <SectionHeading>Kirjaudu sisään</SectionHeading>
 
@@ -36,7 +37,7 @@ const LoginPage = () => {
           </Box>
 
           <LoginMethods />
-        </Box>
+        </ContentBox>
       </Layout>
     </>
   );

@@ -1,6 +1,7 @@
 /** @jsxImportSource theme-ui */
 
 import { Box } from "theme-ui";
+import ContentBox from "../components/layout/ContentBox";
 import Layout from "../components/layout/Layout";
 import SectionHeading from "../components/SectionHeading";
 import SEO from "../components/SEO";
@@ -10,7 +11,7 @@ const CookiePolicyPage = () => {
     <Layout>
       <SEO title="Keksipolitiikka" />
 
-      <Box m={2}>
+      <ContentBox>
         <SectionHeading>Diktaattoripörssin keksipolitiikka</SectionHeading>
 
         <p>
@@ -50,7 +51,7 @@ const CookiePolicyPage = () => {
           Puhemieheltänne. Ja kysyttehän te, koska luotatte Puhemieheenne kuin
           isäänne tai äitiinne. Hän on kansamme sielu!
         </p>
-      </Box>
+      </ContentBox>
     </Layout>
   );
 };

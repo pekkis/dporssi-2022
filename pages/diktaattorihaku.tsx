@@ -13,6 +13,7 @@ import { gql } from "graphql-request";
 import { graphQLClient } from "../services/graphql";
 import Spinner from "../components/Spinner";
 import { hours } from "../services/cache";
+import ContentBox from "../components/layout/ContentBox";
 
 type Props = {
   dictators: Dictator[];
@@ -80,7 +81,7 @@ const DictatorsPage: FC<Props> = (props) => {
     <Layout>
       <SEO title={title} />
 
-      <Box mx={2}>
+      <ContentBox>
         <SectionHeading>{title}</SectionHeading>
 
         <Paragraph>
@@ -101,7 +102,7 @@ const DictatorsPage: FC<Props> = (props) => {
           {!loading && <DictatorSearch dictators={dictators} />}
           {loading && <Spinner />}
         </Box>
-      </Box>
+      </ContentBox>
     </Layout>
   );
 };

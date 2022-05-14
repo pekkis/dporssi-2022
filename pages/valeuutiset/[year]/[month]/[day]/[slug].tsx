@@ -12,6 +12,7 @@ import SEO from "../../../../../components/SEO";
 
 import defaultImage from "../../../../../data/propaganda/mao-propaganda-2020.jpg";
 import { createDate } from "../../../../../services/date";
+import ContentBox from "../../../../../components/layout/ContentBox";
 
 type Props = {
   propaganda: FakeNewsItem;
@@ -134,7 +135,9 @@ const PropagandaItemPage: FC<Props> = (props) => {
       <SEO title={propaganda.title} description={propaganda.description} />
 
       <Layout>
-        <PropagandaFull propaganda={propaganda} defaultImage={defaultImage} />
+        <ContentBox>
+          <PropagandaFull propaganda={propaganda} defaultImage={defaultImage} />
+        </ContentBox>
       </Layout>
     </>
   );

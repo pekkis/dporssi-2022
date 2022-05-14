@@ -18,6 +18,7 @@ import DictatorGrid from "../components/dictator/DictatorGrid";
 import { sortrados } from "../components/dictator-search/service";
 import { GetStaticProps } from "next";
 import { hours } from "../services/cache";
+import ContentBox from "../components/layout/ContentBox";
 
 type Props = {
   videos: Array<{}>;
@@ -101,7 +102,7 @@ const IndexPage: FC<Props> = (props) => {
     <>
       <SEO title="Tervetuloa" />
       <Layout>
-        <Box mx={2}>
+        <ContentBox>
           <Box
             sx={{
               display: "grid",
@@ -261,7 +262,7 @@ const IndexPage: FC<Props> = (props) => {
               </Box>
             </Box>
           </Box>
-        </Box>
+        </ContentBox>
       </Layout>
     </>
   );

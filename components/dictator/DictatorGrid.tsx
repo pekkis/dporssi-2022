@@ -15,14 +15,14 @@ type Props = {
 const DictatorGrid: FC<Props> = ({
   dictators,
   extraInfo = () => null,
-  fadeOutIf = () => false,
+  fadeOutIf = () => false
 }) => {
   return (
     <Box
       sx={{
         display: "grid",
-        gap: 3,
-        gridTemplateColumns: "repeat(auto-fill,minmax(100px,1fr))",
+        gap: [2, 3],
+        gridTemplateColumns: "repeat(auto-fill,minmax(100px,1fr))"
       }}
     >
       {dictators.map((dictator) => {

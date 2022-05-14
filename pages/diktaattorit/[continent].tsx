@@ -10,6 +10,7 @@ import { sortBySortName } from "../../services/dictator";
 import { Continent, Country, Dictator } from "../../types";
 import { gql } from "graphql-request";
 import { graphQLClient } from "../../services/graphql";
+import ContentBox from "../../components/layout/ContentBox";
 
 type Props = {
   continent: Continent;
@@ -148,7 +149,7 @@ const ContinentPage: FC<Props> = (props) => {
   return (
     <Layout>
       <SEO title={title} />
-      <Box mx={2}>
+      <ContentBox>
         <SectionHeading>{title}</SectionHeading>
 
         {continent.description && (
@@ -158,7 +159,7 @@ const ContinentPage: FC<Props> = (props) => {
         <Box>
           <DictatorList dictators={sortedDictators} />
         </Box>
-      </Box>
+      </ContentBox>
     </Layout>
   );
 };

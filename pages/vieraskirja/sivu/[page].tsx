@@ -13,6 +13,7 @@ import GuestbookEntry from "../../../components/GuestbookEntry";
 import GuestbookFormWrapper from "../../../components/GuestbookForm";
 import Paragraph from "../../../components/Paragraph";
 import { useUserStore } from "../../../services/state";
+import ContentBox from "../../../components/layout/ContentBox";
 
 const postsPerPage = 10;
 
@@ -68,7 +69,7 @@ const NewsIndexPage: FC<Props> = (props) => {
   return (
     <Layout>
       <SEO title="Valeuutiset" />
-      <Box mx={2}>
+      <ContentBox>
         <Box mb={4}>
           <SectionHeading>Vieraskirja</SectionHeading>
           <Paragraph>
@@ -112,7 +113,7 @@ const NewsIndexPage: FC<Props> = (props) => {
             getLink="guestbookIndex"
           />
         </Box>
-      </Box>
+      </ContentBox>
     </Layout>
   );
 };

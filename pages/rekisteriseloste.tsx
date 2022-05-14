@@ -1,6 +1,7 @@
 /** @jsxImportSource theme-ui */
 
 import { Box } from "theme-ui";
+import ContentBox from "../components/layout/ContentBox";
 import Layout from "../components/layout/Layout";
 import SectionHeading from "../components/SectionHeading";
 import SEO from "../components/SEO";
@@ -12,7 +13,7 @@ const RegistryPage = () => {
   return (
     <Layout>
       <SEO title={title} />
-      <Box m={2}>
+      <ContentBox>
         <SectionHeading>{title}</SectionHeading>
 
         <SubHeading>1. Rekisterinpitäjä</SubHeading>
@@ -115,7 +116,7 @@ const RegistryPage = () => {
           jotka ovat ainoastaan rekisterin käyttöön oikeutettujen (Mikko
           Forsström, KGB, NSA ja Kiinan kansantasavallan 6-10-virasto) hallussa.
         </p>
-      </Box>
+      </ContentBox>
     </Layout>
   );
 };

@@ -23,7 +23,7 @@ const PropagandaLight = (props: Props) => {
   )(propaganda);
 
   return (
-    <Box mx={2} mt={2} mb={4} as="article">
+    <Box mt={2} mb={4} as="article">
       <Box as="header">
         <Heading mb={0} as="h2">
           <InternalLink to={link}>{propaganda.title}</InternalLink>

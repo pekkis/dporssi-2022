@@ -10,6 +10,7 @@ import { graphQLClient } from "../services/graphql";
 import { TaxonomyCategory, TaxonomyTerm } from "../types";
 import { FC } from "react";
 import { hours } from "../services/cache";
+import ContentBox from "../components/layout/ContentBox";
 
 type Props = {
   taxonomies: TaxonomyTerm[];
@@ -58,7 +59,7 @@ const ClassificationIndexPage: FC<Props> = (props) => {
     <Layout>
       <SEO title="Luokittelu" />
 
-      <Box mx={2}>
+      <ContentBox>
         <Box mb={4} as="section">
           <SectionHeading>Luokittelu</SectionHeading>
           <p>
@@ -85,7 +86,7 @@ const ClassificationIndexPage: FC<Props> = (props) => {
             return <Category name={name} taxonomy={taxonomies} key={name} />;
           })}
         </Box>
-      </Box>
+      </ContentBox>
     </Layout>
   );
 };

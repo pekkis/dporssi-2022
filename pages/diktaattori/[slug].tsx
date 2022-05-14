@@ -24,6 +24,7 @@ import { gql } from "graphql-request";
 import { graphQLClient } from "../../services/graphql";
 import ContentfulImage from "../../components/contentful/ContentfulImage";
 import { findIndex, slice } from "ramda";
+import ContentBox from "../../components/layout/ContentBox";
 
 type Props = {
   dictator: Dictator;
@@ -182,160 +183,164 @@ const DictatorItemPage: FC<Props> = (props) => {
         image={dictator.primaryImage && dictator.primaryImage.url}
       />
 
-      <Box
-        as="article"
-        mx={2}
-        sx={{
-          display: ["block", "grid"],
-          gridTemplateColumns: "4fr 2fr",
-          columnGap: 4
-        }}
-      >
+      <ContentBox>
         <Box
-          as="header"
-          mb={4}
+          as="article"
           sx={{
-            gridColumnStart: 1,
-            gridColumnEnd: 3
-          }}
-        >
-          <NameHeading dictator={dictator} />
-          <Taxonomies taxonomy={dictator.taxonomyCollection.items} />
-
-          {dictator.synopsis && (
-            <Box
-              sx={{
-                mt: 3,
-                fontSize: 3
-              }}
-            >
-              <Markdown>{dictator.synopsis}</Markdown>
-            </Box>
-          )}
-        </Box>
-
-        <Box
-          as="section"
-          sx={{
-            gridRowStart: 2,
-            gridColumnStart: 2,
-            gridColumnEnd: 3
+            display: ["block", "grid"],
+            gridTemplateColumns: "4fr 2fr",
+            columnGap: 4
           }}
         >
           <Box
+            as="header"
+            mb={4}
             sx={{
-              borderStyle: "solid",
-              borderWidth: "1px",
-              borderColor: "veryDark",
-              borderRadius: 1,
-              position: "relative"
+              gridColumnStart: 1,
+              gridColumnEnd: 3
             }}
           >
-            <ContentfulImage
-              data={dictator.primaryImage}
-              config={{
-                width: 400,
-                quality: 80,
-                fit: "fill",
-                focus: "face",
-                aspectRatio: 0.75
+            <NameHeading dictator={dictator} />
+            <Taxonomies taxonomy={dictator.taxonomyCollection.items} />
+
+            {dictator.synopsis && (
+              <Box
+                sx={{
+                  mt: 3,
+                  fontSize: 3
+                }}
+              >
+                <Markdown>{dictator.synopsis}</Markdown>
+              </Box>
+            )}
+          </Box>
+
+          <Box
+            as="section"
+            sx={{
+              gridRowStart: 2,
+              gridColumnStart: 2,
+              gridColumnEnd: 3
+            }}
+          >
+            <Box
+              sx={{
+                borderStyle: "solid",
+                borderWidth: "1px",
+                borderColor: "veryDark",
+                borderRadius: 1,
+                position: "relative"
               }}
-              alt={dictator.name}
-              loading="lazy"
-            />
-            {/*<GatsbyImage
+            >
+              <ContentfulImage
+                data={dictator.primaryImage}
+                config={{
+                  width: 400,
+                  quality: 80,
+                  fit: "fill",
+                  focus: "face",
+                  aspectRatio: 0.75
+                }}
+                alt={dictator.name}
+                loading="lazy"
+              />
+              {/*<GatsbyImage
               alt={dictator.name}
               image={dictator.primaryImage.gatsbyImageData}
               loading="eager"
         />*/}
+            </Box>
+
+            <Box my={3}>
+              <DataTable>
+                <tbody>
+                  {dictator.canonicalRanking && (
+                    <RankingRow
+                      me={dictator}
+                      neighbours={canonicalNeighbours}
+                    />
+                  )}
+
+                  <tr>
+                    <th>Vallassa</th>
+                    <td>
+                      {dictator.reignsCollection.items.map((reign, i) => {
+                        return (
+                          <Box key={i}>
+                            <Reign reign={reign} />
+                          </Box>
+                        );
+                      })}
+                      ({Math.floor(reignDuration)} päivää)
+                    </td>
+                  </tr>
+
+                  {dictator.lifespan && (
+                    <LifespanRow lifespan={dictator.lifespan} />
+                  )}
+
+                  <tr>
+                    <th>Maa</th>
+                    <td>
+                      <CountryLink country={dictator.country} />
+                    </td>
+                  </tr>
+
+                  {dictator.titles && (
+                    <tr>
+                      <th>Arvonimet</th>
+                      <td>
+                        <ul>
+                          {dictator.titles.map((title) => {
+                            return <li key={title}>{title}</li>;
+                          })}
+                        </ul>
+                      </td>
+                    </tr>
+                  )}
+
+                  {dictator.podcast && (
+                    <tr>
+                      <th>Ylen podcast</th>
+                      <td>
+                        <ExternalLink
+                          to={`https://areena.yle.fi/audio/${dictator.podcast}`}
+                        >
+                          {dictator.name}
+                        </ExternalLink>
+                      </td>
+                    </tr>
+                  )}
+                  {dictator.wikipedia && (
+                    <tr>
+                      <th>Wikipedia</th>
+                      <td>
+                        <ExternalLink to={dictator.wikipedia}>
+                          {dictator.name}
+                        </ExternalLink>
+                      </td>
+                    </tr>
+                  )}
+                  <AlphabeticalRow
+                    me={dictator}
+                    neighbours={alphabeticalNeighbours}
+                  />
+                </tbody>
+              </DataTable>
+            </Box>
           </Box>
 
-          <Box my={3}>
-            <DataTable>
-              <tbody>
-                {dictator.canonicalRanking && (
-                  <RankingRow me={dictator} neighbours={canonicalNeighbours} />
-                )}
-
-                <tr>
-                  <th>Vallassa</th>
-                  <td>
-                    {dictator.reignsCollection.items.map((reign, i) => {
-                      return (
-                        <Box key={i}>
-                          <Reign reign={reign} />
-                        </Box>
-                      );
-                    })}
-                    ({Math.floor(reignDuration)} päivää)
-                  </td>
-                </tr>
-
-                {dictator.lifespan && (
-                  <LifespanRow lifespan={dictator.lifespan} />
-                )}
-
-                <tr>
-                  <th>Maa</th>
-                  <td>
-                    <CountryLink country={dictator.country} />
-                  </td>
-                </tr>
-
-                {dictator.titles && (
-                  <tr>
-                    <th>Arvonimet</th>
-                    <td>
-                      <ul>
-                        {dictator.titles.map((title) => {
-                          return <li key={title}>{title}</li>;
-                        })}
-                      </ul>
-                    </td>
-                  </tr>
-                )}
-
-                {dictator.podcast && (
-                  <tr>
-                    <th>Ylen podcast</th>
-                    <td>
-                      <ExternalLink
-                        to={`https://areena.yle.fi/audio/${dictator.podcast}`}
-                      >
-                        {dictator.name}
-                      </ExternalLink>
-                    </td>
-                  </tr>
-                )}
-                {dictator.wikipedia && (
-                  <tr>
-                    <th>Wikipedia</th>
-                    <td>
-                      <ExternalLink to={dictator.wikipedia}>
-                        {dictator.name}
-                      </ExternalLink>
-                    </td>
-                  </tr>
-                )}
-                <AlphabeticalRow
-                  me={dictator}
-                  neighbours={alphabeticalNeighbours}
-                />
-              </tbody>
-            </DataTable>
+          <Box
+            sx={{
+              gridRowStart: 2,
+              gridColumnStart: 1,
+              gridRowEnd: 4
+            }}
+          >
+            <Markdown>{content}</Markdown>
           </Box>
         </Box>
-
-        <Box
-          sx={{
-            gridRowStart: 2,
-            gridColumnStart: 1,
-            gridRowEnd: 4
-          }}
-        >
-          <Markdown>{content}</Markdown>
-        </Box>
-      </Box>
+      </ContentBox>
     </Layout>
   );
 };

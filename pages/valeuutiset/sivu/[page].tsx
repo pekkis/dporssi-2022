@@ -14,6 +14,7 @@ import { gql } from "graphql-request";
 import { graphQLClient } from "../../../services/graphql";
 import { range } from "ramda";
 import PropagandaLight from "../../../components/PropagandaLight";
+import ContentBox from "../../../components/layout/ContentBox";
 
 const postsPerPage = 10;
 
@@ -105,40 +106,42 @@ const NewsIndexPage: FC<Props> = (props) => {
   return (
     <Layout>
       <SEO title="Valeuutiset" />
-      <Box mx={2}>
-        <Box mb={4}>
-          <SectionHeading>Valeuutiset</SectionHeading>
+      <ContentBox>
+        <Box>
+          <Box mb={4}>
+            <SectionHeading>Valeuutiset</SectionHeading>
 
-          <p>
-            Kaikki, mitä puhemies Pekkis sanoo, on automaattisesti totta. Niin
-            sanotaan Huotilistisessa manifestissa, pyhistä kirjoista pyhimmässä,
-            jonka puhemiehemme on meille jaloudessaan osoittanut!
-          </p>
+            <p>
+              Kaikki, mitä puhemies Pekkis sanoo, on automaattisesti totta. Niin
+              sanotaan Huotilistisessa manifestissa, pyhistä kirjoista
+              pyhimmässä, jonka puhemiehemme on meille jaloudessaan osoittanut!
+            </p>
+          </Box>
+
+          <Box my={4}>
+            <Paginator
+              id="paginator-top"
+              label="paginator-top"
+              currentPage={currentPage}
+              numPages={numPages}
+              getLink="newsIndex"
+            />
+          </Box>
         </Box>
+        {fakeNews.map((p) => (
+          <PropagandaLight key={p.sys.id} propaganda={p} />
+        ))}
 
-        <Box my={4}>
+        <Box mt={4}>
           <Paginator
-            id="paginator-top"
-            label="paginator-top"
+            label="paginator-bottom"
+            id="paginator-bottom"
             currentPage={currentPage}
             numPages={numPages}
             getLink="newsIndex"
           />
         </Box>
-      </Box>
-      {fakeNews.map((p) => (
-        <PropagandaLight key={p.sys.id} propaganda={p} />
-      ))}
-
-      <Box mt={4}>
-        <Paginator
-          label="paginator-bottom"
-          id="paginator-bottom"
-          currentPage={currentPage}
-          numPages={numPages}
-          getLink="newsIndex"
-        />
-      </Box>
+      </ContentBox>
     </Layout>
   );
 };

@@ -13,6 +13,7 @@ import { GetStaticPaths, GetStaticProps } from "next";
 import { gql } from "graphql-request";
 import { graphQLClient } from "../../../services/graphql";
 import { range } from "ramda";
+import ContentBox from "../../../components/layout/ContentBox";
 
 const postsPerPage = 10;
 
@@ -129,7 +130,7 @@ const DictatorIndexPage: FC<Props> = (props) => {
     <Layout>
       <SEO title={title} />
 
-      <Box mx={2}>
+      <ContentBox>
         <SectionHeading>{title}</SectionHeading>
 
         <p>
@@ -172,7 +173,7 @@ const DictatorIndexPage: FC<Props> = (props) => {
             getLink="dictatorIndex"
           />
         </Box>
-      </Box>
+      </ContentBox>
     </Layout>
   );
 };
