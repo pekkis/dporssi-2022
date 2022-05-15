@@ -5,7 +5,7 @@ import SectionHeading from "../components/SectionHeading";
 import SubHeading from "../components/SubHeading";
 
 const replaceableDomains = [
-  { from: /^https?:\/\/(www|beta\.)?diktaattoriporssi.com/, to: "" }
+  { from: /^https?:\/\/(www|beta)\.?diktaattoriporssi.com/, to: "" }
 ];
 
 const getTo = (data) => {
@@ -35,6 +35,8 @@ export const components = {
   },
 
   a: (data) => {
+    console.log("deita", data);
+
     const to = getTo(data);
     if (isExternalLink(to)) {
       return <ExternalLink to={to}>{data.children}</ExternalLink>;
