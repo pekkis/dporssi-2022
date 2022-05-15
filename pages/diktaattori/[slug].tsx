@@ -53,6 +53,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
             id
           }
           canonicalRanking
+          aka
           slug
           name
           titles
