@@ -1,12 +1,10 @@
 /** @jsxImportSource theme-ui */
 
-import Head from "next/head";
-import Image from "next/image";
 import Layout from "../components/layout/Layout";
 import { gql } from "graphql-request";
 import { graphQLClient } from "../services/graphql";
 import PropagandaTube from "../components/LazyLoadedPropagandaTube";
-import { FC } from "react";
+import { FC, ReactElement } from "react";
 import SEO from "../components/SEO";
 import { Box, Paragraph } from "theme-ui";
 import SectionHeading from "../components/SectionHeading";
@@ -15,15 +13,17 @@ import { Locale, url } from "../services/url";
 import { DateTime } from "luxon";
 import { FaAngleDoubleRight } from "react-icons/fa";
 import DictatorGrid from "../components/dictator/DictatorGrid";
-import { sortrados } from "../components/dictator-search/service";
 import { GetStaticProps } from "next";
 import { hours } from "../services/cache";
 import ContentBox from "../components/layout/ContentBox";
+import { Dictator } from "../types";
+import ExtraInfoBox from "../components/dictator-search/ExtraInfoBox";
+import { createDate } from "../services/date";
 
 type Props = {
   videos: Array<{}>;
   propaganda: [];
-  dictators: [];
+  dictators: Dictator[];
 };
 
 const videosPlusUkraine = (videos) => {
@@ -41,10 +41,11 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
       dictatorCollection(
         locale: "fi"
         limit: 10
-        order: [majorStoryUpdateAt_DESC]
+        order: [sys_publishedAt_DESC]
       ) {
         items {
           sys {
+            publishedAt
             id
           }
           name
@@ -240,7 +241,15 @@ const IndexPage: FC<Props> = (props) => {
 
               <DictatorGrid
                 dictators={dictators}
-                extraInfo={sortrados.updatedAt.ExtraInfo}
+                extraInfo={({
+                  dictator
+                }: {
+                  dictator: Dictator;
+                }): ReactElement | null => {
+                  const d = createDate(dictator.sys.publishedAt);
+
+                  return <ExtraInfoBox>{d.toLocaleString()}</ExtraInfoBox>;
+                }}
                 fadeOutIf={() => true}
               />
 

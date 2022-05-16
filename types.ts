@@ -17,6 +17,7 @@ export type ContentfulImageData = {
 export type Dictator = {
   sys: {
     id: string;
+    publishedAt: string;
   };
 
   name: string;
