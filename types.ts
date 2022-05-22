@@ -112,6 +112,8 @@ export type TaxonomyTerm = {
   description: string;
   category: TaxonomyCategory;
 
+  wikipedia?: string;
+
   linkedFrom: {
     dictatorCollection: {
       items: Dictator[];

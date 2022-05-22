@@ -27,6 +27,7 @@ export const getStaticProps: GetStaticProps<Props> = async (context) => {
           slug
           name
           description
+          wikipedia
           category {
             name
             weight

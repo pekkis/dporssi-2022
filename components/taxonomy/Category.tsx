@@ -1,10 +1,11 @@
 /** @jsxImportSource theme-ui */
-import { Box, Heading, jsx } from "theme-ui";
+import { Box, Heading, jsx, Paragraph } from "theme-ui";
 import { FC } from "react";
 import InternalLink from "../InternalLink";
 import Markdown from "../Markdown";
 import SubHeading from "../SubHeading";
 import { TaxonomyTerm } from "../../types";
+import ExternalLink from "../ExternalLink";
 
 type Props = {
   name: string;
@@ -52,6 +53,14 @@ const Category: FC<Props> = ({ name, taxonomy }) => {
             </Heading>
 
             <Markdown>{tag.description}</Markdown>
+
+            {tag.wikipedia && (
+              <Paragraph>
+                <ExternalLink to={tag.wikipedia}>
+                  {tag.name} wikipediassa
+                </ExternalLink>
+              </Paragraph>
+            )}
           </Box>
         );
       })}
