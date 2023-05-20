@@ -1,11 +1,10 @@
 /** @jsxImportSource theme-ui */
-import { Heading, jsx } from "theme-ui";
-import { Box, Divider } from "theme-ui";
-import Adi from "../Adi";
-import InternalLink from "../InternalLink";
+import Adi from "@/components/Adi";
+import InternalLink from "@/components/InternalLink";
+import { Locale, url } from "@/services/url";
 import { FaTwitter } from "react-icons/fa";
-import ExternalLink from "../ExternalLink";
-import { Locale, url } from "../../services/url";
+import { Box, Heading } from "theme-ui";
+import ExternalLink from "@/components/ExternalLink";
 
 const links = [
   {

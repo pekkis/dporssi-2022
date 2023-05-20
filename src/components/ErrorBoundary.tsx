@@ -1,9 +1,9 @@
 import { Component } from "react";
-import InfernalServerErrorPage from "../pages/500";
+import InfernalServerErrorPage from "@/pages/500";
 
 export default class ErrorBoundary extends Component {
   state = {
-    error: null,
+    error: null
   };
 
   constructor(props) {

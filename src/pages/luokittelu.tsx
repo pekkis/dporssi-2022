@@ -1,16 +1,16 @@
 import { Box } from "theme-ui";
-import Layout from "../components/layout/Layout";
-import SEO from "../components/SEO";
+import Layout from "@/components/layout/Layout";
+import SEO from "@/components/SEO";
 import { groupBy, toPairs } from "ramda";
-import Category from "../components/taxonomy/Category";
-import SectionHeading from "../components/SectionHeading";
+import Category from "@/components/taxonomy/Category";
+import SectionHeading from "@/components/SectionHeading";
 import { GetStaticProps } from "next";
 import { gql } from "graphql-request";
-import { graphQLClient } from "../services/graphql";
-import { TaxonomyCategory, TaxonomyTerm } from "../types";
+import { graphQLClient } from "@/services/graphql";
+import { TaxonomyCategory, TaxonomyTerm } from "@/types";
 import { FC } from "react";
-import { hours } from "../services/cache";
-import ContentBox from "../components/layout/ContentBox";
+import { hours } from "@/services/cache";
+import ContentBox from "@/components/layout/ContentBox";
 
 type Props = {
   taxonomies: TaxonomyTerm[];

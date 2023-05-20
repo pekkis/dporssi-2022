@@ -1,10 +1,10 @@
 /** @jsxImportSource theme-ui */
 
 import { Box } from "theme-ui";
-import SectionHeading from "../components/SectionHeading";
-import Paragraph from "../components/Paragraph";
+import SectionHeading from "@/components/SectionHeading";
+import Paragraph from "@/components/Paragraph";
 import Image from "next/image";
-import internalRevolution from "../data/internal-revolution-error.jpg";
+import internalRevolution from "@/data/internal-revolution-error.jpg";
 
 const InfernalServerErrorPage = () => {
   return (

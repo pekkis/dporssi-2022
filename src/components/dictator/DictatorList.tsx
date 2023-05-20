@@ -2,13 +2,13 @@
 import { Box, jsx } from "theme-ui";
 import { FC } from "react";
 
-import InternalLink from "../InternalLink";
-import Markdown from "../Markdown";
+import InternalLink from "@/components/InternalLink";
+import Markdown from "@/components/Markdown";
 import CountryLink from "./CountryLink";
 import Reign from "./Reign";
-import { Dictator } from "../../types";
-import SubHeading from "../SubHeading";
-import ContentfulImage from "../contentful/ContentfulImage";
+import { Dictator } from "@/types";
+import SubHeading from "@/components/SubHeading";
+import ContentfulImage from "@/components/contentful/ContentfulImage";
 
 type Props = {
   showRanking?: boolean;

@@ -1,13 +1,13 @@
 import { gql } from "graphql-request";
-import { graphQLClient } from "../services/graphql";
-import { Locale, url } from "../services/url";
+import { graphQLClient } from "@/services/graphql";
+import { Locale, url } from "@/services/url";
 import {
   Continent,
   Country,
   Dictator,
   FakeNewsItem,
   TaxonomyTerm
-} from "../types";
+} from "@/types";
 import { range } from "ramda";
 
 type SitemapEntry = {

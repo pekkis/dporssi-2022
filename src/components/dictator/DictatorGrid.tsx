@@ -1,9 +1,12 @@
 /** @jsxImportSource theme-ui */
 import { Box } from "theme-ui";
 import { FC, memo } from "react";
-import { Dictator } from "../../types";
+import { Dictator } from "@/types";
 import DictatorGridDictator from "./DictatorGridDictator";
-import { ExtraInfoComponent, Highlighter } from "../dictator-search/service";
+import {
+  ExtraInfoComponent,
+  Highlighter
+} from "@/components/dictator-search/service";
 
 type Props = {
   sorter?: Function;

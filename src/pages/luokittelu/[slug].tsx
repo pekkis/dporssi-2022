@@ -1,19 +1,19 @@
 import { gql } from "graphql-request";
 import { GetStaticPaths, GetStaticProps } from "next";
-import { graphQLClient } from "../../services/graphql";
-import { TaxonomyTerm } from "../../types";
+import { graphQLClient } from "@/services/graphql";
+import { TaxonomyTerm } from "@/types";
 
-import Layout from "../../components/layout/Layout";
+import Layout from "@/components/layout/Layout";
 import { Box } from "theme-ui";
-import SEO from "../../components/SEO";
-import Markdown from "../../components/Markdown";
-import DictatorList from "../../components/dictator/DictatorList";
-import { sortBySortName } from "../../services/dictator";
-import SectionHeading from "../../components/SectionHeading";
-import SubHeading from "../../components/SubHeading";
+import SEO from "@/components/SEO";
+import Markdown from "@/components/Markdown";
+import DictatorList from "@/components/dictator/DictatorList";
+import { sortBySortName } from "@/services/dictator";
+import SectionHeading from "@/components/SectionHeading";
+import SubHeading from "@/components/SubHeading";
 import { FC } from "react";
-import { hours } from "../../services/cache";
-import ContentBox from "../../components/layout/ContentBox";
+import { hours } from "@/services/cache";
+import ContentBox from "@/components/layout/ContentBox";
 
 type Props = {
   taxonomy: TaxonomyTerm;

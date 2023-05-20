@@ -1,24 +1,24 @@
 /** @jsxImportSource theme-ui */
 
-import Layout from "../components/layout/Layout";
+import Layout from "@/components/layout/Layout";
 import { gql } from "graphql-request";
-import { graphQLClient } from "../services/graphql";
-import PropagandaTube from "../components/LazyLoadedPropagandaTube";
+import { graphQLClient } from "@/services/graphql";
+import PropagandaTube from "@/components/LazyLoadedPropagandaTube";
 import { FC, ReactElement } from "react";
-import SEO from "../components/SEO";
+import SEO from "@/components/SEO";
 import { Box, Paragraph } from "theme-ui";
-import SectionHeading from "../components/SectionHeading";
-import InternalLink from "../components/InternalLink";
-import { Locale, url } from "../services/url";
+import SectionHeading from "@/components/SectionHeading";
+import InternalLink from "@/components/InternalLink";
+import { Locale, url } from "@/services/url";
 import { DateTime } from "luxon";
 import { FaAngleDoubleRight } from "react-icons/fa";
-import DictatorGrid from "../components/dictator/DictatorGrid";
+import DictatorGrid from "@/components/dictator/DictatorGrid";
 import { GetStaticProps } from "next";
-import { hours } from "../services/cache";
-import ContentBox from "../components/layout/ContentBox";
-import { Dictator } from "../types";
-import ExtraInfoBox from "../components/dictator-search/ExtraInfoBox";
-import { createDate } from "../services/date";
+import { hours } from "@/services/cache";
+import ContentBox from "@/components/layout/ContentBox";
+import { Dictator } from "@/types";
+import ExtraInfoBox from "@/components/dictator-search/ExtraInfoBox";
+import { createDate } from "@/services/date";
 
 type Props = {
   videos: Array<{}>;

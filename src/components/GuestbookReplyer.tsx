@@ -2,9 +2,9 @@
 
 import { Box, Button, Input, jsx, Textarea } from "theme-ui";
 import { FC, memo, useState } from "react";
-import { GuestBookEntry } from "../types";
+import { GuestBookEntry } from "@/types";
 import axios from "axios";
-import { UserInterface } from "../services/state";
+import { UserInterface } from "@/services/state";
 
 type Props = {
   entry: GuestBookEntry;

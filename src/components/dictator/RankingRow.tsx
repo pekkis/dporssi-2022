@@ -1,11 +1,11 @@
 /** @jsxImportSource theme-ui */
 
 import { FC } from "react";
-import { Dictator } from "../../types";
-import { sortByCanonicalRanking } from "../../services/dictator";
+import { Dictator } from "@/types";
+import { sortByCanonicalRanking } from "@/services/dictator";
 import { filter, head } from "ramda";
-import { Locale, url } from "../../services/url";
-import InternalLink from "../InternalLink";
+import { Locale, url } from "@/services/url";
+import InternalLink from "@/components/InternalLink";
 
 type Props = {
   me: Dictator;

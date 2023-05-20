@@ -1,8 +1,8 @@
-import { navigate } from "../../services/backwards-compatibility";
+import { navigate } from "@/services/backwards-compatibility";
 import { useCallback } from "react";
 import { FC } from "react";
 import { Box, Input, Label, Radio } from "theme-ui";
-import { Locale, url } from "../../services/url";
+import { Locale, url } from "@/services/url";
 import { DictatorSearchParams } from "./DictatorSearch";
 import { useRouter } from "next/router";
 
@@ -17,7 +17,7 @@ const Filters: FC<Props> = ({ params }) => {
     (key, value) => {
       const newParams = {
         ...params,
-        [key]: value,
+        [key]: value
       };
 
       router.push(
@@ -37,13 +37,13 @@ const Filters: FC<Props> = ({ params }) => {
         borderWidth: "1",
         borderColor: "light",
         display: ["block", "flex"],
-        flexWrap: "wrap",
+        flexWrap: "wrap"
       }}
     >
       <Box
         sx={{
           pr: [0, 4],
-          pb: [0, 0],
+          pb: [0, 0]
         }}
       >
         <Label>Etsi</Label>
@@ -58,7 +58,7 @@ const Filters: FC<Props> = ({ params }) => {
       <Box
         sx={{
           pr: [0, 4],
-          pb: [3, 0],
+          pb: [3, 0]
         }}
       >
         <Label>Järjestä</Label>
@@ -127,7 +127,7 @@ const Filters: FC<Props> = ({ params }) => {
       <Box
         sx={{
           pr: [0, 4],
-          pb: [3, 0],
+          pb: [3, 0]
         }}
       >
         <Label>Korosta</Label>

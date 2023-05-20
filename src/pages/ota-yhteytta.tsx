@@ -1,11 +1,11 @@
 /** @jsxImportSource theme-ui */
 import { Box } from "theme-ui";
-import ExternalLink from "../components/ExternalLink";
-import InternalLink from "../components/InternalLink";
-import ContentBox from "../components/layout/ContentBox";
-import Layout from "../components/layout/Layout";
-import SectionHeading from "../components/SectionHeading";
-import SEO from "../components/SEO";
+import ExternalLink from "@/components/ExternalLink";
+import InternalLink from "@/components/InternalLink";
+import ContentBox from "@/components/layout/ContentBox";
+import Layout from "@/components/layout/Layout";
+import SectionHeading from "@/components/SectionHeading";
+import SEO from "@/components/SEO";
 
 const CookiePolicyPage = () => {
   return (

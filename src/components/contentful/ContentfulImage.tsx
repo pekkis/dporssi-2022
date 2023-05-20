@@ -2,7 +2,7 @@
 
 import { FC } from "react";
 import NextImage from "next/image";
-import { ContentfulImageData } from "../../types";
+import { ContentfulImageData } from "@/types";
 import { Box, ThemeUIStyleObject } from "theme-ui";
 
 type ContentfulConfig = {
@@ -54,7 +54,7 @@ const ContentfulImage: FC<Props> = ({
   alt,
   styles,
   config = {},
-  loading = "lazy",
+  loading = "lazy"
 }) => {
   const urlParams = urlParamsFromConfig(config);
 
@@ -65,14 +65,14 @@ const ContentfulImage: FC<Props> = ({
       <picture
         sx={{
           display: "block",
-          maxWidth: "100%",
+          maxWidth: "100%"
         }}
       >
         <img
           loading={loading}
           sx={{
             display: "block",
-            maxWidth: "100%",
+            maxWidth: "100%"
           }}
           src={imageUrl}
           title={data.title}

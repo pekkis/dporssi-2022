@@ -1,8 +1,8 @@
-import ExternalLink from "../components/ExternalLink";
-import InternalLink from "../components/InternalLink";
-import Paragraph from "../components/Paragraph";
-import SectionHeading from "../components/SectionHeading";
-import SubHeading from "../components/SubHeading";
+import ExternalLink from "@/components/ExternalLink";
+import InternalLink from "@/components/InternalLink";
+import Paragraph from "@/components/Paragraph";
+import SectionHeading from "@/components/SectionHeading";
+import SubHeading from "@/components/SubHeading";
 
 const replaceableDomains = [
   { from: /^https?:\/\/(www|beta)\.?diktaattoriporssi.com/, to: "" }

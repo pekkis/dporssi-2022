@@ -1,22 +1,22 @@
 /** @jsxImportSource theme-ui */
 
 import { Box } from "theme-ui";
-import ExternalLink from "../components/ExternalLink";
-import Layout from "../components/layout/Layout";
-import SEO from "../components/SEO";
-import SectionHeading from "../components/SectionHeading";
-import SubHeading from "../components/SubHeading";
-import BlockQuote from "../components/BlockQuote";
-import Paragraph from "../components/Paragraph";
-import InternalLink from "../components/InternalLink";
-import SalivationClock from "../components/SalivationClock";
+import ExternalLink from "@/components/ExternalLink";
+import Layout from "@/components/layout/Layout";
+import SEO from "@/components/SEO";
+import SectionHeading from "@/components/SectionHeading";
+import SubHeading from "@/components/SubHeading";
+import BlockQuote from "@/components/BlockQuote";
+import Paragraph from "@/components/Paragraph";
+import InternalLink from "@/components/InternalLink";
+import SalivationClock from "@/components/SalivationClock";
 import Image from "next/image";
 
-import dporssi1999 from "../data/diktaattoriporssi-1999.png";
-import dporssiLED from "../data/diktaattoriporssi-led.png";
-import dporssiAntiSocial from "../data/diktaattoriporssi-antisocial.png";
-import dporssiSalivation from "../data/diktaattoriporssi-salivaatio.png";
-import ContentBox from "../components/layout/ContentBox";
+import dporssi1999 from "@/data/diktaattoriporssi-1999.png";
+import dporssiLED from "@/data/diktaattoriporssi-led.png";
+import dporssiAntiSocial from "@/data/diktaattoriporssi-antisocial.png";
+import dporssiSalivation from "@/data/diktaattoriporssi-salivaatio.png";
+import ContentBox from "@/components/layout/ContentBox";
 
 const StorySection = (props) => {
   const { children, image } = props;

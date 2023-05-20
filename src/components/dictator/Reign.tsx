@@ -1,6 +1,6 @@
 import { FC } from "react";
-import { formatDate } from "../../services/date";
-import { DateRange } from "../../types";
+import { formatDate } from "@/services/date";
+import { DateRange } from "@/types";
 
 type Props = {
   reign: DateRange;

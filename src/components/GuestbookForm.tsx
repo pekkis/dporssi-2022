@@ -9,7 +9,7 @@ import { GoogleReCaptchaProvider } from "react-google-recaptcha-v3";
 import * as Yup from "yup";
 import Spinner from "./Spinner";
 import SubHeading from "./SubHeading";
-import { useUserStore } from "../services/state";
+import { useUserStore } from "@/services/state";
 
 const initialState = {
   isHuman: false,

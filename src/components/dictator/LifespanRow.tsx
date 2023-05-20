@@ -1,8 +1,8 @@
 /** @jsxImportSource theme-ui */
 import { Box, jsx } from "theme-ui";
 import { FC } from "react";
-import { DateRange } from "../../types";
-import { formatDate } from "../../services/date";
+import { DateRange } from "@/types";
+import { formatDate } from "@/services/date";
 import { DateTime } from "luxon";
 
 type Props = {

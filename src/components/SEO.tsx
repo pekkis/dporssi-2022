@@ -1,6 +1,6 @@
 import { FC } from "react";
 import Head from "next/head";
-import config from "../services/config";
+import config from "@/services/config";
 import { useRouter } from "next/router";
 
 type SiteMetadata = {
@@ -40,14 +40,14 @@ const SEO: FC<Props> = ({ title, description, image, article = false }) => {
     siteUrl,
     image: defaultImage,
     twitterUsername,
-    lang,
+    lang
   } = config;
 
   const seo = {
     title: fullTitle(title || defaultTitle),
     description: description ? cleanup(description) : defaultDescription,
     image: image || `${siteUrl}${defaultImage}`,
-    url: `${siteUrl}${pathname}`,
+    url: `${siteUrl}${pathname}`
   };
 
   return (

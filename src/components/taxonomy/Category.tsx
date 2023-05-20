@@ -1,11 +1,11 @@
 /** @jsxImportSource theme-ui */
 import { Box, Heading, jsx, Paragraph } from "theme-ui";
 import { FC } from "react";
-import InternalLink from "../InternalLink";
-import Markdown from "../Markdown";
-import SubHeading from "../SubHeading";
-import { TaxonomyTerm } from "../../types";
-import ExternalLink from "../ExternalLink";
+import InternalLink from "@/components/InternalLink";
+import Markdown from "@/components/Markdown";
+import SubHeading from "@/components/SubHeading";
+import { TaxonomyTerm } from "@/types";
+import ExternalLink from "@/components/ExternalLink";
 
 type Props = {
   name: string;

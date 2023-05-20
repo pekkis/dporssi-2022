@@ -1,7 +1,7 @@
 /** @jsxImportSource theme-ui */
 
-import InternalLink from "../InternalLink";
-import { Locale, url } from "../../services/url";
+import InternalLink from "@/components/InternalLink";
+import { Locale, url } from "@/services/url";
 import { memo } from "react";
 import UserMenu from "./UserMenu";
 

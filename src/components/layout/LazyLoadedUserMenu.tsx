@@ -1,6 +1,6 @@
 import dynamic from "next/dynamic";
 
-import InternalLink from "../InternalLink";
+import InternalLink from "@/components/InternalLink";
 
 const LazyLoadedUserMenu = dynamic(() => import("./UserMenu"), {
   suspense: true,

@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import { DateTime } from "luxon";
-import { getFirestore, getAuth } from "../../services/firebase-admin";
+import { getFirestore, getAuth } from "@/services/firebase-admin";
 
 import { Timestamp } from "firebase-admin/firestore";
 

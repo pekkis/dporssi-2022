@@ -1,20 +1,20 @@
 /** @jsxImportSource theme-ui */
 import { Box } from "theme-ui";
-import Layout from "../../../components/layout/Layout";
-import Paginator from "../../../components/Paginator";
-import SEO from "../../../components/SEO";
-import DictatorList from "../../../components/dictator/DictatorList";
+import Layout from "@/components/layout/Layout";
+import Paginator from "@/components/Paginator";
+import SEO from "@/components/SEO";
+import DictatorList from "@/components/dictator/DictatorList";
 import { FC } from "react";
-import { Dictator, FakeNewsItem } from "../../../types";
-import SectionHeading from "../../../components/SectionHeading";
-import InternalLink from "../../../components/InternalLink";
-import { Locale, url } from "../../../services/url";
+import { Dictator, FakeNewsItem } from "@/types";
+import SectionHeading from "@/components/SectionHeading";
+import InternalLink from "@/components/InternalLink";
+import { Locale, url } from "@/services/url";
 import { GetStaticPaths, GetStaticProps } from "next";
 import { gql } from "graphql-request";
-import { graphQLClient } from "../../../services/graphql";
+import { graphQLClient } from "@/services/graphql";
 import { range } from "ramda";
-import PropagandaLight from "../../../components/PropagandaLight";
-import ContentBox from "../../../components/layout/ContentBox";
+import PropagandaLight from "@/components/PropagandaLight";
+import ContentBox from "@/components/layout/ContentBox";
 
 const postsPerPage = 10;
 

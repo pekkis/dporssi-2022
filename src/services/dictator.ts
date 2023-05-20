@@ -1,6 +1,6 @@
 import { DateTime, Duration, DurationUnit } from "luxon";
 import { sortBy, sortWith, descend, ascend, prop, pipe, toLower } from "ramda";
-import { Dictator } from "../types";
+import { Dictator } from "@/types";
 
 export const getReignDuration = (dictator: Dictator): number => {
   return dictator.reignsCollection.items.reduce((a, r) => {

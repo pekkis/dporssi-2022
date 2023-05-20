@@ -5,14 +5,14 @@ import { GetStaticPaths, GetStaticProps } from "next";
 import { FC } from "react";
 import { Box } from "theme-ui";
 
-import DictatorList from "../../../components/dictator/DictatorList";
-import ContentBox from "../../../components/layout/ContentBox";
-import Layout from "../../../components/layout/Layout";
-import SectionHeading from "../../../components/SectionHeading";
-import SEO from "../../../components/SEO";
-import { sortByReignStart } from "../../../services/dictator";
-import { graphQLClient } from "../../../services/graphql";
-import { Country, Dictator } from "../../../types";
+import DictatorList from "@/components/dictator/DictatorList";
+import ContentBox from "@/components/layout/ContentBox";
+import Layout from "@/components/layout/Layout";
+import SectionHeading from "@/components/SectionHeading";
+import SEO from "@/components/SEO";
+import { sortByReignStart } from "@/services/dictator";
+import { graphQLClient } from "@/services/graphql";
+import { Country, Dictator } from "@/types";
 
 type Props = {
   country: Country;

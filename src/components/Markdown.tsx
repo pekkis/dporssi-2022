@@ -1,6 +1,6 @@
 import { FC } from "react";
 import ReactMarkdown from "react-markdown";
-import { components } from "../services/markdown";
+import { components } from "@/services/markdown";
 
 type Props = {
   children: string;

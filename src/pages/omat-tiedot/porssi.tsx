@@ -1,25 +1,25 @@
 /** @jsxImportSource theme-ui */
 
 import { Button } from "theme-ui";
-import Layout from "../../components/layout/Layout";
+import Layout from "@/components/layout/Layout";
 import { Box } from "theme-ui";
-import SEO from "../../components/SEO";
-import RequiresAuthentication from "../../components/layout/RequiresAuthentication";
-import { useUserStore } from "../../services/state";
+import SEO from "@/components/SEO";
+import RequiresAuthentication from "@/components/layout/RequiresAuthentication";
+import { useUserStore } from "@/services/state";
 import { useEffect } from "react";
 import { filter, indexBy, map, prop, values } from "ramda";
 import { DragDropContext, Droppable, Draggable } from "@hello-pangea/dnd";
-import { sortBySortName } from "../../services/dictator";
+import { sortBySortName } from "@/services/dictator";
 import shallow from "zustand/shallow";
-import Spinner from "../../components/Spinner";
-import ContentfulImage from "../../components/contentful/ContentfulImage";
+import Spinner from "@/components/Spinner";
+import ContentfulImage from "@/components/contentful/ContentfulImage";
 import { GrDrag } from "react-icons/gr";
-import SectionHeading from "../../components/SectionHeading";
-import SubHeading from "../../components/SubHeading";
-import { Dictator } from "../../types";
+import SectionHeading from "@/components/SectionHeading";
+import SubHeading from "@/components/SubHeading";
+import { Dictator } from "@/types";
 import { GetServerSideProps } from "next";
 import { gql } from "graphql-request";
-import { graphQLClient } from "../../services/graphql";
+import { graphQLClient } from "@/services/graphql";
 // import { GatsbyImage } from "gatsby-plugin-image";
 
 type Props = {

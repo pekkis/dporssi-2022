@@ -1,14 +1,14 @@
 import { IconContext } from "react-icons";
 import { Context as ResponsiveContext } from "react-responsive";
 import { I18nextProvider } from "react-i18next";
-import i18n from "../services/i18n";
-import App from "../components/App";
+import i18n from "@/services/i18n";
+import App from "@/components/App";
 
 import type { AppProps } from "next/app";
 import { FC, memo, ReactNode, useEffect, useState } from "react";
-import { isServer } from "../services/env";
+import { isServer } from "@/services/env";
 import { useRouter } from "next/router";
-import { pageview } from "../services/ga";
+import { pageview } from "@/services/ga";
 
 const values = { style: { verticalAlign: "middle" } };
 

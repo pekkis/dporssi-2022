@@ -2,12 +2,12 @@
 import { Box, Button, jsx } from "theme-ui";
 import { FC } from "react";
 import { FaFacebook, FaGoogle } from "react-icons/fa";
-import { auth } from "../services/firebase";
+import { auth } from "@/services/firebase";
 
 import {
   GoogleAuthProvider,
   FacebookAuthProvider,
-  signInWithRedirect,
+  signInWithRedirect
 } from "firebase/auth";
 
 const LoginMethods: FC = () => {

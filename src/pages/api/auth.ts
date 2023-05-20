@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import { DateTime } from "luxon";
-import { getApp, getFirestore, getAuth } from "../../services/firebase-admin";
+import { getApp, getFirestore, getAuth } from "@/services/firebase-admin";
 import { Timestamp } from "firebase-admin/firestore";
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {

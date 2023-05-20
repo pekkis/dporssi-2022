@@ -3,11 +3,11 @@
 import { useState } from "react";
 import { usePopper } from "react-popper";
 import { Box } from "theme-ui";
-import { useUserStore } from "../../services/state";
-import InternalLink from "../InternalLink";
+import { useUserStore } from "@/services/state";
+import InternalLink from "@/components/InternalLink";
 import { FC } from "react";
 import { signOut } from "firebase/auth";
-import { auth } from "../../services/firebase";
+import { auth } from "@/services/firebase";
 
 const Avatar = (props) => {
   const { user } = props;
@@ -23,8 +23,8 @@ const Avatar = (props) => {
 
     modifiers: [
       { name: "offset", options: { offset: [0, 10] } },
-      { name: "arrow", options: { element: arrowElement } },
-    ],
+      { name: "arrow", options: { element: arrowElement } }
+    ]
   });
 
   return (
@@ -43,7 +43,7 @@ const Avatar = (props) => {
           verticalAlign: "middle",
           borderColor: "white",
           borderStyle: "solid",
-          borderWidth: "1px",
+          borderWidth: "1px"
         }}
         src={user.picture || "kikkare-url"}
       />
@@ -59,7 +59,7 @@ const Avatar = (props) => {
             borderColor: "veryDark",
             borderStyle: "solid",
             borderWidth: "1px",
-            borderRadius: 1,
+            borderRadius: 1
           }}
           style={styles.popper}
           {...attributes.popper}
@@ -69,7 +69,7 @@ const Avatar = (props) => {
               sx={{
                 m: 0,
                 p: 0,
-                textAlign: "center",
+                textAlign: "center"
               }}
             >
               <Box>

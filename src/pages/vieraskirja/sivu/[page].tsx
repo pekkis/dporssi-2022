@@ -1,19 +1,19 @@
 /** @jsxImportSource theme-ui */
 
 import { Box } from "theme-ui";
-import Layout from "../../../components/layout/Layout";
-import Paginator from "../../../components/Paginator";
-import SEO from "../../../components/SEO";
+import Layout from "@/components/layout/Layout";
+import Paginator from "@/components/Paginator";
+import SEO from "@/components/SEO";
 import { FC } from "react";
-import { GuestBookEntry } from "../../../types";
-import SectionHeading from "../../../components/SectionHeading";
+import { GuestBookEntry } from "@/types";
+import SectionHeading from "@/components/SectionHeading";
 import { GetServerSideProps } from "next";
 import axios from "axios";
-import GuestbookEntry from "../../../components/GuestbookEntry";
-import GuestbookFormWrapper from "../../../components/GuestbookForm";
-import Paragraph from "../../../components/Paragraph";
-import { useUserStore } from "../../../services/state";
-import ContentBox from "../../../components/layout/ContentBox";
+import GuestbookEntry from "@/components/GuestbookEntry";
+import GuestbookFormWrapper from "@/components/GuestbookForm";
+import Paragraph from "@/components/Paragraph";
+import { useUserStore } from "@/services/state";
+import ContentBox from "@/components/layout/ContentBox";
 
 const postsPerPage = 10;
 

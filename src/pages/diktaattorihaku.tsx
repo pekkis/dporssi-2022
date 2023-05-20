@@ -1,19 +1,19 @@
 import { Box, Paragraph } from "theme-ui";
-import Layout from "../components/layout/Layout";
-import SEO from "../components/SEO";
+import Layout from "@/components/layout/Layout";
+import SEO from "@/components/SEO";
 import { FC, useState } from "react";
-import { Dictator } from "../types";
-import SectionHeading from "../components/SectionHeading";
-import DictatorSearch from "../components/dictator-search/DictatorSearch";
-import InternalLink from "../components/InternalLink";
-import { Locale, url } from "../services/url";
+import { Dictator } from "@/types";
+import SectionHeading from "@/components/SectionHeading";
+import DictatorSearch from "@/components/dictator-search/DictatorSearch";
+import InternalLink from "@/components/InternalLink";
+import { Locale, url } from "@/services/url";
 import { useEffect } from "react";
 import { GetStaticProps } from "next";
 import { gql } from "graphql-request";
-import { graphQLClient } from "../services/graphql";
-import Spinner from "../components/Spinner";
-import { hours } from "../services/cache";
-import ContentBox from "../components/layout/ContentBox";
+import { graphQLClient } from "@/services/graphql";
+import Spinner from "@/components/Spinner";
+import { hours } from "@/services/cache";
+import ContentBox from "@/components/layout/ContentBox";
 
 type Props = {
   dictators: Dictator[];

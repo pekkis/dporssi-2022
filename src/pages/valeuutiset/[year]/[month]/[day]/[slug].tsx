@@ -1,18 +1,18 @@
 /** @jsxImportSource theme-ui */
 
-import Layout from "../../../../../components/layout/Layout";
+import Layout from "@/components/layout/Layout";
 import { gql } from "graphql-request";
-import { graphQLClient } from "../../../../../services/graphql";
+import { graphQLClient } from "@/services/graphql";
 import { FC } from "react";
-import PropagandaFull from "../../../../../components/PropagandaFull";
+import PropagandaFull from "@/components/PropagandaFull";
 import { GetStaticPaths, GetStaticProps } from "next";
-import { FakeNewsItem } from "../../../../../types";
-import { Locale, url } from "../../../../../services/url";
-import SEO from "../../../../../components/SEO";
+import { FakeNewsItem } from "@/types";
+import { Locale, url } from "@/services/url";
+import SEO from "@/components/SEO";
 
-import defaultImage from "../../../../../data/propaganda/mao-propaganda-2020.jpg";
-import { createDate } from "../../../../../services/date";
-import ContentBox from "../../../../../components/layout/ContentBox";
+import defaultImage from "@/data/propaganda/mao-propaganda-2020.jpg";
+import { createDate } from "@/services/date";
+import ContentBox from "@/components/layout/ContentBox";
 
 type Props = {
   propaganda: FakeNewsItem;

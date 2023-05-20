@@ -1,7 +1,7 @@
 /** @jsxImportSource theme-ui */
 import { FC } from "react";
 import { Box, jsx } from "theme-ui";
-import InternalLink from "../InternalLink";
+import InternalLink from "@/components/InternalLink";
 
 export interface TagInterface {
   name: string;
@@ -25,7 +25,7 @@ const Tag: FC<Props> = ({ as = "li", tag }) => {
         backgroundColor: "primary",
         color: "white",
         borderRadius: "5px",
-        fontWeight: "light",
+        fontWeight: "light"
       }}
     >
       <InternalLink variant="links.tag" to={`/luokittelu/${tag.slug}`}>

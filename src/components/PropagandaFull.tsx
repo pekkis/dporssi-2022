@@ -2,8 +2,8 @@ import { Box, Heading } from "theme-ui";
 import Markdown from "./Markdown";
 import NextImage from "next/image";
 import ContentfulImage from "./contentful/ContentfulImage";
-import { FakeNewsItem, StaticImageData } from "../types";
-import { createDate } from "../services/date";
+import { FakeNewsItem, StaticImageData } from "@/types";
+import { createDate } from "@/services/date";
 
 type Props = {
   propaganda: FakeNewsItem;

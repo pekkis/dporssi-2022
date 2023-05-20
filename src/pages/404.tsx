@@ -1,11 +1,11 @@
-import Layout from "../components/layout/Layout";
+import Layout from "@/components/layout/Layout";
 import { Box } from "theme-ui";
-import SEO from "../components/SEO";
-import InternalLink from "../components/InternalLink";
-import SectionHeading from "../components/SectionHeading";
+import SEO from "@/components/SEO";
+import InternalLink from "@/components/InternalLink";
+import SectionHeading from "@/components/SectionHeading";
 
 import Image from "next/image";
-import notFound from "../data/not-found.jpg";
+import notFound from "@/data/not-found.jpg";
 
 const NotFoundPage = () => {
   return (
@@ -20,13 +20,13 @@ const NotFoundPage = () => {
         sx={{
           display: ["block", "grid"],
           gridTemplateColumns: "auto 300px",
-          columnGap: 4,
+          columnGap: 4
         }}
       >
         <Box
           sx={{
             gridRowStart: 1,
-            gridColumnStart: 2,
+            gridColumnStart: 2
           }}
         >
           <Image
@@ -39,7 +39,7 @@ const NotFoundPage = () => {
           mt={2}
           sx={{
             gridRowStart: 1,
-            gridColumnStart: 1,
+            gridColumnStart: 1
           }}
         >
           <SectionHeading>Sivua ei löytynyt!</SectionHeading>

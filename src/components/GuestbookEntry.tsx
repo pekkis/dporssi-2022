@@ -4,9 +4,9 @@ import { DateTime } from "luxon";
 import { FC, memo } from "react";
 
 import Markdown from "./Markdown";
-import { GuestBookEntry } from "../types";
-import { createDate } from "../services/date";
-import { UserInterface } from "../services/state";
+import { GuestBookEntry } from "@/types";
+import { createDate } from "@/services/date";
+import { UserInterface } from "@/services/state";
 import GuestbookReplyer from "./GuestbookReplyer";
 
 type Props = {

@@ -2,7 +2,7 @@ import * as contentful from "contentful-management";
 import util from "util";
 import TurndownService from "turndown";
 import { v4 } from "uuid";
-import { getFirestore } from "../services/firebase-admin";
+import { getFirestore } from "@/services/firebase-admin";
 import { reverse, sortBy } from "ramda";
 
 import dotenv from "dotenv";

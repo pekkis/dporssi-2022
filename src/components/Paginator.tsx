@@ -4,8 +4,8 @@ import { FC, memo } from "react";
 import { Box } from "theme-ui";
 import { range } from "ramda";
 import InternalLink from "./InternalLink";
-import { Locale } from "../services/url";
-import { url } from "../services/url";
+import { Locale } from "@/services/url";
+import { url } from "@/services/url";
 
 type Props = {
   id?: string;
@@ -37,7 +37,7 @@ const Paginator: FC<Props> = ({
   currentPage,
   numPages,
   getLink,
-  usePreviousAndNext = false,
+  usePreviousAndNext = false
 }) => {
   return (
     <Box
@@ -45,7 +45,7 @@ const Paginator: FC<Props> = ({
       aria-label={label}
       as="nav"
       sx={{
-        textAlign: "center",
+        textAlign: "center"
       }}
     >
       {usePreviousAndNext && (

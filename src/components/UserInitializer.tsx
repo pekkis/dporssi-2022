@@ -1,6 +1,6 @@
 import { FC, useEffect } from "react";
-import { useUserStore } from "../services/state";
-import { auth } from "../services/firebase";
+import { useUserStore } from "@/services/state";
+import { auth } from "@/services/firebase";
 import axios from "axios";
 import { onAuthStateChanged } from "firebase/auth";
 

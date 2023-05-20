@@ -1,16 +1,16 @@
 import { GetStaticPaths, GetStaticProps } from "next";
 import { FC } from "react";
 import { Box } from "theme-ui";
-import DictatorList from "../../components/dictator/DictatorList";
-import Layout from "../../components/layout/Layout";
-import Markdown from "../../components/Markdown";
-import SectionHeading from "../../components/SectionHeading";
-import SEO from "../../components/SEO";
-import { sortBySortName } from "../../services/dictator";
-import { Continent, Country, Dictator } from "../../types";
+import DictatorList from "@/components/dictator/DictatorList";
+import Layout from "@/components/layout/Layout";
+import Markdown from "@/components/Markdown";
+import SectionHeading from "@/components/SectionHeading";
+import SEO from "@/components/SEO";
+import { sortBySortName } from "@/services/dictator";
+import { Continent, Country, Dictator } from "@/types";
 import { gql } from "graphql-request";
-import { graphQLClient } from "../../services/graphql";
-import ContentBox from "../../components/layout/ContentBox";
+import { graphQLClient } from "@/services/graphql";
+import ContentBox from "@/components/layout/ContentBox";
 
 type Props = {
   continent: Continent;

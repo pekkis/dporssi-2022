@@ -1,5 +1,5 @@
 import { useMediaQuery } from "react-responsive";
-import { breakpoints } from "../../services/theme";
+import { breakpoints } from "@/services/theme";
 
 // breakpoints: ["480px", "640px", "1366px"],
 

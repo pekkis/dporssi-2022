@@ -1,30 +1,30 @@
 import { FC } from "react";
-import Markdown from "../../components/Markdown";
-import Taxonomies from "../../components/taxonomy/Taxonomies";
-import Reign from "../../components/dictator/Reign";
-import Layout from "../../components/layout/Layout";
+import Markdown from "@/components/Markdown";
+import Taxonomies from "@/components/taxonomy/Taxonomies";
+import Reign from "@/components/dictator/Reign";
+import Layout from "@/components/layout/Layout";
 import { Box } from "theme-ui";
-import SEO from "../../components/SEO";
-import DataTable from "../../components/dictator/DataTable";
-import CountryLink from "../../components/dictator/CountryLink";
-import RankingRow from "../../components/dictator/RankingRow";
-import ExternalLink from "../../components/ExternalLink";
+import SEO from "@/components/SEO";
+import DataTable from "@/components/dictator/DataTable";
+import CountryLink from "@/components/dictator/CountryLink";
+import RankingRow from "@/components/dictator/RankingRow";
+import ExternalLink from "@/components/ExternalLink";
 import {
   getReignDuration,
   sortByCanonicalRanking,
   sortBySortName
-} from "../../services/dictator";
-import { Dictator } from "../../types";
-import NameHeading from "../../components/dictator/NameHeading";
-import LifespanRow from "../../components/dictator/LifespanRow";
-import AlphabeticalRow from "../../components/dictator/AlphabeticalRow";
+} from "@/services/dictator";
+import { Dictator } from "@/types";
+import NameHeading from "@/components/dictator/NameHeading";
+import LifespanRow from "@/components/dictator/LifespanRow";
+import AlphabeticalRow from "@/components/dictator/AlphabeticalRow";
 import { memo } from "react";
 import { GetStaticPaths, GetStaticProps } from "next";
 import { gql } from "graphql-request";
-import { graphQLClient } from "../../services/graphql";
-import ContentfulImage from "../../components/contentful/ContentfulImage";
+import { graphQLClient } from "@/services/graphql";
+import ContentfulImage from "@/components/contentful/ContentfulImage";
 import { findIndex, slice } from "ramda";
-import ContentBox from "../../components/layout/ContentBox";
+import ContentBox from "@/components/layout/ContentBox";
 
 type Props = {
   dictator: Dictator;

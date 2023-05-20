@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { Heading } from "theme-ui";
-import { Dictator } from "../../types";
+import { Dictator } from "@/types";
 
 type Props = {
   dictator: Dictator;

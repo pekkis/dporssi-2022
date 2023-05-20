@@ -1,12 +1,12 @@
 /** @jsxImportSource theme-ui */
 import { Box, Heading, jsx } from "theme-ui";
 import { DateTime } from "luxon";
-import { Locale, url } from "../services/url";
+import { Locale, url } from "@/services/url";
 import InternalLink from "./InternalLink";
 import Markdown from "./Markdown";
 import { FaAngleDoubleRight } from "react-icons/fa";
-import { FakeNewsItem } from "../types";
-import { createDate } from "../services/date";
+import { FakeNewsItem } from "@/types";
+import { createDate } from "@/services/date";
 
 type Props = {
   propaganda: FakeNewsItem;

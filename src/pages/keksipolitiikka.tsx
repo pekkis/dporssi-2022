@@ -1,10 +1,10 @@
 /** @jsxImportSource theme-ui */
 
 import { Box } from "theme-ui";
-import ContentBox from "../components/layout/ContentBox";
-import Layout from "../components/layout/Layout";
-import SectionHeading from "../components/SectionHeading";
-import SEO from "../components/SEO";
+import ContentBox from "@/components/layout/ContentBox";
+import Layout from "@/components/layout/Layout";
+import SectionHeading from "@/components/SectionHeading";
+import SEO from "@/components/SEO";
 
 const CookiePolicyPage = () => {
   return (

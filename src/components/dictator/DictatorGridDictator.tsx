@@ -1,14 +1,17 @@
 /** @jsxImportSource theme-ui */
 
-import { navigate } from "../../services/backwards-compatibility";
+import { navigate } from "@/services/backwards-compatibility";
 import { FC } from "react";
 import { Box } from "theme-ui";
-import { Dictator } from "../../types";
+import { Dictator } from "@/types";
 // import { GatsbyImage } from "gatsby-plugin-image";
-import InternalLink from "../InternalLink";
+import InternalLink from "@/components/InternalLink";
 import { memo } from "react";
-import { ExtraInfoComponent, Highlighter } from "../dictator-search/service";
-import Image from "../contentful/ContentfulImage";
+import {
+  ExtraInfoComponent,
+  Highlighter
+} from "@/components/dictator-search/service";
+import Image from "@/components/contentful/ContentfulImage";
 import { useRouter } from "next/router";
 
 type Props = {
@@ -20,7 +23,7 @@ type Props = {
 const DictatorGridDictator: FC<Props> = ({
   extraInfo,
   fadeOutIf,
-  dictator,
+  dictator
 }) => {
   const ExtraInfoComponent = extraInfo;
 
@@ -34,7 +37,7 @@ const DictatorGridDictator: FC<Props> = ({
       sx={{
         cursor: "pointer",
         opacity: isActive ? 1 : 0.66,
-        filter: isActive ? undefined : "grayscale(100%) sepia(50%)",
+        filter: isActive ? undefined : "grayscale(100%) sepia(50%)"
       }}
       onClick={() => {
         router.push(to);
@@ -42,7 +45,7 @@ const DictatorGridDictator: FC<Props> = ({
     >
       <Box
         sx={{
-          position: "relative",
+          position: "relative"
         }}
       >
         {dictator.canonicalRanking && (
@@ -60,7 +63,7 @@ const DictatorGridDictator: FC<Props> = ({
               color: "white",
               backgroundColor: "link",
               borderRadius: 1,
-              paddingY: "4px",
+              paddingY: "4px"
               /*
         textShadow:
           "-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000"
@@ -78,7 +81,7 @@ const DictatorGridDictator: FC<Props> = ({
             borderColor: "link",
             borderWidth: "1px",
             borderRadius: 1,
-            display: "block",
+            display: "block"
           }}
           alt={dictator.name}
         />
@@ -86,7 +89,7 @@ const DictatorGridDictator: FC<Props> = ({
       <Box
         sx={{
           overflow: "hidden",
-          textOverflow: "ellipsis",
+          textOverflow: "ellipsis"
         }}
       >
         <Box>

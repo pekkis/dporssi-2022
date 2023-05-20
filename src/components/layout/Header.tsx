@@ -2,7 +2,7 @@
 
 import { FC, useState } from "react";
 import { Box, Flex, Heading, MenuButton } from "theme-ui";
-import Adi from "../Adi";
+import Adi from "@/components/Adi";
 import Container from "./Container";
 import MainMenu from "./MainMenu";
 import MobileMenu from "./MobileMenu";

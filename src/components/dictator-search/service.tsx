@@ -13,8 +13,8 @@ import {
   sortByUpdatedAt,
   getAgeInPower,
   sortByAgeInPower
-} from "../../services/dictator";
-import { Dictator } from "../../types";
+} from "@/services/dictator";
+import { Dictator } from "@/types";
 import ExtraInfoBox from "./ExtraInfoBox";
 
 export type Highlighter = (d: Dictator) => boolean;

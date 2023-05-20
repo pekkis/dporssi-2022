@@ -2,14 +2,14 @@ import { DateTime } from "luxon";
 import {
   PossibleHighlights,
   PossibleSortrados
-} from "../components/dictator-search/service";
+} from "@/components/dictator-search/service";
 import {
   Continent,
   Country,
   Dictator,
   FakeNewsItem,
   TaxonomyTerm
-} from "../types";
+} from "@/types";
 
 const urls = {
   index: {
@@ -145,6 +145,6 @@ export type RouteName = keyof typeof urls;
 export const url = <A extends RouteName>(
   name: A,
   locale: Locale
-): typeof urls[A][Locale] => {
+): (typeof urls)[A][Locale] => {
   return urls[name][locale];
 };

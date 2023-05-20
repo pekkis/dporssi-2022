@@ -1,9 +1,9 @@
-import Layout from "../components/layout/Layout";
+import Layout from "@/components/layout/Layout";
 import { Box } from "theme-ui";
-import SEO from "../components/SEO";
-import SectionHeading from "../components/SectionHeading";
-import LoginMethods from "../components/LoginMethods";
-import ContentBox from "../components/layout/ContentBox";
+import SEO from "@/components/SEO";
+import SectionHeading from "@/components/SectionHeading";
+import LoginMethods from "@/components/LoginMethods";
+import ContentBox from "@/components/layout/ContentBox";
 
 const LoginPage = () => {
   return (

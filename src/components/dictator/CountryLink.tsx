@@ -1,5 +1,5 @@
 import { FC } from "react";
-import InternalLink from "../InternalLink";
+import InternalLink from "@/components/InternalLink";
 
 type Props = {
   country: {

@@ -1,8 +1,8 @@
 /** @jsxImportSource theme-ui */
 import { FC, memo, useDeferredValue } from "react";
 import { Box, Flex, Link, jsx } from "theme-ui";
-import { Dictator } from "../../types";
-import DictatorGrid from "../dictator/DictatorGrid";
+import { Dictator } from "@/types";
+import DictatorGrid from "@/components/dictator/DictatorGrid";
 import { FaAngleUp, FaAngleDown } from "react-icons/fa";
 
 import Filters from "./Filters";
@@ -14,7 +14,7 @@ import {
   Sortrado,
   sortrados
 } from "./service";
-import SubHeading from "../SubHeading";
+import SubHeading from "@/components/SubHeading";
 import { useMemo } from "react";
 import { useState } from "react";
 import useStore from "./store";
