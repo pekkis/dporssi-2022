@@ -77,13 +77,11 @@ const GuestbookForm = () => {
 
       console.log(process.env.NEXT_PUBLIC_API, "hihi haah");
 
+      const url = `${process.env.NEXT_PUBLIC_API}/api/captcha`;
       const token = await executeRecaptcha("login_page");
-      const ret = await axios.post(
-        `${process.env.NEXT_PUBLIC_API}/api/captcha`,
-        {
-          token
-        }
-      );
+      const ret = await axios.post(url, {
+        token
+      });
 
       const score = ret.data.score;
 
@@ -129,6 +127,7 @@ const GuestbookForm = () => {
         validationSchema={validationSchema}
         onSubmit={async (values) => {
           dispatch("POST");
+          /*
           try {
             await axios.post(
               `${process.env.NEXT_PUBLIC_API}/api/guestbook`,
@@ -139,6 +138,7 @@ const GuestbookForm = () => {
           } catch (e) {
             dispatch("ERROR");
           }
+          */
         }}
       >
         {({ errors, isValid }) => {
@@ -178,13 +178,22 @@ const GuestbookForm = () => {
               )}
 
               {!isSuccess && !isError && (
-                <Button
-                  disabled={!isValid || !isHuman || isPosting || isSuccess}
-                  type="submit"
-                >
-                  {isPosting && <Spinner />}
-                  Anti mennä!
-                </Button>
+                <>
+                  <Button
+                    disabled={
+                      "tussi" || !isValid || !isHuman || isPosting || isSuccess
+                    }
+                    type="submit"
+                  >
+                    {isPosting && <Spinner />}
+                    Anti mennä!
+                  </Button>
+
+                  <strong>
+                    Bottisuojaukseni on turhan kökkö joten tämä on disabloitu
+                    kunnes saan sen korjattua.
+                  </strong>
+                </>
               )}
               {isSuccess && (
                 <p sx={{ fontStyle: "italic" }}>

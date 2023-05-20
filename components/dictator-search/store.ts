@@ -1,5 +1,5 @@
 import { debounce } from "lodash-es";
-import create from "zustand";
+import { create } from "zustand";
 import { PossibleHighlights, PossibleSortrados } from "./service";
 
 type FilterType = {

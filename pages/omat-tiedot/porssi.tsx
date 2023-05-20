@@ -8,7 +8,7 @@ import RequiresAuthentication from "../../components/layout/RequiresAuthenticati
 import { useUserStore } from "../../services/state";
 import { useEffect } from "react";
 import { filter, indexBy, map, prop, values } from "ramda";
-import { DragDropContext, Droppable, Draggable } from "@react-forked/dnd";
+import { DragDropContext, Droppable, Draggable } from "@hello-pangea/dnd";
 import { sortBySortName } from "../../services/dictator";
 import shallow from "zustand/shallow";
 import Spinner from "../../components/Spinner";
@@ -187,8 +187,6 @@ const OwnRankingPage = (props) => {
       result.source.index,
       result.destination.index
     );
-
-    // console.log(newRanking, "new ranking");
 
     setRanking(newRanking, true);
   }

@@ -94,8 +94,6 @@ export const getStaticProps: GetStaticProps<Props, Params> = async (
       .map((c) => c.linkedFrom.dictatorCollection.items)
       .flat() as Dictator[];
 
-  console.log(dictators, "dittatori");
-
   return {
     props: {
       dictators,

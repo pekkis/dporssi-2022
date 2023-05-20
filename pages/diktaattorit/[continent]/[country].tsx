@@ -27,8 +27,6 @@ type Params = {
 export const getStaticProps: GetStaticProps<Props, Params> = async (
   context
 ) => {
-  console.log("CONTEXT", context);
-
   const query = gql`
     query Country($locale: String!, $slug: String!) {
       countryCollection(locale: $locale, limit: 1, where: { slug: $slug }) {

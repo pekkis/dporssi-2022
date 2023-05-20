@@ -23,20 +23,18 @@ const InternalLink: FC<Props> = ({
   const isLinkActive = isActive(router);
 
   return (
-    <Link href={to}>
-      <a
-        {...rest}
-        href={to}
-        className={isLinkActive && "active"}
-        sx={{
-          variant,
-          "&.active": {
-            fontWeight: "bold",
-            textDecoration: "underline"
-          }
-        }}
-      />
-    </Link>
+    <Link
+      href={to}
+      {...rest}
+      className={isLinkActive && "active"}
+      sx={{
+        variant,
+        "&.active": {
+          fontWeight: "bold",
+          textDecoration: "underline"
+        }
+      }}
+    />
   );
 };
 
