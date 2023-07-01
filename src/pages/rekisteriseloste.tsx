@@ -19,13 +19,11 @@ const RegistryPage = () => {
         <SubHeading>1. Rekisterinpitäjä</SubHeading>
 
         <p>
-          Mikko Forsström
+          Dr. Kobros Foundation
           <br />
-          Iskostie 2 b 23
+          Dr. Kobros vei
           <br />
-          01600 Vantaa
-          <br />
-          puh. 050-3028030
+          Lørenskog, Norja
           <br />
         </p>
 
@@ -34,13 +32,12 @@ const RegistryPage = () => {
         </SubHeading>
 
         <p>
-          Mikko Forsström
+          Dr. Kobros Foundation
           <br />
-          Iskostie 2 b 23
+          Dr. Kobros vei
           <br />
-          01600 Vantaa
+          Lørenskog, Norja
           <br />
-          puh. 050-3028030
         </p>
 
         <SubHeading>3. Rekisterin nimi</SubHeading>
@@ -113,8 +110,9 @@ const RegistryPage = () => {
 
         <p>
           Tietojärjestelmä on suojattu käyttäjätunnuksilla ja salasanoilla,
-          jotka ovat ainoastaan rekisterin käyttöön oikeutettujen (Mikko
-          Forsström, KGB, NSA ja Kiinan kansantasavallan 6-10-virasto) hallussa.
+          jotka ovat ainoastaan rekisterin käyttöön oikeutettujen (Dr. Kobros
+          Foundation, KGB, NSA ja Kiinan kansantasavallan 6-10-virasto)
+          hallussa.
         </p>
       </ContentBox>
     </Layout>

@@ -135,7 +135,7 @@ const Footer = () => {
               }}
             />
           </a>
-          copyright © Mikko Forsström. Käytä miten lystäät,{" "}
+          copyright © Dr. Kobros Foundation. Käytä miten lystäät,{" "}
           <ExternalLink
             icon={false}
             to="https://creativecommons.org/licenses/by/1.0/fi/"

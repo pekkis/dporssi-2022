@@ -66,9 +66,8 @@ const TermsOfUsePage = () => {
         </p>
 
         <p>
-          Mikäli aiemmat ehdot täyttävät, Diktaattoripörssi (ja sen puhemies
-          Mikko Forsström) myöntää sinulle oikeuden käyttää palvelua
-          haluamallasi tavalla, kunhan toimit{" "}
+          Mikäli aiemmat ehdot täyttävät, Diktaattoripörssi myöntää sinulle
+          oikeuden käyttää palvelua haluamallasi tavalla, kunhan toimit{" "}
           <ExternalLink
             to="http://creativecommons.org/licenses/by/1.0/fi/"
             rel="license"
