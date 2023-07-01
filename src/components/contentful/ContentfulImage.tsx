@@ -75,7 +75,7 @@ const ContentfulImage: FC<Props> = ({
             maxWidth: "100%"
           }}
           src={imageUrl}
-          title={data.title}
+          title={data.description}
           alt={alt}
         />
       </picture>

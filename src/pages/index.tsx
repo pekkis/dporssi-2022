@@ -56,6 +56,8 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
             width
             height
             url
+            description
+            title
           }
         }
       }
