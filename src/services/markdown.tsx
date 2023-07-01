@@ -16,7 +16,11 @@ const getTo = (data) => {
   return to;
 };
 
-const isExternalLink = (to) => {
+const isExternalLink = (to: string) => {
+  if (to.includes("diktaattoriporssi")) {
+    return false;
+  }
+
   const externalRegex = /^https?/;
   return externalRegex.test(to);
 };
