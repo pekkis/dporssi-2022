@@ -1,0 +1,11 @@
+services:
+  next:
+    build:
+      dockerfile: docker/next/Dockerfile
+    networks:
+      - web
+    ports:
+      - 3550:3550
+networks:
+  web:
+    driver: bridge

@@ -5,6 +5,6 @@ export const endpoint =
 
 export const graphQLClient = new GraphQLClient(endpoint, {
   headers: {
-    authorization: `Bearer ${process.env.CONTENTFUL_ACCESS_TOKEN}`,
-  },
+    authorization: `Bearer ${process.env.CONTENTFUL_ACCESS_TOKEN}`
+  }
 });
