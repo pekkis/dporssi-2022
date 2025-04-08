@@ -9,9 +9,13 @@ export const getApp = () => {
 
   const serviceAccount: ServiceAccount = {
     projectId: process.env.GOOGLE_PROJECT_ID,
-    privateKey: process.env.GOOGLE_PRIVATE_KEY.replace(/\\n/g, "\n"),
+    privateKey: Buffer.from(process.env.GOOGLE_PRIVATE_KEY!, "base64").toString(
+      "utf-8"
+    ),
     clientEmail: process.env.GOOGLE_CLIENT_EMAIL
   };
+
+  console.log("SA", serviceAccount);
 
   const credential = cert(serviceAccount);
 
