@@ -62,8 +62,6 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
 
   return (
     <>
-      <link rel="stylesheet" href="https://use.typekit.net/iwl1gmh.css"></link>
-
       <IconContext.Provider value={values}>
         <Responsivizer>
           <I18nextProvider i18n={i18n}>

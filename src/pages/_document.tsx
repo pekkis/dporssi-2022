@@ -4,7 +4,16 @@ export default function Document() {
   return (
     <Html lang="fi">
       <Head>
-        <link rel="stylesheet" href="https://use.typekit.net/iwl1gmh.css" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="anonymous"
+        />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,200;0,400;0,700;1,200;1,400;1,700&display=swap"
+          rel="stylesheet"
+        />
         <link
           rel="apple-touch-icon"
           sizes="180x180"

@@ -64,15 +64,16 @@ const theme = {
     body: 400,
     heading: 700,
     normal: 400,
-    bold: 700
+    bold: 700,
+    light: 200
   },
 
   zIndices: [-10, 0, 10, 100, 1000, 10000, 100000],
 
   fonts: {
     ...funk.fonts,
-    body: "din-2014, sans-serif",
-    heading: "din-2014, sans-serif"
+    body: "barlow, sans-serif",
+    heading: "barlow, sans-serif"
   },
   styles: {
     ...funk.styles,
