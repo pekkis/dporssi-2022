@@ -17,6 +17,8 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       try {
         const user = await getAuth().verifyIdToken(req.body.token);
 
+        console.log("USER", user);
+
         if (!user.email) {
           return res.status(401).json({
             error: "f0rb1DD3n!"

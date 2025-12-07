@@ -25,9 +25,9 @@ const ExternalLink: FC<Props> = ({
     sx={{
       color: "inherit",
       "&.active": {
-        fontWeight: "bold",
+        fontWeight: "bold"
       },
-      whiteSpace: "nowrap",
+      whiteSpace: "nowrap"
     }}
     {...rest}
   >
@@ -36,7 +36,7 @@ const ExternalLink: FC<Props> = ({
       <FaExternalLinkAlt
         sx={{
           verticalAlign: "middle",
-          ml: 1,
+          ml: 1
         }}
         alignmentBaseline="middle"
       />

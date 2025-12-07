@@ -7,10 +7,9 @@ import SEO from "@/components/SEO";
 import RequiresAuthentication from "@/components/layout/RequiresAuthentication";
 import { useUserStore } from "@/services/state";
 import { useEffect } from "react";
-import { filter, indexBy, map, prop, values } from "ramda";
+import { filter, indexBy, map, values } from "ramda";
 import { DragDropContext, Droppable, Draggable } from "@hello-pangea/dnd";
 import { sortBySortName } from "@/services/dictator";
-import shallow from "zustand/shallow";
 import Spinner from "@/components/Spinner";
 import ContentfulImage from "@/components/contentful/ContentfulImage";
 import { GrDrag } from "react-icons/gr";
@@ -134,26 +133,18 @@ const OwnRankingPage = (props) => {
 
   const user = useUserStore((state) => state.user);
 
-  const {
-    ranking,
-    setRanking,
-    isDirty,
-    saveRanking,
-    isSaving,
-    unlistDictator,
-    listDictator
-  } = useUserStore(
-    (state) => ({
-      ranking: state.ranking,
-      setRanking: state.setRanking,
-      isDirty: state.isDirty,
-      isSaving: state.isSaving,
-      saveRanking: state.saveRanking,
-      unlistDictator: state.unlistDictator,
-      listDictator: state.listDictator
-    }),
-    shallow
-  );
+  const ranking = useUserStore((state) => state.ranking);
+
+  const setRanking = useUserStore((state) => state.setRanking);
+
+  const isDirty = useUserStore((state) => state.isDirty);
+
+  const saveRanking = useUserStore((state) => state.saveRanking);
+  const isSaving = useUserStore((state) => state.isSaving);
+
+  const unlistDictator = useUserStore((state) => state.unlistDictator);
+
+  const listDictator = useUserStore((state) => state.listDictator);
 
   useEffect(() => {
     if (!user.data?.ranking) {

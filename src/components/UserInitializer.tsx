@@ -11,6 +11,8 @@ const UserInitializer: FC = () => {
 
   useEffect(() => {
     onAuthStateChanged(auth, (ret) => {
+      console.log("RET", ret);
+
       if (ret === null) {
         setUser({
           isAuthenticated: false,

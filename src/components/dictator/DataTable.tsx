@@ -15,7 +15,7 @@ const DataTable = ({ children }) => {
 
         th: {
           verticalAlign: "top",
-          width: "8em",
+          width: "8em"
         },
 
         "th, td": {
@@ -35,9 +35,9 @@ const DataTable = ({ children }) => {
           "ul, ol": {
             listStylePosition: "outside",
             m: 0,
-            pl: "1.5em",
-          },
-        },
+            pl: "1.5em"
+          }
+        }
       }}
     >
       {children}

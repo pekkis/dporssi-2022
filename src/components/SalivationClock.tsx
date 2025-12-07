@@ -14,7 +14,7 @@ const SalivationClock: FC = () => {
       "days",
       "hours",
       "minutes",
-      "seconds",
+      "seconds"
     ])
   );
 
@@ -27,7 +27,7 @@ const SalivationClock: FC = () => {
           "days",
           "hours",
           "minutes",
-          "seconds",
+          "seconds"
         ])
       );
     }, 1000);

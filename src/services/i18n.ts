@@ -5,15 +5,15 @@ const resources = {
   en: {
     translation: {
       Diktaattoripörssi: "Axis of Evil",
-      dictatorAge: "höhööö",
-    },
+      dictatorAge: "höhööö"
+    }
   },
   fi: {
     translation: {
       Diktaattoripörssi: "Diktaattoripörssi",
-      dictatorAge: "{{age, age}} vuotta",
-    },
-  },
+      dictatorAge: "{{age, age}} vuotta"
+    }
+  }
 };
 
 i18n
@@ -32,8 +32,8 @@ i18n
         }
         return value;
       },
-      escapeValue: false, // react already safes from xss
-    },
+      escapeValue: false // react already safes from xss
+    }
   });
 
 export default i18n;

@@ -39,8 +39,8 @@ function filterResetOptions(opts) {
       ...opts.playerVars,
       autoplay: 0,
       start: 0,
-      end: 0,
-    },
+      end: 0
+    }
   };
 }
 
@@ -90,7 +90,7 @@ class YouTube extends Component {
     PLAYING: 1,
     PAUSED: 2,
     BUFFERING: 3,
-    CUED: 5,
+    CUED: 5
   };
 
   constructor(props) {
@@ -206,7 +206,7 @@ class YouTube extends Component {
     const playerOpts = {
       ...this.props.opts,
       // preload the `videoId` video if one is already given
-      videoId: this.props.videoId,
+      videoId: this.props.videoId
     };
     this.internalPlayer = youTubePlayer(this.container, playerOpts);
     // attach event handlers
@@ -280,7 +280,7 @@ class YouTube extends Component {
     // set queueing options
     let autoplay = false;
     const opts = {
-      videoId: this.props.videoId,
+      videoId: this.props.videoId
     };
     if ("playerVars" in this.props.opts) {
       autoplay = this.props.opts.playerVars.autoplay === 1;
@@ -346,7 +346,7 @@ YouTube.propTypes = {
   onEnd: PropTypes.func,
   onStateChange: PropTypes.func,
   onPlaybackRateChange: PropTypes.func,
-  onPlaybackQualityChange: PropTypes.func,
+  onPlaybackQualityChange: PropTypes.func
 };
 
 YouTube.defaultProps = {
@@ -364,7 +364,7 @@ YouTube.defaultProps = {
   onStateChange: () => {},
   onPlaybackRateChange: () => {},
   onPlaybackQualityChange: () => {},
-  title: null,
+  title: null
 };
 
 export default YouTube;

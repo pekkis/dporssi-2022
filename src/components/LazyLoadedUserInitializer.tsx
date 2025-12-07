@@ -1,7 +1,7 @@
 import dynamic from "next/dynamic";
 
 const LazyLoadedUserInitializer = dynamic(() => import("./UserInitializer"), {
-  suspense: true,
+  suspense: true
 });
 
 export default LazyLoadedUserInitializer;

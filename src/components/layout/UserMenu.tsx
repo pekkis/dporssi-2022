@@ -1,7 +1,7 @@
 /** @jsxImportSource theme-ui */
 
 import { useState } from "react";
-import { usePopper } from "react-popper";
+import { useFloating } from "@floating-ui/react";
 import { Box } from "theme-ui";
 import { useUserStore } from "@/services/state";
 import InternalLink from "@/components/InternalLink";
@@ -17,14 +17,10 @@ const Avatar = (props) => {
   const [referenceElement, setReferenceElement] = useState(null);
   const [popperElement, setPopperElement] = useState(null);
   const [arrowElement, setArrowElement] = useState(null);
-  const { styles, attributes } = usePopper(referenceElement, popperElement, {
-    strategy: "fixed",
-    placement: "bottom",
 
-    modifiers: [
-      { name: "offset", options: { offset: [0, 10] } },
-      { name: "arrow", options: { element: arrowElement } }
-    ]
+  const { refs, floatingStyles } = useFloating({
+    strategy: "fixed",
+    placement: "bottom"
   });
 
   return (
@@ -33,7 +29,7 @@ const Avatar = (props) => {
         onClick={() => {
           setOpen(!isOpen);
         }}
-        ref={setReferenceElement}
+        ref={refs.setReference}
         sx={{
           cursor: "Pointer",
           borderRadius: "50%",
@@ -50,7 +46,7 @@ const Avatar = (props) => {
 
       {isOpen && (
         <Box
-          ref={setPopperElement}
+          ref={refs.setFloating}
           sx={{
             backgroundColor: "white",
             padding: 2,
@@ -61,8 +57,7 @@ const Avatar = (props) => {
             borderWidth: "1px",
             borderRadius: 1
           }}
-          style={styles.popper}
-          {...attributes.popper}
+          style={floatingStyles}
         >
           <Box as="nav">
             <Box

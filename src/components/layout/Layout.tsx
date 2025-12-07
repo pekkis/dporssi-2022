@@ -23,7 +23,7 @@ const Layout = ({ children }) => {
         "footer"
         `,
           gridTemplateRows:
-            "[header] minmax(min-content, max-content) [main] minmax(min-content, max-content) [footer] minmax(min-content, 1fr)",
+            "[header] minmax(min-content, max-content) [main] minmax(min-content, max-content) [footer] minmax(min-content, 1fr)"
         }}
       >
         <Header topMenu={topMenu} />
@@ -34,7 +34,7 @@ const Layout = ({ children }) => {
           as="main"
           sx={{
             gridArea: "main",
-            height: "100%",
+            height: "100%"
           }}
         >
           <Container>{children}</Container>

@@ -1,7 +1,7 @@
 import { useCallback, Suspense } from "react";
 import { ErrorBoundary } from "react-error-boundary";
 import theme from "@/services/theme";
-import { ThemeProvider } from "theme-ui";
+import { ThemeUIProvider } from "theme-ui";
 import { Global } from "@emotion/react";
 import LazyLoadedUserInitializer from "./LazyLoadedUserInitializer";
 import InfernalServerErrorPage from "@/pages/500";
@@ -24,7 +24,7 @@ const App = (props) => {
       FallbackComponent={InfernalServerErrorPage}
       onError={errorHandler}
     >
-      <ThemeProvider theme={theme}>
+      <ThemeUIProvider theme={theme}>
         <Global
           styles={{
             html: {},
@@ -40,7 +40,7 @@ const App = (props) => {
           <LazyLoadedUserInitializer />
         </Suspense>
         {children}
-      </ThemeProvider>
+      </ThemeUIProvider>
     </ErrorBoundary>
   );
 };

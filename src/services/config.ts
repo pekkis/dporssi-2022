@@ -16,7 +16,7 @@ const siteConfig: SiteConfig = {
   url: process.env.SITE_URL,
   siteUrl: process.env.SITE_URL,
   image: "/public/icons/icon-144x144.png",
-  twitterUsername: "@dporssi",
+  twitterUsername: "@dporssi"
 };
 
 export default siteConfig;

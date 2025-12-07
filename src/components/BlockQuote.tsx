@@ -22,8 +22,8 @@ const BlockQuote = (props) => {
           fontSize: 7,
           lineHeight: "0",
           marginRight: 3,
-          verticalAlign: "-0.4em",
-        },
+          verticalAlign: "-0.4em"
+        }
       }}
     >
       {children}
