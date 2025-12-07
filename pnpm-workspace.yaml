@@ -1,4 +1,17 @@
+disallowWorkspaceCycles: true
+
+minimumReleaseAge: 4320
+
+minimumReleaseAgeExclude:
+  - "@next/third-parties"
+  - "next"
+  - "@next/bundle-analyzer"
+  - "eslint-config-next"
+  - "@next/eslint-plugin-next"
+  - "@next/env"
+
 onlyBuiltDependencies:
+  - "@swc/core"
   - esbuild
-  - protobufjs
   - sharp
+  - unrs-resolver
