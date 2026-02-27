@@ -1,8 +1,11 @@
 import { v4 } from "uuid";
 
-const AmnestyInternational = (props) => {
-  const { width, height, ...rest } = props;
+type Props = {
+  width?: number | string;
+  height?: number | string;
+};
 
+const AmnestyInternational = ({ width, height }: Props) => {
   const uuid = v4();
 
   return (

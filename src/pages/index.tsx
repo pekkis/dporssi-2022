@@ -14,23 +14,21 @@ import DictatorGrid from "@/components/dictator/DictatorGrid";
 import { GetStaticProps } from "next";
 import { hours } from "@/services/cache";
 import ContentBox from "@/components/layout/ContentBox";
-import { Dictator } from "@/types";
+import { Dictator, FakeNewsItem } from "@/types";
 import ExtraInfoBox from "@/components/dictator-search/ExtraInfoBox";
 import { createDate } from "@/services/date";
+import type { VideoItem } from "@/components/PropagandaTube";
 
 type Props = {
-  videos: Array<{}>;
-  propaganda: [];
+  videos: VideoItem[];
+  propaganda: FakeNewsItem[];
   dictators: Dictator[];
 };
 
-const videosPlusUkraine = (videos) => {
-  return [
-    {
-      ukraine: true
-    },
-    ...videos
-  ];
+type TubeItem = { videoId: string; title: string; description?: string };
+
+const videosPlusUkraine = (videos: TubeItem[]): VideoItem[] => {
+  return [{ ukraine: true as const }, ...videos];
 };
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
@@ -105,7 +103,6 @@ const IndexPage: FC<Props> = (props) => {
       <Layout>
         <ContentBox>
           <div className="index-grid">
-
             <section style={{ gridArea: "header" }}>
               <SectionHeading>Puhemiehen tervehdys!</SectionHeading>
 
@@ -176,7 +173,7 @@ const IndexPage: FC<Props> = (props) => {
                   <article className="my-2" key={item.sys.id}>
                     <div>
                       <strong>
-                        <time dateTime={date.toISODate()}>
+                        <time dateTime={date.toISODate() ?? undefined}>
                           {date.setLocale("fi").toLocaleString()}
                         </time>
                       </strong>

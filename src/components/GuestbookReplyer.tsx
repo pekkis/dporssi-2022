@@ -1,11 +1,11 @@
 import { FC, memo, useState } from "react";
 import { GuestBookEntry } from "@/types";
 import axios from "axios";
-import { UserInterface } from "@/services/state";
+import { User } from "@/services/state";
 
 type Props = {
   entry: GuestBookEntry;
-  user: UserInterface;
+  user: User;
 };
 
 const GuestbookEntry: FC<Props> = ({ entry, user }) => {

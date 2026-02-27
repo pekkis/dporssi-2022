@@ -49,9 +49,9 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         }
 
         return res.status(200).json({
-          user: doc?.data()
+          user: doc?.data() as { email: string; picture: string } | undefined
         });
-      } catch (e) {
+      } catch (_e) {
         return res.status(401).json({
           error: "f0rb1DD3n!"
         });

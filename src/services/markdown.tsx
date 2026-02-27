@@ -8,10 +8,10 @@ const replaceableDomains = [
   { from: /^https?:\/\/(www|beta)\.?diktaattoriporssi.com/, to: "" }
 ];
 
-const getTo = (data) => {
+const getTo = (href?: string): string => {
   const to = replaceableDomains.reduce(
     (a, r) => a.replace(r.from, r.to),
-    data.href
+    href ?? ""
   );
   return to;
 };
@@ -26,23 +26,23 @@ const isExternalLink = (to: string) => {
 };
 
 export const components = {
-  h3: (data) => {
-    return <SubHeading>{data.children}</SubHeading>;
+  h3: ({ children }: { children?: React.ReactNode }) => {
+    return <SubHeading>{children}</SubHeading>;
   },
 
-  h2: (data) => {
-    return <SectionHeading>{data.children}</SectionHeading>;
+  h2: ({ children }: { children?: React.ReactNode }) => {
+    return <SectionHeading>{children}</SectionHeading>;
   },
 
-  p: (data) => {
-    return <Paragraph>{data.children}</Paragraph>;
+  p: ({ children }: { children?: React.ReactNode }) => {
+    return <Paragraph>{children}</Paragraph>;
   },
 
-  a: (data) => {
-    const to = getTo(data);
+  a: ({ href, children }: { href?: string; children?: React.ReactNode }) => {
+    const to = getTo(href);
     if (isExternalLink(to)) {
-      return <ExternalLink to={to}>{data.children}</ExternalLink>;
+      return <ExternalLink to={to}>{children}</ExternalLink>;
     }
-    return <InternalLink to={to}>{data.children}</InternalLink>;
+    return <InternalLink to={to}>{children}</InternalLink>;
   }
 };

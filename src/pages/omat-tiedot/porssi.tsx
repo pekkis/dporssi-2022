@@ -5,7 +5,12 @@ import RequiresAuthentication from "@/components/layout/RequiresAuthentication";
 import { useUserStore } from "@/services/state";
 import { useEffect } from "react";
 import { filter, indexBy, map, values } from "ramda";
-import { DragDropContext, Droppable, Draggable } from "@hello-pangea/dnd";
+import {
+  DragDropContext,
+  Droppable,
+  Draggable,
+  DropResult
+} from "@hello-pangea/dnd";
 import { sortBySortName } from "@/services/dictator";
 import Spinner from "@/components/Spinner";
 import ContentfulImage from "@/components/contentful/ContentfulImage";
@@ -14,6 +19,7 @@ import SectionHeading from "@/components/SectionHeading";
 import SubHeading from "@/components/SubHeading";
 import { Dictator } from "@/types";
 import { GetServerSideProps } from "next";
+import { RankingItem } from "@/services/state";
 import { gql } from "graphql-request";
 import { graphQLClient } from "@/services/graphql";
 
@@ -67,19 +73,14 @@ export const getServerSideProps: GetServerSideProps<Props> = async (
   };
 };
 
-const Handle = (props) => {
+const Handle = (props: React.HTMLAttributes<HTMLDivElement>) => {
   const { ...rest } = props;
-  return (
-    <div
-      className="flex items-center bg-very-light p-2"
-      {...rest}
-    ></div>
-  );
+  return <div className="flex items-center bg-very-light p-2" {...rest}></div>;
 };
 
-const DictatorImage = (props) => {
-  const { dictator } = props;
+type DictatorImageProps = { dictator: Dictator };
 
+const DictatorImage = ({ dictator }: DictatorImageProps) => {
   return (
     <ContentfulImage
       data={dictator.primaryImage}
@@ -90,17 +91,19 @@ const DictatorImage = (props) => {
   );
 };
 
-const reorder = (list, startIndex, endIndex) => {
-  const result = Array.from(list);
+const reorder = (
+  list: RankingItem[],
+  startIndex: number,
+  endIndex: number
+): RankingItem[] => {
+  const result: RankingItem[] = Array.from(list);
   const [removed] = result.splice(startIndex, 1);
   result.splice(endIndex, 0, removed);
 
   return result;
 };
 
-const OwnRankingPage = (props) => {
-  const { dictators } = props;
-
+const OwnRankingPage = ({ dictators }: Props) => {
   const user = useUserStore((state) => state.user);
 
   const ranking = useUserStore((state) => state.ranking);
@@ -134,7 +137,7 @@ const OwnRankingPage = (props) => {
 
   const sortedDictators = indexBy((d: Dictator) => d.sys.id, dictators);
 
-  function onDragEnd(result) {
+  function onDragEnd(result: DropResult) {
     if (!result.destination) {
       return;
     }
@@ -168,7 +171,7 @@ const OwnRankingPage = (props) => {
             <>
               <div className="mx-2">
                 <section className="mb-4">
-                  <SectionHeading>Hei, {user?.email}!</SectionHeading>
+                  <SectionHeading>Hei, {user.email}!</SectionHeading>
 
                   <Paragraph>
                     Listaa riittävästi tuntemasi diktaattorit ja raahaile heidät
@@ -258,7 +261,10 @@ const OwnRankingPage = (props) => {
                                       <div>{d.name}</div>
                                     </div>
 
-                                    <div className="p-2 flex items-center justify-end" style={{ flexGrow: 100 }}>
+                                    <div
+                                      className="p-2 flex items-center justify-end"
+                                      style={{ flexGrow: 100 }}
+                                    >
                                       <button
                                         className="bg-primary text-white rounded px-4 py-2 cursor-pointer"
                                         onClick={() => unlistDictator(r.id)}
@@ -291,7 +297,10 @@ const OwnRankingPage = (props) => {
                         <div className="flex items-center p-2">
                           <div>{d.name}</div>
                         </div>
-                        <div className="p-2 flex items-center justify-end" style={{ flexGrow: 100 }}>
+                        <div
+                          className="p-2 flex items-center justify-end"
+                          style={{ flexGrow: 100 }}
+                        >
                           <button
                             className="bg-primary text-white rounded px-4 py-2 cursor-pointer"
                             onClick={() => listDictator(d.sys.id)}

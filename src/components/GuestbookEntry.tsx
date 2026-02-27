@@ -4,12 +4,12 @@ import { FC, memo } from "react";
 import Markdown from "./Markdown";
 import { GuestBookEntry } from "@/types";
 import { createDate } from "@/services/date";
-import { UserInterface } from "@/services/state";
+import { User } from "@/services/state";
 import GuestbookReplyer from "./GuestbookReplyer";
 
 type Props = {
   entry: GuestBookEntry;
-  user: UserInterface;
+  user: User;
 };
 
 const GuestbookEntry: FC<Props> = ({ entry, user }) => {
@@ -20,7 +20,9 @@ const GuestbookEntry: FC<Props> = ({ entry, user }) => {
       <div>
         <div className="mb-1 font-bold">
           {entry.author},{" "}
-          <time dateTime={date.toISO()}>{date.toLocaleString()}</time>
+          <time dateTime={date.toISO() ?? undefined}>
+            {date.toLocaleString()}
+          </time>
         </div>
         <Markdown>{entry.scribbling}</Markdown>
       </div>

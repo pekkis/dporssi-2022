@@ -13,7 +13,10 @@ const Filters: FC<Props> = ({ params }) => {
   const router = useRouter();
 
   const setFilter = useCallback(
-    (key, value) => {
+    (
+      key: keyof DictatorSearchParams,
+      value: DictatorSearchParams[keyof DictatorSearchParams]
+    ) => {
       const newParams = {
         ...params,
         [key]: value

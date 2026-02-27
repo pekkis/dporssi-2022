@@ -1,17 +1,20 @@
-import { Component } from "react";
+import { Component, ErrorInfo, ReactNode } from "react";
 import InfernalServerErrorPage from "@/pages/500";
 
-export default class ErrorBoundary extends Component {
-  state = {
-    error: null
+type Props = { children: ReactNode };
+type State = { hasError: boolean };
+
+export default class ErrorBoundary extends Component<Props, State> {
+  state: State = {
+    hasError: false
   };
 
-  constructor(props) {
+  constructor(props: Props) {
     super(props);
   }
 
-  componentDidCatch(error, errorInfo) {
-    this.setState({ error });
+  componentDidCatch(_error: Error, _errorInfo: ErrorInfo): void {
+    this.setState({ hasError: true });
 
     /*
     if (window.Sentry) {
@@ -26,7 +29,7 @@ export default class ErrorBoundary extends Component {
   }
 
   render() {
-    if (this.state.error) {
+    if (this.state.hasError) {
       // render fallback UI
       return <InfernalServerErrorPage />;
     } else {

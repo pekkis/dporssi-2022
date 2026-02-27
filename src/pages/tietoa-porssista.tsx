@@ -15,12 +15,21 @@ import dporssiAntiSocial from "@/data/diktaattoriporssi-antisocial.png";
 import dporssiSalivation from "@/data/diktaattoriporssi-salivaatio.png";
 import ContentBox from "@/components/layout/ContentBox";
 
-const StorySection = (props) => {
-  const { children, image } = props;
+type StorySectionProps = {
+  children: React.ReactNode;
+  image: {
+    image: { src: string; width: number; height: number };
+    alt: string;
+  };
+};
 
+const StorySection = ({ children, image }: StorySectionProps) => {
   return (
     <div className="my-4 block sm:flex w-full items-stretch">
-      <div className="w-full sm:w-1/2 sm:ml-8 mb-8 sm:mb-0 order-2" style={{ flexGrow: 2 }}>
+      <div
+        className="w-full sm:w-1/2 sm:ml-8 mb-8 sm:mb-0 order-2"
+        style={{ flexGrow: 2 }}
+      >
         <Image
           src={image.image.src}
           alt={image.alt}
@@ -28,9 +37,7 @@ const StorySection = (props) => {
           height={image.image.height}
         />
       </div>
-      <div className="w-full order-1">
-        {children}
-      </div>
+      <div className="w-full order-1">{children}</div>
     </div>
   );
 };

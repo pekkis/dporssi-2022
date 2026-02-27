@@ -7,7 +7,7 @@ import {
 } from "@/components/dictator-search/service";
 
 type Props = {
-  sorter?: Function;
+  sorter?: (dictators: Dictator[]) => Dictator[];
   extraInfo: ExtraInfoComponent;
   fadeOutIf: Highlighter;
   dictators: Dictator[];

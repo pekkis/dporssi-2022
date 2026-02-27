@@ -25,12 +25,12 @@ i18n
     keySeparator: false, // we do not use keys in form messages.welcome
 
     interpolation: {
-      format: (value, format, locale) => {
+      format: (value: unknown, format?: string, locale?: string): string => {
         if (format === "age") {
           const formatter = new Intl.NumberFormat(locale);
-          return formatter.format(value);
+          return formatter.format(value as number);
         }
-        return value;
+        return String(value);
       },
       escapeValue: false // react already safes from xss
     }

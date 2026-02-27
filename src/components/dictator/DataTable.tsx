@@ -1,4 +1,6 @@
-const DataTable = ({ children }) => {
+type Props = { children: React.ReactNode };
+
+const DataTable = ({ children }: Props) => {
   return (
     <table className="data-table">
       {children}

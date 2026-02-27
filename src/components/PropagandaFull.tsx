@@ -20,7 +20,9 @@ const PropagandaFull = (props: Props) => {
         <h2 className="text-2xl font-bold mb-0">{propaganda.title}</h2>
         <div className="mt-1">
           Julkaistu{" "}
-          <time dateTime={date.toISODate()}>{date.toLocaleString()}</time>
+          <time dateTime={date.toISODate() ?? undefined}>
+            {date.toLocaleString()}
+          </time>
         </div>
 
         <div className="mt-4 italic">
@@ -39,6 +41,7 @@ const PropagandaFull = (props: Props) => {
             src={defaultImage.src}
             width={defaultImage.width}
             height={defaultImage.height}
+            alt=""
           />
         )}
       </div>

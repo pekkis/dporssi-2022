@@ -11,6 +11,7 @@ const Menu: FC<Props> = () => {
 
   useEffect(() => {
     const elm = ref.current;
+    if (!elm) return;
     disableBodyScroll(elm);
     return () => {
       enableBodyScroll(elm);

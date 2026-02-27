@@ -17,7 +17,10 @@ const initialState = {
   isSuccess: false
 };
 
-const reducer = (state, action) => {
+type State = typeof initialState;
+type Action = "IS_HUMAN" | "POST" | "ERROR" | "SUCCESS";
+
+const reducer = (state: State, action: Action): State => {
   switch (action) {
     case "IS_HUMAN":
       return { ...state, isHuman: true };
@@ -47,12 +50,10 @@ const validationSchema = Yup.object().shape({
     .required("Vaadittu kenttä!")
 });
 
-const ErrorBox = ({ children }) => {
-  return (
-    <div className="-mt-4 text-primary mb-4">
-      {children}
-    </div>
-  );
+type ErrorBoxProps = { children: React.ReactNode };
+
+const ErrorBox = ({ children }: ErrorBoxProps) => {
+  return <div className="-mt-4 text-primary mb-4">{children}</div>;
 };
 
 const GuestbookForm = () => {
@@ -129,7 +130,9 @@ const GuestbookForm = () => {
         {({ errors, isValid }) => {
           return (
             <Form className="mt-4">
-              <label className="block font-bold mb-1 mt-2" htmlFor="author">Salanimi</label>
+              <label className="block font-bold mb-1 mt-2" htmlFor="author">
+                Salanimi
+              </label>
               <Field
                 disabled={isPosting || isSuccess}
                 name="author"
@@ -144,7 +147,9 @@ const GuestbookForm = () => {
                 </ErrorBox>
               )}
 
-              <label className="block font-bold mb-1 mt-2" htmlFor="scribbling">Terveiset</label>
+              <label className="block font-bold mb-1 mt-2" htmlFor="scribbling">
+                Terveiset
+              </label>
               <Field
                 disabled={isPosting || isSuccess}
                 name="scribbling"
@@ -163,9 +168,7 @@ const GuestbookForm = () => {
               {!isSuccess && !isError && (
                 <>
                   <button
-                    disabled={
-                      "tussi" || !isValid || !isHuman || isPosting || isSuccess
-                    }
+                    disabled={true}
                     type="submit"
                     className="bg-primary text-white rounded px-4 py-2 cursor-pointer disabled:opacity-50"
                   >
@@ -202,7 +205,7 @@ const GuestbookForm = () => {
 const GuestbookFormWrapper = () => {
   return (
     <GoogleReCaptchaProvider
-      reCaptchaKey={process.env.NEXT_PUBLIC_RECAPTCHA_ID}
+      reCaptchaKey={process.env.NEXT_PUBLIC_RECAPTCHA_ID ?? ""}
       language="fi"
       useRecaptchaNet={false}
       scriptProps={{

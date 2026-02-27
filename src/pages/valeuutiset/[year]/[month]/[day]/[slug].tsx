@@ -80,12 +80,12 @@ export const getStaticProps: GetStaticProps<Props, QueryParams> = async (
 
   const res = await graphQLClient.request(query, {
     locale: process.env.NEXT_PUBLIC_LOCALE,
-    slug: context.params.slug
+    slug: context.params!.slug
   });
 
   const item: FakeNewsItem | undefined = validate(
     res.propagandaCollection.items[0],
-    context.params
+    context.params!
   );
 
   if (!item) {

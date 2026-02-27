@@ -5,7 +5,7 @@ const CookieConsent = () => {
     <ReactCookieConsent
       location="bottom"
       buttonText="Ymmärrän!"
-      ButtonComponent={(props) => {
+      ButtonComponent={(props: React.HTMLAttributes<HTMLButtonElement>) => {
         const { style, ...rest } = props;
         return (
           <button

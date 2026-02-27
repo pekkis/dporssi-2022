@@ -5,7 +5,9 @@ import Container from "./Container";
 
 const topMenu: string = "70px";
 
-const Layout = ({ children }) => {
+type Props = { children: React.ReactNode };
+
+const Layout = ({ children }: Props) => {
   return (
     <>
       <CookieConsent />

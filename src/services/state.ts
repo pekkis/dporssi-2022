@@ -2,36 +2,36 @@ import { create } from "zustand";
 import axios from "axios";
 import { append } from "ramda";
 
-export type UserDataInterface = {
+export type UserData = {
   ranking: string[];
   numberOfVotes: number;
   secretName: string;
 };
 
-export type UserInterface = {
+export type User = {
   isInitialized: boolean;
   isAuthenticated: boolean;
   email: string | null;
   picture: string | null;
   token?: string;
-  data?: UserDataInterface;
+  data?: UserData;
 };
 
 type UserState = {
-  user: UserInterface;
-  ranking: RankingItemInterface[];
+  user: User;
+  ranking: RankingItem[];
   isDirty: boolean;
   isSaving: boolean;
   setToken: (token: string) => void;
   listDictator: (id: string) => void;
   unlistDictator: (id: string) => void;
-  setUser: (user?: UserInterface) => void;
-  setData: (data: UserDataInterface) => void;
-  setRanking: (ranking: RankingItemInterface[], setDirty: boolean) => void;
+  setUser: (user?: User) => void;
+  setData: (data: UserData) => void;
+  setRanking: (ranking: RankingItem[], setDirty: boolean) => void;
   saveRanking: () => void;
 };
 
-export type RankingItemInterface = {
+export type RankingItem = {
   id: string;
   text: string;
 };
@@ -83,7 +83,7 @@ export const useUserStore = create<UserState>((set, get) => ({
         token
       }
     })),
-  setUser: (user) => set(() => ({ user })),
+  setUser: (user) => set(() => ({ user: user as User })),
   setData: (data) =>
     set((state) => ({
       user: {

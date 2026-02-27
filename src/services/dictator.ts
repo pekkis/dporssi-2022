@@ -85,7 +85,7 @@ export const sortByListedAt = sortWith<Dictator>([
     const date = d.listedAt
       ? DateTime.fromISO(d.listedAt)
       : DateTime.fromISO("1899-01-01");
-    return date;
+    return date.toMillis();
   }),
   ascend(pipe(prop("sortName"), toLower))
 ]);
@@ -95,7 +95,7 @@ export const sortByUpdatedAt = sortWith<Dictator>([
     const date = d.majorStoryUpdateAt
       ? DateTime.fromISO(d.majorStoryUpdateAt)
       : DateTime.fromISO("1899-01-01");
-    return date;
+    return date.toMillis();
   }),
   ascend(pipe(prop("sortName"), toLower))
 ]);

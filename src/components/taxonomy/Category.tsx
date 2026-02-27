@@ -22,7 +22,10 @@ const grids = {
 
 const Category: FC<Props> = ({ name, taxonomy }) => {
   return (
-    <div className="mb-8" style={grids[name] || {}}>
+    <div
+      className="mb-8"
+      style={(grids as Record<string, React.CSSProperties>)[name] || {}}
+    >
       <SubHeading>{name}</SubHeading>
       {taxonomy.map((tag) => {
         return (

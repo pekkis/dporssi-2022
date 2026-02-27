@@ -8,7 +8,6 @@ import type { AppProps } from "next/app";
 import { FC, memo, ReactNode, useEffect, useState } from "react";
 import { isServer } from "@/services/env";
 import { useRouter } from "next/router";
-import { pageview } from "@/services/ga";
 
 import "../styles/globals.css";
 

@@ -69,12 +69,12 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
   const res = await graphQLClient.request(query, {
     locale: "fi",
-    skip: (parseInt(context.params.page as string, 10) - 1) * 10
+    skip: (parseInt(context.params!.page as string, 10) - 1) * 10
   });
 
   const dictators: Dictator[] = res.dictatorCollection.items;
   const total: number = res.dictatorCollection.total;
-  const currentPage = parseInt(context.params.page as string, 10);
+  const currentPage = parseInt(context.params!.page as string, 10);
   const numPages = Math.ceil(total / postsPerPage);
 
   if (numPages < currentPage) {

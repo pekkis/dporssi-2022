@@ -52,6 +52,6 @@ The app requires secrets to be functional. See `.env.example` for required varia
 
 ## Conventions
 
-- TypeScript build errors are ignored in `next.config.js` (`typescript.ignoreBuildErrors: true`)
+- Prefer `type` over `interface` for all TypeScript type declarations
 - pnpm workspace with dependency minimum age enforcement (4320 min) except for Next.js ecosystem packages
 - Non-root Docker user (`nextjs`) in production

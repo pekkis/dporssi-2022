@@ -1,7 +1,7 @@
-interface Props {
+type Props = {
   children?: React.ReactNode;
   className?: string;
-}
+};
 
 const Paragraph = ({ children, className }: Props) => {
   return (

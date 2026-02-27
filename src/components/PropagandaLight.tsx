@@ -27,7 +27,9 @@ const PropagandaLight = (props: Props) => {
         </h2>
         <div className="mt-1">
           Julkaistu{" "}
-          <time dateTime={date.toISODate()}>{date.toLocaleString()}</time>
+          <time dateTime={date.toISODate() ?? undefined}>
+            {date.toLocaleString()}
+          </time>
         </div>
       </header>
       <main className="my-2">

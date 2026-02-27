@@ -78,7 +78,9 @@ const ClassificationIndexPage: FC<Props> = (props) => {
 
         <div className="block sm:grid sm:grid-cols-2 sm:gap-8">
           {groupedTaxonomies.map(([name, taxonomies]) => {
-            return <Category name={name} taxonomy={taxonomies} key={name} />;
+            return (
+              <Category name={name} taxonomy={taxonomies ?? []} key={name} />
+            );
           })}
         </div>
       </ContentBox>

@@ -9,6 +9,7 @@ import {
   TaxonomyTerm
 } from "@/types";
 import { range } from "ramda";
+import { GetServerSidePropsContext } from "next";
 
 type SitemapEntry = {
   loc: string;
@@ -54,7 +55,7 @@ function SiteMap() {
   // getServerSideProps will do the heavy lifting
 }
 
-export async function getServerSideProps({ res }) {
+export async function getServerSideProps({ res }: GetServerSidePropsContext) {
   const query = gql`
     query SitemapStuff($locale: String!) {
       dictatorCollection(locale: $locale, limit: 150) {

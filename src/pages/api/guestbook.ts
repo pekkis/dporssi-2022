@@ -3,6 +3,18 @@ import { DateTime } from "luxon";
 import { getAuth, getFirestore } from "@/services/firebase-admin";
 import { v4 } from "uuid";
 
+type GuestbookData = {
+  id: string;
+  author: string;
+  scribbling: string;
+  date: string;
+  reply?: string;
+};
+
+type GuestbookStats = {
+  totalPosts: number;
+};
+
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const { method } = req;
 
@@ -48,11 +60,11 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         .get();
 
       const stat = await store.collection("guestbook").doc("---stats---").get();
-      const data = stat.data();
+      const data = stat.data() as GuestbookStats | undefined;
 
       return res.status(200).json({
-        totalPosts: data.totalPosts,
-        posts: docs.docs.map((d) => d.data())
+        totalPosts: data?.totalPosts,
+        posts: docs.docs.map((d) => d.data() as GuestbookData)
       });
     }
 
@@ -75,17 +87,18 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
           .doc("---stats---")
           .get();
 
+        const statsData = stat.data() as GuestbookStats | undefined;
         await store
           .collection("guestbook")
           .doc("---stats---")
           .set({
-            totalPosts: stat.data().totalPosts + 1
+            totalPosts: (statsData?.totalPosts ?? 0) + 1
           });
 
         return res.status(200).json({
           result: "success!"
         });
-      } catch (e) {
+      } catch (_e) {
         return res.status(401).json({
           error: "f0rb1DD3n!"
         });

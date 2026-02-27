@@ -117,7 +117,7 @@ export const sortrados: Record<PossibleSortrados, Sortrado> = {
   reignDuration: {
     sorter: sortByReignDuration,
     filter: () => true,
-    ExtraInfo: ({ dictator }) => {
+    ExtraInfo: ({ dictator }: { dictator: Dictator }) => {
       const duration = getReignDuration(dictator);
 
       return <ExtraInfoBox>{Math.floor(duration)} päivää</ExtraInfoBox>;
@@ -126,7 +126,7 @@ export const sortrados: Record<PossibleSortrados, Sortrado> = {
   ageInPower: {
     sorter: sortByAgeInPower,
     filter: () => true,
-    ExtraInfo: ({ dictator }) => {
+    ExtraInfo: ({ dictator }: { dictator: Dictator }) => {
       const age = getAgeInPower(dictator, "years");
 
       const { t } = useTranslation();
@@ -138,14 +138,14 @@ export const sortrados: Record<PossibleSortrados, Sortrado> = {
   ranking: {
     sorter: sortByCanonicalRanking,
     filter: (d) => !!d.canonicalRanking,
-    ExtraInfo: ({}) => {
+    ExtraInfo: (_props: { dictator: Dictator }) => {
       return null;
     }
   },
   age: {
     sorter: sortByAge,
     filter: () => true,
-    ExtraInfo: ({ dictator }) => {
+    ExtraInfo: ({ dictator }: { dictator: Dictator }) => {
       const age = getAge(dictator, "years");
       const { t } = useTranslation();
       return (

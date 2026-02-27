@@ -1,10 +1,10 @@
 import { FC } from "react";
 import InternalLink from "@/components/InternalLink";
 
-export interface TagInterface {
+export type TagInterface = {
   name: string;
   slug: string;
-}
+};
 
 type Props = {
   tag: TagInterface;

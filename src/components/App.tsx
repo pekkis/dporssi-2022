@@ -4,9 +4,9 @@ import LazyLoadedUserInitializer from "./LazyLoadedUserInitializer";
 import InfernalServerErrorPage from "@/pages/500";
 import { BrowserMicroSentryClient } from "@micro-sentry/browser";
 
-const App = (props) => {
-  const { children } = props;
+type Props = { children: React.ReactNode };
 
+const App = ({ children }: Props) => {
   const errorHandler = useCallback((e: Error) => {
     const client = new BrowserMicroSentryClient({
       dsn: "https://fac204d2785f4df786731dea1335ba9b@o330495.ingest.sentry.io/5574416",

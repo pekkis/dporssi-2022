@@ -98,7 +98,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
   const res = await graphQLClient.request(query, {
     locale: "fi",
-    slug: context.params.slug
+    slug: context.params!.slug
   });
 
   const dictator: Dictator = res.dictatorCollection.items[0];
@@ -160,7 +160,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const res = await graphQLClient.request(query, { locale: "fi" });
 
   return {
-    paths: res.dictatorCollection.items.map((d) => ({
+    paths: res.dictatorCollection.items.map((d: { slug: string }) => ({
       params: { slug: d.slug }
     })),
     fallback: "blocking"
@@ -184,7 +184,10 @@ const DictatorItemPage: FC<Props> = (props) => {
       />
 
       <ContentBox>
-        <article className="block sm:grid" style={{ gridTemplateColumns: "4fr 2fr", columnGap: "2rem" }}>
+        <article
+          className="block sm:grid"
+          style={{ gridTemplateColumns: "4fr 2fr", columnGap: "2rem" }}
+        >
           <header
             className="mb-8"
             style={{ gridColumnStart: 1, gridColumnEnd: 3 }}

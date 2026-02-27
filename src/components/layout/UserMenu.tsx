@@ -1,14 +1,14 @@
 import { useState } from "react";
 import { useFloating } from "@floating-ui/react";
-import { useUserStore } from "@/services/state";
+import { useUserStore, User } from "@/services/state";
 import InternalLink from "@/components/InternalLink";
 import { FC } from "react";
 import { signOut } from "firebase/auth";
 import { auth } from "@/services/firebase";
 
-const Avatar = (props) => {
-  const { user } = props;
+type AvatarProps = { user: User };
 
+const Avatar = ({ user }: AvatarProps) => {
   const [isOpen, setOpen] = useState(false);
 
   const { refs, floatingStyles } = useFloating({
@@ -25,7 +25,7 @@ const Avatar = (props) => {
         ref={refs.setReference}
         className="cursor-pointer rounded-full w-[30px] h-[30px] block align-middle border border-white"
         src={user.picture || "kikkare-url"}
-        alt={user.displayName || "käyttäjä"}
+        alt={user.email || "käyttäjä"}
       />
 
       {isOpen && (

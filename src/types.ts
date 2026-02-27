@@ -12,7 +12,7 @@ export type ContentfulImageData = {
   url: string;
   width: number;
   height: number;
-  description: string;
+  description?: string;
 };
 
 export type Dictator = {

@@ -1,4 +1,5 @@
 import Head from "next/head";
+import { ReactElement } from "react";
 
 /*
 <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -12,8 +13,8 @@ import Head from "next/head";
 </script>
 */
 
-const Stalker = (): JSX.Element => {
-  return <Head></Head>;
+const Stalker = (): ReactElement => {
+  return <Head>{null}</Head>;
 };
 
 export default Stalker;

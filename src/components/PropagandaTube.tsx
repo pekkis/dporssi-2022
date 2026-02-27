@@ -1,4 +1,3 @@
-import { useCallback } from "react";
 import Youtube from "./Youtube";
 import { nth } from "ramda";
 import { FC, useState } from "react";
@@ -6,7 +5,36 @@ import { FaChevronCircleRight, FaChevronCircleLeft } from "react-icons/fa";
 
 import ukraineFlag from "./ukraine-flag.png";
 
-const NormalVideo = ({ video, videos, setCurrent, hasLess, hasMore }) => {
+type NormalVideoItem = {
+  videoId: string;
+  title: string;
+  description?: string;
+  nsfw?: boolean;
+  ukraine?: false;
+};
+
+type UkraineVideo = { ukraine: true };
+
+export type VideoItem = NormalVideoItem | UkraineVideo;
+
+type SharedNavProps = {
+  videos: VideoItem[];
+  setCurrent: React.Dispatch<React.SetStateAction<number>>;
+  hasLess: boolean;
+  hasMore: boolean;
+};
+
+type NormalVideoComponentProps = SharedNavProps & {
+  video: NormalVideoItem;
+};
+
+const NormalVideo = ({
+  video,
+  videos,
+  setCurrent,
+  hasLess,
+  hasMore
+}: NormalVideoComponentProps) => {
   return (
     <>
       <Youtube videoId={video.videoId} />
@@ -49,13 +77,15 @@ const NormalVideo = ({ video, videos, setCurrent, hasLess, hasMore }) => {
   );
 };
 
-const SupportUkraine = ({ videos, setCurrent, hasLess, hasMore }) => {
+const SupportUkraine = ({
+  videos,
+  setCurrent,
+  hasLess,
+  hasMore
+}: SharedNavProps) => {
   return (
     <>
-      <div
-        className="relative"
-        style={{ paddingBottom: "56.25%", height: 0 }}
-      >
+      <div className="relative" style={{ paddingBottom: "56.25%", height: 0 }}>
         <div className="flex items-center justify-center absolute inset-0">
           <a
             rel="noreferrer"
@@ -82,9 +112,7 @@ const SupportUkraine = ({ videos, setCurrent, hasLess, hasMore }) => {
             }}
           />
         </div>
-        <div className="px-2">
-          Ukrainan asia on meidän asiamme! Auta!
-        </div>
+        <div className="px-2">Ukrainan asia on meidän asiamme! Auta!</div>
         <div className="text-2xl self-start">
           <FaChevronCircleRight
             onClick={(e) => {
@@ -105,22 +133,11 @@ const SupportUkraine = ({ videos, setCurrent, hasLess, hasMore }) => {
 };
 
 type Props = {
-  videos: {
-    videoId: string;
-    title: string;
-    description?: string;
-  }[];
+  videos: VideoItem[];
 };
 
 const PropagandaTube: FC<Props> = ({ videos }) => {
   const [current, setCurrent] = useState(0);
-
-  const setVideoIndex = useCallback(
-    (index) => {
-      setCurrent(index);
-    },
-    [setCurrent]
-  );
 
   const video = nth(current, videos);
 
@@ -137,7 +154,7 @@ const PropagandaTube: FC<Props> = ({ videos }) => {
         videos={videos}
         hasMore={hasMore}
         hasLess={hasLess}
-        setCurrent={setVideoIndex}
+        setCurrent={setCurrent}
       />
     );
   }
@@ -148,7 +165,7 @@ const PropagandaTube: FC<Props> = ({ videos }) => {
       videos={videos}
       hasMore={hasMore}
       hasLess={hasLess}
-      setCurrent={setVideoIndex}
+      setCurrent={setCurrent}
     />
   );
 };

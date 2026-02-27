@@ -85,7 +85,7 @@ export const getStaticProps: GetStaticProps<Props, { slug: string }> = async (
 
   const res = await graphQLClient.request(query, {
     locale: "fi",
-    slug: context.params.slug
+    slug: context.params!.slug
   });
 
   const term: TaxonomyTerm | undefined = res.taxonomyTermCollection.items[0];
@@ -118,7 +118,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const res = await graphQLClient.request(query, { locale: "fi" });
 
   return {
-    paths: res.taxonomyTermCollection.items.map((d) => ({
+    paths: res.taxonomyTermCollection.items.map((d: { slug: string }) => ({
       params: { slug: d.slug }
     })),
     fallback: "blocking"
