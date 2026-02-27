@@ -1,9 +1,7 @@
-/** @jsxImportSource theme-ui */
 import Adi from "@/components/Adi";
 import InternalLink from "@/components/InternalLink";
 import { Locale, url } from "@/services/url";
 import { FaTwitter } from "react-icons/fa";
-import { Box, Heading } from "theme-ui";
 import ExternalLink from "@/components/ExternalLink";
 
 const links = [
@@ -11,12 +9,6 @@ const links = [
     to: url("guestbookIndex", process.env.NEXT_PUBLIC_LOCALE as Locale)(1),
     label: "Vieraskirja"
   },
-  /*
-  {
-    to: "/pahat-kysymykset",
-    label: "Pahat kysymykset"
-  },
-  */
   {
     to: "/tietoa-porssista",
     label: "Tietoa 'Pörssistä"
@@ -41,43 +33,18 @@ const links = [
 
 const Footer = () => {
   return (
-    <Box
-      p={3}
-      as="footer"
-      backgroundColor="veryDark"
-      color="veryLight"
-      sx={{
-        gridArea: "footer",
-        textAlign: "center"
-      }}
+    <footer
+      className="p-4 bg-very-dark text-very-light text-center"
+      style={{ gridArea: "footer" }}
     >
-      <Box
-        sx={{
-          width: "50px",
-          margin: "0 auto"
-        }}
-      >
+      <div className="w-[50px] mx-auto">
         <Adi />
-      </Box>
+      </div>
 
-      <Box p={3}>
-        <Heading
-          sx={{
-            fontSize: 2,
-            textTransform: "uppercase"
-          }}
-          as="h2"
-        >
-          Vakoile D-pörssiä
-        </Heading>
+      <div className="p-4">
+        <h2 className="text-base uppercase font-bold">Vakoile D-pörssiä</h2>
 
-        <Box
-          my={1}
-          sx={{
-            fontSize: 4,
-            mx: 2
-          }}
-        >
+        <div className="my-1 text-2xl mx-2">
           <ExternalLink
             aria-label="Diktaattoripörssin Twitter-tili"
             to="https://twitter.com/dporssi"
@@ -85,30 +52,17 @@ const Footer = () => {
           >
             <FaTwitter />
           </ExternalLink>{" "}
-        </Box>
-      </Box>
+        </div>
+      </div>
 
-      <Box p={3}>
+      <div className="p-4">
         <nav>
-          <ul
-            sx={{
-              margin: 0,
-              padding: 0,
-              listStyleType: "none"
-            }}
-          >
+          <ul className="m-0 p-0 list-none">
             {links.map((link, i) => {
               return (
                 <li
                   key={i}
-                  sx={{
-                    display: "inline-block",
-                    listStylePosition: "inside",
-                    margin: 0,
-                    p: 0,
-                    pr: 2,
-                    pb: 1
-                  }}
+                  className="inline-block m-0 p-0 pr-2 pb-1"
                 >
                   <InternalLink variant="links.footer" to={link.to}>
                     {link.label}
@@ -119,7 +73,7 @@ const Footer = () => {
           </ul>
         </nav>
 
-        <Box my={3}>
+        <div className="my-4">
           <a
             href="https://creativecommons.org/licenses/by/1.0/fi/"
             rel="license"
@@ -129,10 +83,7 @@ const Footer = () => {
               width="85"
               height="15"
               alt="Creative Commons License"
-              sx={{
-                verticalAlign: "middle",
-                marginRight: 1
-              }}
+              className="align-middle mr-1 inline"
             />
           </a>
           copyright © Dr. Kobros Foundation. Käytä miten lystäät,{" "}
@@ -144,9 +95,9 @@ const Footer = () => {
             kunhan kerrot mistä on peräisin!
           </ExternalLink>
           .
-        </Box>
-      </Box>
-    </Box>
+        </div>
+      </div>
+    </footer>
   );
 };
 

@@ -1,7 +1,4 @@
-/** @jsxImportSource theme-ui */
-
 import { FC, memo } from "react";
-import { Box } from "theme-ui";
 import { range } from "ramda";
 import InternalLink from "./InternalLink";
 import { Locale } from "@/services/url";
@@ -16,21 +13,6 @@ type Props = {
   getLink: "newsIndex" | "dictatorIndex" | "guestbookIndex";
 };
 
-const Previous = ({ currentPage, numPages, getLink }) => {
-  if (currentPage === 1) {
-    return null;
-  }
-
-  return (
-    <InternalLink to={getLink(currentPage - 1)}>
-      <span>Edellinen</span>
-    </InternalLink>
-  );
-};
-const Next = ({ currentPage, numPages, getLink }) => {
-  return <span>Seuraava</span>;
-};
-
 const Paginator: FC<Props> = ({
   id = "paginator",
   label = "sivutus",
@@ -40,21 +22,7 @@ const Paginator: FC<Props> = ({
   usePreviousAndNext = false
 }) => {
   return (
-    <Box
-      id={id}
-      aria-label={label}
-      as="nav"
-      sx={{
-        textAlign: "center"
-      }}
-    >
-      {usePreviousAndNext && (
-        <Previous
-          currentPage={currentPage}
-          numPages={numPages}
-          getLink={getLink}
-        />
-      )}
+    <nav id={id} aria-label={label} className="text-center">
       {range(1, numPages + 1).map((r) => {
         const to = url<Props["getLink"]>(
           getLink,
@@ -74,10 +42,7 @@ const Paginator: FC<Props> = ({
           </InternalLink>
         );
       })}
-      {usePreviousAndNext && (
-        <Next currentPage={currentPage} numPages={numPages} getLink={getLink} />
-      )}
-    </Box>
+    </nav>
   );
 };
 

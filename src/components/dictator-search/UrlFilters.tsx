@@ -1,7 +1,6 @@
 import { navigate } from "@/services/backwards-compatibility";
 import { useCallback } from "react";
 import { FC } from "react";
-import { Box, Input, Label, Radio } from "theme-ui";
 import { Locale, url } from "@/services/url";
 import { DictatorSearchParams } from "./DictatorSearch";
 import { useRouter } from "next/router";
@@ -28,43 +27,24 @@ const Filters: FC<Props> = ({ params }) => {
   );
 
   return (
-    <Box
-      p={3}
-      sx={{
-        backgroundColor: "superLight",
-        borderRadius: 1,
-        borderStyle: "solid",
-        borderWidth: "1",
-        borderColor: "light",
-        display: ["block", "flex"],
-        flexWrap: "wrap"
-      }}
-    >
-      <Box
-        sx={{
-          pr: [0, 4],
-          pb: [0, 0]
-        }}
-      >
-        <Label>Etsi</Label>
-        <Input
+    <div className="p-4 bg-super-light rounded border border-light block sm:flex flex-wrap">
+      <div className="pr-0 sm:pr-8 pb-0">
+        <label className="block font-bold mb-1">Etsi</label>
+        <input
+          className="border border-muted rounded p-2 mb-2"
           name="name"
           type="text"
           placeholder="etsi tekstinpätkällä"
           value={params.name}
           onChange={(e) => setFilter("name", e.target.value)}
         />
-      </Box>
-      <Box
-        sx={{
-          pr: [0, 4],
-          pb: [3, 0]
-        }}
-      >
-        <Label>Järjestä</Label>
+      </div>
+      <div className="pr-0 sm:pr-8 pb-4 sm:pb-0">
+        <label className="block font-bold mb-1">Järjestä</label>
 
-        <Label>
-          <Radio
+        <label className="flex items-center gap-1">
+          <input
+            type="radio"
             name="sortBy"
             checked={params.sortBy === "name"}
             onChange={() => {
@@ -72,9 +52,10 @@ const Filters: FC<Props> = ({ params }) => {
             }}
           />{" "}
           aakkosjärjestykseen
-        </Label>
-        <Label>
-          <Radio
+        </label>
+        <label className="flex items-center gap-1">
+          <input
+            type="radio"
             name="sortBy"
             checked={params.sortBy === "reignDuration"}
             onChange={() => {
@@ -82,9 +63,10 @@ const Filters: FC<Props> = ({ params }) => {
             }}
           />{" "}
           valtakauden pituuden mukaan
-        </Label>
-        <Label>
-          <Radio
+        </label>
+        <label className="flex items-center gap-1">
+          <input
+            type="radio"
             name="sortBy"
             checked={params.sortBy === "age"}
             onChange={() => {
@@ -92,9 +74,10 @@ const Filters: FC<Props> = ({ params }) => {
             }}
           />{" "}
           iän mukaan
-        </Label>
-        <Label>
-          <Radio
+        </label>
+        <label className="flex items-center gap-1">
+          <input
+            type="radio"
             name="sortBy"
             checked={params.sortBy === "ranking"}
             onChange={() => {
@@ -102,9 +85,10 @@ const Filters: FC<Props> = ({ params }) => {
             }}
           />{" "}
           rankingin mukaan
-        </Label>
-        <Label>
-          <Radio
+        </label>
+        <label className="flex items-center gap-1">
+          <input
+            type="radio"
             name="sortBy"
             checked={params.sortBy === "listedAt"}
             onChange={() => {
@@ -112,9 +96,10 @@ const Filters: FC<Props> = ({ params }) => {
             }}
           />{" "}
           listautumispäivän mukaan
-        </Label>
-        <Label>
-          <Radio
+        </label>
+        <label className="flex items-center gap-1">
+          <input
+            type="radio"
             name="sortBy"
             checked={params.sortBy === "updatedAt"}
             onChange={() => {
@@ -122,17 +107,13 @@ const Filters: FC<Props> = ({ params }) => {
             }}
           />{" "}
           ison päivityksen mukaan
-        </Label>
-      </Box>
-      <Box
-        sx={{
-          pr: [0, 4],
-          pb: [3, 0]
-        }}
-      >
-        <Label>Korosta</Label>
-        <Label>
-          <Radio
+        </label>
+      </div>
+      <div className="pr-0 sm:pr-8 pb-4 sm:pb-0">
+        <label className="block font-bold mb-1">Korosta</label>
+        <label className="flex items-center gap-1">
+          <input
+            type="radio"
             name="highlight"
             checked={params.highlight === "solidary"}
             onChange={(e) => {
@@ -140,9 +121,10 @@ const Filters: FC<Props> = ({ params }) => {
             }}
           />{" "}
           solidaarisesti
-        </Label>
-        <Label>
-          <Radio
+        </label>
+        <label className="flex items-center gap-1">
+          <input
+            type="radio"
             name="highlight"
             checked={params.highlight === "alive"}
             onChange={(e) => {
@@ -150,9 +132,10 @@ const Filters: FC<Props> = ({ params }) => {
             }}
           />{" "}
           eläviä
-        </Label>
-        <Label>
-          <Radio
+        </label>
+        <label className="flex items-center gap-1">
+          <input
+            type="radio"
             name="highlight"
             checked={params.highlight === "inPower"}
             onChange={(e) => {
@@ -160,9 +143,9 @@ const Filters: FC<Props> = ({ params }) => {
             }}
           />{" "}
           vallassa olevia
-        </Label>
-      </Box>
-    </Box>
+        </label>
+      </div>
+    </div>
   );
 };
 

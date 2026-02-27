@@ -1,7 +1,5 @@
-import { Container as ThemeUiContainer } from "theme-ui";
+import { ReactNode } from "react";
 
-const Container = ({ children }) => {
-  return <ThemeUiContainer>{children}</ThemeUiContainer>;
-};
-
-export default Container;
+export default function Container({ children }: { children: ReactNode }) {
+  return <div className="max-w-[1200px] mx-auto px-4">{children}</div>;
+}

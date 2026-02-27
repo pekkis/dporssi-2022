@@ -1,5 +1,4 @@
 import Layout from "@/components/layout/Layout";
-import { Box } from "theme-ui";
 import SEO from "@/components/SEO";
 import InternalLink from "@/components/InternalLink";
 import SectionHeading from "@/components/SectionHeading";
@@ -12,35 +11,20 @@ const NotFoundPage = () => {
     <Layout>
       <SEO title="Sivua ei löytynyt" />
 
-      <Box
-        mx={2}
-        mt={2}
-        mb={3}
-        as="section"
-        sx={{
-          display: ["block", "grid"],
-          gridTemplateColumns: "auto 300px",
-          columnGap: 4
-        }}
+      <section
+        className="mx-2 mt-2 mb-4 block sm:grid sm:gap-8"
+        style={{ gridTemplateColumns: "auto 300px" }}
       >
-        <Box
-          sx={{
-            gridRowStart: 1,
-            gridColumnStart: 2
-          }}
-        >
+        <div style={{ gridRowStart: 1, gridColumnStart: 2 }}>
           <Image
             {...notFound}
             alt="Maakuoppa, josta valloittajia piileskellyt Saddam Hussein kaivettiin esiin"
           />
-        </Box>
+        </div>
 
-        <Box
-          mt={2}
-          sx={{
-            gridRowStart: 1,
-            gridColumnStart: 1
-          }}
+        <div
+          className="mt-2"
+          style={{ gridRowStart: 1, gridColumnStart: 1 }}
         >
           <SectionHeading>Sivua ei löytynyt!</SectionHeading>
 
@@ -60,8 +44,8 @@ const NotFoundPage = () => {
               <InternalLink to="/">Palaa pääsivulle</InternalLink>
             </li>
           </ul>
-        </Box>
-      </Box>
+        </div>
+      </section>
     </Layout>
   );
 };

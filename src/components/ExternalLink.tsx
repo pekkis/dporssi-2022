@@ -1,5 +1,3 @@
-/** @jsxImportSource theme-ui */
-
 import { FaExternalLinkAlt } from "react-icons/fa";
 import { FC, ReactNode } from "react";
 
@@ -8,6 +6,7 @@ type Props = {
   variant?: string;
   icon?: boolean;
   rel?: string;
+  "aria-label"?: string;
   children: ReactNode;
 };
 
@@ -15,30 +14,21 @@ const ExternalLink: FC<Props> = ({
   to,
   children,
   icon = true,
-  variant = "links.default",
+  variant,
   ...rest
 }) => (
   <a
     target="_blank"
     rel="noreferrer"
     href={to}
-    sx={{
-      color: "inherit",
-      "&.active": {
-        fontWeight: "bold"
-      },
-      whiteSpace: "nowrap"
-    }}
+    className="whitespace-nowrap [&.active]:font-bold"
     {...rest}
   >
     {children}
     {icon && (
       <FaExternalLinkAlt
-        sx={{
-          verticalAlign: "middle",
-          ml: 1
-        }}
-        alignmentBaseline="middle"
+        className="align-middle ml-1 inline"
+        aria-hidden="true"
       />
     )}
   </a>

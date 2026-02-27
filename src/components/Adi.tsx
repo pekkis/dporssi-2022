@@ -1,5 +1,3 @@
-/** @jsxImportSource theme-ui */
-
 import { FC } from "react";
 import { useId } from "react";
 
@@ -7,12 +5,14 @@ type Props = {
   width?: string;
   height?: string;
   onClick?: () => void;
+  className?: string;
 };
 
 const Adi: FC<Props> = ({
   width = "100%",
   height = undefined,
   onClick = () => {},
+  className,
   ...rest
 }) => {
   const uuid = useId();
@@ -24,6 +24,7 @@ const Adi: FC<Props> = ({
     <svg
       id={uuid}
       {...rest}
+      className={className}
       style={{
         display: "block"
       }}

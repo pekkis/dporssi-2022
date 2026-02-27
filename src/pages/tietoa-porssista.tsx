@@ -1,6 +1,3 @@
-/** @jsxImportSource theme-ui */
-
-import { Box } from "theme-ui";
 import ExternalLink from "@/components/ExternalLink";
 import Layout from "@/components/layout/Layout";
 import SEO from "@/components/SEO";
@@ -22,39 +19,19 @@ const StorySection = (props) => {
   const { children, image } = props;
 
   return (
-    <Box
-      sx={{
-        my: 3,
-        display: ["block", "flex"],
-        width: "100%",
-        alignItems: "stretch"
-      }}
-    >
-      <Box
-        sx={{
-          width: ["100%", "50%"],
-          flexGrow: 2,
-          order: 2,
-          ml: [0, 4],
-          mb: [4, 0]
-        }}
-      >
+    <div className="my-4 block sm:flex w-full items-stretch">
+      <div className="w-full sm:w-1/2 sm:ml-8 mb-8 sm:mb-0 order-2" style={{ flexGrow: 2 }}>
         <Image
           src={image.image.src}
           alt={image.alt}
           width={image.image.width}
           height={image.image.height}
         />
-      </Box>
-      <Box
-        sx={{
-          width: "100%",
-          order: 1
-        }}
-      >
+      </div>
+      <div className="w-full order-1">
         {children}
-      </Box>
-    </Box>
+      </div>
+    </div>
   );
 };
 
@@ -64,7 +41,7 @@ const AboutPage = () => {
       <SEO title="Tietoa Diktaattoripörssistä" />
 
       <ContentBox>
-        <Box as="header" mb={3}>
+        <header className="mb-4">
           <SectionHeading>Tietoa Diktaattoripörssistä</SectionHeading>
 
           <Paragraph>
@@ -76,7 +53,7 @@ const AboutPage = () => {
             ovat koodarille hyvä henkireikä, koska niissä ei ole kaupallisia tai
             muitakaan paineita.
           </Paragraph>
-        </Box>
+        </header>
 
         <StorySection
           image={{
@@ -234,7 +211,7 @@ const AboutPage = () => {
             kuin he lopulta tunnustavat vilppinsä ja nöyrtyvät pahoittelemaan.
           </Paragraph>
 
-          <Box my={3}>
+          <div className="my-4">
             <Paragraph>
               Salvamiehen ja Turun ammattikorkeakoulun hyökkäys osoitti, kuinka
               haavoittuva kyberhyökkäyksille Diktaattoripörssi on. Aina
@@ -243,7 +220,7 @@ const AboutPage = () => {
               viholliset iskevät pienet, säälittävät tikarinsa
               Diktaattoripörssin selkään, mutta tällä kertaa olemme valmiina.
             </Paragraph>
-          </Box>
+          </div>
         </StorySection>
 
         <StorySection

@@ -1,30 +1,19 @@
-/** @jsxImportSource theme-ui */
-
 import InternalLink from "@/components/InternalLink";
 import { Locale, url } from "@/services/url";
 import { memo } from "react";
 import UserMenu from "./UserMenu";
 
-const MainMenu = (props) => {
-  return (
-    <nav aria-label="Päävalikko" {...props} id="main-menu">
-      <ul
-        sx={{
-          display: ["block", "flex"],
-          width: "100%",
-          m: 0,
-          p: 0,
-          listStyleType: "none",
-          alignContent: "center",
-          alignItems: "center",
-          justifyContent: "flex-end",
+type Props = {
+  mobile?: boolean;
+};
 
-          li: {
-            mr: 1
-          }
-        }}
+const MainMenu = ({ mobile = false }: Props) => {
+  return (
+    <nav aria-label="Päävalikko" id="main-menu" className={mobile ? "mx-2 mb-2" : ""}>
+      <ul
+        className={`${mobile ? "block" : "flex"} w-full m-0 p-0 list-none content-center items-center justify-end`}
       >
-        <li>
+        <li className="mr-1">
           <InternalLink
             variant="links.menu"
             to={url("index", process.env.NEXT_PUBLIC_LOCALE as Locale)()}
@@ -35,7 +24,7 @@ const MainMenu = (props) => {
             Etusivu
           </InternalLink>
         </li>
-        <li>
+        <li className="mr-1">
           <InternalLink
             variant="links.menu"
             to={url(
@@ -49,7 +38,7 @@ const MainMenu = (props) => {
             Pörssi
           </InternalLink>
         </li>
-        <li>
+        <li className="mr-1">
           <InternalLink
             variant="links.menu"
             to={url("dictators", process.env.NEXT_PUBLIC_LOCALE as Locale)()}
@@ -60,7 +49,7 @@ const MainMenu = (props) => {
             Haku
           </InternalLink>
         </li>
-        <li>
+        <li className="mr-1">
           <InternalLink
             variant="links.menu"
             to={url(
@@ -74,7 +63,7 @@ const MainMenu = (props) => {
             Luokittelu
           </InternalLink>
         </li>
-        <li>
+        <li className="mr-1">
           <InternalLink
             variant="links.menu"
             to={url("newsIndex", process.env.NEXT_PUBLIC_LOCALE as Locale)()}

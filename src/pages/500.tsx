@@ -1,6 +1,3 @@
-/** @jsxImportSource theme-ui */
-
-import { Box } from "theme-ui";
 import SectionHeading from "@/components/SectionHeading";
 import Paragraph from "@/components/Paragraph";
 import Image from "next/image";
@@ -8,23 +5,10 @@ import internalRevolution from "@/data/internal-revolution-error.jpg";
 
 const InfernalServerErrorPage = () => {
   return (
-    <Box
-      mx={2}
-      mt={2}
-      mb={3}
-      as="main"
-      sx={{
-        display: "flex",
-        placeContent: "center"
-      }}
-    >
-      <Box
-        sx={{
-          my: 1,
-          maxWidth: "300px",
-          transform: "rotate(1.5deg)",
-          fontFamily: "Comic Sans MS"
-        }}
+    <main className="mx-2 mt-2 mb-4 flex place-content-center">
+      <div
+        className="my-1 max-w-[300px]"
+        style={{ transform: "rotate(1.5deg)", fontFamily: "Comic Sans MS" }}
       >
         <Image
           src={internalRevolution.src}
@@ -75,8 +59,8 @@ const InfernalServerErrorPage = () => {
             <a href="/">Palaa pääsivulle (jos mikään ei auta!)</a>
           </li>
         </ul>
-      </Box>
-    </Box>
+      </div>
+    </main>
   );
 };
 

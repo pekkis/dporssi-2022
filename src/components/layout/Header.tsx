@@ -1,7 +1,5 @@
-/** @jsxImportSource theme-ui */
-
 import { FC, useState } from "react";
-import { Box, Flex, Heading, MenuButton } from "theme-ui";
+import { FaBars } from "react-icons/fa";
 import Adi from "@/components/Adi";
 import Container from "./Container";
 import MainMenu from "./MainMenu";
@@ -24,110 +22,56 @@ const Header: FC<Props> = ({ topMenu }) => {
   return (
     <>
       {isOpen && (
-        <Box
-          sx={{
-            position: "fixed",
-            backgroundColor: "rgba(0, 0, 0, .2)",
-            top: 0,
-            left: 0,
-            bottom: 0,
-            right: 0,
-            zIndex: 3
-          }}
+        <div
+          className="fixed top-0 left-0 bottom-0 right-0 z-[3]"
+          style={{ backgroundColor: "rgba(0, 0, 0, .2)" }}
         />
       )}
 
-      <Box
-        as="header"
-        sx={{
-          gridArea: "header",
-          position: "sticky",
-          overflow: "visible",
-          zIndex: 5,
-          top: 0,
-          left: 0,
-          right: 0,
-          minHeight: topMenu,
-          boxShadow: "1px 1px 5px rgba(0, 0, 0, .5)",
-          bg: "primary"
-        }}
+      <header
+        className="sticky overflow-visible z-[5] top-0 left-0 right-0 bg-primary shadow-[1px_1px_5px_rgba(0,0,0,.5)]"
+        style={{ gridArea: "header", minHeight: topMenu }}
       >
         <Container>
-          <Flex
-            sx={{
-              zIndex: 5,
-              height: topMenu,
-              justifyContent: "center",
-              alignItems: "stretch",
-              width: "100%"
-            }}
+          <div
+            className="flex z-[5] justify-center items-stretch w-full"
+            style={{ height: topMenu }}
           >
-            <Box m={1} sx={{ flex: "0 0 50px", alignSelf: "center" }}>
+            <div className="m-1 flex-[0_0_50px] self-center">
               <Adi
-                sx={{
-                  cursor: "pointer"
-                }}
+                className="cursor-pointer"
                 onClick={() => {
                   router.push("/");
                 }}
               />
-            </Box>
-            <Box
-              p={0}
-              ml={2}
-              sx={{
-                flex: "0 0 auto",
-                alignSelf: "center",
-                textAlign: "center"
-              }}
-            >
-              <Heading
-                as="h1"
-                color="white"
-                sx={(theme) => ({
-                  textShadow: `2px 2px 2px ${theme.colors?.black}`
-                })}
+            </div>
+            <div className="p-0 ml-2 flex-[0_0_auto] self-center text-center">
+              <h1
+                className="text-white text-2xl font-bold"
+                style={{ textShadow: "2px 2px 2px #000" }}
               >
                 {t("Diktaattoripörssi")}
-              </Heading>
-            </Box>
-            <Box
-              m={1}
-              sx={{
-                flex: "1 1 auto",
-                alignSelf: "center",
-                color: "white",
-                textAlign: "right"
-              }}
-            >
+              </h1>
+            </div>
+            <div className="m-1 flex-[1_1_auto] self-center text-white text-right">
               <Mobile>
-                <MenuButton
+                <button
                   onClick={() => setOpen(!isOpen)}
-                  sx={{
-                    filter: "drop-shadow(1px 1px 1px #000)",
-                    cursor: "pointer"
-                  }}
-                />
+                  className="text-white cursor-pointer [filter:drop-shadow(1px_1px_1px_#000)]"
+                  aria-label="Valikko"
+                >
+                  <FaBars size={24} />
+                </button>
               </Mobile>
 
               <Default>
-                <MainMenu
-                  sx={{
-                    ul: {
-                      display: ["block", "flex"]
-                    },
-                    li: {
-                      display: "inline-block",
-                      mx: 1
-                    }
-                  }}
-                />
+                <MainMenu />
               </Default>
-            </Box>
-          </Flex>
+            </div>
+          </div>
         </Container>
         <Mobile>{isOpen && <MobileMenu topMenu={topMenu} />}</Mobile>
-      </Box>
+      </header>
     </>
   );
 };

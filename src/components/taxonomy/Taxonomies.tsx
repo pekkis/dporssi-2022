@@ -1,5 +1,3 @@
-/** @jsxImportSource theme-ui */
-
 import { FC, memo } from "react";
 import Tag, { TagInterface } from "./Tag";
 
@@ -20,14 +18,7 @@ const Taxonomies: FC<Props> = ({ taxonomy }) => {
   const sortedTaxonomies = sortByName(uniqueTaxonomies);
 
   return (
-    <ul
-      sx={{
-        listStyleType: "none",
-        listStylePosition: "outside",
-        my: 1,
-        padding: 0
-      }}
-    >
+    <ul className="list-none my-1 p-0">
       {sortedTaxonomies.map((tag) => (
         <Tag key={tag.slug} tag={tag} />
       ))}

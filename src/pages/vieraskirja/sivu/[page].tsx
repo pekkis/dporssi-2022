@@ -1,6 +1,3 @@
-/** @jsxImportSource theme-ui */
-
-import { Box } from "theme-ui";
 import Layout from "@/components/layout/Layout";
 import Paginator from "@/components/Paginator";
 import SEO from "@/components/SEO";
@@ -68,7 +65,7 @@ const NewsIndexPage: FC<Props> = (props) => {
     <Layout>
       <SEO title="Valeuutiset" />
       <ContentBox>
-        <Box mb={4}>
+        <div className="mb-8">
           <SectionHeading>Vieraskirja</SectionHeading>
           <Paragraph>
             Vieraskirja on konseptina reliikki ammoisilta ajoilta, mutta niin on
@@ -80,13 +77,13 @@ const NewsIndexPage: FC<Props> = (props) => {
             palautteen löydät tilanteesta riippuen joko viimeiseltä tai
             viimeistä edelliseltä sivulta. Klassikkomatskua!
           </Paragraph>
-        </Box>
+        </div>
 
-        <Box my={4}>
+        <div className="my-8">
           <GuestbookFormWrapper />
-        </Box>
+        </div>
 
-        <Box my={4}>
+        <div className="my-8">
           <Paginator
             id="paginator-top"
             label="paginator-top"
@@ -94,15 +91,15 @@ const NewsIndexPage: FC<Props> = (props) => {
             numPages={numPages}
             getLink="guestbookIndex"
           />
-        </Box>
+        </div>
 
-        <Box my={4}>
+        <div className="my-8">
           {posts.map((entry) => (
             <GuestbookEntry user={user} key={entry.id} entry={entry} />
           ))}
-        </Box>
+        </div>
 
-        <Box mt={4}>
+        <div className="mt-8">
           <Paginator
             label="paginator-bottom"
             id="paginator-bottom"
@@ -110,7 +107,7 @@ const NewsIndexPage: FC<Props> = (props) => {
             numPages={numPages}
             getLink="guestbookIndex"
           />
-        </Box>
+        </div>
       </ContentBox>
     </Layout>
   );

@@ -1,9 +1,31 @@
+@import "tailwindcss";
+
+@theme {
+  /* Breakpoints (match existing Theme UI 768/992px breakpoints) */
+  --breakpoint-sm: 768px;
+  --breakpoint-md: 992px;
+
+  /* Custom colors from theme.ts */
+  --color-primary: #de0000;
+  --color-muted: #ccc;
+  --color-disabled: rgb(99 99 99);
+  --color-link: rgb(12 12 12);
+  --color-super-light: rgb(245 245 245);
+  --color-extra-light: rgb(235 235 235);
+  --color-very-light: rgb(230 230 230);
+  --color-light: rgb(200 200 200);
+  --color-not-so-light: rgb(175 175 175);
+  --color-very-dark: rgb(12 12 12);
+
+  /* Fonts */
+  --font-body: barlow, sans-serif;
+}
+
 html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: var(--font-body, sans-serif);
 }
 
 a {
@@ -13,4 +35,82 @@ a {
 
 * {
   box-sizing: border-box;
+}
+
+/* reCAPTCHA badge hidden (was previously in Emotion Global in App.tsx) */
+.grecaptcha-badge {
+  visibility: hidden;
+}
+
+/* Blockquote decorative quote mark */
+blockquote::before {
+  color: rgb(200 200 200);
+  content: open-quote;
+  font-size: 64px;
+  line-height: 0;
+  margin-right: 16px;
+  vertical-align: -0.4em;
+}
+
+/* Index page responsive grid */
+.index-grid {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: 1fr;
+  grid-template-areas: "header" "fakeNews" "propagandaTube" "dictators";
+}
+
+@media (min-width: 768px) {
+  .index-grid {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: "header header" "fakeNews propagandaTube" "dictators dictators";
+  }
+}
+
+/* PropagandaFull responsive grid */
+.propaganda-full {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: 1fr;
+  grid-template-areas: "header" "sidebar" "main";
+}
+
+@media (min-width: 768px) {
+  .propaganda-full {
+    grid-template-columns: 2fr 1fr;
+    grid-template-areas: "header header" "main sidebar";
+  }
+}
+
+/* DataTable component styles */
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  empty-cells: show;
+  border: 1px solid rgb(200 200 200);
+}
+
+.data-table th {
+  vertical-align: top;
+  width: 8em;
+  text-align: left;
+}
+
+.data-table th,
+.data-table td {
+  border: 1px solid rgb(200 200 200);
+  font-size: inherit;
+  margin: 0;
+  overflow: visible;
+  padding: 4px;
+}
+
+.data-table th ul,
+.data-table th ol,
+.data-table td ul,
+.data-table td ol {
+  list-style-position: outside;
+  margin: 0;
+  padding-left: 1.5em;
 }

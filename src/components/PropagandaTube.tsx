@@ -1,6 +1,3 @@
-/** @jsxImportSource theme-ui */
-
-import { Box, Flex } from "theme-ui";
 import { useCallback } from "react";
 import Youtube from "./Youtube";
 import { nth } from "ramda";
@@ -13,20 +10,8 @@ const NormalVideo = ({ video, videos, setCurrent, hasLess, hasMore }) => {
   return (
     <>
       <Youtube videoId={video.videoId} />
-      <Flex
-        sx={{
-          my: 1,
-          width: "100%",
-          justifyContent: "space-between",
-          alignItems: "center"
-        }}
-      >
-        <Box
-          sx={{
-            fontSize: 4,
-            alignSelf: "flex-start"
-          }}
-        >
+      <div className="my-1 w-full flex justify-between items-center">
+        <div className="text-2xl self-start">
           <FaChevronCircleLeft
             title="Edellinen"
             onClick={(e) => {
@@ -34,26 +19,17 @@ const NormalVideo = ({ video, videos, setCurrent, hasLess, hasMore }) => {
               e.preventDefault();
               setCurrent((current) => Math.max(current - 1, 0));
             }}
-            sx={{
+            style={{
               cursor: hasLess ? "pointer" : "not-allowed",
               opacity: hasLess ? 1 : 0.2
             }}
           />
-        </Box>
-        <Box
-          sx={{
-            px: 2
-          }}
-        >
+        </div>
+        <div className="px-2">
           {video.title}
           {video.nsfw === false && <span>[NSFW]</span>}
-        </Box>
-        <Box
-          sx={{
-            fontSize: 4,
-            alignSelf: "flex-start"
-          }}
-        >
+        </div>
+        <div className="text-2xl self-start">
           <FaChevronCircleRight
             onClick={(e) => {
               console.log("hip hei?");
@@ -62,13 +38,13 @@ const NormalVideo = ({ video, videos, setCurrent, hasLess, hasMore }) => {
               setCurrent((current) => Math.min(current + 1, videos.length - 1));
             }}
             title="Seuraava"
-            sx={{
+            style={{
               cursor: hasMore ? "pointer" : "not-allowed",
               opacity: hasMore ? 1 : 0.2
             }}
           />
-        </Box>
-      </Flex>
+        </div>
+      </div>
     </>
   );
 };
@@ -76,27 +52,11 @@ const NormalVideo = ({ video, videos, setCurrent, hasLess, hasMore }) => {
 const SupportUkraine = ({ videos, setCurrent, hasLess, hasMore }) => {
   return (
     <>
-      <Box
-        sx={{
-          position: "relative",
-          paddingBottom: "56.25%",
-          height: 0,
-
-          div: {
-            position: "absolute",
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0
-          }
-        }}
+      <div
+        className="relative"
+        style={{ paddingBottom: "56.25%", height: 0 }}
       >
-        <Flex
-          sx={{
-            alignItems: "center",
-            justifyContent: "center"
-          }}
-        >
+        <div className="flex items-center justify-center absolute inset-0">
           <a
             rel="noreferrer"
             title="Auta Ukrainaa!"
@@ -105,22 +65,10 @@ const SupportUkraine = ({ videos, setCurrent, hasLess, hasMore }) => {
           >
             <img alt="Auta Ukrainaa!" src={ukraineFlag.src} width={150} />
           </a>
-        </Flex>
-      </Box>
-      <Flex
-        sx={{
-          my: 1,
-          width: "100%",
-          justifyContent: "space-between",
-          alignItems: "center"
-        }}
-      >
-        <Box
-          sx={{
-            fontSize: 4,
-            alignSelf: "flex-start"
-          }}
-        >
+        </div>
+      </div>
+      <div className="my-1 w-full flex justify-between items-center">
+        <div className="text-2xl self-start">
           <FaChevronCircleLeft
             title="Edellinen"
             onClick={(e) => {
@@ -128,25 +76,16 @@ const SupportUkraine = ({ videos, setCurrent, hasLess, hasMore }) => {
               e.preventDefault();
               setCurrent((current) => Math.max(current - 1, 0));
             }}
-            sx={{
+            style={{
               cursor: hasLess ? "pointer" : "not-allowed",
               opacity: hasLess ? 1 : 0.2
             }}
           />
-        </Box>
-        <Box
-          sx={{
-            px: 2
-          }}
-        >
+        </div>
+        <div className="px-2">
           Ukrainan asia on meidän asiamme! Auta!
-        </Box>
-        <Box
-          sx={{
-            fontSize: 4,
-            alignSelf: "flex-start"
-          }}
-        >
+        </div>
+        <div className="text-2xl self-start">
           <FaChevronCircleRight
             onClick={(e) => {
               e.stopPropagation();
@@ -154,13 +93,13 @@ const SupportUkraine = ({ videos, setCurrent, hasLess, hasMore }) => {
               setCurrent((current) => Math.min(current + 1, videos.length - 1));
             }}
             title="Seuraava"
-            sx={{
+            style={{
               cursor: hasMore ? "pointer" : "not-allowed",
               opacity: hasMore ? 1 : 0.2
             }}
           />
-        </Box>
-      </Flex>
+        </div>
+      </div>
     </>
   );
 };

@@ -1,16 +1,8 @@
-import { Box } from "theme-ui";
-
 const ExtraInfoBox = ({ children }) => {
   return (
-    <Box
-      sx={{
-        fontStyle: "italic",
-        mt: 1,
-        fontSize: 1
-      }}
-    >
+    <div className="italic mt-1 text-sm">
       {children}
-    </Box>
+    </div>
   );
 };
 

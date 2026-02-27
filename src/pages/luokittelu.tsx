@@ -1,4 +1,3 @@
-import { Box } from "theme-ui";
 import Layout from "@/components/layout/Layout";
 import SEO from "@/components/SEO";
 import { groupBy, toPairs } from "ramda";
@@ -61,7 +60,7 @@ const ClassificationIndexPage: FC<Props> = (props) => {
       <SEO title="Luokittelu" />
 
       <ContentBox>
-        <Box mb={4} as="section">
+        <section className="mb-8">
           <SectionHeading>Luokittelu</SectionHeading>
           <p>
             Diktaattoripörssi luokittelee diktaattorit virallisen tyrannien
@@ -74,19 +73,13 @@ const ClassificationIndexPage: FC<Props> = (props) => {
             Lisään avainsanoja sitä mukaa kun keksin merkityksellisiä sellaisia.
             Vinkata saa!
           </p>
-        </Box>
+        </section>
 
-        <Box
-          sx={{
-            display: ["block", "grid"],
-            gridTemplateColumns: "1fr 1fr",
-            columnGap: 4
-          }}
-        >
+        <div className="block sm:grid sm:grid-cols-2 sm:gap-8">
           {groupedTaxonomies.map(([name, taxonomies]) => {
             return <Category name={name} taxonomy={taxonomies} key={name} />;
           })}
-        </Box>
+        </div>
       </ContentBox>
     </Layout>
   );

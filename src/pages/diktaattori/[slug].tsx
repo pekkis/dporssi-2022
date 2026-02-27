@@ -3,7 +3,6 @@ import Markdown from "@/components/Markdown";
 import Taxonomies from "@/components/taxonomy/Taxonomies";
 import Reign from "@/components/dictator/Reign";
 import Layout from "@/components/layout/Layout";
-import { Box } from "theme-ui";
 import SEO from "@/components/SEO";
 import DataTable from "@/components/dictator/DataTable";
 import CountryLink from "@/components/dictator/CountryLink";
@@ -185,54 +184,29 @@ const DictatorItemPage: FC<Props> = (props) => {
       />
 
       <ContentBox>
-        <Box
-          as="article"
-          sx={{
-            display: ["block", "grid"],
-            gridTemplateColumns: "4fr 2fr",
-            columnGap: 4
-          }}
-        >
-          <Box
-            as="header"
-            mb={4}
-            sx={{
-              gridColumnStart: 1,
-              gridColumnEnd: 3
-            }}
+        <article className="block sm:grid" style={{ gridTemplateColumns: "4fr 2fr", columnGap: "2rem" }}>
+          <header
+            className="mb-8"
+            style={{ gridColumnStart: 1, gridColumnEnd: 3 }}
           >
             <NameHeading dictator={dictator} />
             <Taxonomies taxonomy={dictator.taxonomyCollection.items} />
 
             {dictator.synopsis && (
-              <Box
-                sx={{
-                  mt: 3,
-                  fontSize: 3
-                }}
-              >
+              <div className="mt-4 text-xl">
                 <Markdown>{dictator.synopsis}</Markdown>
-              </Box>
+              </div>
             )}
-          </Box>
+          </header>
 
-          <Box
-            as="section"
-            sx={{
+          <section
+            style={{
               gridRowStart: 2,
               gridColumnStart: 2,
               gridColumnEnd: 3
             }}
           >
-            <Box
-              sx={{
-                borderStyle: "solid",
-                borderWidth: "1px",
-                borderColor: "veryDark",
-                borderRadius: 1,
-                position: "relative"
-              }}
-            >
+            <div className="border border-very-dark rounded relative">
               <ContentfulImage
                 data={dictator.primaryImage}
                 config={{
@@ -245,14 +219,9 @@ const DictatorItemPage: FC<Props> = (props) => {
                 alt={dictator.name}
                 loading="lazy"
               />
-              {/*<GatsbyImage
-              alt={dictator.name}
-              image={dictator.primaryImage.gatsbyImageData}
-              loading="eager"
-        />*/}
-            </Box>
+            </div>
 
-            <Box my={3}>
+            <div className="my-4">
               <DataTable>
                 <tbody>
                   {dictator.canonicalRanking && (
@@ -267,9 +236,9 @@ const DictatorItemPage: FC<Props> = (props) => {
                     <td>
                       {dictator.reignsCollection.items.map((reign, i) => {
                         return (
-                          <Box key={i}>
+                          <div key={i}>
                             <Reign reign={reign} />
-                          </Box>
+                          </div>
                         );
                       })}
                       ({Math.floor(reignDuration)} päivää)
@@ -328,19 +297,19 @@ const DictatorItemPage: FC<Props> = (props) => {
                   />
                 </tbody>
               </DataTable>
-            </Box>
-          </Box>
+            </div>
+          </section>
 
-          <Box
-            sx={{
+          <div
+            style={{
               gridRowStart: 2,
               gridColumnStart: 1,
               gridRowEnd: 4
             }}
           >
             <Markdown>{content}</Markdown>
-          </Box>
-        </Box>
+          </div>
+        </article>
       </ContentBox>
     </Layout>
   );

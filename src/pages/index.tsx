@@ -1,12 +1,9 @@
-/** @jsxImportSource theme-ui */
-
 import Layout from "@/components/layout/Layout";
 import { gql } from "graphql-request";
 import { graphQLClient } from "@/services/graphql";
 import PropagandaTube from "@/components/LazyLoadedPropagandaTube";
 import { FC, ReactElement } from "react";
 import SEO from "@/components/SEO";
-import { Box, Paragraph } from "theme-ui";
 import SectionHeading from "@/components/SectionHeading";
 import InternalLink from "@/components/InternalLink";
 import { Locale, url } from "@/services/url";
@@ -106,50 +103,28 @@ const IndexPage: FC<Props> = (props) => {
       <SEO title="Tervetuloa" />
       <Layout>
         <ContentBox>
-          <Box
-            sx={{
-              display: "grid",
-              gap: 4,
-              gridTemplateAreas: [
-                `
-              "header"
-              "fakeNews"
-              "propagandaTube"
-              "dictators"
-              `,
-                `
-            "header header"
-            "fakeNews propagandaTube"
-            "dictators dictators"
-            `
-              ]
-            }}
-          >
-            <Box
-              as="section"
-              sx={{
-                gridArea: "header"
-              }}
-            >
+          <div className="index-grid">
+
+            <section style={{ gridArea: "header" }}>
               <SectionHeading>Puhemiehen tervehdys!</SectionHeading>
 
-              <Paragraph>
+              <p>
                 Tervetuloa Diktaattoripörssiin, kirjaimellisesti historialliseen
                 verkkoteokseen jonka tekemiseen sinäkin voit osallistua. Minä
                 olen <strong>Pekkis</strong>, ajatusten Vantaanakin tunnettu,
                 Diktaattoripörssin elinikäinen varapresidentti ja kunnioitettu
                 puhemies.
-              </Paragraph>
+              </p>
 
-              <Paragraph>
+              <p>
                 Tietosanakirjaa lainatakseni: <strong>diktaattori</strong> (lat.
                 dictator, sanelija) on henkilö, jolla on valtiossa rajaton
                 hallintavalta usein vallananastuksen perusteella. Diktatuurille
                 on ominaista poliittisen opposition tukahduttaminen sekä
                 sananvapauden ja muiden perinteisten vapauksien rajoittaminen.
-              </Paragraph>
+              </p>
 
-              <Paragraph>
+              <p>
                 Diktaattoripörssi{" "}
                 <InternalLink
                   to={url(
@@ -166,9 +141,9 @@ const IndexPage: FC<Props> = (props) => {
                   jo yli 20 vuoden ajan
                 </InternalLink>
                 . Lyhyempääkin valtakuntaa on kutsuttu tuhatvuotiseksi.
-              </Paragraph>
+              </p>
 
-              <Paragraph>
+              <p>
                 Herättääkö Diktaattoripörssi sinussa ajatuksia? Kerro niistä{" "}
                 <InternalLink
                   to={url(
@@ -180,14 +155,10 @@ const IndexPage: FC<Props> = (props) => {
                 </InternalLink>
                 . Siitä vekkulista on vuosien mittaan riittänyt jos jonkinlaista
                 hupia.
-              </Paragraph>
-            </Box>
+              </p>
+            </section>
 
-            <Box
-              sx={{
-                gridArea: "fakeNews"
-              }}
-            >
+            <div style={{ gridArea: "fakeNews" }}>
               <SectionHeading>Valeuutiset</SectionHeading>
 
               {propaganda.map((item) => {
@@ -201,7 +172,7 @@ const IndexPage: FC<Props> = (props) => {
                 )(item);
 
                 return (
-                  <Box my={2} key={item.sys.id} as="article">
+                  <article className="my-2" key={item.sys.id}>
                     <div>
                       <strong>
                         <time dateTime={date.toISODate()}>
@@ -210,35 +181,31 @@ const IndexPage: FC<Props> = (props) => {
                       </strong>
                     </div>
                     <InternalLink to={link}>{item.title}</InternalLink>
-                  </Box>
+                  </article>
                 );
               })}
 
-              <Box mt={3}>
+              <div className="mt-4">
                 <InternalLink
                   to={url(
                     "newsIndex",
                     process.env.NEXT_PUBLIC_LOCALE as Locale
                   )()}
                 >
-                  <FaAngleDoubleRight sx={{ mr: 1 }} />
+                  <FaAngleDoubleRight className="mr-1 inline" />
                   Lisää valeuutisia
                 </InternalLink>
-              </Box>
-            </Box>
+              </div>
+            </div>
 
-            <Box
-              sx={{
-                gridArea: "propagandaTube"
-              }}
-            >
-              <Box>
+            <div style={{ gridArea: "propagandaTube" }}>
+              <div>
                 <SectionHeading>Propagandatuubi</SectionHeading>
                 <PropagandaTube videos={videos} />
-              </Box>
-            </Box>
+              </div>
+            </div>
 
-            <Box as="section" sx={{ gridArea: "dictators" }}>
+            <section style={{ gridArea: "dictators" }}>
               <SectionHeading>Viimeksi päivitetyt diktaattorit</SectionHeading>
 
               <DictatorGrid
@@ -255,24 +222,19 @@ const IndexPage: FC<Props> = (props) => {
                 fadeOutIf={() => true}
               />
 
-              <Box
-                mt={2}
-                sx={{
-                  fontSize: 3
-                }}
-              >
+              <div className="mt-2 text-xl">
                 <InternalLink
                   to={url(
                     "dictators",
                     process.env.NEXT_PUBLIC_LOCALE as Locale
                   )()}
                 >
-                  <FaAngleDoubleRight sx={{ mr: 1 }} />
+                  <FaAngleDoubleRight className="mr-1 inline" />
                   Kaikki diktaattorit
                 </InternalLink>
-              </Box>
-            </Box>
-          </Box>
+              </div>
+            </section>
+          </div>
         </ContentBox>
       </Layout>
     </>

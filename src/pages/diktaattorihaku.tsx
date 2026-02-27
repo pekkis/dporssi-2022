@@ -1,4 +1,3 @@
-import { Box, Paragraph } from "theme-ui";
 import Layout from "@/components/layout/Layout";
 import SEO from "@/components/SEO";
 import { FC, useState } from "react";
@@ -86,7 +85,7 @@ const DictatorsPage: FC<Props> = (props) => {
       <ContentBox>
         <SectionHeading>{title}</SectionHeading>
 
-        <Paragraph>
+        <p>
           Tässä he nyt ovat, kaikki Diktaattoripörssin tuntemat diktaattorit.
           Jos joku puuttuu, kerro ihmeessä siitä{" "}
           <InternalLink
@@ -98,12 +97,12 @@ const DictatorsPage: FC<Props> = (props) => {
             vieraskirjassa
           </InternalLink>
           .
-        </Paragraph>
+        </p>
 
-        <Box my={4}>
+        <div className="my-8">
           {!loading && <DictatorSearch dictators={dictators} />}
           {loading && <Spinner />}
-        </Box>
+        </div>
       </ContentBox>
     </Layout>
   );

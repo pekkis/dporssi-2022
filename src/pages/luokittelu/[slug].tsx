@@ -4,7 +4,6 @@ import { graphQLClient } from "@/services/graphql";
 import { TaxonomyTerm } from "@/types";
 
 import Layout from "@/components/layout/Layout";
-import { Box } from "theme-ui";
 import SEO from "@/components/SEO";
 import Markdown from "@/components/Markdown";
 import DictatorList from "@/components/dictator/DictatorList";
@@ -138,18 +137,18 @@ const ClassificationItemPage: FC<Props> = (props) => {
       <SEO title={`Luokittelu: ${taxonomy.name}`} />
 
       <ContentBox>
-        <Box mb={4}>
+        <div className="mb-8">
           <SectionHeading>Luokittelu: {taxonomy.name}</SectionHeading>
 
           <Markdown>{taxonomy.description}</Markdown>
-        </Box>
+        </div>
 
-        <Box mt={4}>
+        <div className="mt-8">
           <SubHeading>Diktaattorit</SubHeading>
-          <Box>
+          <div>
             <DictatorList dictators={sortedDictators} />
-          </Box>
-        </Box>
+          </div>
+        </div>
       </ContentBox>
     </Layout>
   );

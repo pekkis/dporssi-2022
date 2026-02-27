@@ -1,9 +1,6 @@
-/** @jsxImportSource theme-ui */
-
 import { gql } from "graphql-request";
 import { GetStaticPaths, GetStaticProps } from "next";
 import { FC } from "react";
-import { Box } from "theme-ui";
 
 import DictatorList from "@/components/dictator/DictatorList";
 import ContentBox from "@/components/layout/ContentBox";
@@ -153,63 +150,12 @@ const CountryPage: FC<Props> = (props) => {
       <ContentBox>
         <SectionHeading>{title}</SectionHeading>
 
-        <Box>
+        <div>
           <DictatorList dictators={sortedDictators} />
-        </Box>
+        </div>
       </ContentBox>
     </Layout>
   );
 };
-
-/*
-export const query = graphql`
-  query CountryPageQuery($id: String) {
-    contentfulCountry(id: { eq: $id }) {
-      id
-      name
-      slug
-      continent {
-        slug
-        name
-      }
-      dictator {
-        id
-        slug
-        name
-        sortName
-        canonicalRanking
-        reigns {
-          start
-          end
-        }
-        synopsis {
-          synopsis
-        }
-        country {
-          slug
-          name
-          continent {
-            slug
-          }
-        }
-
-        primaryImage {
-          id
-          gatsbyImageData(
-            layout: CONSTRAINED
-            formats: [AUTO, WEBP]
-            cropFocus: FACE
-            aspectRatio: 0.75
-            placeholder: BLURRED
-            resizingBehavior: FILL
-            quality: 66
-            width: 300
-          )
-        }
-      }
-    }
-  }
-`;
-*/
 
 export default CountryPage;

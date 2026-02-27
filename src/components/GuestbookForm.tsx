@@ -1,5 +1,3 @@
-/** @jsxImportSource theme-ui */
-import { Box, Button, jsx, Textarea, Input, Label } from "theme-ui";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
 import { useEffect, useReducer } from "react";
@@ -50,15 +48,9 @@ const validationSchema = Yup.object().shape({
 
 const ErrorBox = ({ children }) => {
   return (
-    <Box
-      sx={{
-        mt: -3,
-        color: "primary",
-        mb: 3
-      }}
-    >
+    <div className="-mt-4 text-primary mb-4">
       {children}
-    </Box>
+    </div>
   );
 };
 
@@ -94,15 +86,7 @@ const GuestbookForm = () => {
   }, [executeRecaptcha]);
 
   return (
-    <Box
-      sx={{
-        p: 3,
-        borderWidth: 1,
-        borderRadius: 1,
-        borderStyle: "solid",
-        borderColor: "muted"
-      }}
-    >
+    <div className="p-4 border border-muted rounded">
       <SubHeading>Kirjoita vieraskirjaan</SubHeading>
 
       <p>
@@ -143,17 +127,14 @@ const GuestbookForm = () => {
       >
         {({ errors, isValid }) => {
           return (
-            <Form
-              sx={{
-                mt: 3
-              }}
-            >
-              <Label htmlFor="author">Salanimi</Label>
+            <Form className="mt-4">
+              <label className="block font-bold mb-1 mt-2" htmlFor="author">Salanimi</label>
               <Field
                 disabled={isPosting || isSuccess}
                 name="author"
                 type="text"
-                as={Input}
+                as="input"
+                className="border border-muted rounded p-2 w-full mb-2"
                 placeholder="salanimi"
               />
               {errors.author && (
@@ -162,12 +143,13 @@ const GuestbookForm = () => {
                 </ErrorBox>
               )}
 
-              <Label htmlFor="scribbling">Terveiset</Label>
+              <label className="block font-bold mb-1 mt-2" htmlFor="scribbling">Terveiset</label>
               <Field
                 disabled={isPosting || isSuccess}
                 name="scribbling"
                 type="text"
-                as={Textarea}
+                as="textarea"
+                className="border border-muted rounded p-2 w-full mb-2"
                 rows="8"
                 placeholder="raapusta tähän terveisesi"
               />
@@ -179,15 +161,16 @@ const GuestbookForm = () => {
 
               {!isSuccess && !isError && (
                 <>
-                  <Button
+                  <button
                     disabled={
                       "tussi" || !isValid || !isHuman || isPosting || isSuccess
                     }
                     type="submit"
+                    className="bg-primary text-white rounded px-4 py-2 cursor-pointer disabled:opacity-50"
                   >
                     {isPosting && <Spinner />}
                     Anti mennä!
-                  </Button>
+                  </button>
 
                   <strong>
                     Bottisuojaukseni on turhan kökkö joten tämä on disabloitu
@@ -196,13 +179,13 @@ const GuestbookForm = () => {
                 </>
               )}
               {isSuccess && (
-                <p sx={{ fontStyle: "italic" }}>
+                <p className="italic">
                   Kiitos palautteesta! Se on jonossa käsiteltävänä, ja törähtää
                   tälle sivulle lähituntien aikana.
                 </p>
               )}
               {isError && (
-                <p sx={{ fontStyle: "italic" }}>
+                <p className="italic">
                   Äh! Palautteen lähettäminen meni perseelleen. Yritä uudelleen
                   paremmalla onnella tai eri lailla formatoidulla palautteella!
                 </p>
@@ -211,7 +194,7 @@ const GuestbookForm = () => {
           );
         }}
       </Formik>
-    </Box>
+    </div>
   );
 };
 

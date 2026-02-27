@@ -1,6 +1,4 @@
-/** @jsxImportSource theme-ui */
 import { FC, memo, useDeferredValue } from "react";
-import { Box, Flex, Link, jsx } from "theme-ui";
 import { Dictator } from "@/types";
 import DictatorGrid from "@/components/dictator/DictatorGrid";
 import { FaAngleUp, FaAngleDown } from "react-icons/fa";
@@ -54,18 +52,12 @@ const DictatorSearch: FC<Props> = ({ dictators }) => {
   const text = filtersOpen ? "piilota" : "näytä";
 
   return (
-    <Box>
+    <div>
       <SubHeading>
-        <Flex
-          sx={{
-            mb: 3,
-            placeItems: "center",
-            justifyContent: "start"
-          }}
-        >
+        <div className="mb-4 flex place-items-center justify-start">
           Hakuehdot
-          <Box sx={{ ml: 3, fontSize: 2 }}>
-            <Link
+          <div className="ml-4 text-base">
+            <a
               href="#"
               onClick={(e) => {
                 e.preventDefault();
@@ -74,17 +66,17 @@ const DictatorSearch: FC<Props> = ({ dictators }) => {
               }}
             >
               {text}
-              <Icon />
-            </Link>
-          </Box>
-        </Flex>
+              <Icon className="inline ml-1" />
+            </a>
+          </div>
+        </div>
       </SubHeading>
 
-      <Box>
+      <div>
         {filtersOpen && (
-          <Box my={3}>
+          <div className="my-4">
             <Filters />
-          </Box>
+          </div>
         )}
 
         <SubHeading>{filteredDictators.length} diktaattoria</SubHeading>
@@ -94,8 +86,8 @@ const DictatorSearch: FC<Props> = ({ dictators }) => {
           extraInfo={sortrado.ExtraInfo}
           fadeOutIf={highlighter}
         />
-      </Box>
-    </Box>
+      </div>
+    </div>
   );
 };
 

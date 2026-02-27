@@ -1,5 +1,3 @@
-/** @jsxImportSource theme-ui */
-import { Box } from "theme-ui";
 import { FC, memo } from "react";
 import { Dictator } from "@/types";
 import DictatorGridDictator from "./DictatorGridDictator";
@@ -21,13 +19,7 @@ const DictatorGrid: FC<Props> = ({
   fadeOutIf = () => false
 }) => {
   return (
-    <Box
-      sx={{
-        display: "grid",
-        gap: [2, 3],
-        gridTemplateColumns: "repeat(auto-fill,minmax(100px,1fr))"
-      }}
-    >
+    <div className="grid gap-2 sm:gap-4" style={{ gridTemplateColumns: "repeat(auto-fill,minmax(100px,1fr))" }}>
       {dictators.map((dictator) => {
         return (
           <DictatorGridDictator
@@ -38,7 +30,7 @@ const DictatorGrid: FC<Props> = ({
           />
         );
       })}
-    </Box>
+    </div>
   );
 };
 

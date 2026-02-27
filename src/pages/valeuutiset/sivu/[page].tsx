@@ -1,13 +1,9 @@
-/** @jsxImportSource theme-ui */
-import { Box } from "theme-ui";
 import Layout from "@/components/layout/Layout";
 import Paginator from "@/components/Paginator";
 import SEO from "@/components/SEO";
-import DictatorList from "@/components/dictator/DictatorList";
 import { FC } from "react";
-import { Dictator, FakeNewsItem } from "@/types";
+import { FakeNewsItem } from "@/types";
 import SectionHeading from "@/components/SectionHeading";
-import InternalLink from "@/components/InternalLink";
 import { Locale, url } from "@/services/url";
 import { GetStaticPaths, GetStaticProps } from "next";
 import { gql } from "graphql-request";
@@ -88,8 +84,8 @@ const NewsIndexPage: FC<Props> = (props) => {
     <Layout>
       <SEO title="Valeuutiset" />
       <ContentBox>
-        <Box>
-          <Box mb={4}>
+        <div>
+          <div className="mb-8">
             <SectionHeading>Valeuutiset</SectionHeading>
 
             <p>
@@ -97,9 +93,9 @@ const NewsIndexPage: FC<Props> = (props) => {
               sanotaan Huotilistisessa manifestissa, pyhistä kirjoista
               pyhimmässä, jonka puhemiehemme on meille jaloudessaan osoittanut!
             </p>
-          </Box>
+          </div>
 
-          <Box my={4}>
+          <div className="my-8">
             <Paginator
               id="paginator-top"
               label="paginator-top"
@@ -107,13 +103,13 @@ const NewsIndexPage: FC<Props> = (props) => {
               numPages={numPages}
               getLink="newsIndex"
             />
-          </Box>
-        </Box>
+          </div>
+        </div>
         {fakeNews.map((p) => (
           <PropagandaLight key={p.sys.id} propaganda={p} />
         ))}
 
-        <Box mt={4}>
+        <div className="mt-8">
           <Paginator
             label="paginator-bottom"
             id="paginator-bottom"
@@ -121,7 +117,7 @@ const NewsIndexPage: FC<Props> = (props) => {
             numPages={numPages}
             getLink="newsIndex"
           />
-        </Box>
+        </div>
       </ContentBox>
     </Layout>
   );

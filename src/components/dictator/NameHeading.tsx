@@ -1,5 +1,4 @@
 import { FC } from "react";
-import { Heading } from "theme-ui";
 import { Dictator } from "@/types";
 
 type Props = {
@@ -8,18 +7,13 @@ type Props = {
 
 const NameHeading: FC<Props> = ({ dictator }) => {
   if (!dictator.aka) {
-    return <Heading as="h2">{dictator.name}</Heading>;
+    return <h2 className="text-2xl font-bold">{dictator.name}</h2>;
   }
 
   return (
-    <Heading
-      as="h2"
-      sx={{
-        lineHeight: "1"
-      }}
-    >
+    <h2 className="text-2xl font-bold leading-none">
       {dictator.name} <small>(aka {dictator.aka.join(", ")}</small>)
-    </Heading>
+    </h2>
   );
 };
 

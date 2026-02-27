@@ -1,6 +1,3 @@
-/** @jsxImportSource theme-ui */
-
-import { Box, Button, Input, jsx, Textarea } from "theme-ui";
 import { FC, memo, useState } from "react";
 import { GuestBookEntry } from "@/types";
 import axios from "axios";
@@ -15,13 +12,15 @@ const GuestbookEntry: FC<Props> = ({ entry, user }) => {
   const [reply, setReply] = useState<string | undefined>();
 
   return (
-    <Box my={3}>
-      <Textarea
+    <div className="my-4">
+      <textarea
+        className="border border-muted rounded p-2 w-full mb-2"
         onChange={(e) => {
           setReply(e.currentTarget.value);
         }}
       />
-      <Button
+      <button
+        className="bg-primary text-white rounded px-4 py-2 cursor-pointer"
         onClick={() => {
           axios.put(`${process.env.NEXT_PUBLIC_API}/api/guestbook`, {
             id: entry.id,
@@ -31,8 +30,8 @@ const GuestbookEntry: FC<Props> = ({ entry, user }) => {
         }}
       >
         Vastaa
-      </Button>
-    </Box>
+      </button>
+    </div>
   );
 };
 

@@ -1,9 +1,5 @@
-/** @jsxImportSource theme-ui */
-
 import { FC } from "react";
-import NextImage from "next/image";
 import { ContentfulImageData } from "@/types";
-import { Box, ThemeUIStyleObject } from "theme-ui";
 
 type ContentfulConfig = {
   width?: number;
@@ -44,7 +40,7 @@ const urlParamsFromConfig = (config: ContentfulConfig): URLSearchParams => {
 type Props = {
   data: ContentfulImageData;
   alt: string;
-  styles?: ThemeUIStyleObject;
+  className?: string;
   config?: ContentfulConfig;
   loading?: "lazy" | "eager";
 };
@@ -52,7 +48,7 @@ type Props = {
 const ContentfulImage: FC<Props> = ({
   data,
   alt,
-  styles,
+  className,
   config = {},
   loading = "lazy"
 }) => {
@@ -61,25 +57,15 @@ const ContentfulImage: FC<Props> = ({
   const imageUrl = `${data.url}?${urlParams.toString()}`;
 
   return (
-    <Box sx={styles}>
-      <picture
-        sx={{
-          display: "block",
-          maxWidth: "100%"
-        }}
-      >
-        <img
-          loading={loading}
-          sx={{
-            display: "block",
-            maxWidth: "100%"
-          }}
-          src={imageUrl}
-          title={data.description}
-          alt={alt}
-        />
-      </picture>
-    </Box>
+    <picture className={`block max-w-full ${className || ""}`}>
+      <img
+        loading={loading}
+        className="block max-w-full"
+        src={imageUrl}
+        title={data.description}
+        alt={alt}
+      />
+    </picture>
   );
 };
 

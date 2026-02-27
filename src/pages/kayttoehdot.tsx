@@ -1,6 +1,3 @@
-/** @jsxImportSource theme-ui */
-
-import { Box } from "theme-ui";
 import ExternalLink from "@/components/ExternalLink";
 import InternalLink from "@/components/InternalLink";
 import ContentBox from "@/components/layout/ContentBox";
@@ -44,10 +41,7 @@ const TermsOfUsePage = () => {
           Turun ammattikorkeakoulua tai sen etuja edustavat voivat
           yksiselitteisesti vapauttaa itsensä Turun ammattikorkeakoulua ja sen
           edustajia rajoittavista käyttöehdoista pyytämällä omalta osaltaan{" "}
-          <a
-            sx={{ variant: "links.default" }}
-            href="mailto:puhemies@diktaattoriporssi.com"
-          >
+          <a href="mailto:puhemies@diktaattoriporssi.com">
             sähköpostitse anteeksi
           </a>{" "}
           Turun ammattikorkeakoulun ja sen johdon ammattitaidottomuutta,
@@ -154,7 +148,7 @@ const TermsOfUsePage = () => {
           kolmannelle osapuolelle aiheuttamastaan vahingosta, ja väärinkäytön
           estämisestä tai korjaamisesta Diktaattoripörssille välittömästi tai
           välillisesti aiheutuvista kustannuksista. Rekisteröitynyt käyttäjä
-          vastaa omilla tunnuksillaan tehdyistä toimenpiteistä. Jos epäillet
+          vastaa omilla tunnuksillaan tehdyistä toimenpiteistä. Jos epäilet
           tunnuksesi päätyneen Puolueen vihollisten käsiin, ilmoita asiasta
           Diktaattoripörssille välittömästi.
         </p>
@@ -192,10 +186,7 @@ const TermsOfUsePage = () => {
         <p>
           Mikäli sinulla on henkilötietoihin tai yksityisyyden suojaan liittyvä
           kysymys Diktaattoripörssille, voit esittää sen{" "}
-          <a
-            sx={{ variant: "links.default" }}
-            href="mailto:puhemies@diktaattoriporssi.com"
-          >
+          <a href="mailto:puhemies@diktaattoriporssi.com">
             Puhemiehelle
           </a>
           . Muista pokkuroiva sävy, puhuthan aatteemme isälle ja ajatusten

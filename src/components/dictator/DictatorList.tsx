@@ -1,5 +1,3 @@
-/** @jsxImportSource theme-ui */
-import { Box, jsx } from "theme-ui";
 import { FC } from "react";
 
 import InternalLink from "@/components/InternalLink";
@@ -21,25 +19,15 @@ const DictatorList: FC<Props> = ({ showRanking = false, dictators }) => {
   }
 
   return (
-    <Box>
+    <div>
       {dictators.map((dictator) => {
         return (
-          <Box
-            sx={{
-              display: "grid",
-              gridTemplateColumns: "100px auto",
-              gap: 2
-            }}
-            my={4}
+          <div
+            className="grid gap-2 my-8"
+            style={{ gridTemplateColumns: "100px auto" }}
             key={dictator.sys.id}
           >
-            <Box
-              sx={{
-                gridRowStart: 1,
-                gridColumnStart: 1,
-                gridRowEnd: 2
-              }}
-            >
+            <div style={{ gridRowStart: 1, gridColumnStart: 1, gridRowEnd: 2 }}>
               <ContentfulImage
                 data={dictator.primaryImage}
                 config={{
@@ -48,18 +36,12 @@ const DictatorList: FC<Props> = ({ showRanking = false, dictators }) => {
                   fit: "fill",
                   focus: "face"
                 }}
-                styles={{
-                  borderStyle: "solid",
-                  borderColor: "link",
-                  borderWidth: "1px",
-                  borderRadius: 1,
-                  display: "block"
-                }}
+                className="border border-link rounded block"
                 alt={dictator.name}
               />
-            </Box>
-            <Box
-              sx={{
+            </div>
+            <div
+              style={{
                 gridRowStart: 1,
                 gridRowEnd: 2,
                 gridColumnStart: 2
@@ -74,23 +56,16 @@ const DictatorList: FC<Props> = ({ showRanking = false, dictators }) => {
                 </InternalLink>
               </SubHeading>
 
-              <table
-                sx={{
-                  th: {
-                    textAlign: "left",
-                    verticalAlign: "top"
-                  }
-                }}
-              >
+              <table className="[&_th]:text-left [&_th]:align-top">
                 <tbody>
                   <tr>
                     <th>Vallassa</th>
                     <td>
                       {dictator.reignsCollection.items.map((reign, i) => {
                         return (
-                          <Box key={i}>
+                          <div key={i}>
                             <Reign reign={reign} />
-                          </Box>
+                          </div>
                         );
                       })}
                     </td>
@@ -104,23 +79,23 @@ const DictatorList: FC<Props> = ({ showRanking = false, dictators }) => {
                   </tr>
                 </tbody>
               </table>
-            </Box>
+            </div>
 
             {dictator.synopsis && (
-              <Box
-                sx={{
+              <div
+                style={{
                   gridRowStart: 2,
                   gridColumnStart: 1,
                   gridColumnEnd: 3
                 }}
               >
                 <Markdown>{dictator.synopsis}</Markdown>
-              </Box>
+              </div>
             )}
-          </Box>
+          </div>
         );
       })}
-    </Box>
+    </div>
   );
 };
 

@@ -10,6 +10,8 @@ import { isServer } from "@/services/env";
 import { useRouter } from "next/router";
 import { pageview } from "@/services/ga";
 
+import "../styles/globals.css";
+
 const values = { style: { verticalAlign: "middle" } };
 
 /*

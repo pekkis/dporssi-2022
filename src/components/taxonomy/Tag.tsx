@@ -1,6 +1,4 @@
-/** @jsxImportSource theme-ui */
 import { FC } from "react";
-import { Box, jsx } from "theme-ui";
 import InternalLink from "@/components/InternalLink";
 
 export interface TagInterface {
@@ -13,25 +11,13 @@ type Props = {
   as?: React.ElementType;
 };
 
-const Tag: FC<Props> = ({ as = "li", tag }) => {
+const Tag: FC<Props> = ({ as: As = "li", tag }) => {
   return (
-    <Box
-      as={as}
-      sx={{
-        display: "inline-block",
-        marginRight: 1,
-        marginBottom: 1,
-        padding: 1,
-        backgroundColor: "primary",
-        color: "white",
-        borderRadius: "5px",
-        fontWeight: "light"
-      }}
-    >
+    <As className="inline-block mr-1 mb-1 p-1 bg-primary text-white rounded-[5px] font-light">
       <InternalLink variant="links.tag" to={`/luokittelu/${tag.slug}`}>
         {tag.name}
       </InternalLink>
-    </Box>
+    </As>
   );
 };
 

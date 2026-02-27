@@ -1,5 +1,3 @@
-/** @jsxImportSource theme-ui */
-import { Box, Heading, jsx, Paragraph } from "theme-ui";
 import { FC } from "react";
 import InternalLink from "@/components/InternalLink";
 import Markdown from "@/components/Markdown";
@@ -23,48 +21,32 @@ const grids = {
 
 const Category: FC<Props> = ({ name, taxonomy }) => {
   return (
-    <Box
-      mb={4}
-      sx={{
-        ...grids[name]
-      }}
-    >
+    <div className="mb-8" style={grids[name] || {}}>
       <SubHeading>{name}</SubHeading>
       {taxonomy.map((tag) => {
         return (
-          <Box key={tag.slug} mb={3}>
-            <Heading as="h4" mb={2}>
+          <div key={tag.slug} className="mb-4">
+            <h4 className="text-xl font-bold mb-2">
               <InternalLink to={`/luokittelu/${tag.slug}`}>
-                <span
-                  sx={{
-                    display: "inline-block",
-                    backgroundColor: "primary",
-                    color: "white",
-                    width: "auto",
-                    margin: "0 0 auto 0",
-                    p: 1,
-                    borderRadius: 1,
-                    fontWeight: "light"
-                  }}
-                >
+                <span className="inline-block bg-primary text-white w-auto m-0 p-1 rounded font-light">
                   {tag.name}
                 </span>
               </InternalLink>
-            </Heading>
+            </h4>
 
             <Markdown>{tag.description}</Markdown>
 
             {tag.wikipedia && (
-              <Paragraph>
+              <p>
                 <ExternalLink to={tag.wikipedia}>
                   {tag.name} wikipediassa
                 </ExternalLink>
-              </Paragraph>
+              </p>
             )}
-          </Box>
+          </div>
         );
       })}
-    </Box>
+    </div>
   );
 };
 

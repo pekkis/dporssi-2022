@@ -1,8 +1,5 @@
-/** @jsxImportSource theme-ui */
-
 import { useState } from "react";
 import { useFloating } from "@floating-ui/react";
-import { Box } from "theme-ui";
 import { useUserStore } from "@/services/state";
 import InternalLink from "@/components/InternalLink";
 import { FC } from "react";
@@ -13,10 +10,6 @@ const Avatar = (props) => {
   const { user } = props;
 
   const [isOpen, setOpen] = useState(false);
-
-  const [referenceElement, setReferenceElement] = useState(null);
-  const [popperElement, setPopperElement] = useState(null);
-  const [arrowElement, setArrowElement] = useState(null);
 
   const { refs, floatingStyles } = useFloating({
     strategy: "fixed",
@@ -30,48 +23,24 @@ const Avatar = (props) => {
           setOpen(!isOpen);
         }}
         ref={refs.setReference}
-        sx={{
-          cursor: "Pointer",
-          borderRadius: "50%",
-          width: "30px",
-          height: "30px",
-          display: "block",
-          verticalAlign: "middle",
-          borderColor: "white",
-          borderStyle: "solid",
-          borderWidth: "1px"
-        }}
+        className="cursor-pointer rounded-full w-[30px] h-[30px] block align-middle border border-white"
         src={user.picture || "kikkare-url"}
+        alt={user.displayName || "käyttäjä"}
       />
 
       {isOpen && (
-        <Box
+        <div
           ref={refs.setFloating}
-          sx={{
-            backgroundColor: "white",
-            padding: 2,
-            color: "veryDark",
-            position: "relative",
-            borderColor: "veryDark",
-            borderStyle: "solid",
-            borderWidth: "1px",
-            borderRadius: 1
-          }}
+          className="bg-white p-2 text-very-dark relative border border-very-dark rounded-sm"
           style={floatingStyles}
         >
-          <Box as="nav">
-            <Box
-              sx={{
-                m: 0,
-                p: 0,
-                textAlign: "center"
-              }}
-            >
-              <Box>
+          <nav>
+            <div className="m-0 p-0 text-center">
+              <div>
                 <InternalLink to="/omat-tiedot/porssi">Oma Pörssi</InternalLink>
-              </Box>
+              </div>
 
-              <Box>
+              <div>
                 <InternalLink
                   to="#"
                   onClick={(e) => {
@@ -81,10 +50,10 @@ const Avatar = (props) => {
                 >
                   Kirjaudu ulos
                 </InternalLink>
-              </Box>
-            </Box>
-          </Box>
-        </Box>
+              </div>
+            </div>
+          </nav>
+        </div>
       )}
     </li>
   );

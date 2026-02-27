@@ -1,5 +1,4 @@
 import ReactCookieConsent from "react-cookie-consent";
-import { Button } from "theme-ui";
 
 const CookieConsent = () => {
   return (
@@ -9,13 +8,9 @@ const CookieConsent = () => {
       ButtonComponent={(props) => {
         const { style, ...rest } = props;
         return (
-          <Button
+          <button
             {...rest}
-            sx={{
-              flex: "0 0 auto",
-              margin: "15px",
-              padding: "5px 10px"
-            }}
+            className="flex-none bg-primary text-white cursor-pointer rounded px-[10px] py-[5px] m-[15px]"
           />
         );
       }}

@@ -1,5 +1,3 @@
-/** @jsxImportSource theme-ui */
-import { Box } from "theme-ui";
 import Layout from "@/components/layout/Layout";
 import Paginator from "@/components/Paginator";
 import SEO from "@/components/SEO";
@@ -150,7 +148,7 @@ const DictatorIndexPage: FC<Props> = (props) => {
           ehtineet saada rankingia.
         </p>
 
-        <Box my={4}>
+        <div className="my-8">
           <Paginator
             label="diktaattorien sivutus, ylempi"
             id="paginator-top"
@@ -158,13 +156,13 @@ const DictatorIndexPage: FC<Props> = (props) => {
             numPages={numPages}
             getLink="dictatorIndex"
           />
-        </Box>
+        </div>
 
-        <Box>
+        <div>
           <DictatorList dictators={dictators} showRanking />
-        </Box>
+        </div>
 
-        <Box mt={4}>
+        <div className="mt-8">
           <Paginator
             label="diktaattorien sivutus, alempi"
             id="paginator-top"
@@ -172,7 +170,7 @@ const DictatorIndexPage: FC<Props> = (props) => {
             numPages={numPages}
             getLink="dictatorIndex"
           />
-        </Box>
+        </div>
       </ContentBox>
     </Layout>
   );

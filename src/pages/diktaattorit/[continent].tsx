@@ -1,6 +1,5 @@
 import { GetStaticPaths, GetStaticProps } from "next";
 import { FC } from "react";
-import { Box } from "theme-ui";
 import DictatorList from "@/components/dictator/DictatorList";
 import Layout from "@/components/layout/Layout";
 import Markdown from "@/components/Markdown";
@@ -132,14 +131,6 @@ export const getStaticPaths: GetStaticPaths<Params> = async (context) => {
 const ContinentPage: FC<Props> = (props) => {
   const { continent, dictators } = props;
 
-  /*
-  const dictators = continent.country
-    ? continent.country
-        .map((c) => c.dictator)
-        .filter((d) => d)
-        .flat()
-    : [];
-    */
   const sortedDictators = sortBySortName(dictators);
 
   const title = `Diktaattorit, ${continent.name}`;
@@ -154,64 +145,12 @@ const ContinentPage: FC<Props> = (props) => {
           <Markdown>{continent.description.description}</Markdown>
         )}
 
-        <Box>
+        <div>
           <DictatorList dictators={sortedDictators} />
-        </Box>
+        </div>
       </ContentBox>
     </Layout>
   );
 };
-
-/*
-export const query = graphql`
-  query ContinentPageQuery($id: String) {
-    contentfulContinent(id: { eq: $id }) {
-      id
-      name
-      slug
-      description {
-        description
-      }
-      country {
-        dictator {
-          id
-          slug
-          name
-          sortName
-          canonicalRanking
-          reigns {
-            start
-            end
-          }
-          synopsis {
-            synopsis
-          }
-          country {
-            slug
-            name
-            continent {
-              slug
-            }
-          }
-
-          primaryImage {
-            id
-            gatsbyImageData(
-              layout: CONSTRAINED
-              formats: [AUTO, WEBP]
-              cropFocus: FACE
-              aspectRatio: 0.75
-              placeholder: BLURRED
-              resizingBehavior: FILL
-              quality: 66
-              width: 300
-            )
-          }
-        }
-      }
-    }
-  }
-`;
-*/
 
 export default ContinentPage;

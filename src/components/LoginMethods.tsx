@@ -1,5 +1,3 @@
-/** @jsxImportSource theme-ui */
-import { Box, Button } from "theme-ui";
 import { FC } from "react";
 import { FaFacebook, FaGoogle } from "react-icons/fa";
 import { auth } from "@/services/firebase";
@@ -13,30 +11,32 @@ import {
 const LoginMethods: FC = () => {
   return (
     <>
-      <Box my={2}>
-        <Button
+      <div className="my-2">
+        <button
+          className="bg-primary text-white rounded px-4 py-2 cursor-pointer"
           onClick={() => {
             const provider = new GoogleAuthProvider();
             signInWithPopup(auth, provider);
           }}
         >
-          <FaGoogle sx={{ mr: 2 }} />
+          <FaGoogle className="mr-2 inline" />
           Kirjaudu Googlessa
-        </Button>
-      </Box>
+        </button>
+      </div>
 
-      <Box my={2}>
-        <Button
+      <div className="my-2">
+        <button
           disabled
+          className="bg-primary text-white rounded px-4 py-2 cursor-pointer disabled:opacity-50"
           onClick={() => {
             const provider = new FacebookAuthProvider();
             signInWithPopup(auth, provider);
           }}
         >
-          <FaFacebook sx={{ mr: 2 }} />
+          <FaFacebook className="mr-2 inline" />
           Kirjaudu Facebookissa
-        </Button>
-      </Box>
+        </button>
+      </div>
     </>
   );
 };
