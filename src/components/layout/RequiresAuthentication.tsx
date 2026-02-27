@@ -1,5 +1,6 @@
 import { FC, ReactNode } from "react";
 import { useUserStore } from "@/services/state";
+import Paragraph from "@/components/Paragraph";
 import SectionHeading from "@/components/SectionHeading";
 
 type Props = {
@@ -16,7 +17,7 @@ const RequiresAuthentication: FC<Props> = (props) => {
       <div>
         <SectionHeading>Pääsy kielletty!</SectionHeading>
 
-        <p>Kaappausyritys havaittu. Salaiselle poliisille ilmoitettu.</p>
+        <Paragraph>Kaappausyritys havaittu. Salaiselle poliisille ilmoitettu.</Paragraph>
       </div>
     );
   }

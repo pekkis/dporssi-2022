@@ -1,6 +1,7 @@
 import Layout from "@/components/layout/Layout";
 import SEO from "@/components/SEO";
 import InternalLink from "@/components/InternalLink";
+import Paragraph from "@/components/Paragraph";
 import SectionHeading from "@/components/SectionHeading";
 
 import Image from "next/image";
@@ -28,16 +29,16 @@ const NotFoundPage = () => {
         >
           <SectionHeading>Sivua ei löytynyt!</SectionHeading>
 
-          <p>
+          <Paragraph>
             Pyytämääsi sivua ei kyetty löytämään. Voi olla, että olemme
             löytäneet sivun jo aikaisemmin ja toimittaneet sen
             uudelleenkoulutettavaksi, tai sitten sivu on painunut niin syvälle
             maan alle ettemme löydä siitä edes viitteitä.
-          </p>
-          <p>
+          </Paragraph>
+          <Paragraph>
             Älä huoli, löydät sivusi vielä. Klikkaile vaikka itsesi takaisin
             pääsivulle ja jatka sieltä.
-          </p>
+          </Paragraph>
 
           <ul>
             <li>

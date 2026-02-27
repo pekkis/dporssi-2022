@@ -13,6 +13,7 @@ import { graphQLClient } from "@/services/graphql";
 import Spinner from "@/components/Spinner";
 import { hours } from "@/services/cache";
 import ContentBox from "@/components/layout/ContentBox";
+import Paragraph from "@/components/Paragraph";
 
 type Props = {
   dictators: Dictator[];
@@ -85,7 +86,7 @@ const DictatorsPage: FC<Props> = (props) => {
       <ContentBox>
         <SectionHeading>{title}</SectionHeading>
 
-        <p>
+        <Paragraph>
           Tässä he nyt ovat, kaikki Diktaattoripörssin tuntemat diktaattorit.
           Jos joku puuttuu, kerro ihmeessä siitä{" "}
           <InternalLink
@@ -97,7 +98,7 @@ const DictatorsPage: FC<Props> = (props) => {
             vieraskirjassa
           </InternalLink>
           .
-        </p>
+        </Paragraph>
 
         <div className="my-8">
           {!loading && <DictatorSearch dictators={dictators} />}

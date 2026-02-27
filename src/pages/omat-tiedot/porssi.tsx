@@ -1,4 +1,5 @@
 import Layout from "@/components/layout/Layout";
+import Paragraph from "@/components/Paragraph";
 import SEO from "@/components/SEO";
 import RequiresAuthentication from "@/components/layout/RequiresAuthentication";
 import { useUserStore } from "@/services/state";
@@ -169,12 +170,12 @@ const OwnRankingPage = (props) => {
                 <section className="mb-4">
                   <SectionHeading>Hei, {user?.email}!</SectionHeading>
 
-                  <p>
+                  <Paragraph>
                     Listaa riittävästi tuntemasi diktaattorit ja raahaile heidät
                     tuhmuusjärjestykseen: tuhmin ylimmäs, kiltein alimmas.
-                  </p>
+                  </Paragraph>
 
-                  <p>
+                  <Paragraph>
                     Kaikista tehdyistä listoista lasketaan ensin keskiarvo jota
                     maustetaan Puhemiehen erityisillä superehdoilla koskien
                     ehdokkaiden vaalikelpoisuutta. Sitten politbyroo tarkistaa
@@ -182,16 +183,16 @@ const OwnRankingPage = (props) => {
                     lahjoittamilla äänestyskoneilla mankeloidaan massiivisesta
                     tietomäärästä kerran viikossa lopullinen vertailuluku joka
                     määrittelee diktaattorien sijoituksen pörssissä.
-                  </p>
+                  </Paragraph>
 
-                  <p>
+                  <Paragraph>
                     Vaalit ovat avoimet ja rehelliset. Sinulla on käytössäsi{" "}
                     <strong>{user.data.numberOfVotes}</strong>{" "}
                     {user.data.numberOfVotes === 1 ? "ääni" : "ääntä"} per
                     sijoitus.
-                  </p>
+                  </Paragraph>
 
-                  <p>
+                  <Paragraph>
                     <strong>OBS!</strong> Jos olet menettänyt oman pörssisi, se
                     johtuu siitä että vanhassa D-pörssissä on ollut bugi jonka
                     ansiosta en ole saanut yhdisteltyä vanhoja tietojasi tänne
@@ -200,9 +201,9 @@ const OwnRankingPage = (props) => {
                       laita minulle sähköpostia
                     </a>{" "}
                     niin palautan sen "käsin" näkyviin!
-                  </p>
+                  </Paragraph>
 
-                  <p>
+                  <Paragraph>
                     <button
                       disabled={!isDirty}
                       onClick={saveRanking}
@@ -211,7 +212,7 @@ const OwnRankingPage = (props) => {
                       {isSaving && <Spinner />}
                       Tallenna lista
                     </button>
-                  </p>
+                  </Paragraph>
                 </section>
               </div>
 

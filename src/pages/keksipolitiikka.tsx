@@ -1,5 +1,6 @@
 import ContentBox from "@/components/layout/ContentBox";
 import Layout from "@/components/layout/Layout";
+import Paragraph from "@/components/Paragraph";
 import SectionHeading from "@/components/SectionHeading";
 import SEO from "@/components/SEO";
 
@@ -11,13 +12,13 @@ const CookiePolicyPage = () => {
       <ContentBox>
         <SectionHeading>Diktaattoripörssin keksipolitiikka</SectionHeading>
 
-        <p>
+        <Paragraph>
           Diktaattoripörssi käyttää keksejä (&quot;cookies&quot;) ja muita
           tekniikoita kävijäliikenteen tilastointiin sekä mahdollistamaan ja
           helpottamaan huotilistisen puolueen digitaalisten palvelujen käyttöä.
-        </p>
+        </Paragraph>
 
-        <p>
+        <Paragraph>
           Keksi tai <em>eväste</em> on asiakkaan selaimelle lähetettävä pieni ja
           viaton tekstitiedosto, joka yleensä sisältää tunnistenumeron, eikä
           vahingoita päätelaitetta. Keksuloilla ja muilla vastaavilla
@@ -28,9 +29,9 @@ const CookiePolicyPage = () => {
           IP-osoitteesta. Osa evästeistä on kolmansien osapuolten evästeitä.
           Kolmansien osapuolten evästeet tallentuvat näiden palvelutarjoajien
           käyttöön.
-        </p>
+        </Paragraph>
 
-        <p>
+        <Paragraph>
           Käyttäjää ei voida tunnistaa pelkkien evästeiden avulla, mutta
           yhdistämällä se kaikkeen muuhun mahdollisesti kerättävään tietoon ja /
           tai toisiin evästeisiin sinut voidaan tunnistaa lähes
@@ -39,15 +40,15 @@ const CookiePolicyPage = () => {
           ole alan asiantuntija. Tällä tavalla vaikkapa Google tai Facebook
           keräävät sinusta kaiken mahdollisen tiedon ja käyttävät sitä
           tehdäkseen sinusta hyödykkeen.
-        </p>
+        </Paragraph>
 
-        <p>
+        <Paragraph>
           Älä kuitenkaan itke. Keksit ovat olleet olemassa melkein yhtä kauan
           kuin webbi, ja ne ovat usein olennaisia sivujen toiminnalle. GDPR:n
           myötä niistä on tullut turhaa vouhotusta jos kysytte arvoisalta
           Puhemieheltänne. Ja kysyttehän te, koska luotatte Puhemieheenne kuin
           isäänne tai äitiinne. Hän on kansamme sielu!
-        </p>
+        </Paragraph>
       </ContentBox>
     </Layout>
   );

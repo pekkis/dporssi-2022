@@ -11,6 +11,7 @@ import { graphQLClient } from "@/services/graphql";
 import { range } from "ramda";
 import PropagandaLight from "@/components/PropagandaLight";
 import ContentBox from "@/components/layout/ContentBox";
+import Paragraph from "@/components/Paragraph";
 
 const postsPerPage = 10;
 
@@ -88,11 +89,11 @@ const NewsIndexPage: FC<Props> = (props) => {
           <div className="mb-8">
             <SectionHeading>Valeuutiset</SectionHeading>
 
-            <p>
+            <Paragraph>
               Kaikki, mitä puhemies Pekkis sanoo, on automaattisesti totta. Niin
               sanotaan Huotilistisessa manifestissa, pyhistä kirjoista
               pyhimmässä, jonka puhemiehemme on meille jaloudessaan osoittanut!
-            </p>
+            </Paragraph>
           </div>
 
           <div className="my-8">

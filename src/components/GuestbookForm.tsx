@@ -7,6 +7,7 @@ import { GoogleReCaptchaProvider } from "react-google-recaptcha-v3";
 import * as Yup from "yup";
 import Spinner from "./Spinner";
 import SubHeading from "./SubHeading";
+import Paragraph from "./Paragraph";
 import { useUserStore } from "@/services/state";
 
 const initialState = {
@@ -89,7 +90,7 @@ const GuestbookForm = () => {
     <div className="p-4 border border-muted rounded">
       <SubHeading>Kirjoita vieraskirjaan</SubHeading>
 
-      <p>
+      <Paragraph>
         Palautelomaketta vahtii bottien hyökkäykseltä <strong>reCAPTCHA</strong>
         . Tämän sivun osalta voimassa ovat Diktaattoripörssin omien ehtojen
         lisäksi Googlen{" "}
@@ -101,7 +102,7 @@ const GuestbookForm = () => {
           yksityisyyskäytännöt
         </ExternalLink>{" "}
         (LOL).
-      </p>
+      </Paragraph>
 
       <Formik
         initialValues={{
@@ -179,16 +180,16 @@ const GuestbookForm = () => {
                 </>
               )}
               {isSuccess && (
-                <p className="italic">
+                <Paragraph className="italic">
                   Kiitos palautteesta! Se on jonossa käsiteltävänä, ja törähtää
                   tälle sivulle lähituntien aikana.
-                </p>
+                </Paragraph>
               )}
               {isError && (
-                <p className="italic">
+                <Paragraph className="italic">
                   Äh! Palautteen lähettäminen meni perseelleen. Yritä uudelleen
                   paremmalla onnella tai eri lailla formatoidulla palautteella!
-                </p>
+                </Paragraph>
               )}
             </Form>
           );

@@ -1,6 +1,7 @@
 import { FC } from "react";
 import InternalLink from "@/components/InternalLink";
 import Markdown from "@/components/Markdown";
+import Paragraph from "@/components/Paragraph";
 import SubHeading from "@/components/SubHeading";
 import { TaxonomyTerm } from "@/types";
 import ExternalLink from "@/components/ExternalLink";
@@ -37,11 +38,11 @@ const Category: FC<Props> = ({ name, taxonomy }) => {
             <Markdown>{tag.description}</Markdown>
 
             {tag.wikipedia && (
-              <p>
+              <Paragraph>
                 <ExternalLink to={tag.wikipedia}>
                   {tag.name} wikipediassa
                 </ExternalLink>
-              </p>
+              </Paragraph>
             )}
           </div>
         );

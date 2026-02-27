@@ -10,6 +10,7 @@ import { TaxonomyCategory, TaxonomyTerm } from "@/types";
 import { FC } from "react";
 import { hours } from "@/services/cache";
 import ContentBox from "@/components/layout/ContentBox";
+import Paragraph from "@/components/Paragraph";
 
 type Props = {
   taxonomies: TaxonomyTerm[];
@@ -62,17 +63,17 @@ const ClassificationIndexPage: FC<Props> = (props) => {
       <ContentBox>
         <section className="mb-8">
           <SectionHeading>Luokittelu</SectionHeading>
-          <p>
+          <Paragraph>
             Diktaattoripörssi luokittelee diktaattorit virallisen tyrannien
             taksonomian mukaisesti avainsanoilla. Alla avaan ajatuksiani ja
             määrittelemäni avainsanat, esimerkein jos / kun näen sen
             hyödylliseksi.
-          </p>
+          </Paragraph>
 
-          <p>
+          <Paragraph>
             Lisään avainsanoja sitä mukaa kun keksin merkityksellisiä sellaisia.
             Vinkata saa!
-          </p>
+          </Paragraph>
         </section>
 
         <div className="block sm:grid sm:grid-cols-2 sm:gap-8">

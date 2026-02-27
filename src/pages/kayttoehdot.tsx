@@ -2,6 +2,7 @@ import ExternalLink from "@/components/ExternalLink";
 import InternalLink from "@/components/InternalLink";
 import ContentBox from "@/components/layout/ContentBox";
 import Layout from "@/components/layout/Layout";
+import Paragraph from "@/components/Paragraph";
 import SectionHeading from "@/components/SectionHeading";
 import SEO from "@/components/SEO";
 import SubHeading from "@/components/SubHeading";
@@ -16,17 +17,17 @@ const TermsOfUsePage = () => {
 
         <SubHeading>1. Yleistä</SubHeading>
 
-        <p>
+        <Paragraph>
           Diktaattoripörssi on maksuton diktaattoriaiheinen verkkosivusto, jonka
           tekemiseen sinäkin voit osallistua.
-        </p>
+        </Paragraph>
 
-        <p>
+        <Paragraph>
           Diktaattoripörssi -palvelun käyttö edellyttää näiden käyttöehtojen ja
           hyvien käytöstapojen noudattamista.
-        </p>
+        </Paragraph>
 
-        <p>
+        <Paragraph>
           Et ole koskaan ollut välillisesti tai välittömästi edesauttamassa
           Diktaattoripörssin sensuroimista Turun ammattikorkeakoulun verkosta.
           Et edusta Turun ammattikorkeakoulua tai sen etuja. Jo pelkästään työn
@@ -35,9 +36,9 @@ const TermsOfUsePage = () => {
           etuja, tai osallistut salajuoneen Diktaattoripörssin kumoamiseksi,
           käyttöoikeutesi raukeaa. Diktaattoripörssi määrittelee, mikä on
           &quot;salajuoni&quot;
-        </p>
+        </Paragraph>
 
-        <p>
+        <Paragraph>
           Turun ammattikorkeakoulua tai sen etuja edustavat voivat
           yksiselitteisesti vapauttaa itsensä Turun ammattikorkeakoulua ja sen
           edustajia rajoittavista käyttöehdoista pyytämällä omalta osaltaan{" "}
@@ -46,9 +47,9 @@ const TermsOfUsePage = () => {
           </a>{" "}
           Turun ammattikorkeakoulun ja sen johdon ammattitaidottomuutta,
           typeryyttä ja huonoja käytöstapoja.
-        </p>
+        </Paragraph>
 
-        <p>
+        <Paragraph>
           Edelliset ehdot eivät koske <strong>Salvamiehenä</strong> tunnettua
           suomalaista fasistista pienpuoluetta johtavaa sankaria joka johti
           vuoden 2002 salajuonta Diktaattoripörssiä kohtaan. Salvamiehenä
@@ -57,9 +58,9 @@ const TermsOfUsePage = () => {
           vierailla Diktaattoripörssissä ja ottaa nokkiinsa sen sisällöstä. Tämä
           oikeus on voimassa riippumatta siitä onko hän a) osallistumassa uusiin
           salajuoniin tai b) edustamassa Turun ammattikorkeakoulua.
-        </p>
+        </Paragraph>
 
-        <p>
+        <Paragraph>
           Mikäli aiemmat ehdot täyttävät, Diktaattoripörssi myöntää sinulle
           oikeuden käyttää palvelua haluamallasi tavalla, kunhan toimit{" "}
           <ExternalLink
@@ -72,9 +73,9 @@ const TermsOfUsePage = () => {
           käyttöoikeuden palvelussa luomaasi sisältöön ja että se jaetaan
           eteenpäin edellämainitun lisenssin mukaisesti. Jos olet
           vajaavaltainen, kysy lupa huoltajaltasi.
-        </p>
+        </Paragraph>
 
-        <p>
+        <Paragraph>
           Mikäli et omista lähettämäsi materiaalin tekijänoikeuksia (esimerkiksi
           kuvat), ole varmahko että kuva on sen käytön estävistä
           tekijänoikeuksista vapaa tai erilaiset reilun käytön lait sallivat
@@ -84,48 +85,48 @@ const TermsOfUsePage = () => {
           miten lystäämme. Lisäksi olemme julistautuneet itsenäiseksi syksyllä
           2007, ja palvelimemme makaa salaisessa palvelinhuoneessa
           eteläeurooppalaisessa roistovaltiossa. Hoovee, laki ja valtiovalta!
-        </p>
+        </Paragraph>
 
-        <p>
+        <Paragraph>
           Vaikka lähettämäsi aineisto täyttäisi edellämainitut vaatimukset,
           Diktaattoripörssi pidättää itsellään jättää sen julkaisematta muista
           syistä tai poistaa jo julkaistun aineiston. Syyt määrittelee
           Diktaattoripörssi: ne voivat olla esimerkiksi laadullisia, poliittisia
           tai keksittyjä. Diktaattoripörssi on tyrannia eikä mikään kansankoti.
-        </p>
+        </Paragraph>
 
-        <p>
+        <Paragraph>
           Diktaattoripörssi ei anna palvelulle takuuta, se tarjotaan sellaisena
           kuin se kulloinkin on. Diktaattoripörssi ei vastaa sisällöstä tai
           tietojen käytöstä aiheutuvista vahingoista, olivat ne välittömiä tai
           välillisiä, taloudelliset vahingot ja henkiset traumat mukaan lukien.
-        </p>
+        </Paragraph>
 
-        <p>
+        <Paragraph>
           Diktaattoripörssillä on oikeus ennakkoon ilmoittamatta muuttaa sivuja,
           poistaa niillä olevia tietoja, estää käyttäjän pääsy sivuille, tai
           keskeyttää sivujen toiminta kokonaan. Näytössäsi ei ole mitään vikaa.
           Älä yritä säätää kuvaa, <strong>me</strong>
           kontrolloimme nyt tietokonettasi.
-        </p>
+        </Paragraph>
 
-        <p>
+        <Paragraph>
           Diktaattoripörssillä on oikeus milloin tahansa siirtää palveluita
           ainoastaan rekisteröidyille käyttäjille, ja avata viittä minuuttia
           myöhemmin sama palvelu jälleen kaikille. Maksulliseksikin voimme
           asioita siirtää, mutta tuskinpa näin teemme. Paitsi jos käyttäjämäärä
           tuhatkertaistuu, rupeamme totta kai ahneiksi.
-        </p>
+        </Paragraph>
 
-        <p>
+        <Paragraph>
           Diktaattoripörssi ei vastaa ulkopuolisten ylläpitämille
           Internet-sivuille johtamista linkeistä tai näiden sivujen sisällöstä.
           Niistä vastaa Illuminati.
-        </p>
+        </Paragraph>
 
         <SubHeading>2. Rekisteröitymistä edellyttävät palvelut</SubHeading>
 
-        <p>
+        <Paragraph>
           Tiettyjen palvelun osien käyttö voi edellyttää rekisteröitymistä.
           Rekisteröitäessä kerätyt henkilötiedot ovat osa{" "}
           <InternalLink to="/rekisteriseloste">
@@ -135,15 +136,15 @@ const TermsOfUsePage = () => {
           Vääränä henkilönä esiintyminen palvelussa voi olla rangaistava teko.
           Vähintään se johtaa ankaraan kritiikkiin ja itsekritiikkiin Puolueen
           sisällä. Ehkä puhdistuksiinkin.
-        </p>
+        </Paragraph>
 
-        <p>
+        <Paragraph>
           Diktaattoripörssillä on oikeus milloin tahansa muuttaa
           rekisteröityneille käyttäjille tarkoitettua palvelua, lopettaa
           palvelun tarjoaminen, tai avata uusia palveluja.
-        </p>
+        </Paragraph>
 
-        <p>
+        <Paragraph>
           Palvelun väärinkäyttäjä on korvausvastuussa Diktaattoripörssille ja
           kolmannelle osapuolelle aiheuttamastaan vahingosta, ja väärinkäytön
           estämisestä tai korjaamisesta Diktaattoripörssille välittömästi tai
@@ -151,9 +152,9 @@ const TermsOfUsePage = () => {
           vastaa omilla tunnuksillaan tehdyistä toimenpiteistä. Jos epäilet
           tunnuksesi päätyneen Puolueen vihollisten käsiin, ilmoita asiasta
           Diktaattoripörssille välittömästi.
-        </p>
+        </Paragraph>
 
-        <p>
+        <Paragraph>
           Sekä sinulla että Diktaattoripörssillä on oikeus milloin tahansa
           päättää rekisteröitymisen yhteydessä syntynyt suhde ilmoittamalla
           asiasta toiselle osapuolelle. Mikäli Diktaattoripörssi epäilee sinun
@@ -162,28 +163,28 @@ const TermsOfUsePage = () => {
           Diktaattoripörssin mielestä asiattomasti, se voi katkaista suhteen
           siitä ilmoittamatta. Mikäli 'Pörssi on todistetusti väärässä, se
           palauttaa oikeutesi ja pyytää sinulta julkisesti anteeksi.
-        </p>
+        </Paragraph>
 
         <SubHeading>3. Henkilötietojen käyttö</SubHeading>
 
-        <p>
+        <Paragraph>
           Diktaattoripörssi käsittelee ainoastaan rekisteröityneiden käyttäjien
           henkilötietoja. Näitä henkilötietoja käytetään{" "}
           <InternalLink to="/rekisteriseloste">
             rekisteriselosteessa
           </InternalLink>{" "}
           kuvatulla tavalla.
-        </p>
+        </Paragraph>
 
-        <p>
+        <Paragraph>
           Rekisteröityneille käyttäjille voidaan lähettää Diktaattoripörssin
           indoktrinaatiota ja propagandaa. Voit kieltää sen omista
           asetuksistasi. Diktaattoripörssi pidättää oikeuden jättää
           järjestelmään bugin, jonka ansiosta sinulle vuotaa viesti-pari vaikka
           olisitkin ottanut ruksin pois. Se on perinne.
-        </p>
+        </Paragraph>
 
-        <p>
+        <Paragraph>
           Mikäli sinulla on henkilötietoihin tai yksityisyyden suojaan liittyvä
           kysymys Diktaattoripörssille, voit esittää sen{" "}
           <a href="mailto:puhemies@diktaattoriporssi.com">
@@ -191,16 +192,16 @@ const TermsOfUsePage = () => {
           </a>
           . Muista pokkuroiva sävy, puhuthan aatteemme isälle ja ajatusten
           Vantaajoelle.
-        </p>
+        </Paragraph>
 
         <SubHeading>4. Käyttöehtojen muuttaminen</SubHeading>
 
-        <p>
+        <Paragraph>
           Diktaattoripörssi voi muuttaa näitä käyttöehtoja koska tahansa.
           Muutoksista ilmoitetaan verkkopalvelussa itsessään, ja ne astuvat
           voimaan ilmoitettuna ajankohtana. Vanhoja käyttöehtoja ei ole koskaan
           ollutkaan.
-        </p>
+        </Paragraph>
       </ContentBox>
     </Layout>
   );

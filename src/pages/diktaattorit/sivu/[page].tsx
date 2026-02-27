@@ -12,6 +12,7 @@ import { gql } from "graphql-request";
 import { graphQLClient } from "@/services/graphql";
 import { range } from "ramda";
 import ContentBox from "@/components/layout/ContentBox";
+import Paragraph from "@/components/Paragraph";
 
 const postsPerPage = 10;
 
@@ -131,14 +132,14 @@ const DictatorIndexPage: FC<Props> = (props) => {
       <ContentBox>
         <SectionHeading>{title}</SectionHeading>
 
-        <p>
+        <Paragraph>
           Diktaattorien sijoitus Diktaattoripörssissä lasketaan salaisella, vain
           Puhemiehen ja hänen uskollisimpien kätyriensä tuntemalla kaavalla.
           Äänet lasketaan Venezuelan hallituksen lahjoittamilla luotettavilla
           Dominion&trade;-äänestyskoneilla.
-        </p>
+        </Paragraph>
 
-        <p>
+        <Paragraph>
           <InternalLink
             to={url("dictators", process.env.NEXT_PUBLIC_LOCALE as Locale)()}
           >
@@ -146,7 +147,7 @@ const DictatorIndexPage: FC<Props> = (props) => {
           </InternalLink>{" "}
           löydät kaikki diktaattorit, myös ne onnettomat jotka eivät vielä ole
           ehtineet saada rankingia.
-        </p>
+        </Paragraph>
 
         <div className="my-8">
           <Paginator

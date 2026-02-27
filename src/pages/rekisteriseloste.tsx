@@ -1,5 +1,6 @@
 import ContentBox from "@/components/layout/ContentBox";
 import Layout from "@/components/layout/Layout";
+import Paragraph from "@/components/Paragraph";
 import SectionHeading from "@/components/SectionHeading";
 import SEO from "@/components/SEO";
 import SubHeading from "@/components/SubHeading";
@@ -15,56 +16,56 @@ const RegistryPage = () => {
 
         <SubHeading>1. Rekisterinpitäjä</SubHeading>
 
-        <p>
+        <Paragraph>
           Dr. Kobros Foundation
           <br />
           Dr. Kobros vei
           <br />
           Lørenskog, Norja
           <br />
-        </p>
+        </Paragraph>
 
         <SubHeading>
           2. Rekisteriasioista vastaava henkilö ja yhteyshenkilö
         </SubHeading>
 
-        <p>
+        <Paragraph>
           Dr. Kobros Foundation
           <br />
           Dr. Kobros vei
           <br />
           Lørenskog, Norja
           <br />
-        </p>
+        </Paragraph>
 
         <SubHeading>3. Rekisterin nimi</SubHeading>
 
-        <p>
+        <Paragraph>
           Diktaattoripörssi-verkkopalvelun (https://diktaattoriporssi.com)
           käyttäjärekisteri
-        </p>
+        </Paragraph>
 
         <SubHeading>
           4. Henkilötietojen käsittelyn tarkoitus / rekisterin käyttötarkoitus
         </SubHeading>
 
-        <p>
+        <Paragraph>
           Henkilötietojen käsittelyn tarkoituksena on verkkopalvelun
           rekisteröityjen käyttäjien asiakassuhteen hoito, ylläpito ja
           kehittäminen, sekä verkkopalvelun tai siihen liittyvien uusien
           verkkopalvelujen suunnittelu ja kehittäminen.
-        </p>
+        </Paragraph>
 
-        <p>
+        <Paragraph>
           Rekisteri sisältää Diktaattoripörssi -verkkopalvelun käyttäjiksi
           rekisteröityneiden henkilöiden henkilötietoja.
-        </p>
+        </Paragraph>
 
         <SubHeading>5. Rekisterin tietosisältö</SubHeading>
 
-        <p>Rekisteri sisältää seuraavia tietoja käyttäjistä:</p>
+        <Paragraph>Rekisteri sisältää seuraavia tietoja käyttäjistä:</Paragraph>
 
-        <p></p>
+        <Paragraph></Paragraph>
         <ul>
           <li>Yhteystiedot: etu- ja sukunimi, sähköpostiosoite.</li>
           <li>Tunnistustiedot: sähköpostiosoite, Facebook-tunnus.</li>
@@ -74,43 +75,43 @@ const RegistryPage = () => {
             henkilöön kohdistuvia terrori- tai murhatoimia koskevat tiedot.
           </li>
         </ul>
-        <p></p>
+        <Paragraph></Paragraph>
 
         <SubHeading>6. Säännönmukaiset tietolähteet</SubHeading>
 
-        <p>
+        <Paragraph>
           Tietolähteenä ovat palvelun käyttäjäksi rekisteröitymisen yhteydessä
           tai myöhemmin Facebook-kirjautumisen kautta kysyttävät tiedot,
           asiakassuhteen kestäessä käyttäjältä kerättävät tiedot ja
-          Diktaattoripörssin urkkijoiden naapureistaan ja "ystävistään"
+          Diktaattoripörssin urkkijoiden naapureistaan ja &quot;ystävistään&quot;
           toimittamat tiedustelutiedot.
-        </p>
+        </Paragraph>
 
         <SubHeading>
           7. Säännönmukaiset tietojen luovutukset ja tietojen siirto EU:n ja
           Euroopan talousalueen ulkopuolelle
         </SubHeading>
 
-        <p>
+        <Paragraph>
           Käyttäjien henkilötietoja ei luovuteta Euvostoliiton ulkopuolelle
           ilman käyttäjän erillistä suostumusta. Suostumus voidaan hankkia
           pontevien kuulustelutoimien avulla.
-        </p>
+        </Paragraph>
 
         <SubHeading>8. Rekisterin suojauksen periaatteet</SubHeading>
 
-        <p>
+        <Paragraph>
           Henkilötiedot säilytetään luottamuksellisina. Diktaattoripörssin
           tietoverkko ja laitteisto, jolla rekisteri sijaitsee, on suojattu
           teknisillä toimenpiteillä.
-        </p>
+        </Paragraph>
 
-        <p>
+        <Paragraph>
           Tietojärjestelmä on suojattu käyttäjätunnuksilla ja salasanoilla,
           jotka ovat ainoastaan rekisterin käyttöön oikeutettujen (Dr. Kobros
           Foundation, KGB, NSA ja Kiinan kansantasavallan 6-10-virasto)
           hallussa.
-        </p>
+        </Paragraph>
       </ContentBox>
     </Layout>
   );

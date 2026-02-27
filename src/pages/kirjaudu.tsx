@@ -3,6 +3,7 @@ import SEO from "@/components/SEO";
 import SectionHeading from "@/components/SectionHeading";
 import LoginMethods from "@/components/LoginMethods";
 import ContentBox from "@/components/layout/ContentBox";
+import Paragraph from "@/components/Paragraph";
 
 const LoginPage = () => {
   return (
@@ -13,26 +14,26 @@ const LoginPage = () => {
           <section className="mb-4">
             <SectionHeading>Kirjaudu sisään</SectionHeading>
 
-            <p>
+            <Paragraph>
               Jos haluat osallistua Diktaattoripörssin tekemiseen, käytännössä
               raahaamalla styrankeja oman henkilökohtaisen näkemyksesi mukaiseen
               pahuusjärjestykseen, sinun tulee kirjautua sisään.
-            </p>
+            </Paragraph>
 
-            <p>
+            <Paragraph>
               Diktaattoripörssi ei säilytä käyttäjätunnuksiasi tai salasanojasi
               omissa tietokannoissaan. Sen sijaan käytämme tässä suhteessa
               siekailematta hyväksi muutamia <em>lähes yhtä tunnettuja</em>{" "}
               Internetin roistovaltioita. Kliksutat vain alta sopivaa
               namisguugelia niin olet sisässä alta aikayksikön.
-            </p>
+            </Paragraph>
 
-            <p>
+            <Paragraph>
               Jos sinulla ei ole tunnusta mihinkään tukemistamme
               kirjautumistavoista, olet kirjautuneiden käyttäjien keskusviraston
               byrokraateille <strong>persona non grata</strong> ja sinut
               sensuroidaan kaikista yhteiskuvista Puhemiehen kanssa.
-            </p>
+            </Paragraph>
           </section>
 
           <LoginMethods />

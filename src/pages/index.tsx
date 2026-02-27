@@ -1,4 +1,5 @@
 import Layout from "@/components/layout/Layout";
+import Paragraph from "@/components/Paragraph";
 import { gql } from "graphql-request";
 import { graphQLClient } from "@/services/graphql";
 import PropagandaTube from "@/components/LazyLoadedPropagandaTube";
@@ -108,23 +109,23 @@ const IndexPage: FC<Props> = (props) => {
             <section style={{ gridArea: "header" }}>
               <SectionHeading>Puhemiehen tervehdys!</SectionHeading>
 
-              <p>
+              <Paragraph>
                 Tervetuloa Diktaattoripörssiin, kirjaimellisesti historialliseen
                 verkkoteokseen jonka tekemiseen sinäkin voit osallistua. Minä
                 olen <strong>Pekkis</strong>, ajatusten Vantaanakin tunnettu,
                 Diktaattoripörssin elinikäinen varapresidentti ja kunnioitettu
                 puhemies.
-              </p>
+              </Paragraph>
 
-              <p>
+              <Paragraph>
                 Tietosanakirjaa lainatakseni: <strong>diktaattori</strong> (lat.
                 dictator, sanelija) on henkilö, jolla on valtiossa rajaton
                 hallintavalta usein vallananastuksen perusteella. Diktatuurille
                 on ominaista poliittisen opposition tukahduttaminen sekä
                 sananvapauden ja muiden perinteisten vapauksien rajoittaminen.
-              </p>
+              </Paragraph>
 
-              <p>
+              <Paragraph>
                 Diktaattoripörssi{" "}
                 <InternalLink
                   to={url(
@@ -141,9 +142,9 @@ const IndexPage: FC<Props> = (props) => {
                   jo yli 20 vuoden ajan
                 </InternalLink>
                 . Lyhyempääkin valtakuntaa on kutsuttu tuhatvuotiseksi.
-              </p>
+              </Paragraph>
 
-              <p>
+              <Paragraph>
                 Herättääkö Diktaattoripörssi sinussa ajatuksia? Kerro niistä{" "}
                 <InternalLink
                   to={url(
@@ -155,7 +156,7 @@ const IndexPage: FC<Props> = (props) => {
                 </InternalLink>
                 . Siitä vekkulista on vuosien mittaan riittänyt jos jonkinlaista
                 hupia.
-              </p>
+              </Paragraph>
             </section>
 
             <div style={{ gridArea: "fakeNews" }}>
