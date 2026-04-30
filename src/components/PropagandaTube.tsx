@@ -1,6 +1,3 @@
-/** @jsxImportSource theme-ui */
-
-import { Box, Flex } from "theme-ui";
 import { useCallback } from "react";
 import Youtube from "./Youtube";
 import { nth } from "ramda";
@@ -8,25 +5,21 @@ import { FC, useState } from "react";
 import { FaChevronCircleRight, FaChevronCircleLeft } from "react-icons/fa";
 
 import ukraineFlag from "./ukraine-flag.png";
+import {
+  arrow,
+  arrowSlot,
+  titleSlot,
+  tubeNav,
+  ukraineFlex,
+  ukraineWrap
+} from "./PropagandaTube.css";
 
 const NormalVideo = ({ video, videos, setCurrent, hasLess, hasMore }) => {
   return (
     <>
       <Youtube videoId={video.videoId} />
-      <Flex
-        sx={{
-          my: 1,
-          width: "100%",
-          justifyContent: "space-between",
-          alignItems: "center"
-        }}
-      >
-        <Box
-          sx={{
-            fontSize: 4,
-            alignSelf: "flex-start"
-          }}
-        >
+      <div className={tubeNav}>
+        <div className={arrowSlot}>
           <FaChevronCircleLeft
             title="Edellinen"
             onClick={(e) => {
@@ -34,41 +27,25 @@ const NormalVideo = ({ video, videos, setCurrent, hasLess, hasMore }) => {
               e.preventDefault();
               setCurrent((current) => Math.max(current - 1, 0));
             }}
-            sx={{
-              cursor: hasLess ? "pointer" : "not-allowed",
-              opacity: hasLess ? 1 : 0.2
-            }}
+            className={hasLess ? arrow.enabled : arrow.disabled}
           />
-        </Box>
-        <Box
-          sx={{
-            px: 2
-          }}
-        >
+        </div>
+        <div className={titleSlot}>
           {video.title}
           {video.nsfw === false && <span>[NSFW]</span>}
-        </Box>
-        <Box
-          sx={{
-            fontSize: 4,
-            alignSelf: "flex-start"
-          }}
-        >
+        </div>
+        <div className={arrowSlot}>
           <FaChevronCircleRight
             onClick={(e) => {
-              console.log("hip hei?");
               e.stopPropagation();
               e.preventDefault();
               setCurrent((current) => Math.min(current + 1, videos.length - 1));
             }}
             title="Seuraava"
-            sx={{
-              cursor: hasMore ? "pointer" : "not-allowed",
-              opacity: hasMore ? 1 : 0.2
-            }}
+            className={hasMore ? arrow.enabled : arrow.disabled}
           />
-        </Box>
-      </Flex>
+        </div>
+      </div>
     </>
   );
 };
@@ -76,27 +53,8 @@ const NormalVideo = ({ video, videos, setCurrent, hasLess, hasMore }) => {
 const SupportUkraine = ({ videos, setCurrent, hasLess, hasMore }) => {
   return (
     <>
-      <Box
-        sx={{
-          position: "relative",
-          paddingBottom: "56.25%",
-          height: 0,
-
-          div: {
-            position: "absolute",
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0
-          }
-        }}
-      >
-        <Flex
-          sx={{
-            alignItems: "center",
-            justifyContent: "center"
-          }}
-        >
+      <div className={ukraineWrap}>
+        <div className={ukraineFlex}>
           <a
             rel="noreferrer"
             title="Auta Ukrainaa!"
@@ -105,22 +63,10 @@ const SupportUkraine = ({ videos, setCurrent, hasLess, hasMore }) => {
           >
             <img alt="Auta Ukrainaa!" src={ukraineFlag.src} width={150} />
           </a>
-        </Flex>
-      </Box>
-      <Flex
-        sx={{
-          my: 1,
-          width: "100%",
-          justifyContent: "space-between",
-          alignItems: "center"
-        }}
-      >
-        <Box
-          sx={{
-            fontSize: 4,
-            alignSelf: "flex-start"
-          }}
-        >
+        </div>
+      </div>
+      <div className={tubeNav}>
+        <div className={arrowSlot}>
           <FaChevronCircleLeft
             title="Edellinen"
             onClick={(e) => {
@@ -128,25 +74,13 @@ const SupportUkraine = ({ videos, setCurrent, hasLess, hasMore }) => {
               e.preventDefault();
               setCurrent((current) => Math.max(current - 1, 0));
             }}
-            sx={{
-              cursor: hasLess ? "pointer" : "not-allowed",
-              opacity: hasLess ? 1 : 0.2
-            }}
+            className={hasLess ? arrow.enabled : arrow.disabled}
           />
-        </Box>
-        <Box
-          sx={{
-            px: 2
-          }}
-        >
+        </div>
+        <div className={titleSlot}>
           Ukrainan asia on meidän asiamme! Auta!
-        </Box>
-        <Box
-          sx={{
-            fontSize: 4,
-            alignSelf: "flex-start"
-          }}
-        >
+        </div>
+        <div className={arrowSlot}>
           <FaChevronCircleRight
             onClick={(e) => {
               e.stopPropagation();
@@ -154,13 +88,10 @@ const SupportUkraine = ({ videos, setCurrent, hasLess, hasMore }) => {
               setCurrent((current) => Math.min(current + 1, videos.length - 1));
             }}
             title="Seuraava"
-            sx={{
-              cursor: hasMore ? "pointer" : "not-allowed",
-              opacity: hasMore ? 1 : 0.2
-            }}
+            className={hasMore ? arrow.enabled : arrow.disabled}
           />
-        </Box>
-      </Flex>
+        </div>
+      </div>
     </>
   );
 };

@@ -1,7 +1,4 @@
-/** @jsxImportSource theme-ui */
-
 import { FC, memo } from "react";
-import { Box } from "theme-ui";
 import { range } from "ramda";
 import InternalLink from "./InternalLink";
 import { Locale } from "@/services/url";
@@ -16,7 +13,7 @@ type Props = {
   getLink: "newsIndex" | "dictatorIndex" | "guestbookIndex";
 };
 
-const Previous = ({ currentPage, numPages, getLink }) => {
+const Previous = ({ currentPage, getLink }) => {
   if (currentPage === 1) {
     return null;
   }
@@ -27,7 +24,7 @@ const Previous = ({ currentPage, numPages, getLink }) => {
     </InternalLink>
   );
 };
-const Next = ({ currentPage, numPages, getLink }) => {
+const Next = () => {
   return <span>Seuraava</span>;
 };
 
@@ -40,20 +37,9 @@ const Paginator: FC<Props> = ({
   usePreviousAndNext = false
 }) => {
   return (
-    <Box
-      id={id}
-      aria-label={label}
-      as="nav"
-      sx={{
-        textAlign: "center"
-      }}
-    >
+    <nav id={id} aria-label={label} style={{ textAlign: "center" }}>
       {usePreviousAndNext && (
-        <Previous
-          currentPage={currentPage}
-          numPages={numPages}
-          getLink={getLink}
-        />
+        <Previous currentPage={currentPage} getLink={getLink} />
       )}
       {range(1, numPages + 1).map((r) => {
         const to = url<Props["getLink"]>(
@@ -64,7 +50,7 @@ const Paginator: FC<Props> = ({
         return (
           <InternalLink
             key={r}
-            variant="links.paginator"
+            variant="paginator"
             to={to}
             isActive={(router) => {
               return router.asPath === to;
@@ -74,10 +60,8 @@ const Paginator: FC<Props> = ({
           </InternalLink>
         );
       })}
-      {usePreviousAndNext && (
-        <Next currentPage={currentPage} numPages={numPages} getLink={getLink} />
-      )}
-    </Box>
+      {usePreviousAndNext && <Next />}
+    </nav>
   );
 };
 

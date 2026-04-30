@@ -1,7 +1,6 @@
-/** @jsxImportSource theme-ui */
-import { Box, jsx } from "theme-ui";
 import { FC } from "react";
 
+import { Box } from "@/components/styled/Box";
 import InternalLink from "@/components/InternalLink";
 import Markdown from "@/components/Markdown";
 import CountryLink from "./CountryLink";
@@ -9,6 +8,14 @@ import Reign from "./Reign";
 import { Dictator } from "@/types";
 import SubHeading from "@/components/SubHeading";
 import ContentfulImage from "@/components/contentful/ContentfulImage";
+import {
+  dataTable,
+  dictatorCard,
+  dictatorImage,
+  imageSlot,
+  infoSlot,
+  synopsisSlot
+} from "./DictatorList.css";
 
 type Props = {
   showRanking?: boolean;
@@ -21,25 +28,11 @@ const DictatorList: FC<Props> = ({ showRanking = false, dictators }) => {
   }
 
   return (
-    <Box>
+    <div>
       {dictators.map((dictator) => {
         return (
-          <Box
-            sx={{
-              display: "grid",
-              gridTemplateColumns: "100px auto",
-              gap: 2
-            }}
-            my={4}
-            key={dictator.sys.id}
-          >
-            <Box
-              sx={{
-                gridRowStart: 1,
-                gridColumnStart: 1,
-                gridRowEnd: 2
-              }}
-            >
+          <Box className={dictatorCard} my="4" key={dictator.sys.id}>
+            <div className={imageSlot}>
               <ContentfulImage
                 data={dictator.primaryImage}
                 config={{
@@ -48,23 +41,11 @@ const DictatorList: FC<Props> = ({ showRanking = false, dictators }) => {
                   fit: "fill",
                   focus: "face"
                 }}
-                styles={{
-                  borderStyle: "solid",
-                  borderColor: "link",
-                  borderWidth: "1px",
-                  borderRadius: 1,
-                  display: "block"
-                }}
+                className={dictatorImage}
                 alt={dictator.name}
               />
-            </Box>
-            <Box
-              sx={{
-                gridRowStart: 1,
-                gridRowEnd: 2,
-                gridColumnStart: 2
-              }}
-            >
+            </div>
+            <div className={infoSlot}>
               <SubHeading>
                 <InternalLink to={`/diktaattori/${dictator.slug}`}>
                   {showRanking && (
@@ -74,23 +55,16 @@ const DictatorList: FC<Props> = ({ showRanking = false, dictators }) => {
                 </InternalLink>
               </SubHeading>
 
-              <table
-                sx={{
-                  th: {
-                    textAlign: "left",
-                    verticalAlign: "top"
-                  }
-                }}
-              >
+              <table className={dataTable}>
                 <tbody>
                   <tr>
                     <th>Vallassa</th>
                     <td>
                       {dictator.reignsCollection.items.map((reign, i) => {
                         return (
-                          <Box key={i}>
+                          <div key={i}>
                             <Reign reign={reign} />
-                          </Box>
+                          </div>
                         );
                       })}
                     </td>
@@ -104,23 +78,17 @@ const DictatorList: FC<Props> = ({ showRanking = false, dictators }) => {
                   </tr>
                 </tbody>
               </table>
-            </Box>
+            </div>
 
             {dictator.synopsis && (
-              <Box
-                sx={{
-                  gridRowStart: 2,
-                  gridColumnStart: 1,
-                  gridColumnEnd: 3
-                }}
-              >
+              <div className={synopsisSlot}>
                 <Markdown>{dictator.synopsis}</Markdown>
-              </Box>
+              </div>
             )}
           </Box>
         );
       })}
-    </Box>
+    </div>
   );
 };
 

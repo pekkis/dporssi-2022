@@ -1,6 +1,5 @@
-/** @jsxImportSource theme-ui */
 import { FC, memo, useDeferredValue } from "react";
-import { Box, Flex, Link, jsx } from "theme-ui";
+import { Box } from "@/components/styled/Box";
 import { Dictator } from "@/types";
 import DictatorGrid from "@/components/dictator/DictatorGrid";
 import { FaAngleUp, FaAngleDown } from "react-icons/fa";
@@ -18,6 +17,7 @@ import SubHeading from "@/components/SubHeading";
 import { useMemo } from "react";
 import { useState } from "react";
 import useStore from "./store";
+import { filterToggleHeader, toggleLink } from "./DictatorSearch.css";
 
 export type DictatorSearchParams = {
   sortBy: PossibleSortrados;
@@ -54,35 +54,28 @@ const DictatorSearch: FC<Props> = ({ dictators }) => {
   const text = filtersOpen ? "piilota" : "näytä";
 
   return (
-    <Box>
+    <div>
       <SubHeading>
-        <Flex
-          sx={{
-            mb: 3,
-            placeItems: "center",
-            justifyContent: "start"
-          }}
-        >
+        <div className={filterToggleHeader}>
           Hakuehdot
-          <Box sx={{ ml: 3, fontSize: 2 }}>
-            <Link
-              href="#"
-              onClick={(e) => {
-                e.preventDefault();
-                e.stopPropagation();
-                setFiltersOpen(!filtersOpen);
-              }}
-            >
-              {text}
-              <Icon />
-            </Link>
-          </Box>
-        </Flex>
+          <a
+            href="#"
+            className={toggleLink}
+            onClick={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              setFiltersOpen(!filtersOpen);
+            }}
+          >
+            {text}
+            <Icon />
+          </a>
+        </div>
       </SubHeading>
 
-      <Box>
+      <div>
         {filtersOpen && (
-          <Box my={3}>
+          <Box my="3">
             <Filters />
           </Box>
         )}
@@ -94,8 +87,8 @@ const DictatorSearch: FC<Props> = ({ dictators }) => {
           extraInfo={sortrado.ExtraInfo}
           fadeOutIf={highlighter}
         />
-      </Box>
-    </Box>
+      </div>
+    </div>
   );
 };
 

@@ -1,17 +1,7 @@
-import { Box } from "theme-ui";
+import { extraInfo } from "./ExtraInfoBox.css";
 
 const ExtraInfoBox = ({ children }) => {
-  return (
-    <Box
-      sx={{
-        fontStyle: "italic",
-        mt: 1,
-        fontSize: 1
-      }}
-    >
-      {children}
-    </Box>
-  );
+  return <div className={extraInfo}>{children}</div>;
 };
 
 export default ExtraInfoBox;

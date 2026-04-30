@@ -1,9 +1,8 @@
-/** @jsxImportSource theme-ui */
-
 import { FC, memo } from "react";
 import Tag, { TagInterface } from "./Tag";
 
 import { sortBy, prop, uniqBy } from "ramda";
+import { tagList } from "./taxonomy.css";
 
 const sortByName = sortBy(prop("name"));
 
@@ -20,14 +19,7 @@ const Taxonomies: FC<Props> = ({ taxonomy }) => {
   const sortedTaxonomies = sortByName(uniqueTaxonomies);
 
   return (
-    <ul
-      sx={{
-        listStyleType: "none",
-        listStylePosition: "outside",
-        my: 1,
-        padding: 0
-      }}
-    >
+    <ul className={tagList}>
       {sortedTaxonomies.map((tag) => (
         <Tag key={tag.slug} tag={tag} />
       ))}

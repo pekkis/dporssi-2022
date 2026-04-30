@@ -1,5 +1,5 @@
-/** @jsxImportSource theme-ui */
-import { Box, Button, jsx, Textarea, Input, Label } from "theme-ui";
+import { Button } from "@/components/styled/Button";
+import { Input, Label, Textarea } from "@/components/styled/form";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
 import { useEffect, useReducer } from "react";
@@ -10,6 +10,12 @@ import * as Yup from "yup";
 import Spinner from "./Spinner";
 import SubHeading from "./SubHeading";
 import { useUserStore } from "@/services/state";
+import {
+  errorBox,
+  formBody,
+  formContainer,
+  italicMessage
+} from "./GuestbookForm.css";
 
 const initialState = {
   isHuman: false,
@@ -49,17 +55,7 @@ const validationSchema = Yup.object().shape({
 });
 
 const ErrorBox = ({ children }) => {
-  return (
-    <Box
-      sx={{
-        mt: -3,
-        color: "primary",
-        mb: 3
-      }}
-    >
-      {children}
-    </Box>
-  );
+  return <div className={errorBox}>{children}</div>;
 };
 
 const GuestbookForm = () => {
@@ -74,8 +70,6 @@ const GuestbookForm = () => {
       if (!executeRecaptcha) {
         return;
       }
-
-      console.log(process.env.NEXT_PUBLIC_API, "hihi haah");
 
       const url = `${process.env.NEXT_PUBLIC_API}/api/captcha`;
       const token = await executeRecaptcha("login_page");
@@ -94,15 +88,7 @@ const GuestbookForm = () => {
   }, [executeRecaptcha]);
 
   return (
-    <Box
-      sx={{
-        p: 3,
-        borderWidth: 1,
-        borderRadius: 1,
-        borderStyle: "solid",
-        borderColor: "muted"
-      }}
-    >
+    <div className={formContainer}>
       <SubHeading>Kirjoita vieraskirjaan</SubHeading>
 
       <p>
@@ -125,29 +111,13 @@ const GuestbookForm = () => {
           scribbling: ""
         }}
         validationSchema={validationSchema}
-        onSubmit={async (values) => {
+        onSubmit={async () => {
           dispatch("POST");
-          /*
-          try {
-            await axios.post(
-              `${process.env.NEXT_PUBLIC_API}/api/guestbook`,
-              values
-            );
-
-            dispatch("SUCCESS");
-          } catch (e) {
-            dispatch("ERROR");
-          }
-          */
         }}
       >
         {({ errors, isValid }) => {
           return (
-            <Form
-              sx={{
-                mt: 3
-              }}
-            >
+            <Form className={formBody}>
               <Label htmlFor="author">Salanimi</Label>
               <Field
                 disabled={isPosting || isSuccess}
@@ -196,13 +166,13 @@ const GuestbookForm = () => {
                 </>
               )}
               {isSuccess && (
-                <p sx={{ fontStyle: "italic" }}>
+                <p className={italicMessage}>
                   Kiitos palautteesta! Se on jonossa käsiteltävänä, ja törähtää
                   tälle sivulle lähituntien aikana.
                 </p>
               )}
               {isError && (
-                <p sx={{ fontStyle: "italic" }}>
+                <p className={italicMessage}>
                   Äh! Palautteen lähettäminen meni perseelleen. Yritä uudelleen
                   paremmalla onnella tai eri lailla formatoidulla palautteella!
                 </p>
@@ -211,7 +181,7 @@ const GuestbookForm = () => {
           );
         }}
       </Formik>
-    </Box>
+    </div>
   );
 };
 
@@ -222,10 +192,10 @@ const GuestbookFormWrapper = () => {
       language="fi"
       useRecaptchaNet={false}
       scriptProps={{
-        async: false, // optional, default to false,
-        defer: true, // optional, default to false
-        appendTo: "head", // optional, default to "head", can be "head" or "body",
-        nonce: undefined // optional, default undefined
+        async: false,
+        defer: true,
+        appendTo: "head",
+        nonce: undefined
       }}
     >
       <GuestbookForm />

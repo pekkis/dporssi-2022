@@ -1,10 +1,14 @@
-import { navigate } from "@/services/backwards-compatibility";
 import { useCallback } from "react";
 import { FC } from "react";
-import { Box, Input, Label, Radio } from "theme-ui";
+import { Input, Label, Radio } from "@/components/styled/form";
 import { Locale, url } from "@/services/url";
 import { DictatorSearchParams } from "./DictatorSearch";
 import { useRouter } from "next/router";
+import {
+  filterColumn,
+  filterColumnTight,
+  filtersBox
+} from "./Filters.css";
 
 type Props = {
   params: DictatorSearchParams;
@@ -28,24 +32,8 @@ const Filters: FC<Props> = ({ params }) => {
   );
 
   return (
-    <Box
-      p={3}
-      sx={{
-        backgroundColor: "superLight",
-        borderRadius: 1,
-        borderStyle: "solid",
-        borderWidth: "1",
-        borderColor: "light",
-        display: ["block", "flex"],
-        flexWrap: "wrap"
-      }}
-    >
-      <Box
-        sx={{
-          pr: [0, 4],
-          pb: [0, 0]
-        }}
-      >
+    <div className={filtersBox}>
+      <div className={filterColumnTight}>
         <Label>Etsi</Label>
         <Input
           name="name"
@@ -54,13 +42,8 @@ const Filters: FC<Props> = ({ params }) => {
           value={params.name}
           onChange={(e) => setFilter("name", e.target.value)}
         />
-      </Box>
-      <Box
-        sx={{
-          pr: [0, 4],
-          pb: [3, 0]
-        }}
-      >
+      </div>
+      <div className={filterColumn}>
         <Label>Järjestä</Label>
 
         <Label>
@@ -123,19 +106,14 @@ const Filters: FC<Props> = ({ params }) => {
           />{" "}
           ison päivityksen mukaan
         </Label>
-      </Box>
-      <Box
-        sx={{
-          pr: [0, 4],
-          pb: [3, 0]
-        }}
-      >
+      </div>
+      <div className={filterColumn}>
         <Label>Korosta</Label>
         <Label>
           <Radio
             name="highlight"
             checked={params.highlight === "solidary"}
-            onChange={(e) => {
+            onChange={() => {
               setFilter("highlight", "solidary");
             }}
           />{" "}
@@ -145,7 +123,7 @@ const Filters: FC<Props> = ({ params }) => {
           <Radio
             name="highlight"
             checked={params.highlight === "alive"}
-            onChange={(e) => {
+            onChange={() => {
               setFilter("highlight", "alive");
             }}
           />{" "}
@@ -155,14 +133,14 @@ const Filters: FC<Props> = ({ params }) => {
           <Radio
             name="highlight"
             checked={params.highlight === "inPower"}
-            onChange={(e) => {
+            onChange={() => {
               setFilter("highlight", "inPower");
             }}
           />{" "}
           vallassa olevia
         </Label>
-      </Box>
-    </Box>
+      </div>
+    </div>
   );
 };
 

@@ -1,16 +1,18 @@
-/** @jsxImportSource theme-ui */
-import { Box, Heading, jsx } from "theme-ui";
-import { DateTime } from "luxon";
+import { Box } from "@/components/styled/Box";
+import { Heading } from "@/components/styled/Heading";
 import { Locale, url } from "@/services/url";
 import InternalLink from "./InternalLink";
 import Markdown from "./Markdown";
 import { FaAngleDoubleRight } from "react-icons/fa";
 import { FakeNewsItem } from "@/types";
 import { createDate } from "@/services/date";
+import { sprinkles } from "@/styles/sprinkles.css";
 
 type Props = {
   propaganda: FakeNewsItem;
 };
+
+const iconMargin = sprinkles({ mr: "1" });
 
 const PropagandaLight = (props: Props) => {
   const { propaganda } = props;
@@ -23,20 +25,20 @@ const PropagandaLight = (props: Props) => {
   )(propaganda);
 
   return (
-    <Box mt={2} mb={4} as="article">
+    <Box mt="2" mb="4" as="article">
       <Box as="header">
-        <Heading mb={0} as="h2">
+        <Heading mb="0" as="h2">
           <InternalLink to={link}>{propaganda.title}</InternalLink>
         </Heading>
-        <Box mt={1}>
+        <Box mt="1">
           Julkaistu{" "}
           <time dateTime={date.toISODate()}>{date.toLocaleString()}</time>
         </Box>
       </Box>
-      <Box as="main" my={2}>
+      <Box as="main" my="2">
         <Markdown>{propaganda.description}</Markdown>
-        <Box my={2}>
-          <FaAngleDoubleRight sx={{ mr: 1 }} />
+        <Box my="2">
+          <FaAngleDoubleRight className={iconMargin} />
           <InternalLink to={link}>Lue lisää</InternalLink>
         </Box>
       </Box>

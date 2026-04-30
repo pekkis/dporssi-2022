@@ -1,30 +1,19 @@
 import { FC } from "react";
-import { Box, Input, Label, Radio } from "theme-ui";
+import { Input, Label, Radio } from "@/components/styled/form";
 import useStore from "./store";
+import {
+  filterColumn,
+  filterColumnTight,
+  filtersBox
+} from "./Filters.css";
 
 const Filters: FC = () => {
   const filters = useStore((state) => state.filters);
   const setFilter = useStore((state) => state.setFilter);
 
   return (
-    <Box
-      p={3}
-      sx={{
-        backgroundColor: "superLight",
-        borderRadius: 1,
-        borderStyle: "solid",
-        borderWidth: "1",
-        borderColor: "light",
-        display: ["block", "flex"],
-        flexWrap: "wrap"
-      }}
-    >
-      <Box
-        sx={{
-          pr: [0, 4],
-          pb: [0, 0]
-        }}
-      >
+    <div className={filtersBox}>
+      <div className={filterColumnTight}>
         <Label>Etsi</Label>
         <Input
           name="name"
@@ -33,13 +22,8 @@ const Filters: FC = () => {
           value={filters.name}
           onChange={(e) => setFilter("name", e.target.value)}
         />
-      </Box>
-      <Box
-        sx={{
-          pr: [0, 4],
-          pb: [3, 0]
-        }}
-      >
+      </div>
+      <div className={filterColumn}>
         <Label>Järjestä</Label>
 
         <Label>
@@ -112,19 +96,14 @@ const Filters: FC = () => {
           />{" "}
           ison päivityksen mukaan
         </Label>
-      </Box>
-      <Box
-        sx={{
-          pr: [0, 4],
-          pb: [3, 0]
-        }}
-      >
+      </div>
+      <div className={filterColumn}>
         <Label>Korosta</Label>
         <Label>
           <Radio
             name="highlight"
             checked={filters.highlight === "solidary"}
-            onChange={(e) => {
+            onChange={() => {
               setFilter("highlight", "solidary");
             }}
           />{" "}
@@ -134,7 +113,7 @@ const Filters: FC = () => {
           <Radio
             name="highlight"
             checked={filters.highlight === "alive"}
-            onChange={(e) => {
+            onChange={() => {
               setFilter("highlight", "alive");
             }}
           />{" "}
@@ -144,14 +123,14 @@ const Filters: FC = () => {
           <Radio
             name="highlight"
             checked={filters.highlight === "inPower"}
-            onChange={(e) => {
+            onChange={() => {
               setFilter("highlight", "inPower");
             }}
           />{" "}
           vallassa olevia
         </Label>
-      </Box>
-    </Box>
+      </div>
+    </div>
   );
 };
 

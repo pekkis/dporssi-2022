@@ -1,9 +1,7 @@
-/** @jsxImportSource theme-ui */
-
 import { FC } from "react";
-import NextImage from "next/image";
 import { ContentfulImageData } from "@/types";
-import { Box, ThemeUIStyleObject } from "theme-ui";
+import { contentfulImage, contentfulPicture } from "./ContentfulImage.css";
+import { cx } from "@/styles/cx";
 
 type ContentfulConfig = {
   width?: number;
@@ -44,7 +42,11 @@ const urlParamsFromConfig = (config: ContentfulConfig): URLSearchParams => {
 type Props = {
   data: ContentfulImageData;
   alt: string;
-  styles?: ThemeUIStyleObject;
+  /**
+   * Optional class name applied to the wrapping <div>. Use a vanilla-extract
+   * `style()` call (or `sprinkles({ ... })`) here.
+   */
+  className?: string;
   config?: ContentfulConfig;
   loading?: "lazy" | "eager";
 };
@@ -52,7 +54,7 @@ type Props = {
 const ContentfulImage: FC<Props> = ({
   data,
   alt,
-  styles,
+  className,
   config = {},
   loading = "lazy"
 }) => {
@@ -61,25 +63,17 @@ const ContentfulImage: FC<Props> = ({
   const imageUrl = `${data.url}?${urlParams.toString()}`;
 
   return (
-    <Box sx={styles}>
-      <picture
-        sx={{
-          display: "block",
-          maxWidth: "100%"
-        }}
-      >
+    <div className={className}>
+      <picture className={contentfulPicture}>
         <img
           loading={loading}
-          sx={{
-            display: "block",
-            maxWidth: "100%"
-          }}
+          className={contentfulImage}
           src={imageUrl}
           title={data.description}
           alt={alt}
         />
       </picture>
-    </Box>
+    </div>
   );
 };
 
