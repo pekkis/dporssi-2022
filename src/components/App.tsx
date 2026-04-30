@@ -1,12 +1,12 @@
 import { useCallback, Suspense } from "react";
 import { ErrorBoundary } from "react-error-boundary";
-import theme from "@/services/theme";
-import { ThemeUIProvider } from "theme-ui";
-import { Global } from "@emotion/react";
 import LazyLoadedUserInitializer from "./LazyLoadedUserInitializer";
 import InfernalServerErrorPage from "@/pages/500";
-import { useMemo } from "react";
 import { BrowserMicroSentryClient } from "@micro-sentry/browser";
+
+// Side-effect import: registers the global theme tokens and base
+// element styles (replaces the old theme-ui <Global/> block).
+import "@/styles/theme.css";
 
 const App = (props) => {
   const { children } = props;
@@ -24,23 +24,10 @@ const App = (props) => {
       FallbackComponent={InfernalServerErrorPage}
       onError={errorHandler}
     >
-      <ThemeUIProvider theme={theme}>
-        <Global
-          styles={{
-            html: {},
-
-            "html.wf-active": {},
-
-            ".grecaptcha-badge": {
-              visibility: "hidden"
-            }
-          }}
-        />
-        <Suspense fallback={null}>
-          <LazyLoadedUserInitializer />
-        </Suspense>
-        {children}
-      </ThemeUIProvider>
+      <Suspense fallback={null}>
+        <LazyLoadedUserInitializer />
+      </Suspense>
+      {children}
     </ErrorBoundary>
   );
 };
