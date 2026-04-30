@@ -1,11 +1,10 @@
-/** @jsxImportSource theme-ui */
-
 import { FC } from "react";
 import { useId } from "react";
 
 type Props = {
   width?: string;
   height?: string;
+  className?: string;
   onClick?: () => void;
 };
 

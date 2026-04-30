@@ -1,21 +1,21 @@
-/** @jsxImportSource theme-ui */
 import Link from "next/link";
 import { NextRouter, useRouter } from "next/router";
-import { FC, ReactNode } from "react";
-// import { LinkGetProps } from "@reach/router";
+import { ComponentPropsWithoutRef, FC } from "react";
+import { link, LinkVariant } from "@/components/styled/link.css";
+import { cx } from "@/styles/cx";
 
-type Props = {
-  title?: string;
-  variant?: string;
+type Props = Omit<ComponentPropsWithoutRef<typeof Link>, "href" | "className"> & {
   to: string;
-  children: ReactNode;
+  variant?: LinkVariant;
+  className?: string;
   isActive?: (router: NextRouter) => boolean;
 };
 
 const InternalLink: FC<Props> = ({
   to,
-  variant = "links.default",
+  variant = "default",
   isActive = () => false,
+  className,
   ...rest
 }) => {
   const router = useRouter();
@@ -26,14 +26,7 @@ const InternalLink: FC<Props> = ({
     <Link
       href={to}
       {...rest}
-      className={isLinkActive && "active"}
-      sx={{
-        variant,
-        "&.active": {
-          fontWeight: "bold",
-          textDecoration: "underline"
-        }
-      }}
+      className={cx(link({ variant }), className, isLinkActive && "active")}
     />
   );
 };

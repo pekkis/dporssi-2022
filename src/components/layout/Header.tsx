@@ -1,7 +1,7 @@
-/** @jsxImportSource theme-ui */
-
 import { FC, useState } from "react";
-import { Box, Flex, Heading, MenuButton } from "theme-ui";
+import { Box } from "@/components/styled/Box";
+import { Heading } from "@/components/styled/Heading";
+import { MenuButton } from "@/components/styled/form";
 import Adi from "@/components/Adi";
 import Container from "./Container";
 import MainMenu from "./MainMenu";
@@ -10,6 +10,17 @@ import { Default, Mobile } from "./Responsive";
 import { useTranslation } from "react-i18next";
 import { memo } from "react";
 import { useRouter } from "next/router";
+import {
+  adiClickable,
+  adiSlot,
+  header,
+  headerInner,
+  menuButtonShadow,
+  menuSlot,
+  overlay,
+  title,
+  titleSlot
+} from "./Header.css";
 
 type Props = {
   topMenu: string;
@@ -23,111 +34,40 @@ const Header: FC<Props> = ({ topMenu }) => {
 
   return (
     <>
-      {isOpen && (
-        <Box
-          sx={{
-            position: "fixed",
-            backgroundColor: "rgba(0, 0, 0, .2)",
-            top: 0,
-            left: 0,
-            bottom: 0,
-            right: 0,
-            zIndex: 3
-          }}
-        />
-      )}
+      {isOpen && <div className={overlay} />}
 
-      <Box
-        as="header"
-        sx={{
-          gridArea: "header",
-          position: "sticky",
-          overflow: "visible",
-          zIndex: 5,
-          top: 0,
-          left: 0,
-          right: 0,
-          minHeight: topMenu,
-          boxShadow: "1px 1px 5px rgba(0, 0, 0, .5)",
-          bg: "primary"
-        }}
-      >
+      <header className={header} style={{ minHeight: topMenu }}>
         <Container>
-          <Flex
-            sx={{
-              zIndex: 5,
-              height: topMenu,
-              justifyContent: "center",
-              alignItems: "stretch",
-              width: "100%"
-            }}
-          >
-            <Box m={1} sx={{ flex: "0 0 50px", alignSelf: "center" }}>
+          <div className={headerInner} style={{ height: topMenu }}>
+            <Box m="1" className={adiSlot}>
               <Adi
-                sx={{
-                  cursor: "pointer"
-                }}
+                className={adiClickable}
                 onClick={() => {
                   router.push("/");
                 }}
               />
             </Box>
-            <Box
-              p={0}
-              ml={2}
-              sx={{
-                flex: "0 0 auto",
-                alignSelf: "center",
-                textAlign: "center"
-              }}
-            >
-              <Heading
-                as="h1"
-                color="white"
-                sx={(theme) => ({
-                  textShadow: `2px 2px 2px ${theme.colors?.black}`
-                })}
-              >
+            <Box p="0" ml="2" className={titleSlot}>
+              <Heading as="h1" className={title}>
                 {t("Diktaattoripörssi")}
               </Heading>
             </Box>
-            <Box
-              m={1}
-              sx={{
-                flex: "1 1 auto",
-                alignSelf: "center",
-                color: "white",
-                textAlign: "right"
-              }}
-            >
+            <Box m="1" className={menuSlot}>
               <Mobile>
                 <MenuButton
                   onClick={() => setOpen(!isOpen)}
-                  sx={{
-                    filter: "drop-shadow(1px 1px 1px #000)",
-                    cursor: "pointer"
-                  }}
+                  className={menuButtonShadow}
                 />
               </Mobile>
 
               <Default>
-                <MainMenu
-                  sx={{
-                    ul: {
-                      display: ["block", "flex"]
-                    },
-                    li: {
-                      display: "inline-block",
-                      mx: 1
-                    }
-                  }}
-                />
+                <MainMenu />
               </Default>
             </Box>
-          </Flex>
+          </div>
         </Container>
         <Mobile>{isOpen && <MobileMenu topMenu={topMenu} />}</Mobile>
-      </Box>
+      </header>
     </>
   );
 };

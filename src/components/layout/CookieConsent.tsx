@@ -1,5 +1,5 @@
 import ReactCookieConsent from "react-cookie-consent";
-import { Button } from "theme-ui";
+import { Button } from "@/components/styled/Button";
 
 const CookieConsent = () => {
   return (
@@ -7,15 +7,11 @@ const CookieConsent = () => {
       location="bottom"
       buttonText="Ymmärrän!"
       ButtonComponent={(props) => {
-        const { style, ...rest } = props;
+        const { style: _style, ...rest } = props;
         return (
           <Button
             {...rest}
-            sx={{
-              flex: "0 0 auto",
-              margin: "15px",
-              padding: "5px 10px"
-            }}
+            style={{ flex: "0 0 auto", margin: "15px", padding: "5px 10px" }}
           />
         );
       }}

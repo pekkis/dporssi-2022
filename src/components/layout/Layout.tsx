@@ -1,10 +1,9 @@
-/** @jsxImportSource theme-ui */
-
-import { Box } from "theme-ui";
+import { Box } from "@/components/styled/Box";
 import Footer from "./Footer";
 import CookieConsent from "./LazyLoadedCookieConsent";
 import Header from "./Header";
 import Container from "./Container";
+import { layout, main } from "./Layout.css";
 
 const topMenu: string = "70px";
 
@@ -13,34 +12,14 @@ const Layout = ({ children }) => {
     <>
       <CookieConsent />
 
-      <Box
-        sx={{
-          display: "grid",
-          minHeight: "100vh",
-          gridTemplateAreas: `
-        "header"
-        "main"
-        "footer"
-        `,
-          gridTemplateRows:
-            "[header] minmax(min-content, max-content) [main] minmax(min-content, max-content) [footer] minmax(min-content, 1fr)"
-        }}
-      >
+      <div className={layout}>
         <Header topMenu={topMenu} />
 
-        <Box
-          mx={0}
-          my={4}
-          as="main"
-          sx={{
-            gridArea: "main",
-            height: "100%"
-          }}
-        >
+        <Box as="main" mx="0" my="4" className={main}>
           <Container>{children}</Container>
         </Box>
         <Footer />
-      </Box>
+      </div>
     </>
   );
 };

@@ -1,10 +1,8 @@
-/** @jsxImportSource theme-ui */
-
-import { Heading } from "theme-ui";
+import { Heading } from "@/components/styled/Heading";
 
 const SubHeading = ({ children }) => {
   return (
-    <Heading as="h3" mb={3} mt={3}>
+    <Heading as="h3" mb="3" mt="3">
       {children}
     </Heading>
   );

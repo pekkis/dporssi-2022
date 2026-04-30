@@ -6,7 +6,7 @@ const LazyLoadedUserMenu = dynamic(() => import("./UserMenu"), {
   suspense: true,
   loading: () => (
     <li>
-      <InternalLink variant="links.menu" to="/kirjaudu">
+      <InternalLink variant="menu" to="/kirjaudu">
         Kirjaudu
       </InternalLink>
     </li>

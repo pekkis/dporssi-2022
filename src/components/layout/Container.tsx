@@ -1,7 +1,7 @@
-import { Container as ThemeUiContainer } from "theme-ui";
+import { Container as StyledContainer } from "@/components/styled/Container";
 
 const Container = ({ children }) => {
-  return <ThemeUiContainer>{children}</ThemeUiContainer>;
+  return <StyledContainer>{children}</StyledContainer>;
 };
 
 export default Container;
