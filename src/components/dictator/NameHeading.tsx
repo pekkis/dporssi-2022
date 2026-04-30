@@ -1,6 +1,7 @@
 import { FC } from "react";
-import { Heading } from "theme-ui";
+import { Heading } from "@/components/styled/Heading";
 import { Dictator } from "@/types";
+import { tightHeading } from "./NameHeading.css";
 
 type Props = {
   dictator: Dictator;
@@ -12,12 +13,7 @@ const NameHeading: FC<Props> = ({ dictator }) => {
   }
 
   return (
-    <Heading
-      as="h2"
-      sx={{
-        lineHeight: "1"
-      }}
-    >
+    <Heading as="h2" className={tightHeading}>
       {dictator.name} <small>(aka {dictator.aka.join(", ")}</small>)
     </Heading>
   );

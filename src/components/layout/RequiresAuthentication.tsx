@@ -1,6 +1,4 @@
-/** @jsxImportSource theme-ui */
 import { FC, ReactNode } from "react";
-import { Box, Paragraph } from "theme-ui";
 import { useUserStore } from "@/services/state";
 import SectionHeading from "@/components/SectionHeading";
 
@@ -15,13 +13,11 @@ const RequiresAuthentication: FC<Props> = (props) => {
 
   if (!user.isAuthenticated) {
     return (
-      <Box>
+      <div>
         <SectionHeading>Pääsy kielletty!</SectionHeading>
 
-        <Paragraph>
-          Kaappausyritys havaittu. Salaiselle poliisille ilmoitettu.
-        </Paragraph>
-      </Box>
+        <p>Kaappausyritys havaittu. Salaiselle poliisille ilmoitettu.</p>
+      </div>
     );
   }
 

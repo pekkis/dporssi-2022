@@ -1,6 +1,6 @@
 import { GetStaticPaths, GetStaticProps } from "next";
 import { FC } from "react";
-import { Box } from "theme-ui";
+import { Box } from "@/components/styled/Box";
 import DictatorList from "@/components/dictator/DictatorList";
 import Layout from "@/components/layout/Layout";
 import Markdown from "@/components/Markdown";

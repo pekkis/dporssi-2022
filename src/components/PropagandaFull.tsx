@@ -1,9 +1,17 @@
-import { Box, Heading } from "theme-ui";
+import { Box } from "@/components/styled/Box";
+import { Heading } from "@/components/styled/Heading";
 import Markdown from "./Markdown";
 import NextImage from "next/image";
 import ContentfulImage from "./contentful/ContentfulImage";
 import { FakeNewsItem, StaticImageData } from "@/types";
 import { createDate } from "@/services/date";
+import {
+  fullArticle,
+  headerArea,
+  italic,
+  mainArea,
+  sidebarArea
+} from "./PropagandaFull.css";
 
 type Props = {
   propaganda: FakeNewsItem;
@@ -16,50 +24,22 @@ const PropagandaFull = (props: Props) => {
   const date = createDate(propaganda.date);
 
   return (
-    <Box
-      as="article"
-      sx={{
-        display: "grid",
-        gap: 4,
-        gridTemplateColumns: ["1fr", "2fr 1fr"],
-        gridTemplateAreas: [
-          `
-            "header"
-            "sidebar"
-            "main"
-          `,
-          `
-          "header header"
-          "main sidebar"
-        `
-        ]
-      }}
-    >
-      <Box
-        as="header"
-        sx={{
-          gridArea: "header"
-        }}
-      >
-        <Heading mb={0} as="h2">
+    <article className={fullArticle}>
+      <header className={headerArea}>
+        <Heading mb="0" as="h2">
           {propaganda.title}
         </Heading>
-        <Box mt={1}>
+        <Box mt="1">
           Julkaistu{" "}
           <time dateTime={date.toISODate()}>{date.toLocaleString()}</time>
         </Box>
 
-        <Box mt={3} sx={{ fontStyle: "italic " }}>
+        <Box mt="3" className={italic}>
           <Markdown>{propaganda.description}</Markdown>
         </Box>
-      </Box>
+      </header>
 
-      <Box
-        sx={{
-          gridArea: "sidebar",
-          alignSelf: "start"
-        }}
-      >
+      <div className={sidebarArea}>
         {propaganda.image ? (
           <ContentfulImage
             data={propaganda.image}
@@ -72,27 +52,12 @@ const PropagandaFull = (props: Props) => {
             height={defaultImage.height}
           />
         )}
-        {/*
-            <GatsbyImage
-              alt={propaganda.image ? propaganda.image.title : "kuvituskuva"}
-              image={
-                propaganda.image
-                  ? propaganda.image.gatsbyImageData
-                  : defaultImage.childImageSharp.gatsbyImageData
-              }
-            />
-            */}
-      </Box>
+      </div>
 
-      <Box
-        as="section"
-        sx={{
-          gridArea: "main"
-        }}
-      >
+      <section className={mainArea}>
         <Markdown>{propaganda.article}</Markdown>
-      </Box>
-    </Box>
+      </section>
+    </article>
   );
 };
 

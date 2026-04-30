@@ -1,18 +1,19 @@
-/** @jsxImportSource theme-ui */
-import { Box, Heading, jsx, Paragraph } from "theme-ui";
-import { FC } from "react";
+import { Box } from "@/components/styled/Box";
+import { Heading } from "@/components/styled/Heading";
+import { CSSProperties, FC } from "react";
 import InternalLink from "@/components/InternalLink";
 import Markdown from "@/components/Markdown";
 import SubHeading from "@/components/SubHeading";
 import { TaxonomyTerm } from "@/types";
 import ExternalLink from "@/components/ExternalLink";
+import { tagPillInline } from "./taxonomy.css";
 
 type Props = {
   name: string;
   taxonomy: TaxonomyTerm[];
 };
 
-const grids = {
+const grids: Record<string, CSSProperties> = {
   "Luonne ja persoona": {
     gridColumnStart: 1,
     gridColumnEnd: 2,
@@ -23,43 +24,25 @@ const grids = {
 
 const Category: FC<Props> = ({ name, taxonomy }) => {
   return (
-    <Box
-      mb={4}
-      sx={{
-        ...grids[name]
-      }}
-    >
+    <Box mb="4" style={grids[name]}>
       <SubHeading>{name}</SubHeading>
       {taxonomy.map((tag) => {
         return (
-          <Box key={tag.slug} mb={3}>
-            <Heading as="h4" mb={2}>
+          <Box key={tag.slug} mb="3">
+            <Heading as="h4" mb="2">
               <InternalLink to={`/luokittelu/${tag.slug}`}>
-                <span
-                  sx={{
-                    display: "inline-block",
-                    backgroundColor: "primary",
-                    color: "white",
-                    width: "auto",
-                    margin: "0 0 auto 0",
-                    p: 1,
-                    borderRadius: 1,
-                    fontWeight: "light"
-                  }}
-                >
-                  {tag.name}
-                </span>
+                <span className={tagPillInline}>{tag.name}</span>
               </InternalLink>
             </Heading>
 
             <Markdown>{tag.description}</Markdown>
 
             {tag.wikipedia && (
-              <Paragraph>
+              <p>
                 <ExternalLink to={tag.wikipedia}>
                   {tag.name} wikipediassa
                 </ExternalLink>
-              </Paragraph>
+              </p>
             )}
           </Box>
         );

@@ -1,6 +1,6 @@
-/** @jsxImportSource theme-ui */
-
-import { Box, Button, Input, jsx, Textarea } from "theme-ui";
+import { Box } from "@/components/styled/Box";
+import { Button } from "@/components/styled/Button";
+import { Textarea } from "@/components/styled/form";
 import { FC, memo, useState } from "react";
 import { GuestBookEntry } from "@/types";
 import axios from "axios";
@@ -15,7 +15,7 @@ const GuestbookEntry: FC<Props> = ({ entry, user }) => {
   const [reply, setReply] = useState<string | undefined>();
 
   return (
-    <Box my={3}>
+    <Box my="3">
       <Textarea
         onChange={(e) => {
           setReply(e.currentTarget.value);

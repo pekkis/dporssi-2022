@@ -1,5 +1,3 @@
-/** @jsxImportSource theme-ui */
-import { Box } from "theme-ui";
 import ExternalLink from "@/components/ExternalLink";
 import InternalLink from "@/components/InternalLink";
 import ContentBox from "@/components/layout/ContentBox";

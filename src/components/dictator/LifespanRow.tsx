@@ -1,5 +1,3 @@
-/** @jsxImportSource theme-ui */
-import { Box, jsx } from "theme-ui";
 import { FC } from "react";
 import { DateRange } from "@/types";
 import { formatDate } from "@/services/date";
@@ -32,11 +30,11 @@ const LifespanRow: FC<Props> = ({ lifespan }) => {
         <tr>
           <th>Kuoli</th>
           <td>
-            <Box>
+            <div>
               {formatDate(lifespan.end)}
               {lifespan.end && <> ({Math.floor(diff.years)} vuotta)</>}
-            </Box>
-            <Box></Box>
+            </div>
+            <div></div>
           </td>
         </tr>
       )}

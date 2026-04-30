@@ -1,5 +1,3 @@
-/** @jsxImportSource theme-ui */
-
 import { FC } from "react";
 import { Dictator } from "@/types";
 import { sortBySortName } from "@/services/dictator";

@@ -1,5 +1,3 @@
-/** @jsxImportSource theme-ui */
-
 import { FC } from "react";
 import { Dictator } from "@/types";
 import { sortByCanonicalRanking } from "@/services/dictator";

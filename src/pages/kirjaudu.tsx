@@ -1,5 +1,5 @@
 import Layout from "@/components/layout/Layout";
-import { Box } from "theme-ui";
+import { Box } from "@/components/styled/Box";
 import SEO from "@/components/SEO";
 import SectionHeading from "@/components/SectionHeading";
 import LoginMethods from "@/components/LoginMethods";
@@ -11,7 +11,7 @@ const LoginPage = () => {
       <SEO title="Kirjaudu sisään" />
       <Layout>
         <ContentBox>
-          <Box mb={3} as="section">
+          <Box mb="3" as="section">
             <SectionHeading>Kirjaudu sisään</SectionHeading>
 
             <p>

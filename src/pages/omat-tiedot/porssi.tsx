@@ -1,8 +1,6 @@
-/** @jsxImportSource theme-ui */
-
-import { Button } from "theme-ui";
+import { Button } from "@/components/styled/Button";
 import Layout from "@/components/layout/Layout";
-import { Box } from "theme-ui";
+import { Box } from "@/components/styled/Box";
 import SEO from "@/components/SEO";
 import RequiresAuthentication from "@/components/layout/RequiresAuthentication";
 import { useUserStore } from "@/services/state";
@@ -19,7 +17,14 @@ import { Dictator } from "@/types";
 import { GetServerSideProps } from "next";
 import { gql } from "graphql-request";
 import { graphQLClient } from "@/services/graphql";
-// import { GatsbyImage } from "gatsby-plugin-image";
+import {
+  dictatorImage,
+  handle,
+  row,
+  rowAction,
+  rowLabel,
+  twoColumns
+} from "./porssi.css";
 
 type Props = {
   dictators: Dictator[];
@@ -73,32 +78,8 @@ export const getServerSideProps: GetServerSideProps<Props> = async (
 
 const Handle = (props) => {
   const { ...rest } = props;
-  return (
-    <Box
-      sx={{
-        display: "flex",
-        alignItems: "center",
-        backgroundColor: "veryLight",
-        p: 2
-      }}
-      {...rest}
-    ></Box>
-  );
+  return <div className={handle} {...rest}></div>;
 };
-
-/*
-    <img
-      sx={{
-        alignSelf: "center",
-        borderStyle: "solid",
-        borderWidth: "1px",
-        borderColor: "light",
-        borderRadius: 1,
-        mx: 1
-      }}
-      src={dictator.primaryImage.fixed.src}
-    />
-*/
 
 const DictatorImage = (props) => {
   const { dictator } = props;
@@ -107,14 +88,7 @@ const DictatorImage = (props) => {
     <ContentfulImage
       data={dictator.primaryImage}
       config={{ width: 30, aspectRatio: 0.75, fit: "fill", focus: "face" }}
-      styles={{
-        alignSelf: "center",
-        borderStyle: "solid",
-        borderWidth: "1px",
-        borderColor: "light",
-        borderRadius: 1,
-        mx: 1
-      }}
+      className={dictatorImage}
       alt={dictator.name}
     />
   );
@@ -196,8 +170,8 @@ const OwnRankingPage = (props) => {
           {!user.data && <Spinner />}
           {user.data && (
             <>
-              <Box mx={2}>
-                <Box mb={3} as="section">
+              <Box mx="2">
+                <Box mb="3" as="section">
                   <SectionHeading>Hei, {user?.email}!</SectionHeading>
 
                   <p>
@@ -242,14 +216,7 @@ const OwnRankingPage = (props) => {
                 </Box>
               </Box>
 
-              <Box
-                mx={2}
-                sx={{
-                  display: ["block", "grid"],
-                  gridTemplateColumns: "1fr 1fr",
-                  columnGap: 4
-                }}
-              >
+              <Box mx="2" className={twoColumns}>
                 <Box>
                   <SubHeading>Listatut</SubHeading>
 
@@ -270,19 +237,8 @@ const OwnRankingPage = (props) => {
                                 index={i}
                               >
                                 {(provided) => (
-                                  <Box
-                                    sx={{
-                                      display: "flex",
-                                      width: "100%",
-                                      my: 1,
-                                      placeItems: "stretch",
-                                      borderRadius: 1,
-                                      borderStyle: "solid",
-                                      borderWidth: "1px",
-                                      borderColor: "light",
-                                      alignContent: "stretch",
-                                      alignItems: "stretch"
-                                    }}
+                                  <div
+                                    className={row}
                                     ref={provided.innerRef}
                                     {...provided.draggableProps}
                                   >
@@ -292,35 +248,21 @@ const OwnRankingPage = (props) => {
 
                                     <DictatorImage dictator={d} />
 
-                                    <Box
-                                      py={2}
-                                      sx={{
-                                        display: "flex",
-                                        alignItems: "center"
-                                      }}
-                                    >
-                                      <Box mr={1}>
+                                    <Box py="2" className={rowLabel}>
+                                      <Box mr="1">
                                         <strong>{i + 1}.</strong>
                                       </Box>
                                       <Box>{d.name}</Box>
                                     </Box>
 
-                                    <Box
-                                      p={2}
-                                      sx={{
-                                        flexGrow: 100,
-                                        display: "flex",
-                                        alignItems: "center",
-                                        justifyContent: "flex-end"
-                                      }}
-                                    >
+                                    <Box p="2" className={rowAction}>
                                       <Button
                                         onClick={() => unlistDictator(r.id)}
                                       >
                                         Poista
                                       </Button>
                                     </Box>
-                                  </Box>
+                                  </div>
                                 )}
                               </Draggable>
                             );
@@ -337,45 +279,17 @@ const OwnRankingPage = (props) => {
 
                   {map((d) => {
                     return (
-                      <Box
-                        sx={{
-                          display: "flex",
-                          width: "100%",
-                          my: 1,
-                          placeItems: "stretch",
-                          borderRadius: 1,
-                          borderStyle: "solid",
-                          borderWidth: "1px",
-                          borderColor: "light",
-                          alignContent: "stretch",
-                          alignItems: "stretch"
-                        }}
-                        key={d.sys.id}
-                      >
+                      <div className={row} key={d.sys.id}>
                         <DictatorImage dictator={d} />
-                        <Box
-                          sx={{
-                            display: "flex",
-                            alignItems: "center"
-                          }}
-                          p={2}
-                        >
+                        <Box className={rowLabel} p="2">
                           <Box>{d.name}</Box>
                         </Box>
-                        <Box
-                          p={2}
-                          sx={{
-                            flexGrow: 100,
-                            display: "flex",
-                            alignItems: "center",
-                            justifyContent: "flex-end"
-                          }}
-                        >
+                        <Box p="2" className={rowAction}>
                           <Button onClick={() => listDictator(d.sys.id)}>
                             Listaa
                           </Button>
                         </Box>
-                      </Box>
+                      </div>
                     );
                   }, unlisted)}
                 </Box>

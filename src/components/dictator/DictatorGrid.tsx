@@ -1,5 +1,4 @@
-/** @jsxImportSource theme-ui */
-import { Box } from "theme-ui";
+import { Box } from "@/components/styled/Box";
 import { FC, memo } from "react";
 import { Dictator } from "@/types";
 import DictatorGridDictator from "./DictatorGridDictator";
@@ -7,6 +6,7 @@ import {
   ExtraInfoComponent,
   Highlighter
 } from "@/components/dictator-search/service";
+import { dictatorGrid } from "./DictatorGrid.css";
 
 type Props = {
   sorter?: Function;
@@ -21,13 +21,7 @@ const DictatorGrid: FC<Props> = ({
   fadeOutIf = () => false
 }) => {
   return (
-    <Box
-      sx={{
-        display: "grid",
-        gap: [2, 3],
-        gridTemplateColumns: "repeat(auto-fill,minmax(100px,1fr))"
-      }}
-    >
+    <Box className={dictatorGrid} gap={{ mobile: "2", tablet: "3" }}>
       {dictators.map((dictator) => {
         return (
           <DictatorGridDictator

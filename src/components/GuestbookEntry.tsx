@@ -1,5 +1,4 @@
-/** @jsxImportSource theme-ui */
-import { Box, Input, jsx, Textarea } from "theme-ui";
+import { Box } from "@/components/styled/Box";
 import { DateTime } from "luxon";
 import { FC, memo } from "react";
 
@@ -18,14 +17,9 @@ const GuestbookEntry: FC<Props> = ({ entry, user }) => {
   const date = createDate(entry.date);
 
   return (
-    <Box mt={2} mb={4}>
+    <Box mt="2" mb="4">
       <Box>
-        <Box
-          mb={1}
-          sx={{
-            fontWeight: "bold"
-          }}
-        >
+        <Box mb="1" fontWeight="bold">
           {entry.author},{" "}
           <time dateTime={date.toISO()}>{date.toLocaleString()}</time>
         </Box>
@@ -33,13 +27,7 @@ const GuestbookEntry: FC<Props> = ({ entry, user }) => {
       </Box>
 
       {entry.reply && (
-        <Box
-          mt={2}
-          mb={2}
-          sx={{
-            fontStyle: "italic"
-          }}
-        >
+        <Box mt="2" mb="2" style={{ fontStyle: "italic" }}>
           <Markdown>{entry.reply}</Markdown>
         </Box>
       )}

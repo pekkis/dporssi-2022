@@ -3,7 +3,7 @@ import Markdown from "@/components/Markdown";
 import Taxonomies from "@/components/taxonomy/Taxonomies";
 import Reign from "@/components/dictator/Reign";
 import Layout from "@/components/layout/Layout";
-import { Box } from "theme-ui";
+import { Box } from "@/components/styled/Box";
 import SEO from "@/components/SEO";
 import DataTable from "@/components/dictator/DataTable";
 import CountryLink from "@/components/dictator/CountryLink";
@@ -25,6 +25,14 @@ import { graphQLClient } from "@/services/graphql";
 import ContentfulImage from "@/components/contentful/ContentfulImage";
 import { findIndex, slice } from "ramda";
 import ContentBox from "@/components/layout/ContentBox";
+import {
+  article,
+  headerSlot,
+  portraitFrame,
+  sidebarSlot,
+  storySlot,
+  synopsisSlot
+} from "./dictator.css";
 
 type Props = {
   dictator: Dictator;
@@ -185,54 +193,20 @@ const DictatorItemPage: FC<Props> = (props) => {
       />
 
       <ContentBox>
-        <Box
-          as="article"
-          sx={{
-            display: ["block", "grid"],
-            gridTemplateColumns: "4fr 2fr",
-            columnGap: 4
-          }}
-        >
-          <Box
-            as="header"
-            mb={4}
-            sx={{
-              gridColumnStart: 1,
-              gridColumnEnd: 3
-            }}
-          >
+        <Box as="article" className={article}>
+          <Box as="header" mb="4" className={headerSlot}>
             <NameHeading dictator={dictator} />
             <Taxonomies taxonomy={dictator.taxonomyCollection.items} />
 
             {dictator.synopsis && (
-              <Box
-                sx={{
-                  mt: 3,
-                  fontSize: 3
-                }}
-              >
+              <div className={synopsisSlot}>
                 <Markdown>{dictator.synopsis}</Markdown>
-              </Box>
+              </div>
             )}
           </Box>
 
-          <Box
-            as="section"
-            sx={{
-              gridRowStart: 2,
-              gridColumnStart: 2,
-              gridColumnEnd: 3
-            }}
-          >
-            <Box
-              sx={{
-                borderStyle: "solid",
-                borderWidth: "1px",
-                borderColor: "veryDark",
-                borderRadius: 1,
-                position: "relative"
-              }}
-            >
+          <Box as="section" className={sidebarSlot}>
+            <div className={portraitFrame}>
               <ContentfulImage
                 data={dictator.primaryImage}
                 config={{
@@ -245,14 +219,9 @@ const DictatorItemPage: FC<Props> = (props) => {
                 alt={dictator.name}
                 loading="lazy"
               />
-              {/*<GatsbyImage
-              alt={dictator.name}
-              image={dictator.primaryImage.gatsbyImageData}
-              loading="eager"
-        />*/}
-            </Box>
+            </div>
 
-            <Box my={3}>
+            <Box my="3">
               <DataTable>
                 <tbody>
                   {dictator.canonicalRanking && (
@@ -331,15 +300,9 @@ const DictatorItemPage: FC<Props> = (props) => {
             </Box>
           </Box>
 
-          <Box
-            sx={{
-              gridRowStart: 2,
-              gridColumnStart: 1,
-              gridRowEnd: 4
-            }}
-          >
+          <div className={storySlot}>
             <Markdown>{content}</Markdown>
-          </Box>
+          </div>
         </Box>
       </ContentBox>
     </Layout>

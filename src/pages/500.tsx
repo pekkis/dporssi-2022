@@ -1,31 +1,14 @@
-/** @jsxImportSource theme-ui */
-
-import { Box } from "theme-ui";
+import { Box } from "@/components/styled/Box";
 import SectionHeading from "@/components/SectionHeading";
 import Paragraph from "@/components/Paragraph";
 import Image from "next/image";
 import internalRevolution from "@/data/internal-revolution-error.jpg";
+import { note, screen } from "./500.css";
 
 const InfernalServerErrorPage = () => {
   return (
-    <Box
-      mx={2}
-      mt={2}
-      mb={3}
-      as="main"
-      sx={{
-        display: "flex",
-        placeContent: "center"
-      }}
-    >
-      <Box
-        sx={{
-          my: 1,
-          maxWidth: "300px",
-          transform: "rotate(1.5deg)",
-          fontFamily: "Comic Sans MS"
-        }}
-      >
+    <Box mx="2" mt="2" mb="3" as="main" className={screen}>
+      <Box my="1" className={note}>
         <Image
           src={internalRevolution.src}
           width={internalRevolution.width}

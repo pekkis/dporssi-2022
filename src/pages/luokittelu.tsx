@@ -1,4 +1,4 @@
-import { Box } from "theme-ui";
+import { Box } from "@/components/styled/Box";
 import Layout from "@/components/layout/Layout";
 import SEO from "@/components/SEO";
 import { groupBy, toPairs } from "ramda";
@@ -11,6 +11,7 @@ import { TaxonomyCategory, TaxonomyTerm } from "@/types";
 import { FC } from "react";
 import { hours } from "@/services/cache";
 import ContentBox from "@/components/layout/ContentBox";
+import { categoryGrid } from "./luokittelu.css";
 
 type Props = {
   taxonomies: TaxonomyTerm[];
@@ -61,7 +62,7 @@ const ClassificationIndexPage: FC<Props> = (props) => {
       <SEO title="Luokittelu" />
 
       <ContentBox>
-        <Box mb={4} as="section">
+        <Box mb="4" as="section">
           <SectionHeading>Luokittelu</SectionHeading>
           <p>
             Diktaattoripörssi luokittelee diktaattorit virallisen tyrannien
@@ -76,13 +77,7 @@ const ClassificationIndexPage: FC<Props> = (props) => {
           </p>
         </Box>
 
-        <Box
-          sx={{
-            display: ["block", "grid"],
-            gridTemplateColumns: "1fr 1fr",
-            columnGap: 4
-          }}
-        >
+        <Box className={categoryGrid}>
           {groupedTaxonomies.map(([name, taxonomies]) => {
             return <Category name={name} taxonomy={taxonomies} key={name} />;
           })}

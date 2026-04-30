@@ -1,5 +1,3 @@
-/** @jsxImportSource theme-ui */
-
 import Layout from "@/components/layout/Layout";
 import { gql } from "graphql-request";
 import { graphQLClient } from "@/services/graphql";
