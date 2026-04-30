@@ -77,9 +77,7 @@ const SupportUkraine = ({ videos, setCurrent, hasLess, hasMore }) => {
             className={hasLess ? arrow.enabled : arrow.disabled}
           />
         </div>
-        <div className={titleSlot}>
-          Ukrainan asia on meidän asiamme! Auta!
-        </div>
+        <div className={titleSlot}>Ukrainan asia on meidän asiamme! Auta!</div>
         <div className={arrowSlot}>
           <FaChevronCircleRight
             onClick={(e) => {

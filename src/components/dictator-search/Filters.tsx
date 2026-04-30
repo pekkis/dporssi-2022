@@ -1,11 +1,7 @@
 import { FC } from "react";
 import { Input, Label, Radio } from "@/components/styled/form";
 import useStore from "./store";
-import {
-  filterColumn,
-  filterColumnTight,
-  filtersBox
-} from "./Filters.css";
+import { filterColumn, filterColumnTight, filtersBox } from "./Filters.css";
 
 const Filters: FC = () => {
   const filters = useStore((state) => state.filters);

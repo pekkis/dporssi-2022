@@ -1,7 +1,4 @@
-import {
-  defineProperties,
-  createSprinkles
-} from "@vanilla-extract/sprinkles";
+import { defineProperties, createSprinkles } from "@vanilla-extract/sprinkles";
 import { themeContract, breakpoints } from "./theme.css";
 
 /**
@@ -48,13 +45,7 @@ const responsiveProperties = defineProperties({
       "space-around",
       "stretch"
     ],
-    alignItems: [
-      "flex-start",
-      "flex-end",
-      "center",
-      "stretch",
-      "baseline"
-    ],
+    alignItems: ["flex-start", "flex-end", "center", "stretch", "baseline"],
     alignSelf: [
       "flex-start",
       "flex-end",
@@ -151,5 +142,8 @@ const staticProperties = defineProperties({
   }
 });
 
-export const sprinkles = createSprinkles(responsiveProperties, staticProperties);
+export const sprinkles = createSprinkles(
+  responsiveProperties,
+  staticProperties
+);
 export type Sprinkles = Parameters<typeof sprinkles>[0];

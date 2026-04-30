@@ -1,5 +1,4 @@
-/** @jsxImportSource theme-ui */
-import { Box } from "theme-ui";
+import { Box } from "@/components/styled/Box";
 import Layout from "@/components/layout/Layout";
 import Paginator from "@/components/Paginator";
 import SEO from "@/components/SEO";
@@ -150,7 +149,7 @@ const DictatorIndexPage: FC<Props> = (props) => {
           ehtineet saada rankingia.
         </p>
 
-        <Box my={4}>
+        <Box my="4">
           <Paginator
             label="diktaattorien sivutus, ylempi"
             id="paginator-top"
@@ -164,7 +163,7 @@ const DictatorIndexPage: FC<Props> = (props) => {
           <DictatorList dictators={dictators} showRanking />
         </Box>
 
-        <Box mt={4}>
+        <Box mt="4">
           <Paginator
             label="diktaattorien sivutus, alempi"
             id="paginator-top"

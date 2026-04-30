@@ -4,11 +4,7 @@ import { Input, Label, Radio } from "@/components/styled/form";
 import { Locale, url } from "@/services/url";
 import { DictatorSearchParams } from "./DictatorSearch";
 import { useRouter } from "next/router";
-import {
-  filterColumn,
-  filterColumnTight,
-  filtersBox
-} from "./Filters.css";
+import { filterColumn, filterColumnTight, filtersBox } from "./Filters.css";
 
 type Props = {
   params: DictatorSearchParams;

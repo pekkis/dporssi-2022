@@ -1,4 +1,4 @@
-import { style, styleVariants } from "@vanilla-extract/css";
+import { style, globalStyle } from "@vanilla-extract/css";
 import { themeContract } from "@/styles/theme.css";
 
 export const tubeNav = style({
@@ -15,10 +15,10 @@ export const arrowSlot = style({
   alignSelf: "flex-start"
 });
 
-export const arrow = styleVariants({
-  enabled: { cursor: "pointer", opacity: 1 },
-  disabled: { cursor: "not-allowed", opacity: 0.2 }
-});
+export const arrow = {
+  enabled: style({ cursor: "pointer", opacity: 1 }),
+  disabled: style({ cursor: "not-allowed", opacity: 0.2 })
+};
 
 export const titleSlot = style({
   paddingLeft: themeContract.space["2"],
@@ -28,16 +28,15 @@ export const titleSlot = style({
 export const ukraineWrap = style({
   position: "relative",
   paddingBottom: "56.25%",
-  height: 0,
-  selectors: {
-    "& > div": {
-      position: "absolute",
-      top: 0,
-      left: 0,
-      right: 0,
-      bottom: 0
-    }
-  }
+  height: 0
+});
+
+globalStyle(`${ukraineWrap} > div`, {
+  position: "absolute",
+  top: 0,
+  left: 0,
+  right: 0,
+  bottom: 0
 });
 
 export const ukraineFlex = style({

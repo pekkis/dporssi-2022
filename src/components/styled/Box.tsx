@@ -105,23 +105,22 @@ const splitProps = (props: Record<string, unknown>) => {
   return { sprinkleProps, rest };
 };
 
-const BoxImpl = forwardRef<HTMLElement, BoxProps<ElementType>>(function Box(
-  props,
-  ref
-) {
-  const { as: Component = "div", className, ...rest } = props;
-  const { sprinkleProps, rest: htmlProps } = splitProps(
-    rest as Record<string, unknown>
-  );
-  const sprinkleClass = sprinkles(sprinkleProps as Sprinkles);
-  return (
-    <Component
-      ref={ref}
-      className={cx(sprinkleClass, className)}
-      {...htmlProps}
-    />
-  );
-});
+const BoxImpl = forwardRef<HTMLElement, BoxProps<ElementType>>(
+  function Box(props, ref) {
+    const { as: Component = "div", className, ...rest } = props;
+    const { sprinkleProps, rest: htmlProps } = splitProps(
+      rest as Record<string, unknown>
+    );
+    const sprinkleClass = sprinkles(sprinkleProps as Sprinkles);
+    return (
+      <Component
+        ref={ref}
+        className={cx(sprinkleClass, className)}
+        {...htmlProps}
+      />
+    );
+  }
+);
 
 // Re-typed export so the `as` prop infers the right HTML element props.
 export const Box = BoxImpl as <T extends ElementType = "div">(

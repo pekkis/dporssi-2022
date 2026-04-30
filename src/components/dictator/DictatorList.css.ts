@@ -1,4 +1,4 @@
-import { style } from "@vanilla-extract/css";
+import { style, globalStyle } from "@vanilla-extract/css";
 import { themeContract } from "@/styles/theme.css";
 
 export const dictatorCard = style({
@@ -33,11 +33,8 @@ export const dictatorImage = style({
   display: "block"
 });
 
-export const dataTable = style({
-  selectors: {
-    "& th": {
-      textAlign: "left",
-      verticalAlign: "top"
-    }
-  }
+export const dataTable = style({});
+globalStyle(`${dataTable} th`, {
+  textAlign: "left",
+  verticalAlign: "top"
 });

@@ -9,14 +9,11 @@
     "lint": "eslint"
   },
   "dependencies": {
-    "@emotion/react": "^11.14.0",
     "@floating-ui/react": "^0.27.16",
     "@hello-pangea/dnd": "^18.0.1",
     "@mdx-js/react": "^3.1.1",
     "@micro-sentry/browser": "^7.1.1",
     "@popperjs/core": "^2.11.8",
-    "@theme-ui/color": "^0.17.2",
-    "@theme-ui/presets": "^0.17.2",
     "axios": "^1.13.2",
     "body-scroll-lock": "4.0.0-beta.0",
     "firebase": "^12.6.0",
@@ -40,7 +37,6 @@
     "react-player": "^3.4.0",
     "react-responsive": "^10.0.1",
     "sharp": "^0.34.5",
-    "theme-ui": "^0.17.2",
     "uuid": "^13.0.0",
     "yup": "^1.7.1",
     "zustand": "^5.0.9"

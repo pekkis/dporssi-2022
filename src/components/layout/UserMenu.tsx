@@ -30,11 +30,7 @@ const Avatar = (props) => {
       />
 
       {isOpen && (
-        <div
-          ref={refs.setFloating}
-          className={popover}
-          style={floatingStyles}
-        >
+        <div ref={refs.setFloating} className={popover} style={floatingStyles}>
           <nav>
             <div className={popoverList}>
               <Box>

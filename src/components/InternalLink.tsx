@@ -4,7 +4,10 @@ import { ComponentPropsWithoutRef, FC } from "react";
 import { link, LinkVariant } from "@/components/styled/link.css";
 import { cx } from "@/styles/cx";
 
-type Props = Omit<ComponentPropsWithoutRef<typeof Link>, "href" | "className"> & {
+type Props = Omit<
+  ComponentPropsWithoutRef<typeof Link>,
+  "href" | "className"
+> & {
   to: string;
   variant?: LinkVariant;
   className?: string;

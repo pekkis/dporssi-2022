@@ -37,11 +37,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
 export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
   function Textarea({ className, ...rest }, ref) {
     return (
-      <textarea
-        ref={ref}
-        className={cx(textareaStyle, className)}
-        {...rest}
-      />
+      <textarea ref={ref} className={cx(textareaStyle, className)} {...rest} />
     );
   }
 );

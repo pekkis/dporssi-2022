@@ -29,10 +29,10 @@ displeased and Pier Paolo Pasolini will haunt your test fixtures.
 - **i18n:** `react-i18next` + `i18next`, Finnish by default
   (`NEXT_PUBLIC_LOCALE=fi`).
 - **State:** `zustand` for client stores (see `src/components/dictator-search/store.ts`).
-- **Styling — legacy:** `theme-ui` (with `@emotion/react`) using the `funk`
-  preset, plus a custom theme in `src/services/theme.ts`. Components are
-  liberally sprinkled with `/** @jsxImportSource theme-ui */` and the `sx`
-  prop. **This is being migrated** — see "Styling" below.
+- **Styling:** **vanilla-extract** (zero-runtime TS-in-JS) wired via
+  `@vanilla-extract/next-plugin` in `next.config.js`. Tokens, sprinkles, and
+  primitives live in `src/styles/` and `src/components/styled/`. The legacy
+  `theme-ui`/`@emotion/react` stack has been removed — see "Styling" below.
 
 ## Layout
 
@@ -42,8 +42,11 @@ src/
   components/  React components. Layout primitives live in components/layout.
   data/        Static data (continent/country lookups, etc.).
   pages/       Next.js Pages Router. URLs are Finnish (diktaattorit, valeuutiset, ...).
-  services/    Cross-cutting modules: graphql client, firebase, theme, i18n, url helpers, cache.
-  styles/      Global CSS (globals.css) and legacy CSS modules.
+  services/    Cross-cutting modules: graphql client, firebase, i18n, url helpers, cache.
+  styles/      vanilla-extract foundation: theme.css.ts (token contract + globals),
+               sprinkles.css.ts (responsive utility props), cx.ts.
+  components/styled/  Shared primitives that replace what theme-ui's `Box`/`Flex`/
+                      `Heading`/`Container`/form controls/`Button` used to provide.
   types.ts     Shared domain types (Dictator, Reign, ContentfulImageData, ...).
 public/        Static assets.
 docker/        Container assets used by compose.yml.
@@ -72,30 +75,81 @@ waste 10 minutes wondering why DNS hates you.
 
 ## Styling
 
-The legacy stack is `theme-ui` + `@emotion/react`, configured in
-`src/services/theme.ts`. The migration target is **vanilla-extract** (zero-runtime
-TS-in-JS), already wired via `@vanilla-extract/next-plugin` in `next.config.js`.
+The styling system is **vanilla-extract** (zero-runtime TS-in-JS, with
+`@vanilla-extract/sprinkles` for responsive utility props and
+`@vanilla-extract/recipes` for variant-driven components). The build is wired
+via `@vanilla-extract/next-plugin` in `next.config.js`. The legacy `theme-ui` /
+`@emotion/react` stack has been fully removed.
 
-Until the migration completes, both systems may coexist; greenfield work
-should go straight to vanilla-extract. See "Migration in progress" at the
-bottom of this file for current status.
+### Where things live
+
+- `src/styles/theme.css.ts` — the token contract (`themeContract`) + the
+  global CSS injected at app boot (replaces the old theme-ui `<Global/>`).
+  Also exports `breakpoints` for the rare cases where a sprinkle isn't enough.
+- `src/styles/sprinkles.css.ts` — the responsive sprinkles. Conditions are
+  `mobile` / `tablet` / `desktop`, mirroring the legacy `[768, 992]`
+  breakpoints. Property shorthands match what `theme-ui` used: `m`, `p`, `mx`,
+  `my`, `mt`, `mb`, `ml`, `mr`, `px`, `py`, `pt`, `pb`, `pl`, `pr`, `bg`,
+  `color`, `fontSize`, `fontWeight`, `display`, `alignItems`,
+  `justifyContent`, `flexDirection`, `gap`.
+- `src/components/styled/` — the primitives that replace `theme-ui`'s
+  `Box`, `Flex`, `Heading`, `Container`, `Input`, `Textarea`, `Label`,
+  `Radio`, `MenuButton`, `Button`. `Box`/`Flex` accept sprinkle props
+  directly (`<Box mb="3" px="2" bg="primary" />`) and are polymorphic via
+  `as=`. `Button` is a recipe with `primary` (default) / `secondary`
+  variants. The link variants live in `src/components/styled/link.css.ts`
+  (`default`, `menu`, `tag`, `footer`, `paginator`).
+
+### How to write styles
+
+For everything that fits sprinkles (margin, padding, color, fontSize,
+display, basic flex), pass props on `Box`/`Flex` or call the `sprinkles`
+function inline:
+
+```tsx
+import { Box } from "@/components/styled/Box";
+import { sprinkles } from "@/styles/sprinkles.css";
+
+<Box mt="3" px="2" bg="superLight">…</Box>
+<FaIcon className={sprinkles({ mr: "1" })} />
+```
+
+For anything else (custom selectors, `gridTemplateAreas`, pseudo-elements,
+descendant selectors), create a co-located `Foo.css.ts` next to `Foo.tsx`
+using `style()`, `globalStyle()`, or `recipe()`. Reach for `themeContract.*`
+to read tokens — never hard-code colours or spacing values.
+
+```ts
+// Foo.css.ts
+import { style, globalStyle } from "@vanilla-extract/css";
+import { themeContract } from "@/styles/theme.css";
+
+export const card = style({
+  padding: themeContract.space["3"],
+  backgroundColor: themeContract.colors.superLight
+});
+globalStyle(`${card} h2`, { marginBottom: themeContract.space["2"] });
+```
+
+Note: vanilla-extract's `style()` does **not** allow descendant `& foo`
+selectors. Use `globalStyle(\`${parent} foo\`, …)` for that.
 
 ### Tokens
 
-Whatever the styling library, the **design tokens** are the source of truth
-and should be preserved verbatim where possible:
+The design tokens are the source of truth and were preserved verbatim during
+the theme-ui migration:
 
-- **Brand color:** `#de0000` (the very specific shade of dictator red).
+- **Brand colour:** `#de0000` (the very specific shade of dictator red).
 - **Greyscale ladder:** `superLight`, `extraLight`, `veryLight`, `light`,
   `notSoLight`, `veryDark` (yes, the names are like that on purpose).
 - **Font:** Barlow, loaded via Google Fonts in `_document.tsx`.
-- **Spacing / fontSizes:** standard Theme UI scales (`[0, 4, 8, 16, 32, 64, 128, 256, 512]`
-  for space; `[12, 14, 16, 20, 24, 32, 48, 64]` for font sizes).
-- **Breakpoints:** `[768, 992]` (`src/services/theme.ts`).
+- **Spacing:** `[0, 4, 8, 16, 32, 64, 128, 256, 512]` (px, indexed 0–8).
+- **Font sizes:** `[12, 14, 16, 20, 24, 32, 48, 64]` (px, indexed 0–7).
+- **Breakpoints:** `[768, 992]` (`mobile` / `tablet` / `desktop`).
 - **Container max-width:** `1200px`.
 
-If you need to add tokens, add them in one canonical place; don't scatter
-hex codes across components.
+If you need to add tokens, add them to `themeContract` in `theme.css.ts` —
+don't scatter hex codes across components.
 
 ## Conventions
 
@@ -123,28 +177,18 @@ hex codes across components.
   with real-looking secrets — that's a pre-existing situation; don't make it
   worse by adding more, and don't leak its contents in PR descriptions or
   logs).
-- Don't add a second styling library on top of the two we already have.
+- Don't add a second styling library. vanilla-extract is the only sanctioned
+  styling tool.
 - Don't replace `pnpm` with another package manager.
-- Don't introduce a CSS-in-JS runtime; vanilla-extract is the only sanctioned
-  styling tool going forward.
+- Don't reintroduce a CSS-in-JS runtime (theme-ui, emotion, styled-components).
+  vanilla-extract is zero-runtime; keep it that way.
 - Don't "helpfully" rewrite the Finnish UI strings into English. The site
   is Finnish.
 
-## Migration in progress
+## Styling migration history
 
-This repository is currently undergoing a **theme-ui → vanilla-extract**
-migration. Until it lands:
-
-- **Status:** in progress. Both `theme-ui` and `vanilla-extract` may appear
-  in the tree.
-- **Goal:** move every `sx`-prop / `/** @jsxImportSource theme-ui */`
-  consumer to vanilla-extract `.css.ts` files (with sprinkles for responsive
-  utilities and recipes for variants), then delete `theme-ui`,
-  `@theme-ui/*`, and `@emotion/react` from `package.json`.
-- **Token preservation:** the colour names, spacing scale, font sizes,
-  breakpoints, and font family above must stay identical across the
-  migration. Visual diffs should be near-zero.
-- **For new components:** use vanilla-extract directly. Do not add new
-  `sx`-prop consumers.
-
-This section will be updated as the migration completes.
+The codebase used to be on `theme-ui` + `@emotion/react` with a `funk` preset
+and a custom theme in `src/services/theme.ts`. That stack has been removed in
+favour of vanilla-extract; tokens (colours, spacing, fontSizes, breakpoints,
+font family) were preserved verbatim and visual diffs should be near-zero.
+Greenfield work uses vanilla-extract directly — see the "Styling" section.
