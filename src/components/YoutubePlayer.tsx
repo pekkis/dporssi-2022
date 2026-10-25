@@ -201,7 +201,9 @@ class YouTube extends Component {
    */
   createPlayer = () => {
     // do not attempt to create a player server-side, it won't work
-    if (typeof document === "undefined") return;
+    if (typeof document === "undefined") {
+      return;
+    }
     // create player
     const playerOpts = {
       ...this.props.opts,
@@ -239,20 +241,31 @@ class YouTube extends Component {
    */
   updatePlayer = () => {
     this.internalPlayer.getIframe().then((iframe) => {
-      if (this.props.id) iframe.setAttribute("id", this.props.id);
-      else iframe.removeAttribute("id");
-      if (this.props.className)
+      if (this.props.id) {
+        iframe.setAttribute("id", this.props.id);
+      } else {
+        iframe.removeAttribute("id");
+      }
+      if (this.props.className) {
         iframe.setAttribute("class", this.props.className);
-      else iframe.removeAttribute("class");
-      if (this.props.opts && this.props.opts.width)
+      } else {
+        iframe.removeAttribute("class");
+      }
+      if (this.props.opts && this.props.opts.width) {
         iframe.setAttribute("width", this.props.opts.width);
-      else iframe.removeAttribute("width");
-      if (this.props.opts && this.props.opts.height)
+      } else {
+        iframe.removeAttribute("width");
+      }
+      if (this.props.opts && this.props.opts.height) {
         iframe.setAttribute("height", this.props.opts.height);
-      else iframe.removeAttribute("height");
-      if (typeof this.props.title === "string")
+      } else {
+        iframe.removeAttribute("height");
+      }
+      if (typeof this.props.title === "string") {
         iframe.setAttribute("title", this.props.title);
-      else iframe.setAttribute("title", "YouTube video player");
+      } else {
+        iframe.setAttribute("title", "YouTube video player");
+      }
     });
   };
 
