@@ -2,7 +2,7 @@ import { style } from "@vanilla-extract/css";
 import { media } from "@/styles/breakpoints";
 import { vars } from "@/styles/theme.css";
 
-// Shared by Filters and UrlFilters.
+// The dictator search filters.
 export const panel = style({
   padding: vars.space[3],
   backgroundColor: vars.color.superLight,
