@@ -1,3 +1,5 @@
+import type { ComponentPropsWithoutRef } from "react";
+import type { Components } from "react-markdown";
 import ExternalLink from "@/components/ExternalLink";
 import InternalLink from "@/components/InternalLink";
 import Paragraph from "@/components/Paragraph";
@@ -8,13 +10,8 @@ const replaceableDomains = [
   { from: /^https?:\/\/(www|beta)\.?diktaattoriporssi.com/, to: "" }
 ];
 
-const getTo = (data) => {
-  const to = replaceableDomains.reduce(
-    (a, r) => a.replace(r.from, r.to),
-    data.href
-  );
-  return to;
-};
+const getTo = (data: ComponentPropsWithoutRef<"a">): string =>
+  replaceableDomains.reduce((a, r) => a.replace(r.from, r.to), data.href ?? "");
 
 const isExternalLink = (to: string) => {
   if (to.includes("diktaattoriporssi")) {
@@ -25,7 +22,7 @@ const isExternalLink = (to: string) => {
   return externalRegex.test(to);
 };
 
-export const components = {
+export const components: Components = {
   h3: (data) => {
     return <SubHeading>{data.children}</SubHeading>;
   },

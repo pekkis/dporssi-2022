@@ -26,7 +26,8 @@ const Youtube: FC<Props> = ({ videoId }) => {
         <ReactPlayer
           width="100%"
           height="100%"
-          url={`https://www.youtube.com/watch?v=${videoId}`}
+          // react-player 3 takes the address in `src` (2.x had `url`).
+          src={`https://www.youtube.com/watch?v=${videoId}`}
         />
       </Box>
     </Box>

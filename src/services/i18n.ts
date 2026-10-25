@@ -4,14 +4,12 @@ import { initReactI18next } from "react-i18next";
 const resources = {
   en: {
     translation: {
-      Diktaattoripörssi: "Axis of Evil",
-      dictatorAge: "höhööö"
+      Diktaattoripörssi: "Axis of Evil"
     }
   },
   fi: {
     translation: {
-      Diktaattoripörssi: "Diktaattoripörssi",
-      dictatorAge: "{{age, age}} vuotta"
+      Diktaattoripörssi: "Diktaattoripörssi"
     }
   }
 };
@@ -25,13 +23,6 @@ i18n
     keySeparator: false, // we do not use keys in form messages.welcome
 
     interpolation: {
-      format: (value, format, locale) => {
-        if (format === "age") {
-          const formatter = new Intl.NumberFormat(locale);
-          return formatter.format(value);
-        }
-        return value;
-      },
       escapeValue: false // react already safes from xss
     }
   });
