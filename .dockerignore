@@ -1,4 +1,8 @@
-git/
-.git*
+.git
+.github
 node_modules
+.next
 /docker
+.env
+.env.*
+!.env.example
