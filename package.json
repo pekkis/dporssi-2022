@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --webpack",
-    "build": "next build --webpack",
+    "dev": "next dev",
+    "build": "next build",
     "start": "next start",
     "lint": "oxlint",
     "fmt": "oxfmt",
@@ -64,5 +64,12 @@
     "turndown": "^7.2.4",
     "typescript": "^7.0.2"
   },
+  "browserslist": [
+    "chrome >= 123",
+    "edge >= 123",
+    "firefox >= 120",
+    "safari >= 17.5",
+    "ios_saf >= 17.5"
+  ],
   "packageManager": "pnpm@12.15.0"
 }
