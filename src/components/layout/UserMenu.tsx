@@ -2,15 +2,13 @@ import { useState } from "react";
 import { useFloating } from "@floating-ui/react";
 import { Box } from "@/components/ui";
 import * as styles from "./UserMenu.css";
-import { useUserStore } from "@/services/state";
+import { useUserStore, type UserInterface } from "@/services/state";
 import InternalLink from "@/components/InternalLink";
 import { FC } from "react";
 import { signOut } from "firebase/auth";
 import { auth } from "@/services/firebase";
 
-const Avatar = (props) => {
-  const { user } = props;
-
+const Avatar = ({ user }: { user: UserInterface }) => {
   const [isOpen, setOpen] = useState(false);
 
   const { refs, floatingStyles } = useFloating({

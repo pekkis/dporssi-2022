@@ -19,7 +19,13 @@ const initialState = {
   isSuccess: false
 };
 
-const reducer = (state, action) => {
+type FormState = typeof initialState;
+type FormAction = "IS_HUMAN" | "POST" | "ERROR" | "SUCCESS";
+
+// Posting is disabled until the bot protection works (see the notice by the button).
+const GUESTBOOK_CLOSED = true;
+
+const reducer = (state: FormState, action: FormAction): FormState => {
   switch (action) {
     case "IS_HUMAN":
       return { ...state, isHuman: true };
@@ -160,7 +166,11 @@ const GuestbookForm = () => {
                 <>
                   <Button
                     disabled={
-                      "tussi" || !isValid || !isHuman || isPosting || isSuccess
+                      GUESTBOOK_CLOSED ||
+                      !isValid ||
+                      !isHuman ||
+                      isPosting ||
+                      isSuccess
                     }
                     type="submit"
                   >
@@ -197,7 +207,7 @@ const GuestbookForm = () => {
 const GuestbookFormWrapper = () => {
   return (
     <GoogleReCaptchaProvider
-      reCaptchaKey={process.env.NEXT_PUBLIC_RECAPTCHA_ID}
+      reCaptchaKey={process.env.NEXT_PUBLIC_RECAPTCHA_ID ?? ""}
       language="fi"
       useRecaptchaNet={false}
       scriptProps={{

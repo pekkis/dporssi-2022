@@ -65,7 +65,7 @@ const ContentfulImage: FC<Props> = ({
           loading={loading}
           className={styles.image}
           src={imageUrl}
-          title={data.description}
+          title={data.description ?? undefined}
           alt={alt}
         />
       </picture>

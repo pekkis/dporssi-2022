@@ -1,3 +1,4 @@
+import type { ComponentPropsWithRef } from "react";
 import ReactCookieConsent from "react-cookie-consent";
 import { Button } from "@/components/ui";
 import * as styles from "./CookieConsent.css";
@@ -7,8 +8,9 @@ const CookieConsent = () => {
     <ReactCookieConsent
       location="bottom"
       buttonText="Ymmärrän!"
-      ButtonComponent={(props) => {
-        const { style, ...rest } = props;
+      ButtonComponent={(props: ComponentPropsWithRef<"button">) => {
+        // react-cookie-consent's inline style is dropped in favour of our button.
+        const { style: _style, ...rest } = props;
         return <Button {...rest} className={styles.button} />;
       }}
       buttonStyle={{}}

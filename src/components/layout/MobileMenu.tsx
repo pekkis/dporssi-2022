@@ -11,13 +11,17 @@ type Props = {
 const Menu: FC<Props> = () => {
   const ref = useRef<HTMLDivElement>(null);
 
+  // Lock the page behind the open menu; unlock when it closes.
   useEffect(() => {
     const elm = ref.current;
+    if (!elm) {
+      return;
+    }
     disableBodyScroll(elm);
     return () => {
       enableBodyScroll(elm);
     };
-  });
+  }, []);
 
   return (
     <Box ref={ref} className={styles.menu}>

@@ -12,7 +12,7 @@ export type ContentfulImageData = {
   url: string;
   width: number;
   height: number;
-  description: string;
+  description?: string | null;
 };
 
 export type Dictator = {
@@ -87,13 +87,24 @@ export type FakeNewsItem = {
   slug: string;
   description: string;
   article: string;
-  image?: {
-    title: string;
-    url: string;
-    width: number;
-    height: number;
-  };
+  image?: ContentfulImageData | null;
 };
+
+// The front page's fake news list.
+export type FakeNewsHeadline = Pick<
+  FakeNewsItem,
+  "sys" | "slug" | "date" | "title"
+>;
+
+export type TubeVideo = {
+  ukraine?: undefined;
+  videoId: string;
+  title: string;
+  nsfw?: boolean | null;
+};
+
+// The propaganda tube: videos, with the Ukraine slide first.
+export type TubeItem = { ukraine: true } | TubeVideo;
 
 export type TaxonomyCategory = {
   sys: {

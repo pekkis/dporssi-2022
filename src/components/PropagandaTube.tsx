@@ -1,14 +1,27 @@
 import { Box, Flex } from "@/components/ui";
 import * as styles from "./PropagandaTube.css";
-import { useCallback } from "react";
 import Youtube from "./Youtube";
 import { nth } from "ramda";
-import { FC, useState } from "react";
+import { type Dispatch, FC, type SetStateAction, useState } from "react";
+import type { TubeItem, TubeVideo } from "@/types";
 import { FaChevronCircleRight, FaChevronCircleLeft } from "react-icons/fa";
 
 import ukraineFlag from "./ukraine-flag.png";
 
-const NormalVideo = ({ video, videos, setCurrent, hasLess, hasMore }) => {
+type ControlProps = {
+  videos: TubeItem[];
+  setCurrent: Dispatch<SetStateAction<number>>;
+  hasLess: boolean;
+  hasMore: boolean;
+};
+
+const NormalVideo = ({
+  video,
+  videos,
+  setCurrent,
+  hasLess,
+  hasMore
+}: ControlProps & { video: TubeVideo }) => {
   return (
     <>
       <Youtube videoId={video.videoId} />
@@ -26,7 +39,7 @@ const NormalVideo = ({ video, videos, setCurrent, hasLess, hasMore }) => {
         </Box>
         <Box className={styles.caption}>
           {video.title}
-          {video.nsfw === false && <span>[NSFW]</span>}
+          {video.nsfw === true && <span>[NSFW]</span>}
         </Box>
         <Box className={styles.arrowBox}>
           <FaChevronCircleRight
@@ -45,7 +58,12 @@ const NormalVideo = ({ video, videos, setCurrent, hasLess, hasMore }) => {
   );
 };
 
-const SupportUkraine = ({ videos, setCurrent, hasLess, hasMore }) => {
+const SupportUkraine = ({
+  videos,
+  setCurrent,
+  hasLess,
+  hasMore
+}: ControlProps) => {
   return (
     <>
       <Box className={styles.flagFrame}>
@@ -92,22 +110,11 @@ const SupportUkraine = ({ videos, setCurrent, hasLess, hasMore }) => {
 };
 
 type Props = {
-  videos: {
-    videoId: string;
-    title: string;
-    description?: string;
-  }[];
+  videos: TubeItem[];
 };
 
 const PropagandaTube: FC<Props> = ({ videos }) => {
   const [current, setCurrent] = useState(0);
-
-  const setVideoIndex = useCallback(
-    (index) => {
-      setCurrent(index);
-    },
-    [setCurrent]
-  );
 
   const video = nth(current, videos);
 
@@ -124,7 +131,7 @@ const PropagandaTube: FC<Props> = ({ videos }) => {
         videos={videos}
         hasMore={hasMore}
         hasLess={hasLess}
-        setCurrent={setVideoIndex}
+        setCurrent={setCurrent}
       />
     );
   }
@@ -135,7 +142,7 @@ const PropagandaTube: FC<Props> = ({ videos }) => {
       videos={videos}
       hasMore={hasMore}
       hasLess={hasLess}
-      setCurrent={setVideoIndex}
+      setCurrent={setCurrent}
     />
   );
 };

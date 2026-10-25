@@ -30,7 +30,9 @@ const PropagandaLight = (props: Props) => {
         </Heading>
         <Box className={sprinkles({ mt: 1 })}>
           Julkaistu{" "}
-          <time dateTime={date.toISODate()}>{date.toLocaleString()}</time>
+          <time dateTime={date.toISODate() ?? undefined}>
+            {date.toLocaleString()}
+          </time>
         </Box>
       </Box>
       <Box as="main" className={sprinkles({ my: 2 })}>

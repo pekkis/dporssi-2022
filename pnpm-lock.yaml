@@ -202,9 +202,6 @@ importers:
       i18next:
         specifier: ^26.5.5
         version: 26.5.5(typescript@7.0.2)
-      lodash-es:
-        specifier: ^4.18.1
-        version: 4.18.1
       luxon:
         specifier: ^3.7.2
         version: 3.7.2
@@ -263,6 +260,9 @@ importers:
       '@next/bundle-analyzer':
         specifier: ^16.4.2
         version: 16.4.2
+      '@types/body-scroll-lock':
+        specifier: ^3.1.2
+        version: 3.1.2
       '@types/luxon':
         specifier: ^3.7.6
         version: 3.7.6
@@ -1720,6 +1720,9 @@ packages:
 
   '@tsconfig/node16@1.0.4':
     resolution: {integrity: sha512-vxhUy4J8lyeyinH7Azl1pdd43GJhZH/tP2weN8TntQblOY+A0XbT8DJk1/oCPuOOyg/Ja757rG0CgHcWC8OfMA==}
+
+  '@types/body-scroll-lock@3.1.2':
+    resolution: {integrity: sha512-ELhtuphE/YbhEcpBf/rIV9Tl3/O0A0gpCVD+oYFSS8bWstHFJUgA4nNw1ZakVlRC38XaQEIsBogUZKWIPBvpfQ==}
 
   '@types/caseless@0.12.5':
     resolution: {integrity: sha512-hWtVTC2q7hc7xZ/RLbxapMvDMgUnDvKvMOpKal4DrMyfGBUfB1oKaZlIRr6mJL+If3bAP6sV/QneGzF6tJjZDg==}
@@ -5054,6 +5057,8 @@ snapshots:
   '@tsconfig/node14@1.0.3': {}
 
   '@tsconfig/node16@1.0.4': {}
+
+  '@types/body-scroll-lock@3.1.2': {}
 
   '@types/caseless@0.12.5':
     optional: true

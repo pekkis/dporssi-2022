@@ -8,26 +8,10 @@ import { url } from "@/services/url";
 
 type Props = {
   id?: string;
-  usePreviousAndNext?: boolean;
   label: string;
   currentPage: number;
   numPages: number;
   getLink: "newsIndex" | "dictatorIndex" | "guestbookIndex";
-};
-
-const Previous = ({ currentPage, numPages, getLink }) => {
-  if (currentPage === 1) {
-    return null;
-  }
-
-  return (
-    <InternalLink to={getLink(currentPage - 1)}>
-      <span>Edellinen</span>
-    </InternalLink>
-  );
-};
-const Next = ({ currentPage, numPages, getLink }) => {
-  return <span>Seuraava</span>;
 };
 
 const Paginator: FC<Props> = ({
@@ -35,18 +19,10 @@ const Paginator: FC<Props> = ({
   label = "sivutus",
   currentPage,
   numPages,
-  getLink,
-  usePreviousAndNext = false
+  getLink
 }) => {
   return (
     <Box id={id} aria-label={label} as="nav" className={styles.paginator}>
-      {usePreviousAndNext && (
-        <Previous
-          currentPage={currentPage}
-          numPages={numPages}
-          getLink={getLink}
-        />
-      )}
       {range(1, numPages + 1).map((r) => {
         const to = url<Props["getLink"]>(
           getLink,
@@ -66,9 +42,6 @@ const Paginator: FC<Props> = ({
           </InternalLink>
         );
       })}
-      {usePreviousAndNext && (
-        <Next currentPage={currentPage} numPages={numPages} getLink={getLink} />
-      )}
     </Box>
   );
 };

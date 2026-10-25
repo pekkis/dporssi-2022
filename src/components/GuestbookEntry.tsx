@@ -22,7 +22,9 @@ const GuestbookEntry: FC<Props> = ({ entry, user }) => {
       <Box>
         <Box className={styles.author}>
           {entry.author},{" "}
-          <time dateTime={date.toISO()}>{date.toLocaleString()}</time>
+          <time dateTime={date.toISO() ?? undefined}>
+            {date.toLocaleString()}
+          </time>
         </Box>
         <Markdown>{entry.scribbling}</Markdown>
       </Box>

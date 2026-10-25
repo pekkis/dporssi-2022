@@ -26,7 +26,9 @@ const PropagandaFull = (props: Props) => {
         </Heading>
         <Box className={sprinkles({ mt: 1 })}>
           Julkaistu{" "}
-          <time dateTime={date.toISODate()}>{date.toLocaleString()}</time>
+          <time dateTime={date.toISODate() ?? undefined}>
+            {date.toLocaleString()}
+          </time>
         </Box>
 
         <Box className={styles.description}>
@@ -43,6 +45,7 @@ const PropagandaFull = (props: Props) => {
         ) : (
           <NextImage
             className={responsiveImage}
+            alt=""
             src={defaultImage.src}
             width={defaultImage.width}
             height={defaultImage.height}

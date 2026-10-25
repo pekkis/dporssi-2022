@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { NextRouter, useRouter } from "next/router";
-import { FC, ReactNode } from "react";
+import { FC, MouseEventHandler, ReactNode } from "react";
 import { cx, link, type LinkVariant } from "@/components/ui";
 
 type Props = {
@@ -9,6 +9,7 @@ type Props = {
   to: string;
   children: ReactNode;
   isActive?: (router: NextRouter) => boolean;
+  onClick?: MouseEventHandler<HTMLAnchorElement>;
 };
 
 const InternalLink: FC<Props> = ({
