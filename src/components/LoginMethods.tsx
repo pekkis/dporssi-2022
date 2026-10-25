@@ -1,5 +1,6 @@
-/** @jsxImportSource theme-ui */
-import { Box, Button } from "theme-ui";
+import { Box, Button } from "@/components/ui";
+import { sprinkles } from "@/styles/sprinkles.css";
+import * as styles from "./LoginMethods.css";
 import { FC } from "react";
 import { FaFacebook, FaGoogle } from "react-icons/fa";
 import { auth } from "@/services/firebase";
@@ -13,19 +14,19 @@ import {
 const LoginMethods: FC = () => {
   return (
     <>
-      <Box my={2}>
+      <Box className={sprinkles({ my: 2 })}>
         <Button
           onClick={() => {
             const provider = new GoogleAuthProvider();
             signInWithPopup(auth, provider);
           }}
         >
-          <FaGoogle sx={{ mr: 2 }} />
+          <FaGoogle className={styles.icon} />
           Kirjaudu Googlessa
         </Button>
       </Box>
 
-      <Box my={2}>
+      <Box className={sprinkles({ my: 2 })}>
         <Button
           disabled
           onClick={() => {
@@ -33,7 +34,7 @@ const LoginMethods: FC = () => {
             signInWithPopup(auth, provider);
           }}
         >
-          <FaFacebook sx={{ mr: 2 }} />
+          <FaFacebook className={styles.icon} />
           Kirjaudu Facebookissa
         </Button>
       </Box>

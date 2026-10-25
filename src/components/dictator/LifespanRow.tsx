@@ -1,5 +1,4 @@
-/** @jsxImportSource theme-ui */
-import { Box, jsx } from "theme-ui";
+import { Box } from "@/components/ui";
 import { FC } from "react";
 import { DateRange } from "@/types";
 import { formatDate } from "@/services/date";

@@ -3,7 +3,9 @@ import Markdown from "@/components/Markdown";
 import Taxonomies from "@/components/taxonomy/Taxonomies";
 import Reign from "@/components/dictator/Reign";
 import Layout from "@/components/layout/Layout";
-import { Box } from "theme-ui";
+import { Box } from "@/components/ui";
+import { sprinkles } from "@/styles/sprinkles.css";
+import * as styles from "@/styles/pages/dictator.css";
 import SEO from "@/components/SEO";
 import DataTable from "@/components/dictator/DataTable";
 import CountryLink from "@/components/dictator/CountryLink";
@@ -185,54 +187,20 @@ const DictatorItemPage: FC<Props> = (props) => {
       />
 
       <ContentBox>
-        <Box
-          as="article"
-          sx={{
-            display: ["block", "grid"],
-            gridTemplateColumns: "4fr 2fr",
-            columnGap: 4
-          }}
-        >
-          <Box
-            as="header"
-            mb={4}
-            sx={{
-              gridColumnStart: 1,
-              gridColumnEnd: 3
-            }}
-          >
+        <Box as="article" className={styles.article}>
+          <Box as="header" className={styles.header}>
             <NameHeading dictator={dictator} />
             <Taxonomies taxonomy={dictator.taxonomyCollection.items} />
 
             {dictator.synopsis && (
-              <Box
-                sx={{
-                  mt: 3,
-                  fontSize: 3
-                }}
-              >
+              <Box className={styles.synopsis}>
                 <Markdown>{dictator.synopsis}</Markdown>
               </Box>
             )}
           </Box>
 
-          <Box
-            as="section"
-            sx={{
-              gridRowStart: 2,
-              gridColumnStart: 2,
-              gridColumnEnd: 3
-            }}
-          >
-            <Box
-              sx={{
-                borderStyle: "solid",
-                borderWidth: "1px",
-                borderColor: "veryDark",
-                borderRadius: 1,
-                position: "relative"
-              }}
-            >
+          <Box as="section" className={styles.facts}>
+            <Box className={styles.portrait}>
               <ContentfulImage
                 data={dictator.primaryImage}
                 config={{
@@ -252,7 +220,7 @@ const DictatorItemPage: FC<Props> = (props) => {
         />*/}
             </Box>
 
-            <Box my={3}>
+            <Box className={sprinkles({ my: 3 })}>
               <DataTable>
                 <tbody>
                   {dictator.canonicalRanking && (
@@ -331,13 +299,7 @@ const DictatorItemPage: FC<Props> = (props) => {
             </Box>
           </Box>
 
-          <Box
-            sx={{
-              gridRowStart: 2,
-              gridColumnStart: 1,
-              gridRowEnd: 4
-            }}
-          >
+          <Box className={styles.content}>
             <Markdown>{content}</Markdown>
           </Box>
         </Box>

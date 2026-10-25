@@ -1,8 +1,6 @@
-/** @jsxImportSource theme-ui */
-
-import { navigate } from "@/services/backwards-compatibility";
 import { FC } from "react";
-import { Box } from "theme-ui";
+import { Box } from "@/components/ui";
+import * as styles from "./DictatorGridDictator.css";
 import { Dictator } from "@/types";
 // import { GatsbyImage } from "gatsby-plugin-image";
 import InternalLink from "@/components/InternalLink";
@@ -34,64 +32,23 @@ const DictatorGridDictator: FC<Props> = ({
 
   return (
     <Box
-      sx={{
-        cursor: "pointer",
-        opacity: isActive ? 1 : 0.66,
-        filter: isActive ? undefined : "grayscale(100%) sepia(50%)"
-      }}
+      className={styles.state[isActive ? "active" : "faded"]}
       onClick={() => {
         router.push(to);
       }}
     >
-      <Box
-        sx={{
-          position: "relative"
-        }}
-      >
+      <Box className={styles.imageBox}>
         {dictator.canonicalRanking && (
-          <div
-            sx={{
-              fontSize: 1,
-              textAlign: "center",
-              width: "2em",
-              margin: 0,
-              position: "absolute",
-              fontWeight: "strong",
-              top: -1,
-              right: -1,
-              zIndex: 3,
-              color: "white",
-              backgroundColor: "link",
-              borderRadius: 1,
-              paddingY: "4px"
-              /*
-        textShadow:
-          "-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000"
-          */
-            }}
-          >
-            {dictator.canonicalRanking}
-          </div>
+          <div className={styles.ranking}>{dictator.canonicalRanking}</div>
         )}
         <Image
           data={dictator.primaryImage}
           config={{ width: 150, aspectRatio: 0.75, fit: "fill", focus: "face" }}
-          styles={{
-            borderStyle: "solid",
-            borderColor: "link",
-            borderWidth: "1px",
-            borderRadius: 1,
-            display: "block"
-          }}
+          className={styles.image}
           alt={dictator.name}
         />
       </Box>
-      <Box
-        sx={{
-          overflow: "hidden",
-          textOverflow: "ellipsis"
-        }}
-      >
+      <Box className={styles.caption}>
         <Box>
           <InternalLink title={dictator.name} to={to}>
             {dictator.name}

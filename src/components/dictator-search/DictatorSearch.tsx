@@ -1,6 +1,7 @@
-/** @jsxImportSource theme-ui */
 import { FC, memo, useDeferredValue } from "react";
-import { Box, Flex, Link, jsx } from "theme-ui";
+import { Box, Flex, link } from "@/components/ui";
+import { sprinkles } from "@/styles/sprinkles.css";
+import * as styles from "./DictatorSearch.css";
 import { Dictator } from "@/types";
 import DictatorGrid from "@/components/dictator/DictatorGrid";
 import { FaAngleUp, FaAngleDown } from "react-icons/fa";
@@ -56,16 +57,11 @@ const DictatorSearch: FC<Props> = ({ dictators }) => {
   return (
     <Box>
       <SubHeading>
-        <Flex
-          sx={{
-            mb: 3,
-            placeItems: "center",
-            justifyContent: "start"
-          }}
-        >
+        <Flex className={styles.heading}>
           Hakuehdot
-          <Box sx={{ ml: 3, fontSize: 2 }}>
-            <Link
+          <Box className={styles.toggle}>
+            <a
+              className={link()}
               href="#"
               onClick={(e) => {
                 e.preventDefault();
@@ -75,14 +71,14 @@ const DictatorSearch: FC<Props> = ({ dictators }) => {
             >
               {text}
               <Icon />
-            </Link>
+            </a>
           </Box>
         </Flex>
       </SubHeading>
 
       <Box>
         {filtersOpen && (
-          <Box my={3}>
+          <Box className={sprinkles({ my: 3 })}>
             <Filters />
           </Box>
         )}

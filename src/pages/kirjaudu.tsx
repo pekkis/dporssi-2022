@@ -1,5 +1,6 @@
 import Layout from "@/components/layout/Layout";
-import { Box } from "theme-ui";
+import { Box } from "@/components/ui";
+import { sprinkles } from "@/styles/sprinkles.css";
 import SEO from "@/components/SEO";
 import SectionHeading from "@/components/SectionHeading";
 import LoginMethods from "@/components/LoginMethods";
@@ -11,7 +12,7 @@ const LoginPage = () => {
       <SEO title="Kirjaudu sisään" />
       <Layout>
         <ContentBox>
-          <Box mb={3} as="section">
+          <Box className={sprinkles({ mb: 3 })} as="section">
             <SectionHeading>Kirjaudu sisään</SectionHeading>
 
             <p>

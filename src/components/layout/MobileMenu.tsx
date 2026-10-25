@@ -1,8 +1,8 @@
-/** @jsxImportSource theme-ui */
-import { Box, jsx } from "theme-ui";
+import { Box } from "@/components/ui";
 import { FC, memo, useEffect, useRef } from "react";
 import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
 import MainMenu from "./MainMenu";
+import * as styles from "./MobileMenu.css";
 
 type Props = {
   topMenu: string;
@@ -20,8 +20,8 @@ const Menu: FC<Props> = () => {
   });
 
   return (
-    <Box ref={ref} backgroundColor="primary" color="white">
-      <MainMenu sx={{ mx: 2, mb: 2 }} />
+    <Box ref={ref} className={styles.menu}>
+      <MainMenu className={styles.nav} />
     </Box>
   );
 };

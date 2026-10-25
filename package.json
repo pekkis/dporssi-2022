@@ -11,14 +11,11 @@
     "fmt:check": "oxfmt --check"
   },
   "dependencies": {
-    "@emotion/react": "^11.14.0",
     "@floating-ui/react": "^0.27.20",
     "@hello-pangea/dnd": "^18.0.1",
     "@mdx-js/react": "^3.1.1",
     "@micro-sentry/browser": "^7.1.1",
     "@popperjs/core": "^2.11.8",
-    "@theme-ui/color": "^0.17.4",
-    "@theme-ui/presets": "^0.17.4",
     "axios": "^1.20.0",
     "body-scroll-lock": "4.0.0-beta.0",
     "firebase": "^12.19.0",
@@ -42,7 +39,6 @@
     "react-player": "^3.4.0",
     "react-responsive": "^10.0.1",
     "sharp": "^0.35.5",
-    "theme-ui": "^0.17.4",
     "uuid": "^14.0.3",
     "yup": "^1.7.1",
     "zustand": "^5.0.16"
@@ -55,6 +51,8 @@
     "@types/react": "^19.3.0",
     "@vanilla-extract/css": "^1.21.3",
     "@vanilla-extract/next-plugin": "^2.5.2",
+    "@vanilla-extract/recipes": "^0.5.7",
+    "@vanilla-extract/sprinkles": "^1.7.1",
     "contentful-management": "^11.76.0",
     "dotenv": "^18.0.8",
     "oxfmt": "^0.74.0",

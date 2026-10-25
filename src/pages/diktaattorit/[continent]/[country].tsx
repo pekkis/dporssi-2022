@@ -1,9 +1,7 @@
-/** @jsxImportSource theme-ui */
-
 import { gql } from "graphql-request";
 import { GetStaticPaths, GetStaticProps } from "next";
 import { FC } from "react";
-import { Box } from "theme-ui";
+import { Box } from "@/components/ui";
 
 import DictatorList from "@/components/dictator/DictatorList";
 import ContentBox from "@/components/layout/ContentBox";

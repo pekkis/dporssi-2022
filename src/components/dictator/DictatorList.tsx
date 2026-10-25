@@ -1,5 +1,5 @@
-/** @jsxImportSource theme-ui */
-import { Box, jsx } from "theme-ui";
+import { Box } from "@/components/ui";
+import * as styles from "./DictatorList.css";
 import { FC } from "react";
 
 import InternalLink from "@/components/InternalLink";
@@ -24,22 +24,8 @@ const DictatorList: FC<Props> = ({ showRanking = false, dictators }) => {
     <Box>
       {dictators.map((dictator) => {
         return (
-          <Box
-            sx={{
-              display: "grid",
-              gridTemplateColumns: "100px auto",
-              gap: 2
-            }}
-            my={4}
-            key={dictator.sys.id}
-          >
-            <Box
-              sx={{
-                gridRowStart: 1,
-                gridColumnStart: 1,
-                gridRowEnd: 2
-              }}
-            >
+          <Box className={styles.item} key={dictator.sys.id}>
+            <Box className={styles.image}>
               <ContentfulImage
                 data={dictator.primaryImage}
                 config={{
@@ -48,23 +34,11 @@ const DictatorList: FC<Props> = ({ showRanking = false, dictators }) => {
                   fit: "fill",
                   focus: "face"
                 }}
-                styles={{
-                  borderStyle: "solid",
-                  borderColor: "link",
-                  borderWidth: "1px",
-                  borderRadius: 1,
-                  display: "block"
-                }}
+                className={styles.portrait}
                 alt={dictator.name}
               />
             </Box>
-            <Box
-              sx={{
-                gridRowStart: 1,
-                gridRowEnd: 2,
-                gridColumnStart: 2
-              }}
-            >
+            <Box className={styles.details}>
               <SubHeading>
                 <InternalLink to={`/diktaattori/${dictator.slug}`}>
                   {showRanking && (
@@ -74,14 +48,7 @@ const DictatorList: FC<Props> = ({ showRanking = false, dictators }) => {
                 </InternalLink>
               </SubHeading>
 
-              <table
-                sx={{
-                  th: {
-                    textAlign: "left",
-                    verticalAlign: "top"
-                  }
-                }}
-              >
+              <table className={styles.facts}>
                 <tbody>
                   <tr>
                     <th>Vallassa</th>
@@ -107,13 +74,7 @@ const DictatorList: FC<Props> = ({ showRanking = false, dictators }) => {
             </Box>
 
             {dictator.synopsis && (
-              <Box
-                sx={{
-                  gridRowStart: 2,
-                  gridColumnStart: 1,
-                  gridColumnEnd: 3
-                }}
-              >
+              <Box className={styles.synopsis}>
                 <Markdown>{dictator.synopsis}</Markdown>
               </Box>
             )}

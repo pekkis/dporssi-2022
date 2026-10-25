@@ -1,5 +1,6 @@
 import { FC } from "react";
-import { Box, Input, Label, Radio } from "theme-ui";
+import { Box, Input, Label, Radio } from "@/components/ui";
+import * as styles from "./Filters.css";
 import useStore from "./store";
 
 const Filters: FC = () => {
@@ -7,24 +8,8 @@ const Filters: FC = () => {
   const setFilter = useStore((state) => state.setFilter);
 
   return (
-    <Box
-      p={3}
-      sx={{
-        backgroundColor: "superLight",
-        borderRadius: 1,
-        borderStyle: "solid",
-        borderWidth: "1",
-        borderColor: "light",
-        display: ["block", "flex"],
-        flexWrap: "wrap"
-      }}
-    >
-      <Box
-        sx={{
-          pr: [0, 4],
-          pb: [0, 0]
-        }}
-      >
+    <Box className={styles.panel}>
+      <Box className={styles.searchColumn}>
         <Label>Etsi</Label>
         <Input
           name="name"
@@ -34,12 +19,7 @@ const Filters: FC = () => {
           onChange={(e) => setFilter("name", e.target.value)}
         />
       </Box>
-      <Box
-        sx={{
-          pr: [0, 4],
-          pb: [3, 0]
-        }}
-      >
+      <Box className={styles.column}>
         <Label>Järjestä</Label>
 
         <Label>
@@ -113,12 +93,7 @@ const Filters: FC = () => {
           ison päivityksen mukaan
         </Label>
       </Box>
-      <Box
-        sx={{
-          pr: [0, 4],
-          pb: [3, 0]
-        }}
-      >
+      <Box className={styles.column}>
         <Label>Korosta</Label>
         <Label>
           <Radio

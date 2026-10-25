@@ -1,9 +1,10 @@
-/** @jsxImportSource theme-ui */
 import Adi from "@/components/Adi";
 import InternalLink from "@/components/InternalLink";
 import { Locale, url } from "@/services/url";
 import { FaTwitter } from "react-icons/fa";
-import { Box, Heading } from "theme-ui";
+import { Box, Heading } from "@/components/ui";
+import { sprinkles } from "@/styles/sprinkles.css";
+import * as styles from "./Footer.css";
 import ExternalLink from "@/components/ExternalLink";
 
 const links = [
@@ -41,43 +42,17 @@ const links = [
 
 const Footer = () => {
   return (
-    <Box
-      p={3}
-      as="footer"
-      backgroundColor="veryDark"
-      color="veryLight"
-      sx={{
-        gridArea: "footer",
-        textAlign: "center"
-      }}
-    >
-      <Box
-        sx={{
-          width: "50px",
-          margin: "0 auto"
-        }}
-      >
+    <Box as="footer" className={styles.footer}>
+      <Box className={styles.logo}>
         <Adi />
       </Box>
 
-      <Box p={3}>
-        <Heading
-          sx={{
-            fontSize: 2,
-            textTransform: "uppercase"
-          }}
-          as="h2"
-        >
+      <Box className={sprinkles({ p: 3 })}>
+        <Heading className={styles.heading} as="h2">
           Vakoile D-pörssiä
         </Heading>
 
-        <Box
-          my={1}
-          sx={{
-            fontSize: 4,
-            mx: 2
-          }}
-        >
+        <Box className={styles.social}>
           <ExternalLink
             aria-label="Diktaattoripörssin Twitter-tili"
             to="https://twitter.com/dporssi"
@@ -88,29 +63,13 @@ const Footer = () => {
         </Box>
       </Box>
 
-      <Box p={3}>
+      <Box className={sprinkles({ p: 3 })}>
         <nav>
-          <ul
-            sx={{
-              margin: 0,
-              padding: 0,
-              listStyleType: "none"
-            }}
-          >
+          <ul className={styles.links}>
             {links.map((link, i) => {
               return (
-                <li
-                  key={i}
-                  sx={{
-                    display: "inline-block",
-                    listStylePosition: "inside",
-                    margin: 0,
-                    p: 0,
-                    pr: 2,
-                    pb: 1
-                  }}
-                >
-                  <InternalLink variant="links.footer" to={link.to}>
+                <li key={i} className={styles.linkItem}>
+                  <InternalLink variant="footer" to={link.to}>
                     {link.label}
                   </InternalLink>
                 </li>
@@ -119,7 +78,7 @@ const Footer = () => {
           </ul>
         </nav>
 
-        <Box my={3}>
+        <Box className={sprinkles({ my: 3 })}>
           <a
             href="https://creativecommons.org/licenses/by/1.0/fi/"
             rel="license"
@@ -129,10 +88,7 @@ const Footer = () => {
               width="85"
               height="15"
               alt="Creative Commons License"
-              sx={{
-                verticalAlign: "middle",
-                marginRight: 1
-              }}
+              className={styles.licenseImage}
             />
           </a>
           copyright © Dr. Kobros Foundation. Käytä miten lystäät,{" "}

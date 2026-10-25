@@ -1,5 +1,5 @@
-/** @jsxImportSource theme-ui */
-import { Box } from "theme-ui";
+import { Box } from "@/components/ui";
+import { sprinkles } from "@/styles/sprinkles.css";
 import Layout from "@/components/layout/Layout";
 import Paginator from "@/components/Paginator";
 import SEO from "@/components/SEO";
@@ -89,7 +89,7 @@ const NewsIndexPage: FC<Props> = (props) => {
       <SEO title="Valeuutiset" />
       <ContentBox>
         <Box>
-          <Box mb={4}>
+          <Box className={sprinkles({ mb: 4 })}>
             <SectionHeading>Valeuutiset</SectionHeading>
 
             <p>
@@ -99,7 +99,7 @@ const NewsIndexPage: FC<Props> = (props) => {
             </p>
           </Box>
 
-          <Box my={4}>
+          <Box className={sprinkles({ my: 4 })}>
             <Paginator
               id="paginator-top"
               label="paginator-top"
@@ -113,7 +113,7 @@ const NewsIndexPage: FC<Props> = (props) => {
           <PropagandaLight key={p.sys.id} propaganda={p} />
         ))}
 
-        <Box mt={4}>
+        <Box className={sprinkles({ mt: 4 })}>
           <Paginator
             label="paginator-bottom"
             id="paginator-bottom"

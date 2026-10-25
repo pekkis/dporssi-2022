@@ -1,6 +1,6 @@
-/** @jsxImportSource theme-ui */
-
-import { Box } from "theme-ui";
+import { Box } from "@/components/ui";
+import { sprinkles } from "@/styles/sprinkles.css";
+import * as styles from "@/styles/pages/about.css";
 import ExternalLink from "@/components/ExternalLink";
 import Layout from "@/components/layout/Layout";
 import SEO from "@/components/SEO";
@@ -22,23 +22,8 @@ const StorySection = (props) => {
   const { children, image } = props;
 
   return (
-    <Box
-      sx={{
-        my: 3,
-        display: ["block", "flex"],
-        width: "100%",
-        alignItems: "stretch"
-      }}
-    >
-      <Box
-        sx={{
-          width: ["100%", "50%"],
-          flexGrow: 2,
-          order: 2,
-          ml: [0, 4],
-          mb: [4, 0]
-        }}
-      >
+    <Box className={styles.story}>
+      <Box className={styles.storyImage}>
         <Image
           src={image.image.src}
           alt={image.alt}
@@ -46,14 +31,7 @@ const StorySection = (props) => {
           height={image.image.height}
         />
       </Box>
-      <Box
-        sx={{
-          width: "100%",
-          order: 1
-        }}
-      >
-        {children}
-      </Box>
+      <Box className={styles.storyText}>{children}</Box>
     </Box>
   );
 };
@@ -64,7 +42,7 @@ const AboutPage = () => {
       <SEO title="Tietoa Diktaattoripörssistä" />
 
       <ContentBox>
-        <Box as="header" mb={3}>
+        <Box as="header" className={sprinkles({ mb: 3 })}>
           <SectionHeading>Tietoa Diktaattoripörssistä</SectionHeading>
 
           <Paragraph>
@@ -234,7 +212,7 @@ const AboutPage = () => {
             kuin he lopulta tunnustavat vilppinsä ja nöyrtyvät pahoittelemaan.
           </Paragraph>
 
-          <Box my={3}>
+          <Box className={sprinkles({ my: 3 })}>
             <Paragraph>
               Salvamiehen ja Turun ammattikorkeakoulun hyökkäys osoitti, kuinka
               haavoittuva kyberhyökkäyksille Diktaattoripörssi on. Aina

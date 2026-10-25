@@ -1,4 +1,6 @@
-import { Box } from "theme-ui";
+import { Box } from "@/components/ui";
+import { sprinkles } from "@/styles/sprinkles.css";
+import * as styles from "@/styles/pages/luokittelu.css";
 import Layout from "@/components/layout/Layout";
 import SEO from "@/components/SEO";
 import { groupBy, toPairs } from "ramda";
@@ -61,7 +63,7 @@ const ClassificationIndexPage: FC<Props> = (props) => {
       <SEO title="Luokittelu" />
 
       <ContentBox>
-        <Box mb={4} as="section">
+        <Box className={sprinkles({ mb: 4 })} as="section">
           <SectionHeading>Luokittelu</SectionHeading>
           <p>
             Diktaattoripörssi luokittelee diktaattorit virallisen tyrannien
@@ -76,13 +78,7 @@ const ClassificationIndexPage: FC<Props> = (props) => {
           </p>
         </Box>
 
-        <Box
-          sx={{
-            display: ["block", "grid"],
-            gridTemplateColumns: "1fr 1fr",
-            columnGap: 4
-          }}
-        >
+        <Box className={styles.categories}>
           {groupedTaxonomies.map(([name, taxonomies]) => {
             return <Category name={name} taxonomy={taxonomies} key={name} />;
           })}

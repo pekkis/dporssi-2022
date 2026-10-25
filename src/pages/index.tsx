@@ -1,12 +1,12 @@
-/** @jsxImportSource theme-ui */
-
 import Layout from "@/components/layout/Layout";
 import { gql } from "graphql-request";
 import { graphQLClient } from "@/services/graphql";
 import PropagandaTube from "@/components/LazyLoadedPropagandaTube";
 import { FC, ReactElement } from "react";
 import SEO from "@/components/SEO";
-import { Box, Paragraph } from "theme-ui";
+import { Box, Paragraph } from "@/components/ui";
+import { sprinkles } from "@/styles/sprinkles.css";
+import * as styles from "@/styles/pages/index.css";
 import SectionHeading from "@/components/SectionHeading";
 import InternalLink from "@/components/InternalLink";
 import { Locale, url } from "@/services/url";
@@ -106,31 +106,8 @@ const IndexPage: FC<Props> = (props) => {
       <SEO title="Tervetuloa" />
       <Layout>
         <ContentBox>
-          <Box
-            sx={{
-              display: "grid",
-              gap: 4,
-              gridTemplateAreas: [
-                `
-              "header"
-              "fakeNews"
-              "propagandaTube"
-              "dictators"
-              `,
-                `
-            "header header"
-            "fakeNews propagandaTube"
-            "dictators dictators"
-            `
-              ]
-            }}
-          >
-            <Box
-              as="section"
-              sx={{
-                gridArea: "header"
-              }}
-            >
+          <Box className={styles.grid}>
+            <Box as="section" className={styles.header}>
               <SectionHeading>Puhemiehen tervehdys!</SectionHeading>
 
               <Paragraph>
@@ -183,11 +160,7 @@ const IndexPage: FC<Props> = (props) => {
               </Paragraph>
             </Box>
 
-            <Box
-              sx={{
-                gridArea: "fakeNews"
-              }}
-            >
+            <Box className={styles.fakeNews}>
               <SectionHeading>Valeuutiset</SectionHeading>
 
               {propaganda.map((item) => {
@@ -201,7 +174,11 @@ const IndexPage: FC<Props> = (props) => {
                 )(item);
 
                 return (
-                  <Box my={2} key={item.sys.id} as="article">
+                  <Box
+                    className={sprinkles({ my: 2 })}
+                    key={item.sys.id}
+                    as="article"
+                  >
                     <div>
                       <strong>
                         <time dateTime={date.toISODate()}>
@@ -214,31 +191,27 @@ const IndexPage: FC<Props> = (props) => {
                 );
               })}
 
-              <Box mt={3}>
+              <Box className={sprinkles({ mt: 3 })}>
                 <InternalLink
                   to={url(
                     "newsIndex",
                     process.env.NEXT_PUBLIC_LOCALE as Locale
                   )()}
                 >
-                  <FaAngleDoubleRight sx={{ mr: 1 }} />
+                  <FaAngleDoubleRight className={styles.moreIcon} />
                   Lisää valeuutisia
                 </InternalLink>
               </Box>
             </Box>
 
-            <Box
-              sx={{
-                gridArea: "propagandaTube"
-              }}
-            >
+            <Box className={styles.propagandaTube}>
               <Box>
                 <SectionHeading>Propagandatuubi</SectionHeading>
                 <PropagandaTube videos={videos} />
               </Box>
             </Box>
 
-            <Box as="section" sx={{ gridArea: "dictators" }}>
+            <Box as="section" className={styles.dictators}>
               <SectionHeading>Viimeksi päivitetyt diktaattorit</SectionHeading>
 
               <DictatorGrid
@@ -255,19 +228,14 @@ const IndexPage: FC<Props> = (props) => {
                 fadeOutIf={() => true}
               />
 
-              <Box
-                mt={2}
-                sx={{
-                  fontSize: 3
-                }}
-              >
+              <Box className={styles.allDictators}>
                 <InternalLink
                   to={url(
                     "dictators",
                     process.env.NEXT_PUBLIC_LOCALE as Locale
                   )()}
                 >
-                  <FaAngleDoubleRight sx={{ mr: 1 }} />
+                  <FaAngleDoubleRight className={styles.moreIcon} />
                   Kaikki diktaattorit
                 </InternalLink>
               </Box>

@@ -1,7 +1,6 @@
-/** @jsxImportSource theme-ui */
-
 import { FC, memo } from "react";
-import { Box } from "theme-ui";
+import { Box } from "@/components/ui";
+import * as styles from "./Paginator.css";
 import { range } from "ramda";
 import InternalLink from "./InternalLink";
 import { Locale } from "@/services/url";
@@ -40,14 +39,7 @@ const Paginator: FC<Props> = ({
   usePreviousAndNext = false
 }) => {
   return (
-    <Box
-      id={id}
-      aria-label={label}
-      as="nav"
-      sx={{
-        textAlign: "center"
-      }}
-    >
+    <Box id={id} aria-label={label} as="nav" className={styles.paginator}>
       {usePreviousAndNext && (
         <Previous
           currentPage={currentPage}
@@ -64,7 +56,7 @@ const Paginator: FC<Props> = ({
         return (
           <InternalLink
             key={r}
-            variant="links.paginator"
+            variant="paginator"
             to={to}
             isActive={(router) => {
               return router.asPath === to;

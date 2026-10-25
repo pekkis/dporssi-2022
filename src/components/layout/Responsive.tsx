@@ -1,9 +1,9 @@
 import { useMediaQuery } from "react-responsive";
-import { breakpoints } from "@/services/theme";
+import { breakpoints } from "@/styles/breakpoints";
 
 // breakpoints: ["480px", "640px", "1366px"],
 
-const [tabletBreakpoint, desktopBreakpoint] = breakpoints;
+const { tablet: tabletBreakpoint, desktop: desktopBreakpoint } = breakpoints;
 
 export const Desktop = ({ children }) => {
   const isDesktop = useMediaQuery({ minWidth: desktopBreakpoint });

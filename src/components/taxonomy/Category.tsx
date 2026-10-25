@@ -1,5 +1,6 @@
-/** @jsxImportSource theme-ui */
-import { Box, Heading, jsx, Paragraph } from "theme-ui";
+import { Box, cx, Heading, Paragraph } from "@/components/ui";
+import { sprinkles } from "@/styles/sprinkles.css";
+import * as styles from "./Category.css";
 import { FC } from "react";
 import InternalLink from "@/components/InternalLink";
 import Markdown from "@/components/Markdown";
@@ -12,43 +13,21 @@ type Props = {
   taxonomy: TaxonomyTerm[];
 };
 
-const grids = {
-  "Luonne ja persoona": {
-    gridColumnStart: 1,
-    gridColumnEnd: 2,
-    gridRowStart: 1,
-    gridRowEnd: 10
-  }
-};
-
 const Category: FC<Props> = ({ name, taxonomy }) => {
   return (
     <Box
-      mb={4}
-      sx={{
-        ...grids[name]
-      }}
+      className={cx(
+        styles.category,
+        styles.placement[name as keyof typeof styles.placement]
+      )}
     >
       <SubHeading>{name}</SubHeading>
       {taxonomy.map((tag) => {
         return (
-          <Box key={tag.slug} mb={3}>
-            <Heading as="h4" mb={2}>
+          <Box key={tag.slug} className={sprinkles({ mb: 3 })}>
+            <Heading as="h4" className={sprinkles({ mb: 2 })}>
               <InternalLink to={`/luokittelu/${tag.slug}`}>
-                <span
-                  sx={{
-                    display: "inline-block",
-                    backgroundColor: "primary",
-                    color: "white",
-                    width: "auto",
-                    margin: "0 0 auto 0",
-                    p: 1,
-                    borderRadius: 1,
-                    fontWeight: "light"
-                  }}
-                >
-                  {tag.name}
-                </span>
+                <span className={styles.tagName}>{tag.name}</span>
               </InternalLink>
             </Heading>
 

@@ -1,6 +1,5 @@
-/** @jsxImportSource theme-ui */
-
-import { Box, Button, Input, jsx, Textarea } from "theme-ui";
+import { Box, Button, Textarea } from "@/components/ui";
+import { sprinkles } from "@/styles/sprinkles.css";
 import { FC, memo, useState } from "react";
 import { GuestBookEntry } from "@/types";
 import axios from "axios";
@@ -15,7 +14,7 @@ const GuestbookEntry: FC<Props> = ({ entry, user }) => {
   const [reply, setReply] = useState<string | undefined>();
 
   return (
-    <Box my={3}>
+    <Box className={sprinkles({ my: 3 })}>
       <Textarea
         onChange={(e) => {
           setReply(e.currentTarget.value);

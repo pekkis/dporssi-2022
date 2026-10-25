@@ -1,5 +1,6 @@
-/** @jsxImportSource theme-ui */
-import { Box, Button, jsx, Textarea, Input, Label } from "theme-ui";
+import type { ReactNode } from "react";
+import { Box, Button, Textarea, Input, Label } from "@/components/ui";
+import * as styles from "./GuestbookForm.css";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
 import { useEffect, useReducer } from "react";
@@ -48,18 +49,8 @@ const validationSchema = Yup.object().shape({
     .required("Vaadittu kenttä!")
 });
 
-const ErrorBox = ({ children }) => {
-  return (
-    <Box
-      sx={{
-        mt: -3,
-        color: "primary",
-        mb: 3
-      }}
-    >
-      {children}
-    </Box>
-  );
+const ErrorBox = ({ children }: { children: ReactNode }) => {
+  return <Box className={styles.error}>{children}</Box>;
 };
 
 const GuestbookForm = () => {
@@ -94,15 +85,7 @@ const GuestbookForm = () => {
   }, [executeRecaptcha]);
 
   return (
-    <Box
-      sx={{
-        p: 3,
-        borderWidth: 1,
-        borderRadius: 1,
-        borderStyle: "solid",
-        borderColor: "muted"
-      }}
-    >
+    <Box className={styles.box}>
       <SubHeading>Kirjoita vieraskirjaan</SubHeading>
 
       <p>
@@ -143,11 +126,7 @@ const GuestbookForm = () => {
       >
         {({ errors, isValid }) => {
           return (
-            <Form
-              sx={{
-                mt: 3
-              }}
-            >
+            <Form className={styles.form}>
               <Label htmlFor="author">Salanimi</Label>
               <Field
                 disabled={isPosting || isSuccess}
@@ -196,13 +175,13 @@ const GuestbookForm = () => {
                 </>
               )}
               {isSuccess && (
-                <p sx={{ fontStyle: "italic" }}>
+                <p className={styles.notice}>
                   Kiitos palautteesta! Se on jonossa käsiteltävänä, ja törähtää
                   tälle sivulle lähituntien aikana.
                 </p>
               )}
               {isError && (
-                <p sx={{ fontStyle: "italic" }}>
+                <p className={styles.notice}>
                   Äh! Palautteen lähettäminen meni perseelleen. Yritä uudelleen
                   paremmalla onnella tai eri lailla formatoidulla palautteella!
                 </p>

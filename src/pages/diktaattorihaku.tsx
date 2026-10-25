@@ -1,4 +1,5 @@
-import { Box, Paragraph } from "theme-ui";
+import { Box, Paragraph } from "@/components/ui";
+import { sprinkles } from "@/styles/sprinkles.css";
 import Layout from "@/components/layout/Layout";
 import SEO from "@/components/SEO";
 import { FC, useState } from "react";
@@ -100,7 +101,7 @@ const DictatorsPage: FC<Props> = (props) => {
           .
         </Paragraph>
 
-        <Box my={4}>
+        <Box className={sprinkles({ my: 4 })}>
           {!loading && <DictatorSearch dictators={dictators} />}
           {loading && <Spinner />}
         </Box>

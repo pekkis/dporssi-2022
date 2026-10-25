@@ -1,6 +1,6 @@
-/** @jsxImportSource theme-ui */
-import { Box, Heading, jsx } from "theme-ui";
-import { DateTime } from "luxon";
+import { Box, Heading } from "@/components/ui";
+import { sprinkles } from "@/styles/sprinkles.css";
+import * as styles from "./PropagandaLight.css";
 import { Locale, url } from "@/services/url";
 import InternalLink from "./InternalLink";
 import Markdown from "./Markdown";
@@ -23,20 +23,20 @@ const PropagandaLight = (props: Props) => {
   )(propaganda);
 
   return (
-    <Box mt={2} mb={4} as="article">
+    <Box className={sprinkles({ mt: 2, mb: 4 })} as="article">
       <Box as="header">
-        <Heading mb={0} as="h2">
+        <Heading className={sprinkles({ mb: 0 })} as="h2">
           <InternalLink to={link}>{propaganda.title}</InternalLink>
         </Heading>
-        <Box mt={1}>
+        <Box className={sprinkles({ mt: 1 })}>
           Julkaistu{" "}
           <time dateTime={date.toISODate()}>{date.toLocaleString()}</time>
         </Box>
       </Box>
-      <Box as="main" my={2}>
+      <Box as="main" className={sprinkles({ my: 2 })}>
         <Markdown>{propaganda.description}</Markdown>
-        <Box my={2}>
-          <FaAngleDoubleRight sx={{ mr: 1 }} />
+        <Box className={sprinkles({ my: 2 })}>
+          <FaAngleDoubleRight className={styles.icon} />
           <InternalLink to={link}>Lue lisää</InternalLink>
         </Box>
       </Box>

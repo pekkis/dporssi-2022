@@ -1,10 +1,10 @@
-/** @jsxImportSource theme-ui */
+import type { ReactNode } from "react";
+import { Heading } from "@/components/ui";
+import { sprinkles } from "@/styles/sprinkles.css";
 
-import { Heading } from "theme-ui";
-
-const SubHeading = ({ children }) => {
+const SubHeading = ({ children }: { children: ReactNode }) => {
   return (
-    <Heading as="h3" mb={3} mt={3}>
+    <Heading as="h3" className={sprinkles({ mb: 3, mt: 3 })}>
       {children}
     </Heading>
   );

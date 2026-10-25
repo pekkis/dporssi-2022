@@ -1,6 +1,5 @@
-/** @jsxImportSource theme-ui */
 import { FC, ReactNode } from "react";
-import { Box, Paragraph } from "theme-ui";
+import { Box, Paragraph } from "@/components/ui";
 import { useUserStore } from "@/services/state";
 import SectionHeading from "@/components/SectionHeading";
 

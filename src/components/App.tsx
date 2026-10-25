@@ -1,8 +1,6 @@
 import { useCallback, Suspense } from "react";
 import { ErrorBoundary } from "react-error-boundary";
-import theme from "@/services/theme";
-import { ThemeUIProvider } from "theme-ui";
-import { Global } from "@emotion/react";
+import "@/styles/global.css";
 import LazyLoadedUserInitializer from "./LazyLoadedUserInitializer";
 import InfernalServerErrorPage from "@/pages/500";
 import { useMemo } from "react";
@@ -24,23 +22,10 @@ const App = (props) => {
       FallbackComponent={InfernalServerErrorPage}
       onError={errorHandler}
     >
-      <ThemeUIProvider theme={theme}>
-        <Global
-          styles={{
-            html: {},
-
-            "html.wf-active": {},
-
-            ".grecaptcha-badge": {
-              visibility: "hidden"
-            }
-          }}
-        />
-        <Suspense fallback={null}>
-          <LazyLoadedUserInitializer />
-        </Suspense>
-        {children}
-      </ThemeUIProvider>
+      <Suspense fallback={null}>
+        <LazyLoadedUserInitializer />
+      </Suspense>
+      {children}
     </ErrorBoundary>
   );
 };

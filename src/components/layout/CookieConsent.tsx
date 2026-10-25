@@ -1,5 +1,6 @@
 import ReactCookieConsent from "react-cookie-consent";
-import { Button } from "theme-ui";
+import { Button } from "@/components/ui";
+import * as styles from "./CookieConsent.css";
 
 const CookieConsent = () => {
   return (
@@ -8,16 +9,7 @@ const CookieConsent = () => {
       buttonText="Ymmärrän!"
       ButtonComponent={(props) => {
         const { style, ...rest } = props;
-        return (
-          <Button
-            {...rest}
-            sx={{
-              flex: "0 0 auto",
-              margin: "15px",
-              padding: "5px 10px"
-            }}
-          />
-        );
+        return <Button {...rest} className={styles.button} />;
       }}
       buttonStyle={{}}
       cookieName="ValvontaKeksi"

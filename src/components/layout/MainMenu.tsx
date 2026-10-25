@@ -1,32 +1,16 @@
-/** @jsxImportSource theme-ui */
-
 import InternalLink from "@/components/InternalLink";
 import { Locale, url } from "@/services/url";
 import { memo } from "react";
 import UserMenu from "./UserMenu";
+import * as styles from "./MainMenu.css";
 
-const MainMenu = (props) => {
+const MainMenu = ({ className }: { className?: string }) => {
   return (
-    <nav aria-label="Päävalikko" {...props} id="main-menu">
-      <ul
-        sx={{
-          display: ["block", "flex"],
-          width: "100%",
-          m: 0,
-          p: 0,
-          listStyleType: "none",
-          alignContent: "center",
-          alignItems: "center",
-          justifyContent: "flex-end",
-
-          li: {
-            mr: 1
-          }
-        }}
-      >
+    <nav aria-label="Päävalikko" className={className} id="main-menu">
+      <ul className={styles.list}>
         <li>
           <InternalLink
-            variant="links.menu"
+            variant="menu"
             to={url("index", process.env.NEXT_PUBLIC_LOCALE as Locale)()}
             isActive={(router) => {
               return router.asPath === "/";
@@ -37,7 +21,7 @@ const MainMenu = (props) => {
         </li>
         <li>
           <InternalLink
-            variant="links.menu"
+            variant="menu"
             to={url(
               "dictatorIndex",
               process.env.NEXT_PUBLIC_LOCALE as Locale
@@ -51,7 +35,7 @@ const MainMenu = (props) => {
         </li>
         <li>
           <InternalLink
-            variant="links.menu"
+            variant="menu"
             to={url("dictators", process.env.NEXT_PUBLIC_LOCALE as Locale)()}
             isActive={(router) => {
               return router.asPath === "/diktaattorihaku";
@@ -62,7 +46,7 @@ const MainMenu = (props) => {
         </li>
         <li>
           <InternalLink
-            variant="links.menu"
+            variant="menu"
             to={url(
               "classificationIndex",
               process.env.NEXT_PUBLIC_LOCALE as Locale
@@ -76,7 +60,7 @@ const MainMenu = (props) => {
         </li>
         <li>
           <InternalLink
-            variant="links.menu"
+            variant="menu"
             to={url("newsIndex", process.env.NEXT_PUBLIC_LOCALE as Locale)()}
             isActive={(router) => {
               return router.asPath.startsWith("/valeuutiset");

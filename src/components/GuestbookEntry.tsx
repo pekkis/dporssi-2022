@@ -1,6 +1,6 @@
-/** @jsxImportSource theme-ui */
-import { Box, Input, jsx, Textarea } from "theme-ui";
-import { DateTime } from "luxon";
+import { Box } from "@/components/ui";
+import { sprinkles } from "@/styles/sprinkles.css";
+import * as styles from "./GuestbookEntry.css";
 import { FC, memo } from "react";
 
 import Markdown from "./Markdown";
@@ -18,14 +18,9 @@ const GuestbookEntry: FC<Props> = ({ entry, user }) => {
   const date = createDate(entry.date);
 
   return (
-    <Box mt={2} mb={4}>
+    <Box className={sprinkles({ mt: 2, mb: 4 })}>
       <Box>
-        <Box
-          mb={1}
-          sx={{
-            fontWeight: "bold"
-          }}
-        >
+        <Box className={styles.author}>
           {entry.author},{" "}
           <time dateTime={date.toISO()}>{date.toLocaleString()}</time>
         </Box>
@@ -33,13 +28,7 @@ const GuestbookEntry: FC<Props> = ({ entry, user }) => {
       </Box>
 
       {entry.reply && (
-        <Box
-          mt={2}
-          mb={2}
-          sx={{
-            fontStyle: "italic"
-          }}
-        >
+        <Box className={styles.reply}>
           <Markdown>{entry.reply}</Markdown>
         </Box>
       )}
