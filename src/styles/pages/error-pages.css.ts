@@ -43,3 +43,15 @@ export const serverErrorNote = style({
   transform: "rotate(1.5deg)",
   fontFamily: "Comic Sans MS"
 });
+
+// "Reload" is an action, so it's a button that looks like the link next to it.
+export const reloadButton = style({
+  appearance: "none",
+  background: "none",
+  border: 0,
+  padding: 0,
+  font: "inherit",
+  color: "inherit",
+  textDecoration: "underline",
+  cursor: "pointer"
+});

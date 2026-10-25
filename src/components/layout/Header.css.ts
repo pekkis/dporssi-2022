@@ -41,7 +41,7 @@ export const logo = style({
   margin: vars.space[1]
 });
 
-export const logoImage = style({ cursor: "pointer" });
+export const logoLink = style({ display: "block" });
 
 export const titleBox = style({
   flex: "0 0 auto",

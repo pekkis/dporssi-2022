@@ -107,7 +107,7 @@ export const getStaticProps: GetStaticProps<Props, Params> = async (
   };
 };
 
-export const getStaticPaths: GetStaticPaths<Params> = async (context) => {
+export const getStaticPaths: GetStaticPaths<Params> = async () => {
   const query = gql`
     query CountryPaths($locale: String!) {
       countryCollection(locale: $locale) {

@@ -2,10 +2,7 @@ import type { NextApiRequest, NextApiResponse } from "next";
 import axios from "axios";
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
-  const {
-    query: { id, name },
-    method
-  } = req;
+  const { method } = req;
 
   switch (method) {
     case "POST":

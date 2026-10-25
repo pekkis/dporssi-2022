@@ -7,7 +7,7 @@ import MobileMenu from "./MobileMenu";
 import { Default, Mobile } from "./Responsive";
 import { useTranslation } from "react-i18next";
 import { memo } from "react";
-import { useRouter } from "next/router";
+import Link from "next/link";
 import * as styles from "./Header.css";
 
 type Props = {
@@ -18,8 +18,6 @@ const Header: FC<Props> = ({ topMenu }) => {
   const [isOpen, setOpen] = useState(false);
   const { t } = useTranslation();
 
-  const router = useRouter();
-
   return (
     <>
       {isOpen && <Box className={styles.overlay} />}
@@ -28,12 +26,9 @@ const Header: FC<Props> = ({ topMenu }) => {
         <Container>
           <Flex className={styles.bar}>
             <Box className={styles.logo}>
-              <Adi
-                className={styles.logoImage}
-                onClick={() => {
-                  router.push("/");
-                }}
-              />
+              <Link href="/" aria-label="Etusivu" className={styles.logoLink}>
+                <Adi />
+              </Link>
             </Box>
             <Box className={styles.titleBox}>
               <Heading as="h1" className={styles.title}>

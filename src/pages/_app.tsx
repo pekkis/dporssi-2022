@@ -5,7 +5,8 @@ import i18n from "@/services/i18n";
 import App from "@/components/App";
 
 import type { AppProps } from "next/app";
-import { FC, memo, ReactNode, useEffect, useState } from "react";
+import { FC, memo, ReactNode } from "react";
+import { useIsHydrated } from "@/services/useIsHydrated";
 
 const values = { style: { verticalAlign: "middle" } };
 
@@ -27,14 +28,9 @@ type ResponsivizerProps = {
   children: ReactNode;
 };
 
+// The server renders for a 1024px screen; the browser uses its real width.
 const Responsivizer: FC<ResponsivizerProps> = ({ children }) => {
-  const [context, setContext] = useState<{ width: number } | undefined>({
-    width: 1024
-  });
-
-  useEffect(() => {
-    setContext(undefined);
-  }, []);
+  const context = useIsHydrated() ? undefined : { width: 1024 };
 
   return (
     <>

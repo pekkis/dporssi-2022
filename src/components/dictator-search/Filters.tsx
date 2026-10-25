@@ -99,7 +99,7 @@ const Filters: FC = () => {
           <Radio
             name="highlight"
             checked={filters.highlight === "solidary"}
-            onChange={(e) => {
+            onChange={() => {
               setFilter("highlight", "solidary");
             }}
           />{" "}
@@ -109,7 +109,7 @@ const Filters: FC = () => {
           <Radio
             name="highlight"
             checked={filters.highlight === "alive"}
-            onChange={(e) => {
+            onChange={() => {
               setFilter("highlight", "alive");
             }}
           />{" "}
@@ -119,7 +119,7 @@ const Filters: FC = () => {
           <Radio
             name="highlight"
             checked={filters.highlight === "inPower"}
-            onChange={(e) => {
+            onChange={() => {
               setFilter("highlight", "inPower");
             }}
           />{" "}

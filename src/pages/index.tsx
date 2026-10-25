@@ -98,6 +98,12 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
   };
 };
 
+const PublishedAt = ({ dictator }: { dictator: Dictator }): ReactElement => (
+  <ExtraInfoBox>
+    {createDate(dictator.sys.publishedAt).toLocaleString()}
+  </ExtraInfoBox>
+);
+
 const IndexPage: FC<Props> = (props) => {
   const { videos, propaganda, dictators } = props;
 
@@ -216,15 +222,7 @@ const IndexPage: FC<Props> = (props) => {
 
               <DictatorGrid
                 dictators={dictators}
-                extraInfo={({
-                  dictator
-                }: {
-                  dictator: Dictator;
-                }): ReactElement | null => {
-                  const d = createDate(dictator.sys.publishedAt);
-
-                  return <ExtraInfoBox>{d.toLocaleString()}</ExtraInfoBox>;
-                }}
+                extraInfo={PublishedAt}
                 fadeOutIf={() => true}
               />
 

@@ -9,7 +9,7 @@ import SectionHeading from "@/components/SectionHeading";
 import { GetStaticProps } from "next";
 import { gql } from "graphql-request";
 import { graphQLClient } from "@/services/graphql";
-import { TaxonomyCategory, TaxonomyTerm } from "@/types";
+import { TaxonomyTerm } from "@/types";
 import { FC } from "react";
 import { hours } from "@/services/cache";
 import ContentBox from "@/components/layout/ContentBox";
@@ -18,7 +18,7 @@ type Props = {
   taxonomies: TaxonomyTerm[];
 };
 
-export const getStaticProps: GetStaticProps<Props> = async (context) => {
+export const getStaticProps: GetStaticProps<Props> = async () => {
   const query = gql`
     query ClassificationIndex($locale: String!) {
       taxonomyTermCollection(locale: $locale, order: [name_ASC]) {
@@ -79,10 +79,8 @@ const ClassificationIndexPage: FC<Props> = (props) => {
         </Box>
 
         <Box className={styles.categories}>
-          {groupedTaxonomies.map(([name, taxonomies]) => {
-            return (
-              <Category name={name} taxonomy={taxonomies ?? []} key={name} />
-            );
+          {groupedTaxonomies.map(([name, terms]) => {
+            return <Category name={name} taxonomy={terms ?? []} key={name} />;
           })}
         </Box>
       </ContentBox>

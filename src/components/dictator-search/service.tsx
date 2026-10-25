@@ -1,5 +1,5 @@
 import { DateTime } from "luxon";
-import { filter, last } from "ramda";
+import { last } from "ramda";
 import { ReactElement } from "react";
 import { useTranslation } from "react-i18next";
 import {
@@ -138,7 +138,7 @@ export const sortrados: Record<PossibleSortrados, Sortrado> = {
   ranking: {
     sorter: sortByCanonicalRanking,
     filter: (d) => !!d.canonicalRanking,
-    ExtraInfo: ({}) => {
+    ExtraInfo: () => {
       return null;
     }
   },

@@ -11,25 +11,37 @@ import { auth } from "@/services/firebase";
 const Avatar = ({ user }: { user: UserInterface }) => {
   const [isOpen, setOpen] = useState(false);
 
-  const { refs, floatingStyles } = useFloating({
+  // floating-ui's callback refs (functions, not ref objects).
+  const {
+    refs: { setReference, setFloating },
+    floatingStyles
+  } = useFloating({
     strategy: "fixed",
     placement: "bottom"
   });
 
   return (
     <li>
-      <img
+      <button
+        type="button"
+        ref={setReference}
+        className={styles.avatarButton}
+        aria-expanded={isOpen}
+        aria-label="Käyttäjävalikko"
         onClick={() => {
           setOpen(!isOpen);
         }}
-        ref={refs.setReference}
-        className={styles.avatar}
-        src={user.picture || "kikkare-url"}
-      />
+      >
+        <img
+          className={styles.avatar}
+          src={user.picture || "kikkare-url"}
+          alt=""
+        />
+      </button>
 
       {isOpen && (
         <Box
-          ref={refs.setFloating}
+          ref={setFloating}
           className={styles.dropdown}
           style={floatingStyles}
         >

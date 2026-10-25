@@ -12,14 +12,6 @@ type Props = {
 */
 
 const Youtube: FC<Props> = ({ videoId }) => {
-  const opts = {
-    height: "100%",
-    width: "100%",
-    playerVars: {
-      // https://developers.google.com/youtube/player_parameters
-      autoplay: 0
-    }
-  };
   return (
     <Box className={styles.frame}>
       <Box className={styles.player}>

@@ -32,8 +32,8 @@ const UserInitializer: FC = () => {
       ret?.getIdToken().then((token) => {
         setToken(token);
 
-        axios.post(`/api/auth`, { token }).then((ret) => {
-          setData(ret.data.user);
+        axios.post(`/api/auth`, { token }).then((response) => {
+          setData(response.data.user);
         });
       });
     });

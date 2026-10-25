@@ -17,7 +17,6 @@ type Props = {
 const Paginator: FC<Props> = ({
   id = "paginator",
   label = "sivutus",
-  currentPage,
   numPages,
   getLink
 }) => {

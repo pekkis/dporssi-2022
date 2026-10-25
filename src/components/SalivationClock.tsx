@@ -1,12 +1,12 @@
 import { DateTime, Duration } from "luxon";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { FC } from "react";
 
-const SalivationClock: FC = () => {
-  const salvaliittoRef = useRef<DateTime>(DateTime.fromISO("2002-12-09"));
+const SALVALIITTO = DateTime.fromISO("2002-12-09");
 
+const SalivationClock: FC = () => {
   const [diff, setDiff] = useState<Duration>(
-    salvaliittoRef.current.diff(DateTime.utc(), [
+    SALVALIITTO.diff(DateTime.utc(), [
       "years",
       "months",
       "days",
@@ -19,7 +19,7 @@ const SalivationClock: FC = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setDiff(
-        salvaliittoRef.current.diff(DateTime.utc(), [
+        SALVALIITTO.diff(DateTime.utc(), [
           "years",
           "months",
           "days",

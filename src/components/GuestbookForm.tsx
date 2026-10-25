@@ -61,7 +61,7 @@ const GuestbookForm = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
   const { isHuman, isPosting, isError, isSuccess } = state;
 
-  const user = useUserStore((state) => state.user);
+  const user = useUserStore((store) => store.user);
 
   const { executeRecaptcha } = useGoogleReCaptcha();
   useEffect(() => {
@@ -112,7 +112,7 @@ const GuestbookForm = () => {
           scribbling: ""
         }}
         validationSchema={validationSchema}
-        onSubmit={async (values) => {
+        onSubmit={async () => {
           dispatch("POST");
           /*
           try {

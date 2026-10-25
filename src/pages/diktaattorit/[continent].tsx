@@ -7,7 +7,7 @@ import Markdown from "@/components/Markdown";
 import SectionHeading from "@/components/SectionHeading";
 import SEO from "@/components/SEO";
 import { sortBySortName } from "@/services/dictator";
-import { Continent, Country, Dictator } from "@/types";
+import { Continent, Dictator } from "@/types";
 import { gql } from "graphql-request";
 import { graphQLClient } from "@/services/graphql";
 import ContentBox from "@/components/layout/ContentBox";
@@ -105,7 +105,7 @@ export const getStaticProps: GetStaticProps<Props, Params> = async (
   };
 };
 
-export const getStaticPaths: GetStaticPaths<Params> = async (context) => {
+export const getStaticPaths: GetStaticPaths<Params> = async () => {
   const query = gql`
     query Continent($locale: String!) {
       continentCollection(locale: $locale) {

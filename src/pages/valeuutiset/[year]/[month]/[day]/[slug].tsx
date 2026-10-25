@@ -106,7 +106,7 @@ export const getStaticProps: GetStaticProps<Props, QueryParams> = async (
   };
 };
 
-export const getStaticPaths: GetStaticPaths = async (context) => {
+export const getStaticPaths: GetStaticPaths = async () => {
   const query = gql`
     query PropagandaStaticPaths($locale: String!) {
       propagandaCollection(locale: $locale, order: [date_DESC], limit: 5) {

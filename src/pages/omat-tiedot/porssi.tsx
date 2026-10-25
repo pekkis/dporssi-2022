@@ -29,9 +29,7 @@ type Props = {
   dictators: Dictator[];
 };
 
-export const getServerSideProps: GetServerSideProps<Props> = async (
-  context
-) => {
+export const getServerSideProps: GetServerSideProps<Props> = async () => {
   const query = gql`
     query OwnRankingPage($locale: String!) {
       dictatorCollection(locale: $locale, limit: 200) {
@@ -230,13 +228,13 @@ const OwnRankingPage = ({ dictators }: Props) => {
                                 draggableId={r.id}
                                 index={i}
                               >
-                                {(provided) => (
+                                {(draggable) => (
                                   <Box
                                     className={styles.row}
-                                    ref={provided.innerRef}
-                                    {...provided.draggableProps}
+                                    ref={draggable.innerRef}
+                                    {...draggable.draggableProps}
                                   >
-                                    <Handle {...provided.dragHandleProps}>
+                                    <Handle {...draggable.dragHandleProps}>
                                       <GrDrag />
                                     </Handle>
 

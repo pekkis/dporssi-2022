@@ -1,23 +1,17 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import { DateTime } from "luxon";
-import { getApp, getFirestore, getAuth } from "@/services/firebase-admin";
+import { getFirestore, getAuth } from "@/services/firebase-admin";
 import { Timestamp } from "firebase-admin/firestore";
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
-  const {
-    query: { id, name },
-    method
-  } = req;
+  const { method } = req;
 
   switch (method) {
     case "POST":
-      const app = getApp();
       const store = getFirestore();
 
       try {
         const user = await getAuth().verifyIdToken(req.body.token);
-
-        console.log("USER", user);
 
         if (!user.email) {
           return res.status(401).json({
@@ -30,7 +24,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         const now = DateTime.local();
 
         if (!doc.exists) {
-          const doc2 = await store
+          await store
             .collection("users")
             .doc(user.email)
             .set({
@@ -51,7 +45,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         return res.status(200).json({
           user: doc?.data()
         });
-      } catch (e) {
+      } catch {
         return res.status(401).json({
           error: "f0rb1DD3n!"
         });

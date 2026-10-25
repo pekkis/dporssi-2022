@@ -38,7 +38,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         return res.status(200).json({
           result: "success!"
         });
-      } catch (e) {
+      } catch {
         return res.status(401).json({
           error: "f0rb1DD3n!"
         });

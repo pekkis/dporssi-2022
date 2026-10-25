@@ -47,16 +47,19 @@ const InfernalServerErrorPage = () => {
 
         <ul>
           <li>
-            <a
-              href="/"
+            <button
+              type="button"
+              className={styles.reloadButton}
               onClick={() => {
                 document.location.reload();
               }}
             >
               Lataa sama sivu uudestaan (saattaa auttaa!)
-            </a>
+            </button>
           </li>
           <li>
+            {/* After a crash a full page load is the point, not client-side navigation. */}
+            {/* oxlint-disable-next-line nextjs/no-html-link-for-pages */}
             <a href="/">Palaa pääsivulle (jos mikään ei auta!)</a>
           </li>
         </ul>

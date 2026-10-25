@@ -3,20 +3,6 @@ import Head from "next/head";
 import config from "@/services/config";
 import { useRouter } from "next/router";
 
-type SiteMetadata = {
-  site: {
-    siteMetadata: {
-      defaultTitle: string;
-      titleTemplate: string;
-      defaultDescription: string;
-      siteUrl: string;
-      defaultImage: string;
-      twitterUsername: string;
-      lang: string;
-    };
-  };
-};
-
 type Props = {
   title?: string;
   description?: string;
@@ -39,8 +25,7 @@ const SEO: FC<Props> = ({ title, description, image, article = false }) => {
     description: defaultDescription,
     siteUrl,
     image: defaultImage,
-    twitterUsername,
-    lang
+    twitterUsername
   } = config;
 
   const seo = {

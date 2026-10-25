@@ -2,13 +2,13 @@ import { Box, Paragraph } from "@/components/ui";
 import { sprinkles } from "@/styles/sprinkles.css";
 import Layout from "@/components/layout/Layout";
 import SEO from "@/components/SEO";
-import { FC, useState } from "react";
+import { useIsHydrated } from "@/services/useIsHydrated";
+import { FC } from "react";
 import { Dictator } from "@/types";
 import SectionHeading from "@/components/SectionHeading";
 import DictatorSearch from "@/components/dictator-search/DictatorSearch";
 import InternalLink from "@/components/InternalLink";
 import { Locale, url } from "@/services/url";
-import { useEffect } from "react";
 import { GetStaticProps } from "next";
 import { gql } from "graphql-request";
 import { graphQLClient } from "@/services/graphql";
@@ -20,7 +20,7 @@ type Props = {
   dictators: Dictator[];
 };
 
-export const getStaticProps: GetStaticProps<Props> = async (context) => {
+export const getStaticProps: GetStaticProps<Props> = async () => {
   const query = gql`
     query DictatorSearch($locale: String!) {
       dictatorCollection(locale: $locale, limit: 150) {
@@ -72,11 +72,8 @@ export const getStaticProps: GetStaticProps<Props> = async (context) => {
 const DictatorsPage: FC<Props> = (props) => {
   const { dictators } = props;
 
-  const [loading, setLoading] = useState<boolean>(true);
-
-  useEffect(() => {
-    setLoading(false);
-  }, []);
+  // The search runs in the browser; the server renders a spinner.
+  const loading = !useIsHydrated();
 
   const title = "Diktaattorihaku";
 

@@ -1,5 +1,5 @@
 import { FC, memo, useDeferredValue } from "react";
-import { Box, Flex, link } from "@/components/ui";
+import { Box, cx, Flex, link } from "@/components/ui";
 import { sprinkles } from "@/styles/sprinkles.css";
 import * as styles from "./DictatorSearch.css";
 import { Dictator } from "@/types";
@@ -39,16 +39,19 @@ const DictatorSearch: FC<Props> = ({ dictators }) => {
   const [filteredDictators, sortrado, highlighter] = useMemo<
     [Dictator[], Sortrado, Highlighter]
   >(() => {
-    const sortrado = sortrados[params.sortBy];
-    const filteredDictators = dictators.filter(sortrado.filter).filter((d) => {
+    const activeSortrado = sortrados[params.sortBy];
+    const matching = dictators.filter(activeSortrado.filter).filter((d) => {
       if (!params.name) {
         return true;
       }
 
       return d.name.toLowerCase().includes(params.name.toLowerCase());
     });
-    const sortedDictators = sortrado.sorter(filteredDictators);
-    return [sortedDictators, sortrado, highlights[params.highlight]];
+    return [
+      activeSortrado.sorter(matching),
+      activeSortrado,
+      highlights[params.highlight]
+    ];
   }, [params, dictators]);
 
   const Icon = filtersOpen ? FaAngleUp : FaAngleDown;
@@ -60,18 +63,17 @@ const DictatorSearch: FC<Props> = ({ dictators }) => {
         <Flex className={styles.heading}>
           Hakuehdot
           <Box className={styles.toggle}>
-            <a
-              className={link()}
-              href="#"
-              onClick={(e) => {
-                e.preventDefault();
-                e.stopPropagation();
+            <button
+              type="button"
+              className={cx(link(), styles.toggleButton)}
+              aria-expanded={filtersOpen}
+              onClick={() => {
                 setFiltersOpen(!filtersOpen);
               }}
             >
               {text}
               <Icon />
-            </a>
+            </button>
           </Box>
         </Flex>
       </SubHeading>

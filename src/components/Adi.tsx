@@ -5,15 +5,9 @@ type Props = {
   width?: string;
   height?: string;
   className?: string;
-  onClick?: () => void;
 };
 
-const Adi: FC<Props> = ({
-  width = "100%",
-  height = undefined,
-  onClick = () => {},
-  ...rest
-}) => {
+const Adi: FC<Props> = ({ width = "100%", height = undefined, ...rest }) => {
   const uuid = useId();
 
   const linearGradientId = `linearGradient5164-${uuid}`;
@@ -32,7 +26,6 @@ const Adi: FC<Props> = ({
       height={height}
       version="1.1"
       viewBox="0 0 245.61 239.03"
-      onClick={onClick}
     >
       <defs>
         <linearGradient id={linearGradientId}>
