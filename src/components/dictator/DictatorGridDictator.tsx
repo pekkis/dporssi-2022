@@ -10,7 +10,6 @@ import {
   Highlighter
 } from "@/components/dictator-search/service";
 import Image from "@/components/contentful/ContentfulImage";
-import { useRouter } from "next/router";
 
 type Props = {
   extraInfo: ExtraInfoComponent;
@@ -25,18 +24,11 @@ const DictatorGridDictator: FC<Props> = ({
 }) => {
   const ExtraInfoComponent = extraInfo;
 
-  const router = useRouter();
-
   const isActive = fadeOutIf(dictator);
   const to = `/diktaattori/${dictator.slug}`;
 
   return (
-    <Box
-      className={styles.state[isActive ? "active" : "faded"]}
-      onClick={() => {
-        router.push(to);
-      }}
-    >
+    <Box className={styles.state[isActive ? "active" : "faded"]}>
       <Box className={styles.imageBox}>
         {dictator.canonicalRanking && (
           <div className={styles.ranking}>{dictator.canonicalRanking}</div>
@@ -50,7 +42,11 @@ const DictatorGridDictator: FC<Props> = ({
       </Box>
       <Box className={styles.caption}>
         <Box>
-          <InternalLink title={dictator.name} to={to}>
+          <InternalLink
+            title={dictator.name}
+            to={to}
+            className={styles.cardLink}
+          >
             {dictator.name}
           </InternalLink>
         </Box>

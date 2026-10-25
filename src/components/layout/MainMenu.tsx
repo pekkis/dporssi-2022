@@ -12,9 +12,7 @@ const MainMenu = ({ className }: { className?: string }) => {
           <InternalLink
             variant="menu"
             to={url("index", process.env.NEXT_PUBLIC_LOCALE as Locale)()}
-            isActive={(router) => {
-              return router.asPath === "/";
-            }}
+            match="exact"
           >
             Etusivu
           </InternalLink>
@@ -26,9 +24,7 @@ const MainMenu = ({ className }: { className?: string }) => {
               "dictatorIndex",
               process.env.NEXT_PUBLIC_LOCALE as Locale
             )()}
-            isActive={(router) => {
-              return router.asPath.startsWith("/diktaattorit/");
-            }}
+            match="prefix"
           >
             Pörssi
           </InternalLink>
@@ -37,9 +33,7 @@ const MainMenu = ({ className }: { className?: string }) => {
           <InternalLink
             variant="menu"
             to={url("dictators", process.env.NEXT_PUBLIC_LOCALE as Locale)()}
-            isActive={(router) => {
-              return router.asPath === "/diktaattorihaku";
-            }}
+            match="exact"
           >
             Haku
           </InternalLink>
@@ -51,9 +45,7 @@ const MainMenu = ({ className }: { className?: string }) => {
               "classificationIndex",
               process.env.NEXT_PUBLIC_LOCALE as Locale
             )()}
-            isActive={(router) => {
-              return router.asPath.startsWith("/luokittelu");
-            }}
+            match="prefix"
           >
             Luokittelu
           </InternalLink>
@@ -62,9 +54,7 @@ const MainMenu = ({ className }: { className?: string }) => {
           <InternalLink
             variant="menu"
             to={url("newsIndex", process.env.NEXT_PUBLIC_LOCALE as Locale)()}
-            isActive={(router) => {
-              return router.asPath.startsWith("/valeuutiset");
-            }}
+            match="prefix"
           >
             Valeuutiset
           </InternalLink>

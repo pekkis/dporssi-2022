@@ -1,7 +1,7 @@
 import { style, styleVariants } from "@vanilla-extract/css";
 import { vars } from "@/styles/theme.css";
 
-const card = style({ cursor: "pointer" });
+const card = style({ cursor: "pointer", position: "relative" });
 
 // Dictators that don't match the current filter fade out.
 export const state = styleVariants({
@@ -38,4 +38,14 @@ export const image = style({
 export const caption = style({
   overflow: "hidden",
   textOverflow: "ellipsis"
+});
+
+// The name link covers the whole card, so the picture is clickable too.
+export const cardLink = style({
+  "::after": {
+    content: '""',
+    position: "absolute",
+    inset: 0,
+    zIndex: vars.zIndex[4]
+  }
 });

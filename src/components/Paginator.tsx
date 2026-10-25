@@ -29,14 +29,7 @@ const Paginator: FC<Props> = ({
         )(r);
 
         return (
-          <InternalLink
-            key={r}
-            variant="paginator"
-            to={to}
-            isActive={(router) => {
-              return router.asPath === to;
-            }}
-          >
+          <InternalLink key={r} variant="paginator" to={to} match="exact">
             {r}
           </InternalLink>
         );
