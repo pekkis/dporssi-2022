@@ -1,3 +1,4 @@
+import type { GetServerSidePropsContext } from "next";
 import { gql } from "graphql-request";
 import { graphQLClient } from "@/services/graphql";
 import { Locale, url } from "@/services/url";
@@ -54,7 +55,7 @@ function SiteMap() {
   // getServerSideProps will do the heavy lifting
 }
 
-export async function getServerSideProps({ res }) {
+export async function getServerSideProps({ res }: GetServerSidePropsContext) {
   const query = gql`
     query SitemapStuff($locale: String!) {
       dictatorCollection(locale: $locale, limit: 150) {

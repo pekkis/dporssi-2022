@@ -16,17 +16,17 @@ import DictatorGrid from "@/components/dictator/DictatorGrid";
 import { GetStaticProps } from "next";
 import { hours } from "@/services/cache";
 import ContentBox from "@/components/layout/ContentBox";
-import { Dictator } from "@/types";
+import type { Dictator, FakeNewsHeadline, TubeItem, TubeVideo } from "@/types";
 import ExtraInfoBox from "@/components/dictator-search/ExtraInfoBox";
 import { createDate } from "@/services/date";
 
 type Props = {
-  videos: Array<{}>;
-  propaganda: [];
+  videos: TubeItem[];
+  propaganda: FakeNewsHeadline[];
   dictators: Dictator[];
 };
 
-const videosPlusUkraine = (videos) => {
+const videosPlusUkraine = (videos: TubeVideo[]): TubeItem[] => {
   return [
     {
       ukraine: true
@@ -181,7 +181,7 @@ const IndexPage: FC<Props> = (props) => {
                   >
                     <div>
                       <strong>
-                        <time dateTime={date.toISODate()}>
+                        <time dateTime={date.toISODate() ?? undefined}>
                           {date.setLocale("fi").toLocaleString()}
                         </time>
                       </strong>

@@ -2,6 +2,7 @@ import type { NextApiRequest, NextApiResponse } from "next";
 import { DateTime } from "luxon";
 import { getAuth, getFirestore } from "@/services/firebase-admin";
 import { v4 } from "uuid";
+import { GUESTBOOK_CLOSED } from "@/services/guestbook";
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const { method } = req;
@@ -51,12 +52,16 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       const data = stat.data();
 
       return res.status(200).json({
-        totalPosts: data.totalPosts,
+        totalPosts: data?.totalPosts ?? 0,
         posts: docs.docs.map((d) => d.data())
       });
     }
 
     case "POST": {
+      if (GUESTBOOK_CLOSED) {
+        return res.status(403).json({ error: "Vieraskirja on suljettu." });
+      }
+
       try {
         const now = DateTime.utc();
         const id = v4();
@@ -79,7 +84,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
           .collection("guestbook")
           .doc("---stats---")
           .set({
-            totalPosts: stat.data().totalPosts + 1
+            totalPosts: (stat.data()?.totalPosts ?? 0) + 1
           });
 
         return res.status(200).json({

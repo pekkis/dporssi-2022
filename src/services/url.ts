@@ -59,7 +59,7 @@ const urls = {
     }
   },
   newsItem: {
-    fi: (item: FakeNewsItem) => {
+    fi: (item: Pick<FakeNewsItem, "date" | "slug">) => {
       const date = DateTime.fromISO(item.date)
         .setZone("Europe/Helsinki")
         .setLocale("fi");
@@ -68,7 +68,7 @@ const urls = {
         "LL"
       )}/${date.toFormat("dd")}/${item.slug}`;
     },
-    en: (item: FakeNewsItem) => {
+    en: (item: Pick<FakeNewsItem, "date" | "slug">) => {
       const date = DateTime.fromISO(item.date)
         .setZone("Europe/Helsinki")
         .setLocale("fi");

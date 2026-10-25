@@ -13,6 +13,7 @@ import GuestbookFormWrapper from "@/components/GuestbookForm";
 import Paragraph from "@/components/Paragraph";
 import { useUserStore } from "@/services/state";
 import ContentBox from "@/components/layout/ContentBox";
+import { pageParam } from "@/services/params";
 
 const postsPerPage = 10;
 
@@ -35,7 +36,12 @@ export const getServerSideProps: GetServerSideProps<
   Props,
   QueryParams
 > = async (context) => {
-  const offset = (parseInt(context.params.page, 10) - 1) * 10;
+  const currentPage = pageParam(context.params);
+  if (!currentPage) {
+    return { notFound: true };
+  }
+
+  const offset = (currentPage - 1) * 10;
   const ret = await axios.get<Response>(
     `${process.env.NEXT_PUBLIC_API}/api/guestbook?offset=${offset}&limit=10`
   );
@@ -46,7 +52,6 @@ export const getServerSideProps: GetServerSideProps<
     };
   }
 
-  const currentPage = parseInt(context.params.page as string, 10);
   const numPages = Math.ceil(ret.data.totalPosts / postsPerPage);
 
   return {

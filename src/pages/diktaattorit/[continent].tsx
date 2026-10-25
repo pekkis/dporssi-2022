@@ -91,7 +91,10 @@ export const getStaticProps: GetStaticProps<Props, Params> = async (
 
   const dictators =
     ret.continentCollection.items[0].linkedFrom.countryCollection.items
-      .map((c) => c.linkedFrom.dictatorCollection.items)
+      .map(
+        (c: { linkedFrom: { dictatorCollection: { items: Dictator[] } } }) =>
+          c.linkedFrom.dictatorCollection.items
+      )
       .flat() as Dictator[];
 
   return {
@@ -119,7 +122,7 @@ export const getStaticPaths: GetStaticPaths<Params> = async (context) => {
 
   return {
     paths: ret.continentCollection.items
-      .map((i) => ({
+      .map((i: { slug: string }) => ({
         params: {
           continent: i.slug
         }

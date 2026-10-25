@@ -27,6 +27,7 @@ import { graphQLClient } from "@/services/graphql";
 import ContentfulImage from "@/components/contentful/ContentfulImage";
 import { findIndex, slice } from "ramda";
 import ContentBox from "@/components/layout/ContentBox";
+import { stringParam } from "@/services/params";
 
 type Props = {
   dictator: Dictator;
@@ -99,9 +100,14 @@ export const getStaticProps: GetStaticProps = async (context) => {
     }
   `;
 
+  const slug = stringParam(context.params, "slug");
+  if (!slug) {
+    return { notFound: true };
+  }
+
   const res = await graphQLClient.request(query, {
     locale: "fi",
-    slug: context.params.slug
+    slug
   });
 
   const dictator: Dictator = res.dictatorCollection.items[0];
@@ -160,7 +166,9 @@ export const getStaticPaths: GetStaticPaths = async () => {
     }
   `;
 
-  const res = await graphQLClient.request(query, { locale: "fi" });
+  const res = await graphQLClient.request<{
+    dictatorCollection: { items: { slug: string }[] };
+  }>(query, { locale: "fi" });
 
   return {
     paths: res.dictatorCollection.items.map((d) => ({

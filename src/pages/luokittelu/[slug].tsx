@@ -15,6 +15,7 @@ import SubHeading from "@/components/SubHeading";
 import { FC } from "react";
 import { hours } from "@/services/cache";
 import ContentBox from "@/components/layout/ContentBox";
+import { stringParam } from "@/services/params";
 
 type Props = {
   taxonomy: TaxonomyTerm;
@@ -85,9 +86,14 @@ export const getStaticProps: GetStaticProps<Props, { slug: string }> = async (
     }
   `;
 
+  const slug = stringParam(context.params, "slug");
+  if (!slug) {
+    return { notFound: true };
+  }
+
   const res = await graphQLClient.request(query, {
     locale: "fi",
-    slug: context.params.slug
+    slug
   });
 
   const term: TaxonomyTerm | undefined = res.taxonomyTermCollection.items[0];
@@ -117,7 +123,9 @@ export const getStaticPaths: GetStaticPaths = async () => {
     }
   `;
 
-  const res = await graphQLClient.request(query, { locale: "fi" });
+  const res = await graphQLClient.request<{
+    taxonomyTermCollection: { items: { slug: string }[] };
+  }>(query, { locale: "fi" });
 
   return {
     paths: res.taxonomyTermCollection.items.map((d) => ({

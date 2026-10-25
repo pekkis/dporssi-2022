@@ -20,7 +20,7 @@ const nextConfig = {
   output: "standalone",
   reactStrictMode: true,
   typescript: {
-    ignoreBuildErrors: true
+    ignoreBuildErrors: false
   }
 };
 

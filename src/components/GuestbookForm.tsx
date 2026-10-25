@@ -11,6 +11,7 @@ import * as Yup from "yup";
 import Spinner from "./Spinner";
 import SubHeading from "./SubHeading";
 import { useUserStore } from "@/services/state";
+import { GUESTBOOK_CLOSED } from "@/services/guestbook";
 
 const initialState = {
   isHuman: false,
@@ -21,9 +22,6 @@ const initialState = {
 
 type FormState = typeof initialState;
 type FormAction = "IS_HUMAN" | "POST" | "ERROR" | "SUCCESS";
-
-// Posting is disabled until the bot protection works (see the notice by the button).
-const GUESTBOOK_CLOSED = true;
 
 const reducer = (state: FormState, action: FormAction): FormState => {
   switch (action) {

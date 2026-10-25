@@ -80,7 +80,9 @@ const ClassificationIndexPage: FC<Props> = (props) => {
 
         <Box className={styles.categories}>
           {groupedTaxonomies.map(([name, taxonomies]) => {
-            return <Category name={name} taxonomy={taxonomies} key={name} />;
+            return (
+              <Category name={name} taxonomy={taxonomies ?? []} key={name} />
+            );
           })}
         </Box>
       </ContentBox>

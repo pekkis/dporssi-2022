@@ -15,6 +15,7 @@ import { graphQLClient } from "@/services/graphql";
 import { range } from "ramda";
 import PropagandaLight from "@/components/PropagandaLight";
 import ContentBox from "@/components/layout/ContentBox";
+import { pageParam } from "@/services/params";
 
 const postsPerPage = 10;
 
@@ -47,14 +48,18 @@ export const getStaticProps: GetStaticProps = async (context) => {
     }
   `;
 
+  const currentPage = pageParam(context.params);
+  if (!currentPage) {
+    return { notFound: true };
+  }
+
   const res = await graphQLClient.request(query, {
     locale: "fi",
-    skip: (parseInt(context.params.page as string, 10) - 1) * 10
+    skip: (currentPage - 1) * 10
   });
 
   const fakeNews: FakeNewsItem[] = res.propagandaCollection.items;
   const total: number = res.propagandaCollection.total;
-  const currentPage = parseInt(context.params.page as string, 10);
   const numPages = Math.ceil(total / postsPerPage);
 
   if (numPages < currentPage) {

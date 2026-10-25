@@ -127,7 +127,7 @@ export const getStaticPaths: GetStaticPaths<Params> = async (context) => {
 
   return {
     paths: ret.countryCollection.items
-      .map((i) => ({
+      .map((i: { slug: string; continent: { slug: string } }) => ({
         params: {
           continent: i.continent.slug,
           country: i.slug

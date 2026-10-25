@@ -10,7 +10,8 @@ import BlockQuote from "@/components/BlockQuote";
 import Paragraph from "@/components/Paragraph";
 import InternalLink from "@/components/InternalLink";
 import SalivationClock from "@/components/SalivationClock";
-import Image from "next/image";
+import type { ReactNode } from "react";
+import Image, { type StaticImageData } from "next/image";
 import { responsiveImage } from "@/styles/image.css";
 
 import dporssi1999 from "@/data/diktaattoriporssi-1999.png";
@@ -19,9 +20,15 @@ import dporssiAntiSocial from "@/data/diktaattoriporssi-antisocial.png";
 import dporssiSalivation from "@/data/diktaattoriporssi-salivaatio.png";
 import ContentBox from "@/components/layout/ContentBox";
 
-const StorySection = (props) => {
-  const { children, image } = props;
+type StoryImage = { image: StaticImageData; alt: string };
 
+const StorySection = ({
+  children,
+  image
+}: {
+  children: ReactNode;
+  image: StoryImage;
+}) => {
   return (
     <Box className={styles.story}>
       <Box className={styles.storyImage}>

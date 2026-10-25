@@ -5,9 +5,14 @@ import * as styles from "@/styles/pages/own-ranking.css";
 import SEO from "@/components/SEO";
 import RequiresAuthentication from "@/components/layout/RequiresAuthentication";
 import { useUserStore } from "@/services/state";
-import { useEffect } from "react";
+import { useEffect, type HTMLAttributes } from "react";
 import { filter, indexBy, map, values } from "ramda";
-import { DragDropContext, Droppable, Draggable } from "@hello-pangea/dnd";
+import {
+  DragDropContext,
+  Droppable,
+  Draggable,
+  type DropResult
+} from "@hello-pangea/dnd";
 import { sortBySortName } from "@/services/dictator";
 import Spinner from "@/components/Spinner";
 import ContentfulImage from "@/components/contentful/ContentfulImage";
@@ -70,14 +75,11 @@ export const getServerSideProps: GetServerSideProps<Props> = async (
   };
 };
 
-const Handle = (props) => {
-  const { ...rest } = props;
-  return <Box className={styles.handle} {...rest}></Box>;
+const Handle = (props: HTMLAttributes<HTMLDivElement>) => {
+  return <Box className={styles.handle} {...props}></Box>;
 };
 
-const DictatorImage = (props) => {
-  const { dictator } = props;
-
+const DictatorImage = ({ dictator }: { dictator: Dictator }) => {
   return (
     <ContentfulImage
       data={dictator.primaryImage}
@@ -88,7 +90,7 @@ const DictatorImage = (props) => {
   );
 };
 
-const reorder = (list, startIndex, endIndex) => {
+const reorder = <T,>(list: T[], startIndex: number, endIndex: number): T[] => {
   const result = Array.from(list);
   const [removed] = result.splice(startIndex, 1);
   result.splice(endIndex, 0, removed);
@@ -96,9 +98,7 @@ const reorder = (list, startIndex, endIndex) => {
   return result;
 };
 
-const OwnRankingPage = (props) => {
-  const { dictators } = props;
-
+const OwnRankingPage = ({ dictators }: Props) => {
   const user = useUserStore((state) => state.user);
 
   const ranking = useUserStore((state) => state.ranking);
@@ -132,7 +132,7 @@ const OwnRankingPage = (props) => {
 
   const sortedDictators = indexBy((d: Dictator) => d.sys.id, dictators);
 
-  function onDragEnd(result) {
+  function onDragEnd(result: DropResult) {
     if (!result.destination) {
       return;
     }

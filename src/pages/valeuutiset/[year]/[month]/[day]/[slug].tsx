@@ -78,14 +78,19 @@ export const getStaticProps: GetStaticProps<Props, QueryParams> = async (
     }
   `;
 
+  const params = context.params;
+  if (!params) {
+    return { notFound: true };
+  }
+
   const res = await graphQLClient.request(query, {
     locale: process.env.NEXT_PUBLIC_LOCALE,
-    slug: context.params.slug
+    slug: params.slug
   });
 
   const item: FakeNewsItem | undefined = validate(
     res.propagandaCollection.items[0],
-    context.params
+    params
   );
 
   if (!item) {
