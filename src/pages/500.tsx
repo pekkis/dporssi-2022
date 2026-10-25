@@ -3,6 +3,7 @@ import * as styles from "@/styles/pages/error-pages.css";
 import SectionHeading from "@/components/SectionHeading";
 import Paragraph from "@/components/Paragraph";
 import Image from "next/image";
+import { responsiveImage } from "@/styles/image.css";
 import internalRevolution from "@/data/internal-revolution-error.jpg";
 
 const InfernalServerErrorPage = () => {
@@ -10,6 +11,7 @@ const InfernalServerErrorPage = () => {
     <Box as="main" className={styles.serverError}>
       <Box className={styles.serverErrorNote}>
         <Image
+          className={responsiveImage}
           src={internalRevolution.src}
           width={internalRevolution.width}
           height={internalRevolution.height}

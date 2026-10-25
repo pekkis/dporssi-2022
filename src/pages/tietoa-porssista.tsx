@@ -11,6 +11,7 @@ import Paragraph from "@/components/Paragraph";
 import InternalLink from "@/components/InternalLink";
 import SalivationClock from "@/components/SalivationClock";
 import Image from "next/image";
+import { responsiveImage } from "@/styles/image.css";
 
 import dporssi1999 from "@/data/diktaattoriporssi-1999.png";
 import dporssiLED from "@/data/diktaattoriporssi-led.png";
@@ -25,6 +26,7 @@ const StorySection = (props) => {
     <Box className={styles.story}>
       <Box className={styles.storyImage}>
         <Image
+          className={responsiveImage}
           src={image.image.src}
           alt={image.alt}
           width={image.image.width}

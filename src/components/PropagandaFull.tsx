@@ -3,6 +3,7 @@ import { sprinkles } from "@/styles/sprinkles.css";
 import * as styles from "./PropagandaFull.css";
 import Markdown from "./Markdown";
 import NextImage from "next/image";
+import { responsiveImage } from "@/styles/image.css";
 import ContentfulImage from "./contentful/ContentfulImage";
 import { FakeNewsItem, StaticImageData } from "@/types";
 import { createDate } from "@/services/date";
@@ -41,6 +42,7 @@ const PropagandaFull = (props: Props) => {
           />
         ) : (
           <NextImage
+            className={responsiveImage}
             src={defaultImage.src}
             width={defaultImage.width}
             height={defaultImage.height}

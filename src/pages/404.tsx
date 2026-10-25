@@ -6,6 +6,7 @@ import InternalLink from "@/components/InternalLink";
 import SectionHeading from "@/components/SectionHeading";
 
 import Image from "next/image";
+import { responsiveImage } from "@/styles/image.css";
 import notFound from "@/data/not-found.jpg";
 
 const NotFoundPage = () => {
@@ -16,6 +17,7 @@ const NotFoundPage = () => {
       <Box as="section" className={styles.notFound}>
         <Box className={styles.notFoundImage}>
           <Image
+            className={responsiveImage}
             {...notFound}
             alt="Maakuoppa, josta valloittajia piileskellyt Saddam Hussein kaivettiin esiin"
           />
