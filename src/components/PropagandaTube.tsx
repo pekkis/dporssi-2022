@@ -1,3 +1,5 @@
+"use client";
+
 import { Box, Flex } from "@/components/ui";
 import * as styles from "./PropagandaTube.css";
 import Youtube from "./Youtube";

@@ -1,3 +1,5 @@
+"use client";
+
 import { FC, memo, useDeferredValue } from "react";
 import { Box, cx, Flex, link } from "@/components/ui";
 import { sprinkles } from "@/styles/sprinkles.css";

@@ -1,3 +1,5 @@
+"use client";
+
 import { FC, useEffect } from "react";
 import { useUserStore } from "@/services/state";
 import { auth } from "@/services/firebase";
@@ -11,8 +13,6 @@ const UserInitializer: FC = () => {
 
   useEffect(() => {
     onAuthStateChanged(auth, (ret) => {
-      console.log("RET", ret);
-
       if (ret === null) {
         setUser({
           isAuthenticated: false,

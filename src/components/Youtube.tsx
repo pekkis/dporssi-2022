@@ -1,3 +1,5 @@
+"use client";
+
 import { FC } from "react";
 import { Box } from "@/components/ui";
 import * as styles from "./Youtube.css";

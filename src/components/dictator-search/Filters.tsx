@@ -1,3 +1,5 @@
+"use client";
+
 import { FC } from "react";
 import { Box, Input, Label, Radio } from "@/components/ui";
 import * as styles from "./Filters.css";

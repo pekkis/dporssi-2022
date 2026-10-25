@@ -2,7 +2,7 @@ import { useCallback, Suspense, type ReactNode } from "react";
 import { ErrorBoundary } from "react-error-boundary";
 import "@/styles/global.css";
 import LazyLoadedUserInitializer from "./LazyLoadedUserInitializer";
-import InfernalServerErrorPage from "@/pages/500";
+import ServerError from "@/components/errors/ServerError";
 import { BrowserMicroSentryClient } from "@micro-sentry/browser";
 
 const App = ({ children }: { children: ReactNode }) => {
@@ -16,10 +16,7 @@ const App = ({ children }: { children: ReactNode }) => {
   }, []);
 
   return (
-    <ErrorBoundary
-      FallbackComponent={InfernalServerErrorPage}
-      onError={errorHandler}
-    >
+    <ErrorBoundary FallbackComponent={ServerError} onError={errorHandler}>
       <Suspense fallback={null}>
         <LazyLoadedUserInitializer />
       </Suspense>

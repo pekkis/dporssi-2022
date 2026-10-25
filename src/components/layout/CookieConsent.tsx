@@ -1,3 +1,5 @@
+"use client";
+
 import type { ComponentPropsWithRef } from "react";
 import ReactCookieConsent from "react-cookie-consent";
 import { Button } from "@/components/ui";

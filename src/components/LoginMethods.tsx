@@ -1,3 +1,5 @@
+"use client";
+
 import { Box, Button } from "@/components/ui";
 import { sprinkles } from "@/styles/sprinkles.css";
 import * as styles from "./LoginMethods.css";

@@ -1,3 +1,5 @@
+"use client";
+
 import type { ReactNode } from "react";
 import { Box, Button, Textarea, Input, Label } from "@/components/ui";
 import * as styles from "./GuestbookForm.css";

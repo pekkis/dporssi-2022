@@ -1,3 +1,5 @@
+"use client";
+
 import { Box } from "@/components/ui";
 import { FC, memo, useEffect, useRef } from "react";
 import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";

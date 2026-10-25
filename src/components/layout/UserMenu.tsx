@@ -1,3 +1,5 @@
+"use client";
+
 import { useState } from "react";
 import { useFloating } from "@floating-ui/react";
 import { Box } from "@/components/ui";

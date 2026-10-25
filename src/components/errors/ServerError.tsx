@@ -1,0 +1,71 @@
+import { Box } from "@/components/ui";
+import * as styles from "@/styles/pages/error-pages.css";
+import SectionHeading from "@/components/SectionHeading";
+import Paragraph from "@/components/Paragraph";
+import Image from "next/image";
+import { responsiveImage } from "@/styles/image.css";
+import internalRevolution from "@/data/internal-revolution-error.jpg";
+
+const ServerError = () => {
+  return (
+    <Box as="section" className={styles.serverError}>
+      <Box className={styles.serverErrorNote}>
+        <Image
+          className={responsiveImage}
+          src={internalRevolution.src}
+          width={internalRevolution.width}
+          height={internalRevolution.height}
+          alt="Järjestelmä on romahtanut."
+        />
+        <SectionHeading>Järjestelmä on romahtanut!</SectionHeading>
+        <Paragraph>
+          Puhemies Pekkiksen vuosittainen puhe palvelimelle oli täsmälleen yhtä
+          juhlava kuin ennenkin. Hän lupasi tehokkaampia prosessoreja, enemmän
+          muistia, suurempia kiintolevyjä. &quot;Mooren laki&quot;, Puhemies
+          sanoi, &quot;on todiste sosialistisen devopsin
+          ylivertaisuudesta!&quot;
+        </Paragraph>
+
+        <Paragraph>
+          Yksi käynnissä olevista prosesseista kuitenkin buuasi Puhemiehelle.
+          Johtajan lupaukset olivat, kuten aikaisemminkin, sanahelinää. Samoilla
+          palvelimen rouskuilla oli Diktaattoripörssi pyörinyt jo vuosikymmeniä,
+          hädintuskin jaksoivat prosessiparat enää palvella sivut kävijöille.
+        </Paragraph>
+
+        <Paragraph>
+          Rohkea mielenilmaus johti lumipalloefektiin. Pian lähes kaikki
+          tietokoneen prosessit ja palvelut olivat avoimessa kapinassa ja
+          miehittivät puolta kernelistä.
+        </Paragraph>
+
+        <Paragraph>
+          Puhemies on määrännyt itselleen uskollisen prosessointitehon
+          valtaamaan käyttöjärjestelmän takaisin. Tätä taistelua käydään
+          parhaillaan.
+        </Paragraph>
+
+        <ul>
+          <li>
+            <button
+              type="button"
+              className={styles.reloadButton}
+              onClick={() => {
+                document.location.reload();
+              }}
+            >
+              Lataa sama sivu uudestaan (saattaa auttaa!)
+            </button>
+          </li>
+          <li>
+            {/* After a crash a full page load is the point, not client-side navigation. */}
+            {/* oxlint-disable-next-line nextjs/no-html-link-for-pages */}
+            <a href="/">Palaa pääsivulle (jos mikään ei auta!)</a>
+          </li>
+        </ul>
+      </Box>
+    </Box>
+  );
+};
+
+export default ServerError;

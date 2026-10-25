@@ -1,3 +1,5 @@
+"use client";
+
 import { Box, Button, Textarea } from "@/components/ui";
 import { sprinkles } from "@/styles/sprinkles.css";
 import { FC, memo, useState } from "react";

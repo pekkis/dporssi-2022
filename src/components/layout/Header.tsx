@@ -1,3 +1,5 @@
+"use client";
+
 import { FC, useState } from "react";
 import { Box, Flex, Heading, MenuButton } from "@/components/ui";
 import Adi from "@/components/Adi";

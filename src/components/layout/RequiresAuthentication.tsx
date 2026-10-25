@@ -1,3 +1,5 @@
+"use client";
+
 import { FC, ReactNode } from "react";
 import { Box, Paragraph } from "@/components/ui";
 import { useUserStore } from "@/services/state";

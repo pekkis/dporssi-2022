@@ -15,7 +15,7 @@ const siteConfig: SiteConfig = {
     "Ainoa, aito ja oikea diktaattoriranking jo vuodesta 1999. Kirjaimellisesti historiallinen verkkoteos, jonka tekemiseen sinäkin voit osallistua.",
   url: process.env.SITE_URL ?? "https://www.diktaattoriporssi.com",
   siteUrl: process.env.SITE_URL ?? "https://www.diktaattoriporssi.com",
-  image: "/public/icons/icon-144x144.png",
+  image: "/android-chrome-512x512.png",
   twitterUsername: "@dporssi"
 };
 
