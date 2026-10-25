@@ -19,6 +19,9 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           href="https://fonts.gstatic.com"
           crossOrigin="anonymous"
         />
+        {/* The Pages Router rule doesn't apply: the root layout covers every app page.
+            (next/font would be the App Router way; a later step.) */}
+        {/* oxlint-disable-next-line nextjs/no-page-custom-font */}
         <link
           href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,200;0,400;0,700;1,200;1,400;1,700&display=swap"
           rel="stylesheet"
