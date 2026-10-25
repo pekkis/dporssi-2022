@@ -44,7 +44,8 @@ export const pageMetadata = ({
   const desc = description ? cleanup(description) : config.description;
   const img = image ?? `${config.siteUrl}${config.image}`;
   return {
-    title,
+    // Absolute: the layout's template doesn't apply to the front page (same segment).
+    title: { absolute: fullTitle(title) },
     description: desc,
     openGraph: {
       title: fullTitle(title),

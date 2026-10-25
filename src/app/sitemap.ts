@@ -1,19 +1,19 @@
-import type { GetServerSidePropsContext } from "next";
+import type { MetadataRoute } from "next";
 import { gql } from "graphql-request";
+import { range, uniq } from "ramda";
+import config from "@/services/config";
 import { graphQLClient } from "@/services/graphql";
 import { Locale, url } from "@/services/url";
-import {
+import type {
   Continent,
   Country,
   Dictator,
   FakeNewsItem,
   TaxonomyTerm
 } from "@/types";
-import { range } from "ramda";
 
-type SitemapEntry = {
-  loc: string;
-};
+// Built on every request, as before.
+export const dynamic = "force-dynamic";
 
 const staticPages = [
   url("index", process.env.NEXT_PUBLIC_LOCALE as Locale)(),
@@ -26,36 +26,7 @@ const staticPages = [
   url("dictators", process.env.NEXT_PUBLIC_LOCALE as Locale)()
 ];
 
-function generateSiteMap(entries: SitemapEntry[]) {
-  const absolutified = entries.map((e) => {
-    return {
-      ...e,
-      loc: `${process.env.SITE_URL}${e.loc}`
-    };
-  });
-
-  return `<?xml version="1.0" encoding="UTF-8"?>
-   <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-     ${absolutified
-       .map((entry) => {
-         return `
-       <url>
-         <loc>${entry.loc}</loc>
-         <changefreq>daily</changefreq>
-         <priority>0.7</priority>
-       </url>
-     `;
-       })
-       .join("")}
-   </urlset>
- `;
-}
-
-function SiteMap() {
-  // getServerSideProps will do the heavy lifting
-}
-
-export async function getServerSideProps({ res }: GetServerSidePropsContext) {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const query = gql`
     query SitemapStuff($locale: String!) {
       dictatorCollection(locale: $locale, limit: 150) {
@@ -86,9 +57,12 @@ export async function getServerSideProps({ res }: GetServerSidePropsContext) {
     }
   `;
 
-  const ret = await graphQLClient.request(query, {
-    locale: process.env.NEXT_PUBLIC_LOCALE
-  });
+  const ret = await graphQLClient.request<{
+    dictatorCollection: { items: Dictator[] };
+    countryCollection: { items: Country[] };
+    propagandaCollection: { items: FakeNewsItem[] };
+    taxonomyTermCollection: { items: TaxonomyTerm[] };
+  }>(query, { locale: process.env.NEXT_PUBLIC_LOCALE });
 
   const dictators: Dictator[] = ret.dictatorCollection.items;
   const dictatorIndexPages = Math.ceil(
@@ -148,50 +122,22 @@ export async function getServerSideProps({ res }: GetServerSidePropsContext) {
     };
   });
 
-  const staticPageEntries = staticPages.map((loc) => {
-    return {
-      loc
-    };
-  });
+  const locs = uniq([
+    ...staticPages,
+    ...[
+      ...dictatorPageEntries,
+      ...dictatorIndexEntries,
+      ...newsPageEntries,
+      ...newsIndexEntries,
+      ...countryEntries,
+      ...continentEntries,
+      ...classificationEntries
+    ].map((e) => e.loc)
+  ]);
 
-  const entries = [
-    ...staticPageEntries,
-    ...dictatorPageEntries,
-    ...dictatorIndexEntries,
-    ...newsPageEntries,
-    ...newsIndexEntries,
-    ...countryEntries,
-    ...continentEntries,
-    ...classificationEntries
-  ];
-
-  /*
-  const dictatorPageEntries = dictators.map((d) => {
-    return {
-      loc: url("dictatorItem", process.env.NEXT_PUBLIC_LOCALE as Locale)(d);
-    }
-  });
-  */
-
-  /*
-  for (const d of ret.dictatorCollection.items) {
-    entries.push({
-      loc: url("dictatorItem", process.env.NEXT_PUBLIC_LOCALE as Locale)(d)
-    });
-  }
-  */
-
-  // We generate the XML sitemap with the posts data
-  const sitemap = generateSiteMap(entries);
-
-  res.setHeader("Content-Type", "text/xml");
-  // we send the XML to the browser
-  res.write(sitemap);
-  res.end();
-
-  return {
-    props: {}
-  };
+  return locs.map((loc) => ({
+    url: `${config.siteUrl}${loc}`,
+    changeFrequency: "daily",
+    priority: 0.7
+  }));
 }
-
-export default SiteMap;
